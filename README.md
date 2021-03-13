@@ -1,2 +1,3 @@
-# codefee-component
+# Codefee Component
+
 A Web Component Library Experiment
