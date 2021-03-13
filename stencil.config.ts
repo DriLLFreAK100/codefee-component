@@ -1,4 +1,5 @@
 import { Config } from '@stencil/core';
+import { sass } from '@stencil/sass';
 
 export const config: Config = {
   namespace: 'codefee-component',
@@ -18,4 +19,8 @@ export const config: Config = {
       serviceWorker: null, // disable service workers
     },
   ],
+  globalStyle: 'src/styles/global.scss',
+  plugins: [
+    sass(),
+  ]
 };
