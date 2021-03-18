@@ -23,6 +23,7 @@
     "g": "npm run generate"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-free": "5.15.3",
     "@stencil/core": "2.4.0"
   },
   "license": "MIT",

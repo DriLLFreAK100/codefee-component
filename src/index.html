@@ -22,6 +22,13 @@
   <cf-button type="error">Click Me!</cf-button>
   <br /><br />
 
+  <!-- Icon Button -->
+  <cf-typography type="h5">Icon Button</cf-typography>
+  <cf-divider></cf-divider>
+  <cf-icon-button icon="fas fa-camera"></cf-icon-button>
+  <br /><br />
+
+
   <!-- Circular Progress -->
   <cf-typography type="h5">Circular Progress</cf-typography>
   <cf-divider></cf-divider>
@@ -39,7 +46,7 @@
   <!-- App Header -->
   <cf-typography type="h5">App Header</cf-typography>
   <cf-divider></cf-divider>
-  <cf-app-header></cf-app-header>
+  <cf-app-header id="app-header"></cf-app-header>
   <br /><br />
 
   <!-- Scripts -->
@@ -51,18 +58,27 @@
     // Determinate Circular Progress
     const cp = document.querySelector('#determinate-circular-progress');
 
-    function update() {
+    function updateCircularProgress() {
       setTimeout(() => {
         if (cp.progress >= 100) {
           cp.progress = 0;
         } else {
           cp.progress += 10;
         }
-        update();
+        updateCircularProgress();
       }, 200);
-    }
+    };
 
-    update();
+    updateCircularProgress();
+
+    // App Header
+    const ah = document.querySelector('#app-header');
+    ah.navMenus = [
+      { title: "Page 1", active: true, link: '' },
+      { title: "Page 2", active: false, link: '' },
+      { title: "Page 3", active: false, link: '' },
+    ];
+
   </script>
 </body>
 

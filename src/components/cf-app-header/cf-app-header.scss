@@ -14,4 +14,35 @@
   padding: 0 rem(16);
   position: relative;
   width: 100%;
+
+  &__start {
+    align-items: center;
+    display: flex;
+    width: 50%;
+
+    &__menuIcon {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+    }
+
+    & > * {
+      &:first-child {
+        margin-right: rem(4);
+      }
+
+      margin-right: rem(8);
+    }
+  }
+
+  &__end {
+    align-items: center;
+    display: flex;
+    justify-content: flex-end;
+    width: 50%;
+
+    & > * {
+      margin-left: rem(4);
+    }
+  }
 }

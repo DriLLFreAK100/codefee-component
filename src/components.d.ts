@@ -5,12 +5,15 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { INavMenu } from "./components/cf-side-drawer/cf-side-drawer";
 import { ButtonType } from "./components/cf-button/cf-button";
 import { CircularProgressColor, CircularProgressType } from "./components/cf-circular-progress/cf-circular-progress";
 import { TypographyType } from "./components/cf-typography/cf-typography";
+import { INavMenu as INavMenu1 } from "./components/cf-side-drawer/cf-side-drawer";
 import { TypographyType as TypographyType1 } from "./components/cf-typography/cf-typography";
 export namespace Components {
     interface CfAppHeader {
+        "navMenus": INavMenu[];
     }
     interface CfButton {
         "disabled": boolean;
@@ -24,10 +27,18 @@ export namespace Components {
     }
     interface CfDivider {
     }
+    interface CfIconButton {
+        "icon": string;
+    }
     interface CfLink {
         "href": string;
         "newTab": boolean;
         "typographyType": TypographyType;
+    }
+    interface CfSideDrawer {
+        "drawerTitle": string;
+        "menus": INavMenu[];
+        "visible": boolean;
     }
     interface CfTypography {
         "type": TypographyType;
@@ -58,11 +69,23 @@ declare global {
         prototype: HTMLCfDividerElement;
         new (): HTMLCfDividerElement;
     };
+    interface HTMLCfIconButtonElement extends Components.CfIconButton, HTMLStencilElement {
+    }
+    var HTMLCfIconButtonElement: {
+        prototype: HTMLCfIconButtonElement;
+        new (): HTMLCfIconButtonElement;
+    };
     interface HTMLCfLinkElement extends Components.CfLink, HTMLStencilElement {
     }
     var HTMLCfLinkElement: {
         prototype: HTMLCfLinkElement;
         new (): HTMLCfLinkElement;
+    };
+    interface HTMLCfSideDrawerElement extends Components.CfSideDrawer, HTMLStencilElement {
+    }
+    var HTMLCfSideDrawerElement: {
+        prototype: HTMLCfSideDrawerElement;
+        new (): HTMLCfSideDrawerElement;
     };
     interface HTMLCfTypographyElement extends Components.CfTypography, HTMLStencilElement {
     }
@@ -75,12 +98,15 @@ declare global {
         "cf-button": HTMLCfButtonElement;
         "cf-circular-progress": HTMLCfCircularProgressElement;
         "cf-divider": HTMLCfDividerElement;
+        "cf-icon-button": HTMLCfIconButtonElement;
         "cf-link": HTMLCfLinkElement;
+        "cf-side-drawer": HTMLCfSideDrawerElement;
         "cf-typography": HTMLCfTypographyElement;
     }
 }
 declare namespace LocalJSX {
     interface CfAppHeader {
+        "navMenus"?: INavMenu[];
     }
     interface CfButton {
         "disabled"?: boolean;
@@ -94,10 +120,18 @@ declare namespace LocalJSX {
     }
     interface CfDivider {
     }
+    interface CfIconButton {
+        "icon"?: string;
+    }
     interface CfLink {
         "href"?: string;
         "newTab"?: boolean;
         "typographyType"?: TypographyType;
+    }
+    interface CfSideDrawer {
+        "drawerTitle"?: string;
+        "menus"?: INavMenu[];
+        "visible"?: boolean;
     }
     interface CfTypography {
         "type"?: TypographyType;
@@ -107,7 +141,9 @@ declare namespace LocalJSX {
         "cf-button": CfButton;
         "cf-circular-progress": CfCircularProgress;
         "cf-divider": CfDivider;
+        "cf-icon-button": CfIconButton;
         "cf-link": CfLink;
+        "cf-side-drawer": CfSideDrawer;
         "cf-typography": CfTypography;
     }
 }
@@ -119,7 +155,9 @@ declare module "@stencil/core" {
             "cf-button": LocalJSX.CfButton & JSXBase.HTMLAttributes<HTMLCfButtonElement>;
             "cf-circular-progress": LocalJSX.CfCircularProgress & JSXBase.HTMLAttributes<HTMLCfCircularProgressElement>;
             "cf-divider": LocalJSX.CfDivider & JSXBase.HTMLAttributes<HTMLCfDividerElement>;
+            "cf-icon-button": LocalJSX.CfIconButton & JSXBase.HTMLAttributes<HTMLCfIconButtonElement>;
             "cf-link": LocalJSX.CfLink & JSXBase.HTMLAttributes<HTMLCfLinkElement>;
+            "cf-side-drawer": LocalJSX.CfSideDrawer & JSXBase.HTMLAttributes<HTMLCfSideDrawerElement>;
             "cf-typography": LocalJSX.CfTypography & JSXBase.HTMLAttributes<HTMLCfTypographyElement>;
         }
     }

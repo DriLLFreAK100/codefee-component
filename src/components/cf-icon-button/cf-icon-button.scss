@@ -1,0 +1,26 @@
+@import '../../styles/functions.scss';
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+:host {
+  display: block;
+}
+
+.cfIconButton {
+  background: var(--color-bg-light);
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: rem(24);
+  height: rem(48);
+  outline: none;
+  transition: background-color var(--transition-hover) ease-in-out;
+  width: rem(48);
+
+  &:hover {
+    background: var(--color-bg);
+  }
+
+  &:active {
+    background: var(--color-bg-dark);
+  }
+}
