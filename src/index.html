@@ -47,7 +47,8 @@
   <!-- App Header -->
   <cf-typography type="h5">App Header</cf-typography>
   <cf-divider></cf-divider>
-  <cf-app-header id="app-header"></cf-app-header>
+  <cf-app-header id="app-header" app-name="My App Name" drawer-title="Menu Title">
+  </cf-app-header>
   <br /><br />
 
   <!-- Scripts -->
@@ -78,6 +79,10 @@
       { title: "Page 1", active: true, link: '' },
       { title: "Page 2", active: false, link: '' },
       { title: "Page 3", active: false, link: '' },
+    ];
+    ah.actionMenus = [
+      { icon: 'fas fa-user-circle' },
+      { icon: 'fas fa-cog' },
     ];
 
   </script>

@@ -18,13 +18,10 @@ export interface INavMenu {
   shadow: true,
 })
 export class CfSideDrawer {
-  @Prop() drawerTitle: string = '';
+  @Prop() drawerTitle: string = 'Menu';
   @Prop() menus: INavMenu[] = [];
   @Prop({ mutable: true, reflect: true }) visible: boolean = false;
-
-  onClose() {
-
-  };
+  @Prop() onClose: () => void;
 
   render() {
     return (
@@ -32,23 +29,24 @@ export class CfSideDrawer {
         <div class={`cfSideDrawer ${this.visible ? 'visible' : ''}`}>
           <div class="cfSideDrawer__title">
             <cf-typography type="h5">{this.drawerTitle}</cf-typography>
-            <div onClick={this.onClose.bind(this)}>
-              {/* <IconButton icon={faTimes} /> */}
-              X
+            <div onClick={this.onClose}>
+              <cf-icon-button icon="fas fa-times" />
             </div>
           </div>
           <cf-divider />
           <div class="cfSideDrawer__menuContainer">
             {
               this.menus.map(menu => {
-                const style: { [key: string]: string } = {};
+                const styles: { [key: string]: string } = {};
                 if (menu.active) {
-                  style.color = cvar('--color-primary-on')
+                  styles.color = cvar('--color-primary-on');
+                  styles.textDecoration = 'unset';
+                  styles.pointerEvents = 'none';
                 }
 
                 return (
                   <div class={`cfSideDrawer__menuItem ${menu.active ? 'active' : ''}`}>
-                    <cf-link href={menu.link}>
+                    <cf-link styles={styles} href={menu.link}>
                       {menu.title}
                     </cf-link>
                   </div>
@@ -57,6 +55,7 @@ export class CfSideDrawer {
             }
           </div>
         </div>
+        <div class={`overlay ${this.visible ? 'visible' : ''}`} onClick={this.onClose} />
       </Host>
     );
   }

@@ -7,6 +7,7 @@
 .cfLink {
   color: var(--color-info);
   text-decoration: none;
+  transition: color var(--transition-hover) ease-in-out;
 
   &:hover {
     color: var(--color-info-light);

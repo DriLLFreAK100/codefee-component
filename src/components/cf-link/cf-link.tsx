@@ -7,15 +7,21 @@ import { TypographyType } from '../cf-typography/cf-typography';
   shadow: true,
 })
 export class CfLink {
-  @Prop() typographyType: TypographyType = 'subtitle1';
   @Prop() href: string = '';
   @Prop() newTab: boolean = true;
+  @Prop() styles: { [key: string]: string };
+  @Prop() typographyType: TypographyType = 'subtitle1';
 
   render() {
     return (
       <Host>
         <cf-typography type={this.typographyType}>
-          <a class="cfLink" href={this.href} target={this.newTab ? '_blank' : ''}>
+          <a
+            class="cfLink"
+            href={this.href}
+            style={this.styles}
+            target={this.newTab ? '_blank' : ''}
+          >
             <slot />
           </a>
         </cf-typography>

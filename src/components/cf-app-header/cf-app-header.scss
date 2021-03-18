@@ -20,7 +20,7 @@
     display: flex;
     width: 50%;
 
-    &__menuIcon {
+    &__drawerIcon {
       align-items: center;
       display: flex;
       justify-content: center;
@@ -40,6 +40,13 @@
     display: flex;
     justify-content: flex-end;
     width: 50%;
+
+    &__menuItem {
+      align-items: center;
+      display: flex;
+      font-size: rem(24);
+      height: rem(48);
+    }
 
     & > * {
       margin-left: rem(4);

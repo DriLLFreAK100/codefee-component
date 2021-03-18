@@ -4,9 +4,26 @@
   display: block;
 }
 
+.overlay {
+  background: var(--color-bg-dark);
+  height: 100vh;
+  left: 0;
+  opacity: 0;
+  position: fixed;
+  top: 0;
+  transition: visibility var(--transition-hover) ease-in-out, opacity var(--transition-toggle) ease-in-out;
+  visibility: hidden;
+  width: 100vw;
+
+  &.visible {
+    visibility: visible;
+    opacity: 0.5;
+  }
+}
+
 .cfSideDrawer {
-  background: var('--color-bg-light');
-  box-shadow: rem(12) 0 rem(8) rem(-8) var('--color-shadow');
+  background: var(--color-bg-light);
+  box-shadow: rem(12) 0 rem(8) rem(-8) var(--color-shadow);
   left: 0;
   height: 100%;
   padding: rem(16);
@@ -18,6 +35,7 @@
   bottom: 0;
   right: 0;
   top: 0;
+  z-index: 10;
 
   &.visible {
     transform: translateX(0%);
@@ -49,25 +67,31 @@
   }
 
   &__menuItem {
-    background: 'inherit';
+    background: inherit;
     border-radius: rem(4);
     display: flex;
     flex-direction: column;
     height: rem(40);
     justify-content: center;
     padding-left: rem(8);
-    transition: background-color var('--transition-hover') ease-in-out;
+    transition: background-color var(--transition-hover) ease-in-out;
 
     &:not(:last-child) {
       margin-bottom: rem(4);
     }
 
     &.active {
-      background: linear-gradient(to right, var('--color-primary'), white);
+      background: linear-gradient(to right, var(--color-primary), white);
     }
 
     &:not(.active) {
-      background: var('--color-bg');
+      background: var(--color-bg);
+    }
+
+    &__link {
+      &.active {
+        color: var(--color-primary-on) !important;
+      }
     }
   }
 }

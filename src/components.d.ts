@@ -5,6 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { IActionMenu } from "./components/cf-app-header/cf-app-header";
 import { INavMenu } from "./components/cf-side-drawer/cf-side-drawer";
 import { ButtonType } from "./components/cf-button/cf-button";
 import { CircularProgressColor, CircularProgressType } from "./components/cf-circular-progress/cf-circular-progress";
@@ -13,6 +14,9 @@ import { INavMenu as INavMenu1 } from "./components/cf-side-drawer/cf-side-drawe
 import { TypographyType as TypographyType1 } from "./components/cf-typography/cf-typography";
 export namespace Components {
     interface CfAppHeader {
+        "actionMenus": IActionMenu[];
+        "appName": string;
+        "drawerTitle": string;
         "navMenus": INavMenu[];
     }
     interface CfButton {
@@ -33,11 +37,13 @@ export namespace Components {
     interface CfLink {
         "href": string;
         "newTab": boolean;
+        "styles": { [key: string]: string };
         "typographyType": TypographyType;
     }
     interface CfSideDrawer {
         "drawerTitle": string;
         "menus": INavMenu[];
+        "onClose": () => void;
         "visible": boolean;
     }
     interface CfTypography {
@@ -106,6 +112,9 @@ declare global {
 }
 declare namespace LocalJSX {
     interface CfAppHeader {
+        "actionMenus"?: IActionMenu[];
+        "appName"?: string;
+        "drawerTitle"?: string;
         "navMenus"?: INavMenu[];
     }
     interface CfButton {
@@ -126,11 +135,13 @@ declare namespace LocalJSX {
     interface CfLink {
         "href"?: string;
         "newTab"?: boolean;
+        "styles"?: { [key: string]: string };
         "typographyType"?: TypographyType;
     }
     interface CfSideDrawer {
         "drawerTitle"?: string;
         "menus"?: INavMenu[];
+        "onClose"?: () => void;
         "visible"?: boolean;
     }
     interface CfTypography {
