@@ -6,6 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ButtonType } from "./components/cf-button/cf-button";
+import { CircularProgressColor, CircularProgressType } from "./components/cf-circular-progress/cf-circular-progress";
 import { TypographyType } from "./components/cf-typography/cf-typography";
 export namespace Components {
     interface CfAppHeader {
@@ -14,6 +15,11 @@ export namespace Components {
         "disabled": boolean;
         "text": string;
         "type": ButtonType;
+    }
+    interface CfCircularProgress {
+        "color": CircularProgressColor;
+        "progress": number;
+        "type": CircularProgressType;
     }
     interface CfDivider {
     }
@@ -36,6 +42,12 @@ declare global {
         prototype: HTMLCfButtonElement;
         new (): HTMLCfButtonElement;
     };
+    interface HTMLCfCircularProgressElement extends Components.CfCircularProgress, HTMLStencilElement {
+    }
+    var HTMLCfCircularProgressElement: {
+        prototype: HTMLCfCircularProgressElement;
+        new (): HTMLCfCircularProgressElement;
+    };
     interface HTMLCfDividerElement extends Components.CfDivider, HTMLStencilElement {
     }
     var HTMLCfDividerElement: {
@@ -57,6 +69,7 @@ declare global {
     interface HTMLElementTagNameMap {
         "cf-app-header": HTMLCfAppHeaderElement;
         "cf-button": HTMLCfButtonElement;
+        "cf-circular-progress": HTMLCfCircularProgressElement;
         "cf-divider": HTMLCfDividerElement;
         "cf-link": HTMLCfLinkElement;
         "cf-typography": HTMLCfTypographyElement;
@@ -70,6 +83,11 @@ declare namespace LocalJSX {
         "text"?: string;
         "type"?: ButtonType;
     }
+    interface CfCircularProgress {
+        "color"?: CircularProgressColor;
+        "progress"?: number;
+        "type"?: CircularProgressType;
+    }
     interface CfDivider {
     }
     interface CfLink {
@@ -80,6 +98,7 @@ declare namespace LocalJSX {
     interface IntrinsicElements {
         "cf-app-header": CfAppHeader;
         "cf-button": CfButton;
+        "cf-circular-progress": CfCircularProgress;
         "cf-divider": CfDivider;
         "cf-link": CfLink;
         "cf-typography": CfTypography;
@@ -91,6 +110,7 @@ declare module "@stencil/core" {
         interface IntrinsicElements {
             "cf-app-header": LocalJSX.CfAppHeader & JSXBase.HTMLAttributes<HTMLCfAppHeaderElement>;
             "cf-button": LocalJSX.CfButton & JSXBase.HTMLAttributes<HTMLCfButtonElement>;
+            "cf-circular-progress": LocalJSX.CfCircularProgress & JSXBase.HTMLAttributes<HTMLCfCircularProgressElement>;
             "cf-divider": LocalJSX.CfDivider & JSXBase.HTMLAttributes<HTMLCfDividerElement>;
             "cf-link": LocalJSX.CfLink & JSXBase.HTMLAttributes<HTMLCfLinkElement>;
             "cf-typography": LocalJSX.CfTypography & JSXBase.HTMLAttributes<HTMLCfTypographyElement>;

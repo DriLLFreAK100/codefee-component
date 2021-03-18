@@ -8,18 +8,39 @@
 
   <script type="module" src="/build/codefee-component.esm.js"></script>
   <script nomodule src="/build/codefee-component.js"></script>
-  <script nomodule src="/build/codefee-component.js"></script>
-  <link rel="stylesheet" href="/build/codefee-component.css">
 </head>
 
 <body>
-  <cf-typography type="h1">Typography</cf-typography>
+  <cf-typography type="h5">Button</cf-typography>
   <cf-divider></cf-divider>
-  <cf-button>Button</cf-button>
+  <cf-button>Click Me!</cf-button>
+
+  <cf-typography type="h5">Circular Progress</cf-typography>
+  <cf-divider></cf-divider>
+  <cf-circular-progress></cf-circular-progress>
+  <cf-circular-progress color="secondary"></cf-circular-progress>
+  <cf-circular-progress id="determinate-circular-progress" type="determinate"></cf-circular-progress>
 
   <script type="module">
     import { loadTheme } from '/build/index.esm.js';
     loadTheme();
+  </script>
+
+  <script>
+    const cp = document.querySelector('#determinate-circular-progress');
+
+    function update() {
+      setTimeout(() => {
+        if(!Number.isInteger(cp.progress) || cp.progress >= 100) {
+          cp.progress = 0;
+        } else{
+          cp.progress += 10;
+        }
+        update();
+      }, 200);
+    }
+    
+    update();
   </script>
 </body>
 

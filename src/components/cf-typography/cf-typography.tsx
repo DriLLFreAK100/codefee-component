@@ -34,13 +34,12 @@ const getElement = (type: TypographyType) => {
     case 'body1':
     case 'body2':
     case 'p':
+    default:
       return 'p';
     case 'caption':
       return 'figcaption';
     case 'button':
       return 'span';
-    default:
-      return 'p';
   }
 };
 
