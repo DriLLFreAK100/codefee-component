@@ -1,10 +1,16 @@
 @import '../../styles/functions.scss';
-@import '../../styles/reset.scss';
 
 :host {
   display: block;
 
+  .reset {
+    margin: 0;
+    padding: 0;
+    border: 0;
+  }
+
   .h1 {
+    @extend .reset;
     font-family: var(--font-family-primary);
     font-size: rem(96);
     line-height: rem(112);
@@ -13,6 +19,7 @@
   }
 
   .h2 {
+    @extend .reset;
     font-family: var(--font-family-primary);
     font-size: rem(60);
     line-height: rem(72);
@@ -21,6 +28,7 @@
   }
 
   .h3 {
+    @extend .reset;
     font-family: var(--font-family-primary);
     font-size: rem(48);
     line-height: rem(60);
@@ -29,6 +37,7 @@
   }
 
   .h4 {
+    @extend .reset;
     font-family: var(--font-family-primary);
     font-size: rem(36);
     line-height: rem(48);
@@ -37,6 +46,7 @@
   }
 
   .h5 {
+    @extend .reset;
     font-family: var(--font-family-primary);
     font-size: rem(24);
     line-height: rem(36);
@@ -45,6 +55,7 @@
   }
 
   .h6 {
+    @extend .reset;
     font-family: var(--font-family-primary);
     font-size: rem(20);
     line-height: rem(32);
@@ -53,6 +64,7 @@
   }
 
   .subtitle1 {
+    @extend .reset;
     font-family: var(--font-family-primary);
     font-size: rem(16);
     line-height: rem(16);
@@ -61,6 +73,7 @@
   }
 
   .subtitle2 {
+    @extend .reset;
     font-family: var(--font-family-primary);
     font-size: rem(14);
     line-height: rem(16);
@@ -69,6 +82,7 @@
   }
 
   .body1 {
+    @extend .reset;
     font-family: var(--font-family-secondary);
     font-size: rem(16);
     font-weight: normal;
@@ -76,6 +90,7 @@
   }
 
   .body2 {
+    @extend .reset;
     font-family: var(--font-family-secondary);
     font-size: rem(14);
     font-weight: normal;
@@ -83,6 +98,7 @@
   }
 
   .p {
+    @extend .reset;
     font-family: var(--font-family-secondary);
     font-size: rem(16);
     line-height: rem(24);
@@ -90,6 +106,7 @@
   }
 
   .caption {
+    @extend .reset;
     display: block;
     font-family: var(--font-family-secondary);
     font-size: rem(12);
@@ -98,6 +115,7 @@
   }
 
   .button {
+    @extend .reset;
     display: block;
     font-family: var(--font-family-secondary);
     font-weight: 500;
