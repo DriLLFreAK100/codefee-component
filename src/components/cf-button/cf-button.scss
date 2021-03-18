@@ -1,0 +1,140 @@
+@import '../../styles/functions.scss';
+
+:host {
+  display: block;
+
+  .reset {
+    border: 0;
+    line-height: normal;
+    margin: 0;
+    padding: 0;
+    text-transform: none;
+    vertical-align: baseline;
+    *vertical-align: middle;
+  }
+
+  button {
+    @extend .reset;
+    border: none;
+    border-radius: rem(4);
+    cursor: pointer;
+    outline: none;
+    padding: rem(16);
+    transition: background-color var(--transition-hover) ease-in-out;
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.6;
+      transition: none;
+    }
+
+    &.primary {
+      background-color: var(--color-primary);
+      color: var(--color-primary-on);
+
+      &:hover {
+        background: var(--color-primary-light);
+      }
+
+      &:active {
+        background: var(--color-primary-dark);
+      }
+
+      &:disabled {
+        background-color: var(--color-primary);
+      }
+    }
+
+    &.subtle {
+      background-color: white;
+      border: 0.1rem solid var(--color-primary);
+      color: black;
+
+      &:hover {
+        border: 0.1rem solid var(--color-primary-light);
+        background: var(--color-primary-light);
+        color: var(--color-primary-on);
+      }
+
+      &:active {
+        border: 0.1rem solid var(--color-primary-dark);
+        background: var(--color-primary-dark);
+        color: var(--color-primary-on);
+      }
+
+      &:disabled {
+        border: 0.1rem solid var(--color-primary);
+        background-color: white;
+        color: black;
+      }
+    }
+
+    &.info {
+      background-color: var(--color-info);
+      color: var(--color-info-on);
+
+      &:hover {
+        background: var(--color-info-light);
+      }
+
+      &:active {
+        background: var(--color-info-dark);
+      }
+
+      &:disabled {
+        background-color: var(--color-info);
+      }
+    }
+
+    &.success {
+      background-color: var(--color-success);
+      color: var(--color-success-on);
+
+      &:hover {
+        background: var(--color-success-light);
+      }
+
+      &:active {
+        background: var(--color-success-dark);
+      }
+
+      &:disabled {
+        background-color: var(--color-success);
+      }
+    }
+
+    &.warning {
+      background-color: var(--color-warning);
+      color: var(--color-warning-on);
+
+      &:hover {
+        background: var(--color-warning-light);
+      }
+
+      &:active {
+        background: var(--color-warning-dark);
+      }
+
+      &:disabled {
+        background-color: var(--color-warning);
+      }
+    }
+
+    &.error {
+      background-color: var(--color-error);
+      color: var(--color-error-on);
+
+      &:hover {
+        background: var(--color-error-light);
+      }
+
+      &:active {
+        background: var(--color-error-dark);
+      }
+
+      &:disabled {
+        background-color: var(--color-error);
+      }
+    }
+  }
+}

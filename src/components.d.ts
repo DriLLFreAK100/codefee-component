@@ -5,11 +5,15 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
+import { ButtonType } from "./components/cf-button/cf-button";
 import { TypographyType } from "./components/cf-typography/cf-typography";
 export namespace Components {
     interface CfAppHeader {
     }
     interface CfButton {
+        "disabled": boolean;
+        "text": string;
+        "type": ButtonType;
     }
     interface CfDivider {
     }
@@ -62,6 +66,9 @@ declare namespace LocalJSX {
     interface CfAppHeader {
     }
     interface CfButton {
+        "disabled"?: boolean;
+        "text"?: string;
+        "type"?: ButtonType;
     }
     interface CfDivider {
     }
