@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { ButtonType } from "./components/cf-button/cf-button";
 import { CircularProgressColor, CircularProgressType } from "./components/cf-circular-progress/cf-circular-progress";
 import { TypographyType } from "./components/cf-typography/cf-typography";
+import { TypographyType as TypographyType1 } from "./components/cf-typography/cf-typography";
 export namespace Components {
     interface CfAppHeader {
     }
@@ -24,6 +25,9 @@ export namespace Components {
     interface CfDivider {
     }
     interface CfLink {
+        "href": string;
+        "newTab": boolean;
+        "typographyType": TypographyType;
     }
     interface CfTypography {
         "type": TypographyType;
@@ -91,6 +95,9 @@ declare namespace LocalJSX {
     interface CfDivider {
     }
     interface CfLink {
+        "href"?: string;
+        "newTab"?: boolean;
+        "typographyType"?: TypographyType;
     }
     interface CfTypography {
         "type"?: TypographyType;

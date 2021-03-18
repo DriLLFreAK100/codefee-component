@@ -28,7 +28,9 @@ export class CfButton {
           class={this.type}
           disabled={this.disabled}
         >
-          {content}
+          <cf-typography type="button">
+            {content}
+          </cf-typography>
         </button>
       </Host>
     );

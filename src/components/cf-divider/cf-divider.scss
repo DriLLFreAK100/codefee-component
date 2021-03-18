@@ -1,5 +1,9 @@
 @import '../../styles/functions.scss';
 
+:host {
+  display: block;
+}
+
 .cf-divider {
   border: rem(0.5) solid var(--color-bg-dark);
 }

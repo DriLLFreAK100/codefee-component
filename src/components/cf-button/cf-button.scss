@@ -1,8 +1,6 @@
 @import '../../styles/functions.scss';
 
 :host {
-  display: block;
-
   .reset {
     border: 0;
     line-height: normal;
@@ -17,7 +15,11 @@
     @extend .reset;
     border: none;
     border-radius: rem(4);
+    box-sizing: border-box;
     cursor: pointer;
+    height: rem(48);
+    line-height: rem(16);
+    min-width: rem(120);
     outline: none;
     padding: rem(16);
     transition: background-color var(--transition-hover) ease-in-out;
@@ -47,23 +49,23 @@
 
     &.subtle {
       background-color: white;
-      border: 0.1rem solid var(--color-primary);
+      border: rem(1) solid var(--color-primary);
       color: black;
 
       &:hover {
-        border: 0.1rem solid var(--color-primary-light);
+        border: rem(1) solid var(--color-primary-light);
         background: var(--color-primary-light);
         color: var(--color-primary-on);
       }
 
       &:active {
-        border: 0.1rem solid var(--color-primary-dark);
+        border: rem(1) solid var(--color-primary-dark);
         background: var(--color-primary-dark);
         color: var(--color-primary-on);
       }
 
       &:disabled {
-        border: 0.1rem solid var(--color-primary);
+        border: rem(1) solid var(--color-primary);
         background-color: white;
         color: black;
       }
