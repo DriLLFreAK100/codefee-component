@@ -29,28 +29,28 @@
 
 :host {
   display: inline-block;
+}
 
-  .cf-circular-progress {
-    display: inline-block;
+.cfCircularProgress {
+  display: inline-block;
+  height: rem(48);
+  width: rem(48);
+
+  &__svg {
     height: rem(48);
     width: rem(48);
 
-    &-svg {
-      height: rem(48);
-      width: rem(48);
+    &.indeterminate {
+      animation: circular-rotate 1.4s ease-in-out infinite;
+    }
+
+    &__circle {
+      transition: stroke-dashoffset 300ms;
 
       &.indeterminate {
-        animation: circular-rotate 1.4s ease-in-out infinite;
-      }
-
-      &-circle {
-        transition: stroke-dashoffset 300ms;
-
-        &.indeterminate {
-          animation: circular-dash 1.4s ease-in-out infinite;
-          stroke-dasharray: 80px, 200px;
-          stroke-dashoffset: 0px;
-        }
+        animation: circular-dash 1.4s ease-in-out infinite;
+        stroke-dasharray: 80px, 200px;
+        stroke-dashoffset: 0px;
       }
     }
   }

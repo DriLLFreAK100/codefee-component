@@ -47,14 +47,14 @@ export class CfCircularProgress {
   render() {
     return (
       <Host>
-        <div class="cf-circular-progress">
+        <div class="cfCircularProgress">
           <svg
-            class={`cf-circular-progress-svg ${this.type}`}
+            class={`cfCircularProgress__svg ${this.type}`}
             type={this.type}
             viewBox="22 22 44 44"
           >
             <circle
-              class={`cf-circular-progress-svg-circle ${this.type}`}
+              class={`cfCircularProgress__svg__circle ${this.type}`}
               stroke={getColor(this.color)}
               style={this.determinateStyle}
               cx="44"

@@ -25,7 +25,7 @@ export class CfButton {
     return (
       <Host>
         <button
-          class={this.type}
+          class={`cfButton ${this.type}`}
           disabled={this.disabled}
         >
           <cf-typography type="button">

@@ -15,7 +15,7 @@ export class CfLink {
     return (
       <Host>
         <cf-typography type={this.typographyType}>
-          <a href={this.href} target={this.newTab ? '_blank' : ''}>
+          <a class="cfLink" href={this.href} target={this.newTab ? '_blank' : ''}>
             <slot />
           </a>
         </cf-typography>

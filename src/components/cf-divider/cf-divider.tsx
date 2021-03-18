@@ -9,7 +9,7 @@ export class CfDivider {
 
   render() {
     return (
-      <hr class="cf-divider" />
+      <hr class="cfDivider" />
     );
   }
 

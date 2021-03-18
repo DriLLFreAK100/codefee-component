@@ -2,7 +2,7 @@ import { Component, Host, h } from '@stencil/core';
 
 @Component({
   tag: 'cf-app-header',
-  styleUrl: 'cf-app-header.css',
+  styleUrl: 'cf-app-header.scss',
   shadow: true,
 })
 export class CfAppHeader {
@@ -10,7 +10,9 @@ export class CfAppHeader {
   render() {
     return (
       <Host>
-        <slot></slot>
+        <div class="cfAppHeader">
+
+        </div>
       </Host>
     );
   }

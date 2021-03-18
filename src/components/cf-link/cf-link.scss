@@ -1,10 +1,10 @@
 @import '../../styles/functions.scss';
 
 :host {
-  display: block;
+  display: inline-block;
 }
 
-.cf-link {
+.cfLink {
   color: var(--color-info);
   text-decoration: none;
 

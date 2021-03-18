@@ -1,0 +1,17 @@
+@import '../../styles/functions.scss';
+
+:host {
+  display: block;
+}
+
+.cfAppHeader {
+  align-items: center;
+  background: white;
+  box-sizing: border-box;
+  box-shadow: 0 rem(2) rem(5) 0 var(--color-shadow);
+  display: flex;
+  height: rem(64);
+  padding: 0 rem(16);
+  position: relative;
+  width: 100%;
+}
