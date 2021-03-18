@@ -1,18 +1,18 @@
 import { newSpecPage } from '@stencil/core/testing';
-import { CfDivider } from '../cf-divider';
+import { CfLink } from '../cf-link';
 
-describe('cf-divider', () => {
+describe('cf-link', () => {
   it('renders', async () => {
     const page = await newSpecPage({
-      components: [CfDivider],
-      html: `<cf-divider></cf-divider>`,
+      components: [CfLink],
+      html: `<cf-link></cf-link>`,
     });
     expect(page.root).toEqualHtml(`
-      <cf-divider>
+      <cf-link>
         <mock:shadow-root>
-          <hr class="cf-divider" />
+          <slot></slot>
         </mock:shadow-root>
-      </cf-divider>
+      </cf-link>
     `);
   });
 });

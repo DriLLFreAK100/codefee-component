@@ -1,39 +1,7 @@
-/* eslint-disable import/prefer-default-export */
-export interface ITheme {
-  '--color-primary': string;
-  '--color-primary-light': string;
-  '--color-primary-dark': string;
-  '--color-primary-on': string;
-  '--color-secondary': string;
-  '--color-secondary-light': string;
-  '--color-secondary-dark': string;
-  '--color-secondary-on': string;
-  '--color-info': string;
-  '--color-info-light': string;
-  '--color-info-dark': string;
-  '--color-info-on': string;
-  '--color-success': string;
-  '--color-success-light': string;
-  '--color-success-dark': string;
-  '--color-success-on': string;
-  '--color-warning': string;
-  '--color-warning-light': string;
-  '--color-warning-dark': string;
-  '--color-warning-on': string;
-  '--color-error': string;
-  '--color-error-light': string;
-  '--color-error-dark': string;
-  '--color-error-on': string;
-  '--color-bg': string;
-  '--color-bg-light': string;
-  '--color-bg-dark': string;
-  '--color-shadow': string;
-  '--font-family-primary': string;
-  '--font-family-secondary': string;
-  '--transition-hover': string;
-  '--transition-toggle': string;
-}
+import { ITheme } from "../common/interfaces";
+import { injectStyle } from "./style-helper";
 
+/* eslint-disable import/prefer-default-export */
 export const CodefeeTheme: ITheme = {
   '--color-primary': '#00838f',
   '--color-primary-light': '#4fb3bf',
@@ -70,17 +38,27 @@ export const CodefeeTheme: ITheme = {
 };
 
 /**
- * Function to override a target theme.
- * Properties provided will be merged against the target theme.
- * @param customTheme Custom Theme properties to override
- * @param overrideTarget Target Theme to override against
+ * Function to load theme
+ * @param theme Main Theme
+ * @param overrides Theme properties to overrides
+ * @returns 
  */
-export const OverrideTheme = <T extends ITheme>(
-  customTheme: T,
-  overrideTarget: ITheme = CodefeeTheme,
-): ITheme => {
-  return {
-    ...overrideTarget,
-    ...customTheme,
+export const loadTheme = <T extends ITheme>(theme: ITheme = CodefeeTheme, overrides: T) => {
+  const resultTheme = {
+    ...theme,
+    ...overrides,
   };
-};
+
+  const themeStyle = `
+    :root {
+      ${Object
+      .keys(resultTheme)
+      .map((key: keyof ITheme) => {
+        return `${key}: ${resultTheme[key]};`;
+      })
+      .join('\n')};
+    }
+  `;
+
+  injectStyle(themeStyle);
+}
