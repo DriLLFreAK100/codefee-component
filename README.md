@@ -1,3 +1,3 @@
 # Codefee Component
 
-A Web Component Library Experiment
+A Core UI Components for my Codefee Works
