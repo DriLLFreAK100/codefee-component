@@ -1,3 +1,4 @@
+import { ButtonType } from '../../common/types';
 import {
   Component,
   h,
@@ -11,12 +12,13 @@ import {
   shadow: true,
 })
 export class CfIconButton {
+  @Prop() type: ButtonType = 'primary';
   @Prop() icon: string;
 
   render() {
     return (
       <Host>
-        <button class="cfIconButton">
+        <button class={`cfIconButton ${this.type}`}>
           {
             this.icon
               ? <i class={this.icon}></i>

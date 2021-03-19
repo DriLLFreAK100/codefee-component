@@ -4,6 +4,7 @@ import {
   Host,
   Prop,
 } from '@stencil/core';
+import { SlotNames } from '../../common/slot-names';
 
 export type SideDrawerPosition = 'left' | 'right';
 @Component({
@@ -29,7 +30,7 @@ export class CfSideDrawer {
           </div>
           <cf-divider />
           <div class="cfSideDrawer__drawerContent">
-            <slot name="drawer-content" />
+            <slot name={SlotNames['cfSideDrawer-drawer-content']} />
           </div>
         </div>
         <div class={`overlay ${this.visible ? 'visible' : ''}`} onClick={this.onClose} />

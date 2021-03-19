@@ -23,7 +23,6 @@
 
 .cfSideDrawer {
   background: var(--color-bg-light);
-  box-shadow: rem(12) 0 rem(8) rem(-8) var(--color-shadow);
   height: 100%;
   padding: rem(16);
   position: fixed;
@@ -36,6 +35,7 @@
   z-index: 10;
 
   &.left {
+    box-shadow: rem(12) 0 rem(8) rem(-8) var(--color-shadow);
     left: 0;
     transform: translateX(-105%);
 
@@ -45,6 +45,7 @@
   }
 
   &.right {
+    box-shadow: rem(-12) 0 rem(8) rem(-8) var(--color-shadow);
     right: 0;
 
     transform: translateX(105%);
@@ -73,6 +74,10 @@
         width: 50%;
       }
     }
+  }
+
+  &__closeIcon {
+    color: red;
   }
 
   &__drawerContent {

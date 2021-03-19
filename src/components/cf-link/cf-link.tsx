@@ -9,6 +9,7 @@ import { TypographyType } from '../cf-typography/cf-typography';
 export class CfLink {
   @Prop() href: string = '';
   @Prop() newTab: boolean = true;
+  @Prop() underline: boolean = true;
   @Prop() styles: { [key: string]: string };
   @Prop() typographyType: TypographyType = 'subtitle1';
 
@@ -17,7 +18,7 @@ export class CfLink {
       <Host>
         <cf-typography type={this.typographyType}>
           <a
-            class="cfLink"
+            class={`cfLink ${this.underline ? 'underline' : ''}`}
             href={this.href}
             style={this.styles}
             target={this.newTab ? '_blank' : ''}

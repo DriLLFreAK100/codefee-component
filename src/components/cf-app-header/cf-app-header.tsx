@@ -1,3 +1,5 @@
+import { IActionMenu } from './cf-app-header-action-menu/cf-app-header-action-menu';
+import { INavMenu } from './cf-app-header-menu/cf-app-header-menu';
 import {
   Component,
   h,
@@ -5,30 +7,25 @@ import {
   Prop,
   State,
 } from '@stencil/core';
-import { INavMenu } from './cf-app-header-menu/cf-app-header-menu';
-
-export interface IActionMenu {
-  icon: string;
-}
-
+import { SlotNames } from '../../common/slot-names';
 @Component({
   tag: 'cf-app-header',
   styleUrl: 'cf-app-header.scss',
   shadow: true
 })
 export class CfAppHeader {
-  @Prop() actionMenus: IActionMenu[];
+  @Prop({ mutable: true, reflect: true }) actionMenus: IActionMenu[];
   @Prop() appName: string;
   @Prop() drawerTitle: string;
   @Prop() navMenus: INavMenu[];
-  @State() sideDrawerOpen: boolean = false;
+  @State() menuSideDrawerOpen: boolean = false;
 
-  handleClickDrawerIcon() {
-    this.sideDrawerOpen = !this.sideDrawerOpen;
+  handleClickMenuDrawerIcon() {
+    this.menuSideDrawerOpen = true;
   };
 
-  handleCloseSideDrawer() {
-    this.sideDrawerOpen = false;
+  handleCloseMenuSideDrawer() {
+    this.menuSideDrawerOpen = false;
   }
 
   renderMenuIcon() {
@@ -36,7 +33,7 @@ export class CfAppHeader {
       this.navMenus && (
         <div
           class="cfAppHeader__start__drawerIcon"
-          onClick={this.handleClickDrawerIcon.bind(this)}
+          onClick={this.handleClickMenuDrawerIcon.bind(this)}
         >
           <cf-icon-button icon="fas fa-bars" />
         </div>
@@ -46,17 +43,11 @@ export class CfAppHeader {
 
   renderActionMenus() {
     if (this.actionMenus) {
-      return (
-        this.actionMenus.map((menu) => {
-          return (
-            <div class="cfAppHeader__end__menuItem">
-              <cf-icon-button
-                icon={menu.icon}
-              />
-            </div>
-          );
-        })
-      );
+      return this.actionMenus.map((actionMenu) => {
+        return (
+          <cf-app-header-action-menu actionMenu={actionMenu} />
+        );
+      })
     }
 
     return null;
@@ -75,15 +66,15 @@ export class CfAppHeader {
           <div class="cfAppHeader__end">
             {this.renderActionMenus()}
           </div>
-          <cf-side-drawer
-            drawerTitle={this.drawerTitle}
-            position="left"
-            visible={this.sideDrawerOpen}
-            onClose={this.handleCloseSideDrawer.bind(this)}
-          >
-            <cf-app-header-menu slot="drawer-content" menus={this.navMenus} />
-          </cf-side-drawer>
         </div>
+        <cf-side-drawer
+          drawerTitle={this.drawerTitle}
+          position="left"
+          visible={this.menuSideDrawerOpen}
+          onClose={this.handleCloseMenuSideDrawer.bind(this)}
+        >
+          <cf-app-header-menu slot={SlotNames['cfSideDrawer-drawer-content']} menus={this.navMenus} />
+        </cf-side-drawer>
       </Host>
     );
   }

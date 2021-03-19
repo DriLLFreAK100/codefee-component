@@ -3,6 +3,10 @@ import { injectStyle } from "./style-helper";
 
 /* eslint-disable import/prefer-default-export */
 export const CodefeeTheme: ITheme = {
+  '--color-default': '#424242',
+  '--color-default-light': '#6d6d6d',
+  '--color-default-dark': '#1b1b1b',
+  '--color-default-on': '#ffffff',
   '--color-primary': '#00838f',
   '--color-primary-light': '#4fb3bf',
   '--color-primary-dark': '#005662',
@@ -30,6 +34,7 @@ export const CodefeeTheme: ITheme = {
   '--color-bg': '#eeeeee',
   '--color-bg-light': '#ffffff',
   '--color-bg-dark': '#bcbcbc',
+  '--color-bg-dark-on': '#000000',
   '--color-shadow': 'rgb(0 0 0 / 30%)',
   '--font-family-primary': 'Roboto, sans-serif',
   '--font-family-secondary': 'Segoe UI, sans-serif',

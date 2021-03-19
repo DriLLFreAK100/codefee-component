@@ -5,10 +5,11 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { IActionMenu } from "./components/cf-app-header/cf-app-header";
+import { IActionMenu } from "./components/cf-app-header/cf-app-header-action-menu/cf-app-header-action-menu";
 import { INavMenu } from "./components/cf-app-header/cf-app-header-menu/cf-app-header-menu";
+import { IActionMenu as IActionMenu1 } from "./components/cf-app-header/cf-app-header-action-menu/cf-app-header-action-menu";
 import { INavMenu as INavMenu1 } from "./components/cf-app-header/cf-app-header-menu/cf-app-header-menu";
-import { ButtonType } from "./components/cf-button/cf-button";
+import { ButtonType } from "./common/types";
 import { CircularProgressColor, CircularProgressType } from "./components/cf-circular-progress/cf-circular-progress";
 import { TypographyType } from "./components/cf-typography/cf-typography";
 import { SideDrawerPosition } from "./components/cf-side-drawer/cf-side-drawer";
@@ -19,6 +20,9 @@ export namespace Components {
         "appName": string;
         "drawerTitle": string;
         "navMenus": INavMenu[];
+    }
+    interface CfAppHeaderActionMenu {
+        "actionMenu": IActionMenu;
     }
     interface CfAppHeaderMenu {
         "menus": INavMenu[];
@@ -37,12 +41,14 @@ export namespace Components {
     }
     interface CfIconButton {
         "icon": string;
+        "type": ButtonType;
     }
     interface CfLink {
         "href": string;
         "newTab": boolean;
         "styles": { [key: string]: string };
         "typographyType": TypographyType;
+        "underline": boolean;
     }
     interface CfSideDrawer {
         "drawerTitle": string;
@@ -60,6 +66,12 @@ declare global {
     var HTMLCfAppHeaderElement: {
         prototype: HTMLCfAppHeaderElement;
         new (): HTMLCfAppHeaderElement;
+    };
+    interface HTMLCfAppHeaderActionMenuElement extends Components.CfAppHeaderActionMenu, HTMLStencilElement {
+    }
+    var HTMLCfAppHeaderActionMenuElement: {
+        prototype: HTMLCfAppHeaderActionMenuElement;
+        new (): HTMLCfAppHeaderActionMenuElement;
     };
     interface HTMLCfAppHeaderMenuElement extends Components.CfAppHeaderMenu, HTMLStencilElement {
     }
@@ -111,6 +123,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "cf-app-header": HTMLCfAppHeaderElement;
+        "cf-app-header-action-menu": HTMLCfAppHeaderActionMenuElement;
         "cf-app-header-menu": HTMLCfAppHeaderMenuElement;
         "cf-button": HTMLCfButtonElement;
         "cf-circular-progress": HTMLCfCircularProgressElement;
@@ -127,6 +140,9 @@ declare namespace LocalJSX {
         "appName"?: string;
         "drawerTitle"?: string;
         "navMenus"?: INavMenu[];
+    }
+    interface CfAppHeaderActionMenu {
+        "actionMenu"?: IActionMenu;
     }
     interface CfAppHeaderMenu {
         "menus"?: INavMenu[];
@@ -145,12 +161,14 @@ declare namespace LocalJSX {
     }
     interface CfIconButton {
         "icon"?: string;
+        "type"?: ButtonType;
     }
     interface CfLink {
         "href"?: string;
         "newTab"?: boolean;
         "styles"?: { [key: string]: string };
         "typographyType"?: TypographyType;
+        "underline"?: boolean;
     }
     interface CfSideDrawer {
         "drawerTitle"?: string;
@@ -163,6 +181,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "cf-app-header": CfAppHeader;
+        "cf-app-header-action-menu": CfAppHeaderActionMenu;
         "cf-app-header-menu": CfAppHeaderMenu;
         "cf-button": CfButton;
         "cf-circular-progress": CfCircularProgress;
@@ -178,6 +197,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "cf-app-header": LocalJSX.CfAppHeader & JSXBase.HTMLAttributes<HTMLCfAppHeaderElement>;
+            "cf-app-header-action-menu": LocalJSX.CfAppHeaderActionMenu & JSXBase.HTMLAttributes<HTMLCfAppHeaderActionMenuElement>;
             "cf-app-header-menu": LocalJSX.CfAppHeaderMenu & JSXBase.HTMLAttributes<HTMLCfAppHeaderMenuElement>;
             "cf-button": LocalJSX.CfButton & JSXBase.HTMLAttributes<HTMLCfButtonElement>;
             "cf-circular-progress": LocalJSX.CfCircularProgress & JSXBase.HTMLAttributes<HTMLCfCircularProgressElement>;

@@ -5,6 +5,15 @@
 }
 
 .cfAppHeaderMenu {
+  & > ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    vertical-align: baseline;
+  }
   &__menuItem {
     background: inherit;
     border-radius: rem(4);
@@ -16,14 +25,14 @@
     transition: background-color var(--transition-hover) ease-in-out;
 
     &:not(:last-child) {
-      margin-bottom: rem(4);
+      margin-bottom: rem(8);
     }
 
     &.active {
       background: linear-gradient(to right, var(--color-primary), white);
     }
 
-    &:not(.active) {
+    &:not(.active):hover {
       background: var(--color-bg);
     }
 

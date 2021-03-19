@@ -30,6 +30,23 @@
       transition: none;
     }
 
+    &.default {
+      background-color: var(--color-default);
+      color: var(--color-default-on);
+
+      &:hover {
+        background: var(--color-default-light);
+      }
+
+      &:active {
+        background: var(--color-default-dark);
+      }
+
+      &:disabled {
+        background-color: var(--default-primary);
+      }
+    }
+
     &.primary {
       background-color: var(--color-primary);
       color: var(--color-primary-on);
@@ -50,7 +67,7 @@
     &.subtle {
       background-color: white;
       border: rem(1) solid var(--color-primary);
-      color: black;
+      color: var(--color-default);
 
       &:hover {
         border: rem(1) solid var(--color-primary-light);
@@ -67,7 +84,7 @@
       &:disabled {
         border: rem(1) solid var(--color-primary);
         background-color: white;
-        color: black;
+        color: var(--color-default);
       }
     }
 

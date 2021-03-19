@@ -2,25 +2,122 @@
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 
 :host {
-  display: block;
+  display: inline-block;
 }
 
 .cfIconButton {
   background: var(--color-bg-light);
   border: none;
   border-radius: 50%;
+  box-sizing: border-box;
   cursor: pointer;
   font-size: rem(24);
   height: rem(48);
   outline: none;
-  transition: background-color var(--transition-hover) ease-in-out;
+  transition: background-color var(--transition-hover) ease-in-out, color var(--transition-hover) ease-in-out;
   width: rem(48);
 
   &:hover {
     background: var(--color-bg);
   }
 
+  &.default {
+    color: var(--color-default);
+
+    &:hover {
+      color: var(--color-default-light);
+    }
+
+    &:active {
+      color: var(--color-default-dark);
+    }
+  }
+
   &:active {
     background: var(--color-bg-dark);
+  }
+
+  &.primary {
+    color: var(--color-primary);
+
+    &:hover {
+      color: var(--color-primary-light);
+    }
+
+    &:active {
+      color: var(--color-primary-dark);
+    }
+  }
+
+  &.subtle {
+    background-color: white;
+    border: rem(1) solid var(--color-primary);
+    color: var(--color-default);
+
+    &:hover {
+      border: rem(1) solid var(--color-primary-light);
+      background: var(--color-primary-light);
+      color: var(--color-primary-on);
+    }
+
+    &:active {
+      border: rem(1) solid var(--color-primary-dark);
+      background: var(--color-primary-dark);
+      color: var(--color-primary-on);
+    }
+
+    &:disabled {
+      border: rem(1) solid var(--color-primary);
+      background-color: white;
+      color: var(--color-default);
+    }
+  }
+
+  &.info {
+    color: var(--color-info);
+
+    &:hover {
+      color: var(--color-info-light);
+    }
+
+    &:active {
+      color: var(--color-info-dark);
+    }
+  }
+
+  &.success {
+    color: var(--color-success);
+
+    &:hover {
+      color: var(--color-success-light);
+    }
+
+    &:active {
+      color: var(--color-success-dark);
+    }
+  }
+
+  &.warning {
+    color: var(--color-warning);
+
+    &:hover {
+      color: var(--color-warning-light);
+    }
+
+    &:active {
+      color: var(--color-warning-dark);
+    }
+  }
+
+  &.error {
+    color: var(--color-error);
+
+    &:hover {
+      color: var(--color-error-light);
+    }
+
+    &:active {
+      color: var(--color-error-dark);
+    }
   }
 }

@@ -1,4 +1,8 @@
 export interface ITheme {
+  '--color-default': string;
+  '--color-default-light': string;
+  '--color-default-dark': string;
+  '--color-default-on': string;
   '--color-primary': string;
   '--color-primary-light': string;
   '--color-primary-dark': string;
@@ -26,6 +30,7 @@ export interface ITheme {
   '--color-bg': string;
   '--color-bg-light': string;
   '--color-bg-dark': string;
+  '--color-bg-dark-on': string;
   '--color-shadow': string;
   '--font-family-primary': string;
   '--font-family-secondary': string;

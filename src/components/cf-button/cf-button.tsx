@@ -1,12 +1,10 @@
+import { ButtonType } from '../../common/types';
 import {
   Component,
   h,
   Host,
   Prop,
 } from '@stencil/core';
-
-export type ButtonType = 'primary' | 'subtle' | 'info' | 'success' | 'warning' | 'error';
-
 @Component({
   tag: 'cf-button',
   styleUrl: 'cf-button.scss',

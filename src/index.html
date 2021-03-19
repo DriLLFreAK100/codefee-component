@@ -16,6 +16,7 @@
   <cf-typography type="h5">Button</cf-typography>
   <cf-divider></cf-divider>
   <cf-button>Click Me!</cf-button>
+  <cf-button type="default">Click Me!</cf-button>
   <cf-button type="subtle">Click Me!</cf-button>
   <cf-button type="info">Click Me!</cf-button>
   <cf-button type="success">Click Me!</cf-button>
@@ -27,6 +28,12 @@
   <cf-typography type="h5">Icon Button</cf-typography>
   <cf-divider></cf-divider>
   <cf-icon-button icon="fas fa-camera"></cf-icon-button>
+  <cf-icon-button icon="fas fa-camera" type="default"></cf-icon-button>
+  <cf-icon-button icon="fas fa-camera" type="subtle"></cf-icon-button>
+  <cf-icon-button icon="fas fa-camera" type="info"></cf-icon-button>
+  <cf-icon-button icon="fas fa-camera" type="success"></cf-icon-button>
+  <cf-icon-button icon="fas fa-camera" type="warning"></cf-icon-button>
+  <cf-icon-button icon="fas fa-camera" type="error"></cf-icon-button>
   <br /><br />
 
 
@@ -80,9 +87,18 @@
       { title: "Page 2", active: false, link: '' },
       { title: "Page 3", active: false, link: '' },
     ];
+
+    const actionButtonNode1 = document.createElement('cf-button');
+    actionButtonNode1.setAttribute('type', 'warning');
+    actionButtonNode1.textContent = 'Action Button';
+
+    const actionButtonNode2 = document.createElement('cf-button');
+    actionButtonNode2.setAttribute('type', 'error');
+    actionButtonNode2.textContent = 'Action Button';
+
     ah.actionMenus = [
-      { icon: 'fas fa-user-circle' },
-      { icon: 'fas fa-cog' },
+      { icon: 'fas fa-user-circle', children: actionButtonNode1, title: 'Account' },
+      { icon: 'fas fa-cog', children: actionButtonNode2, title: 'Settings'},
     ];
 
   </script>

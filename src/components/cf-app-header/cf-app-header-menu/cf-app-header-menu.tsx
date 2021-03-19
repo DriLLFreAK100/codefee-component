@@ -8,8 +8,9 @@ import { cvar } from '../../../utils/style-helper';
 
 export interface INavMenu {
   active: boolean;
-  title: string;
+  customNode: any;
   link: string;
+  title: string;
 }
 
 @Component({
@@ -23,24 +24,33 @@ export class CfAppHeaderMenu {
   render() {
     return (
       <Host>
-        {
-          this.menus.map(menu => {
-            const styles: { [key: string]: string } = {};
-            if (menu.active) {
-              styles.color = cvar('--color-primary-on');
-              styles.textDecoration = 'unset';
-              styles.pointerEvents = 'none';
-            }
+        <nav class="cfAppHeaderMenu">
+          <ul>
+            {
+              this.menus.map(menu => {
+                const styles: { [key: string]: string } = {};
+                if (menu.active) {
+                  styles.color = cvar('--color-primary-on');
+                  styles.textDecoration = 'unset';
+                  styles.pointerEvents = 'none';
+                }
 
-            return (
-              <div class={`cfAppHeaderMenu__menuItem ${menu.active ? 'active' : ''}`}>
-                <cf-link styles={styles} href={menu.link}>
-                  {menu.title}
-                </cf-link>
-              </div>
-            );
-          })
-        }
+                return (
+                  <li class={`cfAppHeaderMenu__menuItem ${menu.active ? 'active' : ''}`}>
+                    <cf-link
+                      href={menu.link}
+                      styles={styles}
+                      underline={false}
+                    >
+                      {menu.customNode ?? menu.title}
+                    </cf-link>
+                  </li>
+                );
+              })
+            }
+          </ul>
+        </nav>
+
       </Host>
     );
   }

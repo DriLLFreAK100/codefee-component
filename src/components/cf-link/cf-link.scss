@@ -13,6 +13,10 @@
     color: var(--color-info-light);
     cursor: pointer;
     text-decoration: underline;
+
+    &:not(.underline) {
+      text-decoration: none;
+    }
   }
 
   &:active {
