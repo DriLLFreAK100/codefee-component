@@ -4,14 +4,8 @@ import {
   Host,
   Prop,
 } from '@stencil/core';
-import { cvar } from '../../utils/style-helper';
 
-export interface INavMenu {
-  active: boolean;
-  title: string;
-  link: string;
-}
-
+export type SideDrawerPosition = 'left' | 'right';
 @Component({
   tag: 'cf-side-drawer',
   styleUrl: 'cf-side-drawer.scss',
@@ -19,14 +13,14 @@ export interface INavMenu {
 })
 export class CfSideDrawer {
   @Prop() drawerTitle: string = 'Menu';
-  @Prop() menus: INavMenu[] = [];
+  @Prop() position: SideDrawerPosition = 'left';
   @Prop({ mutable: true, reflect: true }) visible: boolean = false;
   @Prop() onClose: () => void;
 
   render() {
     return (
       <Host>
-        <div class={`cfSideDrawer ${this.visible ? 'visible' : ''}`}>
+        <div class={`cfSideDrawer ${this.visible ? 'visible' : ''} ${this.position}`}>
           <div class="cfSideDrawer__title">
             <cf-typography type="h5">{this.drawerTitle}</cf-typography>
             <div onClick={this.onClose}>
@@ -34,25 +28,8 @@ export class CfSideDrawer {
             </div>
           </div>
           <cf-divider />
-          <div class="cfSideDrawer__menuContainer">
-            {
-              this.menus.map(menu => {
-                const styles: { [key: string]: string } = {};
-                if (menu.active) {
-                  styles.color = cvar('--color-primary-on');
-                  styles.textDecoration = 'unset';
-                  styles.pointerEvents = 'none';
-                }
-
-                return (
-                  <div class={`cfSideDrawer__menuItem ${menu.active ? 'active' : ''}`}>
-                    <cf-link styles={styles} href={menu.link}>
-                      {menu.title}
-                    </cf-link>
-                  </div>
-                );
-              })
-            }
+          <div class="cfSideDrawer__drawerContent">
+            <slot name="drawer-content" />
           </div>
         </div>
         <div class={`overlay ${this.visible ? 'visible' : ''}`} onClick={this.onClose} />

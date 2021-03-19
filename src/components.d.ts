@@ -6,11 +6,12 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { IActionMenu } from "./components/cf-app-header/cf-app-header";
-import { INavMenu } from "./components/cf-side-drawer/cf-side-drawer";
+import { INavMenu } from "./components/cf-app-header/cf-app-header-menu/cf-app-header-menu";
+import { INavMenu as INavMenu1 } from "./components/cf-app-header/cf-app-header-menu/cf-app-header-menu";
 import { ButtonType } from "./components/cf-button/cf-button";
 import { CircularProgressColor, CircularProgressType } from "./components/cf-circular-progress/cf-circular-progress";
 import { TypographyType } from "./components/cf-typography/cf-typography";
-import { INavMenu as INavMenu1 } from "./components/cf-side-drawer/cf-side-drawer";
+import { SideDrawerPosition } from "./components/cf-side-drawer/cf-side-drawer";
 import { TypographyType as TypographyType1 } from "./components/cf-typography/cf-typography";
 export namespace Components {
     interface CfAppHeader {
@@ -18,6 +19,9 @@ export namespace Components {
         "appName": string;
         "drawerTitle": string;
         "navMenus": INavMenu[];
+    }
+    interface CfAppHeaderMenu {
+        "menus": INavMenu[];
     }
     interface CfButton {
         "disabled": boolean;
@@ -42,8 +46,8 @@ export namespace Components {
     }
     interface CfSideDrawer {
         "drawerTitle": string;
-        "menus": INavMenu[];
         "onClose": () => void;
+        "position": SideDrawerPosition;
         "visible": boolean;
     }
     interface CfTypography {
@@ -56,6 +60,12 @@ declare global {
     var HTMLCfAppHeaderElement: {
         prototype: HTMLCfAppHeaderElement;
         new (): HTMLCfAppHeaderElement;
+    };
+    interface HTMLCfAppHeaderMenuElement extends Components.CfAppHeaderMenu, HTMLStencilElement {
+    }
+    var HTMLCfAppHeaderMenuElement: {
+        prototype: HTMLCfAppHeaderMenuElement;
+        new (): HTMLCfAppHeaderMenuElement;
     };
     interface HTMLCfButtonElement extends Components.CfButton, HTMLStencilElement {
     }
@@ -101,6 +111,7 @@ declare global {
     };
     interface HTMLElementTagNameMap {
         "cf-app-header": HTMLCfAppHeaderElement;
+        "cf-app-header-menu": HTMLCfAppHeaderMenuElement;
         "cf-button": HTMLCfButtonElement;
         "cf-circular-progress": HTMLCfCircularProgressElement;
         "cf-divider": HTMLCfDividerElement;
@@ -116,6 +127,9 @@ declare namespace LocalJSX {
         "appName"?: string;
         "drawerTitle"?: string;
         "navMenus"?: INavMenu[];
+    }
+    interface CfAppHeaderMenu {
+        "menus"?: INavMenu[];
     }
     interface CfButton {
         "disabled"?: boolean;
@@ -140,8 +154,8 @@ declare namespace LocalJSX {
     }
     interface CfSideDrawer {
         "drawerTitle"?: string;
-        "menus"?: INavMenu[];
         "onClose"?: () => void;
+        "position"?: SideDrawerPosition;
         "visible"?: boolean;
     }
     interface CfTypography {
@@ -149,6 +163,7 @@ declare namespace LocalJSX {
     }
     interface IntrinsicElements {
         "cf-app-header": CfAppHeader;
+        "cf-app-header-menu": CfAppHeaderMenu;
         "cf-button": CfButton;
         "cf-circular-progress": CfCircularProgress;
         "cf-divider": CfDivider;
@@ -163,6 +178,7 @@ declare module "@stencil/core" {
     export namespace JSX {
         interface IntrinsicElements {
             "cf-app-header": LocalJSX.CfAppHeader & JSXBase.HTMLAttributes<HTMLCfAppHeaderElement>;
+            "cf-app-header-menu": LocalJSX.CfAppHeaderMenu & JSXBase.HTMLAttributes<HTMLCfAppHeaderMenuElement>;
             "cf-button": LocalJSX.CfButton & JSXBase.HTMLAttributes<HTMLCfButtonElement>;
             "cf-circular-progress": LocalJSX.CfCircularProgress & JSXBase.HTMLAttributes<HTMLCfCircularProgressElement>;
             "cf-divider": LocalJSX.CfDivider & JSXBase.HTMLAttributes<HTMLCfDividerElement>;

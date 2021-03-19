@@ -1,5 +1,11 @@
-import { Component, Host, h, Prop, State } from '@stencil/core';
-import { INavMenu } from '../cf-side-drawer/cf-side-drawer';
+import {
+  Component,
+  h,
+  Host,
+  Prop,
+  State,
+} from '@stencil/core';
+import { INavMenu } from './cf-app-header-menu/cf-app-header-menu';
 
 export interface IActionMenu {
   icon: string;
@@ -70,11 +76,13 @@ export class CfAppHeader {
             {this.renderActionMenus()}
           </div>
           <cf-side-drawer
-            menus={this.navMenus}
             drawerTitle={this.drawerTitle}
+            position="left"
             visible={this.sideDrawerOpen}
             onClose={this.handleCloseSideDrawer.bind(this)}
-          />
+          >
+            <cf-app-header-menu slot="drawer-content" menus={this.navMenus} />
+          </cf-side-drawer>
         </div>
       </Host>
     );
