@@ -1,9 +1,17 @@
+import { angularOutputTarget, ValueAccessorConfig } from '@stencil/angular-output-target';
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
+
+const angularValueAccessorBindings: ValueAccessorConfig[] = []
 
 export const config: Config = {
   namespace: 'codefee-component',
   outputTargets: [
+    angularOutputTarget({
+      componentCorePackage: '@codefee-component/core',
+      directivesProxyFile: './dist/angular/src/directives/proxies.ts',
+      valueAccessorConfigs: angularValueAccessorBindings,
+    }),
     {
       type: 'dist',
       esmLoaderPath: '../loader',
