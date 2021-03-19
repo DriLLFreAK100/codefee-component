@@ -1,10 +1,11 @@
+import { SlotNames } from '../../common/slot-names';
 import {
   Component,
+  Event,
   h,
   Host,
   Prop,
 } from '@stencil/core';
-import { SlotNames } from '../../common/slot-names';
 
 export type SideDrawerPosition = 'left' | 'right';
 @Component({
@@ -16,7 +17,7 @@ export class CfSideDrawer {
   @Prop() drawerTitle: string = 'Menu';
   @Prop() position: SideDrawerPosition = 'left';
   @Prop({ mutable: true, reflect: true }) visible: boolean = false;
-  @Prop() onClose: () => void;
+  @Event() close: () => void;
 
   render() {
     return (
@@ -24,7 +25,7 @@ export class CfSideDrawer {
         <div class={`cfSideDrawer ${this.visible ? 'visible' : ''} ${this.position}`}>
           <div class="cfSideDrawer__title">
             <cf-typography type="h5">{this.drawerTitle}</cf-typography>
-            <div onClick={this.onClose}>
+            <div onClick={this.close}>
               <cf-icon-button icon="fas fa-times" />
             </div>
           </div>
@@ -33,7 +34,7 @@ export class CfSideDrawer {
             <slot name={SlotNames['cfSideDrawer-drawer-content']} />
           </div>
         </div>
-        <div class={`overlay ${this.visible ? 'visible' : ''}`} onClick={this.onClose} />
+        <div class={`overlay ${this.visible ? 'visible' : ''}`} onClick={this.close} />
       </Host>
     );
   }

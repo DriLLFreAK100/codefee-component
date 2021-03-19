@@ -52,7 +52,6 @@ export namespace Components {
     }
     interface CfSideDrawer {
         "drawerTitle": string;
-        "onClose": () => void;
         "position": SideDrawerPosition;
         "visible": boolean;
     }
@@ -172,7 +171,7 @@ declare namespace LocalJSX {
     }
     interface CfSideDrawer {
         "drawerTitle"?: string;
-        "onClose"?: () => void;
+        "onClose"?: (event: CustomEvent<any>) => void;
         "position"?: SideDrawerPosition;
         "visible"?: boolean;
     }
