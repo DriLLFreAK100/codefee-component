@@ -171,7 +171,7 @@ declare namespace LocalJSX {
     }
     interface CfSideDrawer {
         "drawerTitle"?: string;
-        "onClose"?: (event: CustomEvent<any>) => void;
+        "onClose"?: (event: CustomEvent<MouseEvent>) => void;
         "position"?: SideDrawerPosition;
         "visible"?: boolean;
     }
