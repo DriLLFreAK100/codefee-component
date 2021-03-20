@@ -1,4 +1,4 @@
-import { HTMLStencilElement } from '@stencil/core/internal';
+import { Event, EventEmitter, HTMLStencilElement } from '@stencil/core/internal';
 import { INavMenu } from './cf-app-header-menu/cf-app-header-menu';
 import { SlotNames } from '../../common/slot-names';
 import {
@@ -17,6 +17,7 @@ import {
 })
 export class CfAppHeader {
   @Element() el: HTMLStencilElement;
+  @Event() drawerOpenChange: EventEmitter<boolean>;
   @Prop() appName: string;
   @Prop() drawerTitle: string;
   @Prop({ mutable: true, reflect: true }) drawerOpen: boolean = false;
@@ -25,10 +26,12 @@ export class CfAppHeader {
 
   handleClickMenuDrawerIcon() {
     this.drawerOpen = true;
+    this.drawerOpenChange.emit(true);
   };
 
   handleCloseMenuSideDrawer() {
     this.drawerOpen = false;
+    this.drawerOpenChange.emit(false);
   }
 
   componentWillLoad() {

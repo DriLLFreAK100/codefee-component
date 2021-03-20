@@ -15,6 +15,13 @@
 | `navMenus`    | --             |             | `INavMenu[]` | `undefined` |
 
 
+## Events
+
+| Event              | Description | Type                   |
+| ------------------ | ----------- | ---------------------- |
+| `drawerOpenChange` |             | `CustomEvent<boolean>` |
+
+
 ## Dependencies
 
 ### Depends on
