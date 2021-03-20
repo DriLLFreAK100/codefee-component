@@ -1,23 +1,26 @@
-import { IActionMenu } from './cf-app-header-action-menu/cf-app-header-action-menu';
+import { HTMLStencilElement } from '@stencil/core/internal';
 import { INavMenu } from './cf-app-header-menu/cf-app-header-menu';
+import { SlotNames } from '../../common/slot-names';
 import {
   Component,
+  Element,
   h,
   Host,
   Prop,
   State,
 } from '@stencil/core';
-import { SlotNames } from '../../common/slot-names';
+
 @Component({
   tag: 'cf-app-header',
   styleUrl: 'cf-app-header.scss',
   shadow: true
 })
 export class CfAppHeader {
-  @Prop({ mutable: true, reflect: true }) actionMenus: IActionMenu[];
+  @Element() el: HTMLStencilElement;
   @Prop() appName: string;
   @Prop() drawerTitle: string;
   @Prop() navMenus: INavMenu[];
+  @State() hasNavSlot: boolean = false;
   @State() menuSideDrawerOpen: boolean = false;
 
   handleClickMenuDrawerIcon() {
@@ -28,9 +31,13 @@ export class CfAppHeader {
     this.menuSideDrawerOpen = false;
   }
 
+  componentWillLoad() {
+    this.hasNavSlot = !!this.el.querySelector('[slot=nav-menu]');
+  }
+
   renderMenuIcon() {
     return (
-      this.navMenus && (
+      this.hasNavSlot && (
         <div
           class="cfAppHeader__start__drawerIcon"
           onClick={this.handleClickMenuDrawerIcon.bind(this)}
@@ -39,18 +46,6 @@ export class CfAppHeader {
         </div>
       )
     )
-  }
-
-  renderActionMenus() {
-    if (this.actionMenus) {
-      return this.actionMenus.map((actionMenu) => {
-        return (
-          <cf-app-header-action-menu actionMenu={actionMenu} />
-        );
-      })
-    }
-
-    return null;
   }
 
   render() {
@@ -64,7 +59,7 @@ export class CfAppHeader {
             </cf-typography>
           </div>
           <div class="cfAppHeader__end">
-            {this.renderActionMenus()}
+            <slot name="action-menu" />
           </div>
         </div>
         <cf-side-drawer
@@ -73,7 +68,14 @@ export class CfAppHeader {
           visible={this.menuSideDrawerOpen}
           onClose={this.handleCloseMenuSideDrawer.bind(this)}
         >
-          <cf-app-header-menu slot={SlotNames['cfSideDrawer-drawer-content']} menus={this.navMenus} />
+          <nav
+            class="cfAppHeader__nav"
+            slot={SlotNames['cfSideDrawer-drawer-content']}
+          >
+            <ul>
+              <slot name="nav-menu" />
+            </ul>
+          </nav>
         </cf-side-drawer>
       </Host>
     );

@@ -7,16 +7,14 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type         | Default |
-| -------- | --------- | ----------- | ------------ | ------- |
-| `menus`  | --        |             | `INavMenu[]` | `[]`    |
+| Property    | Attribute    | Description | Type      | Default     |
+| ----------- | ------------ | ----------- | --------- | ----------- |
+| `active`    | `active`     |             | `boolean` | `undefined` |
+| `link`      | `link`       |             | `string`  | `undefined` |
+| `menuTitle` | `menu-title` |             | `string`  | `undefined` |
 
 
 ## Dependencies
-
-### Used by
-
- - [cf-app-header](..)
 
 ### Depends on
 
@@ -27,7 +25,6 @@
 graph TD;
   cf-app-header-menu --> cf-link
   cf-link --> cf-typography
-  cf-app-header --> cf-app-header-menu
   style cf-app-header-menu fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

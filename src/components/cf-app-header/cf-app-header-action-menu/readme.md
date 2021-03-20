@@ -7,16 +7,13 @@
 
 ## Properties
 
-| Property     | Attribute | Description | Type          | Default     |
-| ------------ | --------- | ----------- | ------------- | ----------- |
-| `actionMenu` | --        |             | `IActionMenu` | `undefined` |
+| Property    | Attribute    | Description | Type     | Default     |
+| ----------- | ------------ | ----------- | -------- | ----------- |
+| `icon`      | `icon`       |             | `string` | `undefined` |
+| `menuTitle` | `menu-title` |             | `string` | `undefined` |
 
 
 ## Dependencies
-
-### Used by
-
- - [cf-app-header](..)
 
 ### Depends on
 
@@ -31,7 +28,6 @@ graph TD;
   cf-side-drawer --> cf-typography
   cf-side-drawer --> cf-icon-button
   cf-side-drawer --> cf-divider
-  cf-app-header --> cf-app-header-action-menu
   style cf-app-header-action-menu fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

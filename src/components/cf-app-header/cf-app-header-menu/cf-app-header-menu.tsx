@@ -19,38 +19,29 @@ export interface INavMenu {
   shadow: true,
 })
 export class CfAppHeaderMenu {
-  @Prop() menus: INavMenu[] = [];
+  @Prop() active: boolean;
+  @Prop() link: string;
+  @Prop() menuTitle: string;
 
   render() {
+    const styles: { [key: string]: string } = {};
+    if (this.active) {
+      styles.color = cvar('--color-primary-on');
+      styles.textDecoration = 'unset';
+      styles.pointerEvents = 'none';
+    }
+
     return (
       <Host>
-        <nav class="cfAppHeaderMenu">
-          <ul>
-            {
-              this.menus.map(menu => {
-                const styles: { [key: string]: string } = {};
-                if (menu.active) {
-                  styles.color = cvar('--color-primary-on');
-                  styles.textDecoration = 'unset';
-                  styles.pointerEvents = 'none';
-                }
-
-                return (
-                  <li class={`cfAppHeaderMenu__menuItem ${menu.active ? 'active' : ''}`}>
-                    <cf-link
-                      href={menu.link}
-                      styles={styles}
-                      underline={false}
-                    >
-                      {menu.customNode ?? menu.title}
-                    </cf-link>
-                  </li>
-                );
-              })
-            }
-          </ul>
-        </nav>
-
+        <li class={`cfAppHeaderMenu ${this.active ? 'active' : ''}`}>
+          <cf-link
+            href={this.link}
+            styles={styles}
+            underline={false}
+          >
+            {this.menuTitle}
+          </cf-link>
+        </li>
       </Host>
     );
   }

@@ -5,10 +5,7 @@
  * It contains typing information for all components that exist in this project.
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
-import { IActionMenu } from "./components/cf-app-header/cf-app-header-action-menu/cf-app-header-action-menu";
 import { INavMenu } from "./components/cf-app-header/cf-app-header-menu/cf-app-header-menu";
-import { IActionMenu as IActionMenu1 } from "./components/cf-app-header/cf-app-header-action-menu/cf-app-header-action-menu";
-import { INavMenu as INavMenu1 } from "./components/cf-app-header/cf-app-header-menu/cf-app-header-menu";
 import { ButtonType } from "./common/types";
 import { CircularProgressColor, CircularProgressType } from "./components/cf-circular-progress/cf-circular-progress";
 import { TypographyType } from "./components/cf-typography/cf-typography";
@@ -16,16 +13,18 @@ import { SideDrawerPosition } from "./components/cf-side-drawer/cf-side-drawer";
 import { TypographyType as TypographyType1 } from "./components/cf-typography/cf-typography";
 export namespace Components {
     interface CfAppHeader {
-        "actionMenus": IActionMenu[];
         "appName": string;
         "drawerTitle": string;
         "navMenus": INavMenu[];
     }
     interface CfAppHeaderActionMenu {
-        "actionMenu": IActionMenu;
+        "icon": string;
+        "menuTitle": string;
     }
     interface CfAppHeaderMenu {
-        "menus": INavMenu[];
+        "active": boolean;
+        "link": string;
+        "menuTitle": string;
     }
     interface CfButton {
         "disabled": boolean;
@@ -135,16 +134,18 @@ declare global {
 }
 declare namespace LocalJSX {
     interface CfAppHeader {
-        "actionMenus"?: IActionMenu[];
         "appName"?: string;
         "drawerTitle"?: string;
         "navMenus"?: INavMenu[];
     }
     interface CfAppHeaderActionMenu {
-        "actionMenu"?: IActionMenu;
+        "icon"?: string;
+        "menuTitle"?: string;
     }
     interface CfAppHeaderMenu {
-        "menus"?: INavMenu[];
+        "active"?: boolean;
+        "link"?: string;
+        "menuTitle"?: string;
     }
     interface CfButton {
         "disabled"?: boolean;
