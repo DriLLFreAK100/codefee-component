@@ -1,10 +1,10 @@
+import { cvar } from '../../../utils/style-helper';
 import {
   Component,
   h,
   Host,
   Prop,
 } from '@stencil/core';
-import { cvar } from '../../../utils/style-helper';
 
 export interface INavMenu {
   active: boolean;
@@ -34,13 +34,15 @@ export class CfAppHeaderMenu {
     return (
       <Host>
         <li class={`cfAppHeaderMenu ${this.active ? 'active' : ''}`}>
-          <cf-link
-            href={this.link}
-            styles={styles}
-            underline={false}
-          >
-            {this.menuTitle}
-          </cf-link>
+          <slot>
+            <cf-link
+              href={this.link}
+              styles={styles}
+              underline={false}
+            >
+              {this.menuTitle}
+            </cf-link>
+          </slot>
         </li>
       </Host>
     );

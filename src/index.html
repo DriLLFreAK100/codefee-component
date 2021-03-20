@@ -1,94 +1,94 @@
 <!DOCTYPE html>
 <html dir="ltr" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <title>Codefee Component</title>
 
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
-  <title>Codefee Component</title>
+    <script type="module" src="/build/codefee-component.esm.js"></script>
+    <script nomodule src="/build/codefee-component.js"></script>
+    <script src="https://kit.fontawesome.com/a888d04b43.js" crossorigin="anonymous"></script>
+  </head>
 
-  <script type="module" src="/build/codefee-component.esm.js"></script>
-  <script nomodule src="/build/codefee-component.js"></script>
-  <script src="https://kit.fontawesome.com/a888d04b43.js" crossorigin="anonymous"></script>
-</head>
+  <body>
+    <!-- Button -->
+    <cf-typography type="h5">Button</cf-typography>
+    <cf-divider></cf-divider>
+    <cf-button>Click Me!</cf-button>
+    <cf-button type="default">Click Me!</cf-button>
+    <cf-button type="subtle">Click Me!</cf-button>
+    <cf-button type="info">Click Me!</cf-button>
+    <cf-button type="success">Click Me!</cf-button>
+    <cf-button type="warning">Click Me!</cf-button>
+    <cf-button type="error">Click Me!</cf-button>
+    <br /><br />
 
-<body>
-  <!-- Button -->
-  <cf-typography type="h5">Button</cf-typography>
-  <cf-divider></cf-divider>
-  <cf-button>Click Me!</cf-button>
-  <cf-button type="default">Click Me!</cf-button>
-  <cf-button type="subtle">Click Me!</cf-button>
-  <cf-button type="info">Click Me!</cf-button>
-  <cf-button type="success">Click Me!</cf-button>
-  <cf-button type="warning">Click Me!</cf-button>
-  <cf-button type="error">Click Me!</cf-button>
-  <br /><br />
+    <!-- Icon Button -->
+    <cf-typography type="h5">Icon Button</cf-typography>
+    <cf-divider></cf-divider>
+    <cf-icon-button icon="fas fa-camera"></cf-icon-button>
+    <cf-icon-button icon="fas fa-camera" type="default"></cf-icon-button>
+    <cf-icon-button icon="fas fa-camera" type="subtle"></cf-icon-button>
+    <cf-icon-button icon="fas fa-camera" type="info"></cf-icon-button>
+    <cf-icon-button icon="fas fa-camera" type="success"></cf-icon-button>
+    <cf-icon-button icon="fas fa-camera" type="warning"></cf-icon-button>
+    <cf-icon-button icon="fas fa-camera" type="error"></cf-icon-button>
+    <br /><br />
 
-  <!-- Icon Button -->
-  <cf-typography type="h5">Icon Button</cf-typography>
-  <cf-divider></cf-divider>
-  <cf-icon-button icon="fas fa-camera"></cf-icon-button>
-  <cf-icon-button icon="fas fa-camera" type="default"></cf-icon-button>
-  <cf-icon-button icon="fas fa-camera" type="subtle"></cf-icon-button>
-  <cf-icon-button icon="fas fa-camera" type="info"></cf-icon-button>
-  <cf-icon-button icon="fas fa-camera" type="success"></cf-icon-button>
-  <cf-icon-button icon="fas fa-camera" type="warning"></cf-icon-button>
-  <cf-icon-button icon="fas fa-camera" type="error"></cf-icon-button>
-  <br /><br />
+    <!-- Circular Progress -->
+    <cf-typography type="h5">Circular Progress</cf-typography>
+    <cf-divider></cf-divider>
+    <cf-circular-progress></cf-circular-progress>
+    <cf-circular-progress color="secondary"></cf-circular-progress>
+    <cf-circular-progress id="determinate-circular-progress" type="determinate"></cf-circular-progress>
+    <br /><br />
 
+    <!-- Link -->
+    <cf-typography type="h5">Link</cf-typography>
+    <cf-divider></cf-divider>
+    <cf-link href="http://google.com">To Google</cf-link>
+    <br /><br />
 
-  <!-- Circular Progress -->
-  <cf-typography type="h5">Circular Progress</cf-typography>
-  <cf-divider></cf-divider>
-  <cf-circular-progress></cf-circular-progress>
-  <cf-circular-progress color="secondary"></cf-circular-progress>
-  <cf-circular-progress id="determinate-circular-progress" type="determinate"></cf-circular-progress>
-  <br /><br />
+    <!-- App Header -->
+    <cf-typography type="h5">App Header</cf-typography>
+    <cf-divider></cf-divider>
+    <cf-app-header id="app-header" app-name="My App Name" drawer-title="Menu Title">
+      <cf-app-header-menu slot="nav-menu" menu-title="Page 1" active link=""></cf-app-header-menu>
+      <cf-app-header-menu slot="nav-menu" menu-title="Page 2" link=""></cf-app-header-menu>
+      <cf-app-header-menu slot="nav-menu" menu-title="Page 3" link=""></cf-app-header-menu>
+      <cf-app-header-menu slot="nav-menu">
+        <div>Custom Node</div>
+      </cf-app-header-menu>
+      <cf-app-header-action-menu slot="action-menu" icon="fas fa-user-circle" title="Account">
+        <cf-button type="error">Logout</cf-button>
+      </cf-app-header-action-menu>
+      <cf-app-header-action-menu slot="action-menu" icon="fas fa-cog" title="Settings">
+        <cf-button>Update</cf-button>
+      </cf-app-header-action-menu>
+    </cf-app-header>
+    <br /><br />
 
-  <!-- Link -->
-  <cf-typography type="h5">Link</cf-typography>
-  <cf-divider></cf-divider>
-  <cf-link href="http://google.com">To Google</cf-link>
-  <br /><br />
+    <!-- Scripts -->
+    <script type="module">
+      // Theme Init
+      import { loadTheme } from '/build/index.esm.js';
+      loadTheme();
 
-  <!-- App Header -->
-  <cf-typography type="h5">App Header</cf-typography>
-  <cf-divider></cf-divider>
-  <cf-app-header id="app-header" app-name="My App Name" drawer-title="Menu Title">
-    <cf-app-header-menu slot="nav-menu" menu-title="Page 1" active link=""></cf-app-header-menu>
-    <cf-app-header-menu slot="nav-menu" menu-title="Page 2" link=""></cf-app-header-menu>
-    <cf-app-header-menu slot="nav-menu" menu-title="Page 3" link=""></cf-app-header-menu>
-    <cf-app-header-action-menu slot="action-menu" icon="fas fa-user-circle" title="Account">
-      <cf-button type="error">Logout</cf-button>
-    </cf-app-header-action-menu>
-    <cf-app-header-action-menu slot="action-menu" icon="fas fa-cog" title="Settings">
-      <cf-button>Update</cf-button>
-    </cf-app-header-action-menu>
-  </cf-app-header>
-  <br /><br />
+      // Determinate Circular Progress
+      const cp = document.querySelector('#determinate-circular-progress');
 
-  <!-- Scripts -->
-  <script type="module">
-    // Theme Init
-    import { loadTheme } from '/build/index.esm.js';
-    loadTheme();
+      function updateCircularProgress() {
+        setTimeout(() => {
+          if (cp.progress >= 100) {
+            cp.progress = 0;
+          } else {
+            cp.progress += 10;
+          }
+          updateCircularProgress();
+        }, 200);
+      }
 
-    // Determinate Circular Progress
-    const cp = document.querySelector('#determinate-circular-progress');
-
-    function updateCircularProgress() {
-      setTimeout(() => {
-        if (cp.progress >= 100) {
-          cp.progress = 0;
-        } else {
-          cp.progress += 10;
-        }
-        updateCircularProgress();
-      }, 200);
-    };
-
-    updateCircularProgress();
-  </script>
-</body>
-
+      updateCircularProgress();
+    </script>
+  </body>
 </html>
