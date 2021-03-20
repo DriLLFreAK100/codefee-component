@@ -13,10 +13,7 @@
   justify-content: center;
   padding-left: rem(8);
   transition: background-color var(--transition-hover) ease-in-out;
-
-  &:not(:last-child) {
-    margin-bottom: rem(8);
-  }
+  margin-bottom: rem(4);
 
   &.active {
     background: linear-gradient(to right, var(--color-primary), white);
