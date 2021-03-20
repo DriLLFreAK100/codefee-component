@@ -8,7 +8,7 @@ import { TypographyType } from '../cf-typography/cf-typography';
 })
 export class CfLink {
   @Prop() href: string = '';
-  @Prop() newTab: boolean = true;
+  @Prop() newTab: boolean = false;
   @Prop() underline: boolean = true;
   @Prop() styles: { [key: string]: string };
   @Prop() typographyType: TypographyType = 'subtitle1';

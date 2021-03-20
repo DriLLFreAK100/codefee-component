@@ -10,7 +10,7 @@
 | Property         | Attribute         | Description | Type                                                                                                                               | Default       |
 | ---------------- | ----------------- | ----------- | ---------------------------------------------------------------------------------------------------------------------------------- | ------------- |
 | `href`           | `href`            |             | `string`                                                                                                                           | `''`          |
-| `newTab`         | `new-tab`         |             | `boolean`                                                                                                                          | `true`        |
+| `newTab`         | `new-tab`         |             | `boolean`                                                                                                                          | `false`       |
 | `styles`         | --                |             | `{ [key: string]: string; }`                                                                                                       | `undefined`   |
 | `typographyType` | `typography-type` |             | `"body1" \| "body2" \| "button" \| "caption" \| "h1" \| "h2" \| "h3" \| "h4" \| "h5" \| "h6" \| "p" \| "subtitle1" \| "subtitle2"` | `'subtitle1'` |
 | `underline`      | `underline`       |             | `boolean`                                                                                                                          | `true`        |
