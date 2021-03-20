@@ -10,6 +10,7 @@
 | Property      | Attribute      | Description | Type         | Default     |
 | ------------- | -------------- | ----------- | ------------ | ----------- |
 | `appName`     | `app-name`     |             | `string`     | `undefined` |
+| `drawerOpen`  | `drawer-open`  |             | `boolean`    | `false`     |
 | `drawerTitle` | `drawer-title` |             | `string`     | `undefined` |
 | `navMenus`    | --             |             | `INavMenu[]` | `undefined` |
 

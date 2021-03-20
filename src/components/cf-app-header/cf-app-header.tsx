@@ -19,16 +19,16 @@ export class CfAppHeader {
   @Element() el: HTMLStencilElement;
   @Prop() appName: string;
   @Prop() drawerTitle: string;
+  @Prop({ mutable: true, reflect: true }) drawerOpen: boolean = false;
   @Prop() navMenus: INavMenu[];
   @State() hasNavSlot: boolean = false;
-  @State() menuSideDrawerOpen: boolean = false;
 
   handleClickMenuDrawerIcon() {
-    this.menuSideDrawerOpen = true;
+    this.drawerOpen = true;
   };
 
   handleCloseMenuSideDrawer() {
-    this.menuSideDrawerOpen = false;
+    this.drawerOpen = false;
   }
 
   componentWillLoad() {
@@ -65,7 +65,7 @@ export class CfAppHeader {
         <cf-side-drawer
           drawerTitle={this.drawerTitle}
           position="left"
-          visible={this.menuSideDrawerOpen}
+          visible={this.drawerOpen}
           onClose={this.handleCloseMenuSideDrawer.bind(this)}
         >
           <nav

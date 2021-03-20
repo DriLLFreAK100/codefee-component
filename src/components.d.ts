@@ -14,6 +14,7 @@ import { TypographyType as TypographyType1 } from "./components/cf-typography/cf
 export namespace Components {
     interface CfAppHeader {
         "appName": string;
+        "drawerOpen": boolean;
         "drawerTitle": string;
         "navMenus": INavMenu[];
     }
@@ -135,6 +136,7 @@ declare global {
 declare namespace LocalJSX {
     interface CfAppHeader {
         "appName"?: string;
+        "drawerOpen"?: boolean;
         "drawerTitle"?: string;
         "navMenus"?: INavMenu[];
     }
