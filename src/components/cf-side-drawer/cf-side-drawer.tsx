@@ -30,8 +30,12 @@ export class CfSideDrawer {
         <div class={`cfSideDrawer ${this.visible ? 'visible' : ''} ${this.position}`}>
           <div class="cfSideDrawer__title">
             <cf-typography type="h5">{this.drawerTitle}</cf-typography>
-            <div onClick={this.handleOnClickClose.bind(this)}>
-              <cf-icon-button icon="fas fa-times" type="error" />
+            <div>
+              <cf-icon-button
+                icon="fas fa-times"
+                type="error"
+                onClick={this.handleOnClickClose.bind(this)}
+              />
             </div>
           </div>
           <cf-divider />

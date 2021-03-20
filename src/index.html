@@ -74,14 +74,6 @@
       import { loadTheme } from '/build/index.esm.js';
       loadTheme();
 
-      const header = document.querySelector('#app-header');
-      setTimeout(() => {
-        header.setAttribute('drawer-open', '');
-        setTimeout(() => {
-          header.removeAttribute('drawer-open');
-        }, 1000);
-      }, 1000);
-
       // Determinate Circular Progress
       const cp = document.querySelector('#determinate-circular-progress');
 
