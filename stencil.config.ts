@@ -7,6 +7,9 @@ export const config: Config = {
     {
       type: 'dist',
       esmLoaderPath: '../loader',
+      copy: [
+        { src: 'styles' }
+      ]
     },
     {
       type: 'dist-custom-elements-bundle',
