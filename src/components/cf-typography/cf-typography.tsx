@@ -1,4 +1,5 @@
 import { Component, Host, h, Prop } from '@stencil/core';
+import { GutterSize } from '../../common/types';
 
 export type TypographyType =
   'h1' |
@@ -50,13 +51,14 @@ const getElement = (type: TypographyType) => {
 })
 export class CfTypography {
   @Prop() type: TypographyType = 'p';
+  @Prop() gutterBottom: GutterSize = 'g0';
 
   render() {
     const Element = getElement(this.type as TypographyType);
 
     return (
-      <Host>
-        <Element class={this.type}>
+      <Host class={`${this.gutterBottom}`}>
+        <Element class={`${this.type}`}>
           <slot></slot>
         </Element>
       </Host>

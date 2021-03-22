@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { INavMenu } from "./components/cf-app-header/cf-app-header-menu/cf-app-header-menu";
-import { ButtonType } from "./common/types";
+import { ButtonType, GutterSize } from "./common/types";
 import { CircularProgressColor, CircularProgressType } from "./components/cf-circular-progress/cf-circular-progress";
 import { TypographyType } from "./components/cf-typography/cf-typography";
 import { SideDrawerPosition } from "./components/cf-side-drawer/cf-side-drawer";
@@ -56,6 +56,7 @@ export namespace Components {
         "visible": boolean;
     }
     interface CfTypography {
+        "gutterBottom": GutterSize;
         "type": TypographyType;
     }
 }
@@ -180,6 +181,7 @@ declare namespace LocalJSX {
         "visible"?: boolean;
     }
     interface CfTypography {
+        "gutterBottom"?: GutterSize;
         "type"?: TypographyType;
     }
     interface IntrinsicElements {

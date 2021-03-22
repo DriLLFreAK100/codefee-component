@@ -1,5 +1,29 @@
 @import '../../styles/functions.scss';
 
+:host(.g0) {
+  margin-bottom: rem(0);
+}
+
+:host(.g4) {
+  margin-bottom: rem(4);
+}
+
+:host(.g8) {
+  margin-bottom: rem(8);
+}
+
+:host(.g12) {
+  margin-bottom: rem(12);
+}
+
+:host(.g16) {
+  margin-bottom: rem(16);
+}
+
+:host(.g20) {
+  margin-bottom: rem(20);
+}
+
 :host {
   display: block;
 
