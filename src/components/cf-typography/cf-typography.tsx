@@ -49,7 +49,7 @@ const getElement = (type: TypographyType) => {
   shadow: true,
 })
 export class CfTypography {
-  @Prop() type: TypographyType;
+  @Prop() type: TypographyType = 'p';
 
   render() {
     const Element = getElement(this.type as TypographyType);
