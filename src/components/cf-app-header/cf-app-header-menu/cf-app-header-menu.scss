@@ -2,9 +2,6 @@
 
 :host {
   display: block;
-}
-
-.cfAppHeaderMenu {
   background: inherit;
   border-radius: rem(4);
   display: flex;
@@ -14,18 +11,12 @@
   padding-left: rem(8);
   transition: background-color var(--transition-hover) ease-in-out;
   margin-bottom: rem(4);
+}
 
-  &.active {
-    background: linear-gradient(to right, var(--color-primary), white);
-  }
+:host(.active) {
+  background: linear-gradient(to right, var(--color-primary), white);
+}
 
-  &:not(.active):hover {
-    background: var(--color-bg);
-  }
-
-  &__link {
-    &.active {
-      color: var(--color-primary-on) !important;
-    }
-  }
+:host(:not(.active):hover) {
+  background: var(--color-bg);
 }

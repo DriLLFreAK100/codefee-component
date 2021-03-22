@@ -32,8 +32,8 @@ export class CfAppHeaderMenu {
     }
 
     return (
-      <Host>
-        <li class={`cfAppHeaderMenu ${this.active ? 'active' : ''}`}>
+      <Host class={`${this.active ? 'active' : ''}`}>
+        <li class="cfAppHeaderMenu">
           <slot>
             <cf-link
               href={this.link}
