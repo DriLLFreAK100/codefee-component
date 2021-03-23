@@ -55,6 +55,10 @@ export namespace Components {
         "position": SideDrawerPosition;
         "visible": boolean;
     }
+    interface CfTab {
+    }
+    interface CfTabs {
+    }
     interface CfTypography {
         "gutterBottom": GutterSize;
         "type": TypographyType;
@@ -115,6 +119,18 @@ declare global {
         prototype: HTMLCfSideDrawerElement;
         new (): HTMLCfSideDrawerElement;
     };
+    interface HTMLCfTabElement extends Components.CfTab, HTMLStencilElement {
+    }
+    var HTMLCfTabElement: {
+        prototype: HTMLCfTabElement;
+        new (): HTMLCfTabElement;
+    };
+    interface HTMLCfTabsElement extends Components.CfTabs, HTMLStencilElement {
+    }
+    var HTMLCfTabsElement: {
+        prototype: HTMLCfTabsElement;
+        new (): HTMLCfTabsElement;
+    };
     interface HTMLCfTypographyElement extends Components.CfTypography, HTMLStencilElement {
     }
     var HTMLCfTypographyElement: {
@@ -131,6 +147,8 @@ declare global {
         "cf-icon-button": HTMLCfIconButtonElement;
         "cf-link": HTMLCfLinkElement;
         "cf-side-drawer": HTMLCfSideDrawerElement;
+        "cf-tab": HTMLCfTabElement;
+        "cf-tabs": HTMLCfTabsElement;
         "cf-typography": HTMLCfTypographyElement;
     }
 }
@@ -180,6 +198,10 @@ declare namespace LocalJSX {
         "position"?: SideDrawerPosition;
         "visible"?: boolean;
     }
+    interface CfTab {
+    }
+    interface CfTabs {
+    }
     interface CfTypography {
         "gutterBottom"?: GutterSize;
         "type"?: TypographyType;
@@ -194,6 +216,8 @@ declare namespace LocalJSX {
         "cf-icon-button": CfIconButton;
         "cf-link": CfLink;
         "cf-side-drawer": CfSideDrawer;
+        "cf-tab": CfTab;
+        "cf-tabs": CfTabs;
         "cf-typography": CfTypography;
     }
 }
@@ -210,6 +234,8 @@ declare module "@stencil/core" {
             "cf-icon-button": LocalJSX.CfIconButton & JSXBase.HTMLAttributes<HTMLCfIconButtonElement>;
             "cf-link": LocalJSX.CfLink & JSXBase.HTMLAttributes<HTMLCfLinkElement>;
             "cf-side-drawer": LocalJSX.CfSideDrawer & JSXBase.HTMLAttributes<HTMLCfSideDrawerElement>;
+            "cf-tab": LocalJSX.CfTab & JSXBase.HTMLAttributes<HTMLCfTabElement>;
+            "cf-tabs": LocalJSX.CfTabs & JSXBase.HTMLAttributes<HTMLCfTabsElement>;
             "cf-typography": LocalJSX.CfTypography & JSXBase.HTMLAttributes<HTMLCfTypographyElement>;
         }
     }

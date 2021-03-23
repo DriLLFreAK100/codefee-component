@@ -1,0 +1,30 @@
+@import '../../styles/functions.scss';
+
+:host {
+  display: flex;
+  flex-direction: column;
+}
+
+::slotted(cf-tab) {
+  align-items: center;
+  box-sizing: border-box;
+  display: flex;
+  height: rem(48);
+  justify-content: center;
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.tabs {
+  &__container {
+    display: flex;
+    flex-direction: row;
+  }
+
+  &__content {
+    border: rem(1) solid var(--color-bg-dark);
+    border-radius: rem(4);
+    box-shadow: 0 rem(2) rem(4) 0 var(--color-shadow);
+    padding: rem(16);
+  }
+}

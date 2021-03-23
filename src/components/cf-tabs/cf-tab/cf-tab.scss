@@ -1,0 +1,27 @@
+@import '../../../styles/functions.scss';
+
+:host {
+  border-radius: rem(4);
+  cursor: pointer;
+  display: block;
+
+  &:hover {
+    color: red;
+  }
+
+  &:active {
+    color: red;
+  }
+}
+
+:host(.active) {
+  background-color: var(--color-primary-light);
+  display: block;
+  border-bottom: rem(4) solid var(--color-primary);
+  pointer-events: none;
+
+  & cf-typography {
+    color: var(--color-primary-on);
+    text-transform: uppercase;
+  }
+}
