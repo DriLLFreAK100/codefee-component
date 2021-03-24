@@ -4,24 +4,75 @@
   border-radius: rem(4) rem(4) 0 0;
   cursor: pointer;
   display: block;
-
-  &:hover {
-    color: red;
-  }
-
-  &:active {
-    color: red;
-  }
+  text-transform: uppercase;
 }
 
 :host(.active) {
-  background-color: var(--color-primary-light);
   display: block;
-  border-bottom: rem(4) solid var(--color-primary);
+  border-bottom: rem(4) solid;
   pointer-events: none;
+  transition: background-color var(--transition-toggle) ease-in-out, border-bottom var(--transition-hover) ease-in-out;
+}
+
+:host(.active.default) {
+  background-color: var(--color-default-light);
+  border-color: var(--color-default);
+
+  & cf-typography {
+    color: var(--color-default-on);
+  }
+}
+
+:host(.active.primary) {
+  background-color: var(--color-primary-light);
+  border-color: var(--color-primary);
 
   & cf-typography {
     color: var(--color-primary-on);
-    text-transform: uppercase;
+  }
+}
+
+:host(.active.secondary) {
+  background-color: var(--color-secondary-light);
+  border-color: var(--color-secondary);
+
+  & cf-typography {
+    color: var(--color-secondary-on);
+  }
+}
+
+:host(.active.info) {
+  background-color: var(--color-info-light);
+  border-color: var(--color-info);
+
+  & cf-typography {
+    color: var(--color-info-on);
+  }
+}
+
+:host(.active.success) {
+  background-color: var(--color-success-light);
+  border-color: var(--color-success);
+
+  & cf-typography {
+    color: var(--color-success-on);
+  }
+}
+
+:host(.active.error) {
+  background-color: var(--color-error-light);
+  border-color: var(--color-error);
+
+  & cf-typography {
+    color: var(--color-error-on);
+  }
+}
+
+:host(.active.warning) {
+  background-color: var(--color-warning-light);
+  border-color: var(--color-warning);
+
+  & cf-typography {
+    color: var(--color-warning-on);
   }
 }

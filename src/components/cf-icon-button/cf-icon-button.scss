@@ -49,6 +49,18 @@
     }
   }
 
+  &.secondary {
+    color: var(--color-secondary);
+
+    &:hover {
+      color: var(--color-secondary-light);
+    }
+
+    &:active {
+      color: var(--color-secondary-dark);
+    }
+  }
+
   &.subtle {
     background-color: white;
     border: rem(1) solid var(--color-primary);

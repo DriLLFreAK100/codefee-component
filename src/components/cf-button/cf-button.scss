@@ -63,6 +63,23 @@
       }
     }
 
+    &.secondary {
+      background-color: var(--color-secondary);
+      color: var(--color-secondary-on);
+
+      &:hover {
+        background: var(--color-secondary-light);
+      }
+
+      &:active {
+        background: var(--color-secondary-dark);
+      }
+
+      &:disabled {
+        background-color: var(--color-secondary);
+      }
+    }
+
     &.subtle {
       background-color: white;
       border: rem(1) solid var(--color-primary);

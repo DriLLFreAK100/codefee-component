@@ -9,6 +9,7 @@ import {
 } from '@stencil/core';
 
 export type SideDrawerPosition = 'left' | 'right';
+
 @Component({
   tag: 'cf-side-drawer',
   styleUrl: 'cf-side-drawer.scss',

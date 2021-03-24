@@ -15,9 +15,9 @@
     <cf-typography type="h5">Tabs</cf-typography>
     <cf-divider></cf-divider>
     <cf-tabs id="tabs">
-      <cf-tab tab-id="1" active>Tab 1</cf-tab>
-      <cf-tab tab-id="2">Tab 2</cf-tab>
-      <cf-tab tab-id="3">Tab 3</cf-tab>
+      <cf-tab tab-id="1" color="primary" active>Tab 1</cf-tab>
+      <cf-tab tab-id="2" color="primary">Tab 2</cf-tab>
+      <cf-tab tab-id="3" color="primary">Tab 3</cf-tab>
       <div slot="content" style="text-align: center">
         <cf-typography type="h3">Heading</cf-typography>
         <cf-typography>Contents</cf-typography>
@@ -30,6 +30,7 @@
     <cf-typography type="h5" gutter-bottom="g4">Button</cf-typography>
     <cf-divider></cf-divider>
     <cf-button>Click Me!</cf-button>
+    <cf-button type="secondary">Click Me!</cf-button>
     <cf-button type="default">Click Me!</cf-button>
     <cf-button type="subtle">Click Me!</cf-button>
     <cf-button type="info">Click Me!</cf-button>
@@ -42,6 +43,7 @@
     <cf-typography type="h5" gutter-bottom="g4">Icon Button</cf-typography>
     <cf-divider></cf-divider>
     <cf-icon-button icon="fas fa-camera"></cf-icon-button>
+    <cf-icon-button icon="fas fa-camera" type="secondary"></cf-icon-button>
     <cf-icon-button icon="fas fa-camera" type="default"></cf-icon-button>
     <cf-icon-button icon="fas fa-camera" type="subtle"></cf-icon-button>
     <cf-icon-button icon="fas fa-camera" type="info"></cf-icon-button>
@@ -109,7 +111,7 @@
 
       // Tabs
       const tabs = document.querySelector('#tabs');
-      tabs.addEventListener('clickTab', evt => {
+      tabs.addEventListener('tabSelect', evt => {
         const activeTabItem = document.querySelector('cf-tab[active]');
         activeTabItem.removeAttribute('active');
 

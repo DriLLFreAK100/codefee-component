@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type                                                                                | Default     |
-| ---------- | ---------- | ----------- | ----------------------------------------------------------------------------------- | ----------- |
-| `disabled` | `disabled` |             | `boolean`                                                                           | `undefined` |
-| `text`     | `text`     |             | `string`                                                                            | `undefined` |
-| `type`     | `type`     |             | `"default" \| "error" \| "info" \| "primary" \| "subtle" \| "success" \| "warning"` | `'primary'` |
+| Property   | Attribute  | Description | Type                                                                                               | Default     |
+| ---------- | ---------- | ----------- | -------------------------------------------------------------------------------------------------- | ----------- |
+| `disabled` | `disabled` |             | `boolean`                                                                                          | `undefined` |
+| `text`     | `text`     |             | `string`                                                                                           | `undefined` |
+| `type`     | `type`     |             | `"default" \| "error" \| "info" \| "primary" \| "secondary" \| "subtle" \| "success" \| "warning"` | `'primary'` |
 
 
 ## Dependencies

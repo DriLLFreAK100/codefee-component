@@ -1,7 +1,10 @@
 import {
   Component,
+  Event,
+  EventEmitter,
   h,
   Host,
+  Listen,
 } from '@stencil/core';
 
 @Component({
@@ -10,6 +13,14 @@ import {
   shadow: true,
 })
 export class CfTabs {
+  @Event() tabSelect: EventEmitter<any>;
+
+  @Listen('clickTab')
+  handleClickTab(event: CustomEvent<any>) {
+    event.stopPropagation();
+    this.tabSelect.emit(event.detail);
+  }
+
   render() {
     return (
       <Host>

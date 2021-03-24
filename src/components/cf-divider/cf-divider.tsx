@@ -1,4 +1,5 @@
-import { Component, h } from '@stencil/core';
+import { Component, h, Host, Prop } from '@stencil/core';
+import { GutterSize } from '../../common/types';
 
 @Component({
   tag: 'cf-divider',
@@ -6,10 +7,13 @@ import { Component, h } from '@stencil/core';
   shadow: true,
 })
 export class CfDivider {
+  @Prop() gutterBottom: GutterSize = 'g0';
 
   render() {
     return (
-      <hr class="cfDivider" />
+      <Host class={`${this.gutterBottom}`}>
+        <hr class="cfDivider" />
+      </Host>
     );
   }
 

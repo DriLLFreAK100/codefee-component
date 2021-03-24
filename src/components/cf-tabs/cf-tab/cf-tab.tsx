@@ -1,3 +1,4 @@
+import { ColorType } from '../../../common/types';
 import {
   Component,
   Event,
@@ -13,8 +14,9 @@ import {
   shadow: true,
 })
 export class CfTab {
-  @Event({ composed: true }) clickTab: EventEmitter<any>;
+  @Event() clickTab: EventEmitter<any>;
   @Prop() active: boolean = false;
+  @Prop() color: ColorType = 'primary';
   @Prop() tabId: any;
 
   handleOnClick() {
@@ -24,7 +26,7 @@ export class CfTab {
   render() {
     return (
       <Host
-        class={this.active ? 'active' : ''}
+        class={`${this.active ? 'active' : ''} ${this.color}`}
         onClick={this.handleOnClick.bind(this)}
       >
         <cf-typography type="subtitle1">

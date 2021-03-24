@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property | Attribute | Description | Type      | Default     |
-| -------- | --------- | ----------- | --------- | ----------- |
-| `active` | `active`  |             | `boolean` | `false`     |
-| `tabId`  | `tab-id`  |             | `any`     | `undefined` |
+| Property | Attribute | Description | Type                                                                                   | Default     |
+| -------- | --------- | ----------- | -------------------------------------------------------------------------------------- | ----------- |
+| `active` | `active`  |             | `boolean`                                                                              | `false`     |
+| `color`  | `color`   |             | `"default" \| "error" \| "info" \| "primary" \| "secondary" \| "success" \| "warning"` | `'primary'` |
+| `tabId`  | `tab-id`  |             | `any`                                                                                  | `undefined` |
 
 
 ## Events

@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property       | Attribute       | Description | Type                                              | Default |
+| -------------- | --------------- | ----------- | ------------------------------------------------- | ------- |
+| `gutterBottom` | `gutter-bottom` |             | `"g0" \| "g12" \| "g16" \| "g20" \| "g4" \| "g8"` | `'g0'`  |
+
+
 ## Dependencies
 
 ### Used by
