@@ -15,7 +15,7 @@
     <cf-typography type="h5">Tabs</cf-typography>
     <cf-divider></cf-divider>
     <cf-tabs id="tabs">
-      <cf-tab tab-id="1" class="active">Tab 1</cf-tab>
+      <cf-tab tab-id="1" active>Tab 1</cf-tab>
       <cf-tab tab-id="2">Tab 2</cf-tab>
       <cf-tab tab-id="3">Tab 3</cf-tab>
       <div slot="content" style="text-align: center">
@@ -110,11 +110,11 @@
       // Tabs
       const tabs = document.querySelector('#tabs');
       tabs.addEventListener('clickTab', evt => {
-        const activeTabItem = document.querySelector('cf-tab[class*="active"]');
-        activeTabItem.classList.remove('active');
+        const activeTabItem = document.querySelector('cf-tab[active]');
+        activeTabItem.removeAttribute('active');
 
         const target = document.querySelector(`cf-tab[tab-id="${evt.detail}"]`);
-        target.classList.add('active');
+        target.setAttribute('active', '');
       });
 
       // Determinate Circular Progress

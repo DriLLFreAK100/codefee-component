@@ -14,6 +14,7 @@ import {
 })
 export class CfTab {
   @Event() clickTab: EventEmitter<any>;
+  @Prop() active: boolean = false;
   @Prop() tabId: any;
 
   handleOnClick() {
@@ -22,7 +23,10 @@ export class CfTab {
 
   render() {
     return (
-      <Host onClick={this.handleOnClick.bind(this)}>
+      <Host
+        class={this.active ? 'active' : ''}
+        onClick={this.handleOnClick.bind(this)}
+      >
         <cf-typography type="subtitle1">
           <slot />
         </cf-typography>
