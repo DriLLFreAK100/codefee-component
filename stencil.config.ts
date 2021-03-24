@@ -2,6 +2,10 @@ import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 
 export const config: Config = {
+  devServer: {
+    reloadStrategy: 'pageReload',
+    port: 8888,
+  },
   namespace: 'codefee-component',
   outputTargets: [
     {
