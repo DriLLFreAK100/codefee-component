@@ -56,6 +56,7 @@ export namespace Components {
         "visible": boolean;
     }
     interface CfTab {
+        "tabId": any;
     }
     interface CfTabs {
     }
@@ -199,6 +200,8 @@ declare namespace LocalJSX {
         "visible"?: boolean;
     }
     interface CfTab {
+        "onClickTab"?: (event: CustomEvent<any>) => void;
+        "tabId"?: any;
     }
     interface CfTabs {
     }

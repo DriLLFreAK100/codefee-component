@@ -23,7 +23,7 @@
 
   &__content {
     border: rem(1) solid var(--color-bg-dark);
-    border-radius: rem(4);
+    border-radius: 0 0 rem(4) rem(4);
     box-shadow: 0 rem(2) rem(4) 0 var(--color-shadow);
     padding: rem(16);
   }

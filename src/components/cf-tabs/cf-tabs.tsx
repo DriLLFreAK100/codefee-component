@@ -1,4 +1,8 @@
-import { Component, Host, h } from '@stencil/core';
+import {
+  Component,
+  h,
+  Host,
+} from '@stencil/core';
 
 @Component({
   tag: 'cf-tabs',
@@ -6,7 +10,6 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class CfTabs {
-
   render() {
     return (
       <Host>

@@ -1,4 +1,11 @@
-import { Component, Host, h } from '@stencil/core';
+import {
+  Component,
+  Event,
+  EventEmitter,
+  h,
+  Host,
+  Prop,
+} from '@stencil/core';
 
 @Component({
   tag: 'cf-tab',
@@ -6,10 +13,16 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class CfTab {
+  @Event() clickTab: EventEmitter<any>;
+  @Prop() tabId: any;
+
+  handleOnClick() {
+    this.clickTab.emit(this.tabId);
+  }
 
   render() {
     return (
-      <Host>
+      <Host onClick={this.handleOnClick.bind(this)}>
         <cf-typography type="subtitle1">
           <slot />
         </cf-typography>
