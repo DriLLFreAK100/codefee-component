@@ -13,7 +13,7 @@ import {
   shadow: true,
 })
 export class CfTab {
-  @Event() clickTab: EventEmitter<any>;
+  @Event({ composed: true }) clickTab: EventEmitter<any>;
   @Prop() active: boolean = false;
   @Prop() tabId: any;
 
