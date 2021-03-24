@@ -21,6 +21,7 @@
  - [cf-button](../cf-button)
  - [cf-link](../cf-link)
  - [cf-side-drawer](../cf-side-drawer)
+ - [cf-tab](../cf-tabs/cf-tab)
 
 ### Graph
 ```mermaid
@@ -29,6 +30,7 @@ graph TD;
   cf-button --> cf-typography
   cf-link --> cf-typography
   cf-side-drawer --> cf-typography
+  cf-tab --> cf-typography
   style cf-typography fill:#f9f,stroke:#333,stroke-width:4px
 ```
 
