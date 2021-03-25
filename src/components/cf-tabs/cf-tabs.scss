@@ -1,9 +1,13 @@
 @import '../../styles/functions.scss';
 
 :host {
+  background-color: white;
+  border-radius: rem(4);
   display: flex;
   flex-direction: column;
 }
+
+$primary-border: rem(0.5) solid var(--color-primary);
 
 ::slotted(cf-tab) {
   align-items: center;
@@ -15,6 +19,20 @@
   flex-basis: 0;
 }
 
+::slotted(cf-tab.primary:first-child) {
+  border-left: $primary-border;
+}
+
+::slotted(cf-tab.primary) {
+  border-bottom: $primary-border;
+  border-top: $primary-border;
+  border-right: $primary-border;
+}
+
+::slotted(cf-tab.active) {
+  border-bottom-width: rem(4);
+}
+
 .tabs {
   &__container {
     display: flex;
@@ -22,7 +40,6 @@
   }
 
   &__content {
-    border: rem(1) solid var(--color-bg-dark);
     border-radius: 0 0 rem(4) rem(4);
     box-shadow: 0 rem(2) rem(4) 0 var(--color-shadow);
     padding: rem(16);
