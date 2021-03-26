@@ -11,6 +11,7 @@ import { CircularProgressColor, CircularProgressType } from "./components/cf-cir
 import { TypographyType } from "./components/cf-typography/cf-typography";
 import { SideDrawerPosition } from "./components/cf-side-drawer/cf-side-drawer";
 import { TypographyType as TypographyType1 } from "./components/cf-typography/cf-typography";
+import { VirtualScrollContainerType } from "./components/cf-virtual-scroller/cf-virtual-scroller";
 export namespace Components {
     interface CfAppHeader {
         "appName": string;
@@ -66,6 +67,12 @@ export namespace Components {
     interface CfTypography {
         "gutterBottom": GutterSize;
         "type": TypographyType;
+    }
+    interface CfVirtualScroller {
+        "childHeight": number;
+        "containerClassName": string;
+        "containerHeight": number;
+        "containerType": VirtualScrollContainerType;
     }
 }
 declare global {
@@ -141,6 +148,12 @@ declare global {
         prototype: HTMLCfTypographyElement;
         new (): HTMLCfTypographyElement;
     };
+    interface HTMLCfVirtualScrollerElement extends Components.CfVirtualScroller, HTMLStencilElement {
+    }
+    var HTMLCfVirtualScrollerElement: {
+        prototype: HTMLCfVirtualScrollerElement;
+        new (): HTMLCfVirtualScrollerElement;
+    };
     interface HTMLElementTagNameMap {
         "cf-app-header": HTMLCfAppHeaderElement;
         "cf-app-header-action-menu": HTMLCfAppHeaderActionMenuElement;
@@ -154,6 +167,7 @@ declare global {
         "cf-tab": HTMLCfTabElement;
         "cf-tabs": HTMLCfTabsElement;
         "cf-typography": HTMLCfTypographyElement;
+        "cf-virtual-scroller": HTMLCfVirtualScrollerElement;
     }
 }
 declare namespace LocalJSX {
@@ -216,6 +230,12 @@ declare namespace LocalJSX {
         "gutterBottom"?: GutterSize;
         "type"?: TypographyType;
     }
+    interface CfVirtualScroller {
+        "childHeight"?: number;
+        "containerClassName"?: string;
+        "containerHeight"?: number;
+        "containerType"?: VirtualScrollContainerType;
+    }
     interface IntrinsicElements {
         "cf-app-header": CfAppHeader;
         "cf-app-header-action-menu": CfAppHeaderActionMenu;
@@ -229,6 +249,7 @@ declare namespace LocalJSX {
         "cf-tab": CfTab;
         "cf-tabs": CfTabs;
         "cf-typography": CfTypography;
+        "cf-virtual-scroller": CfVirtualScroller;
     }
 }
 export { LocalJSX as JSX };
@@ -247,6 +268,7 @@ declare module "@stencil/core" {
             "cf-tab": LocalJSX.CfTab & JSXBase.HTMLAttributes<HTMLCfTabElement>;
             "cf-tabs": LocalJSX.CfTabs & JSXBase.HTMLAttributes<HTMLCfTabsElement>;
             "cf-typography": LocalJSX.CfTypography & JSXBase.HTMLAttributes<HTMLCfTypographyElement>;
+            "cf-virtual-scroller": LocalJSX.CfVirtualScroller & JSXBase.HTMLAttributes<HTMLCfVirtualScrollerElement>;
         }
     }
 }
