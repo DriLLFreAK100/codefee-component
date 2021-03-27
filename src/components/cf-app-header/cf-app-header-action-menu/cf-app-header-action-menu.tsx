@@ -1,4 +1,3 @@
-import { SlotNames } from '../../../common/slot-names';
 import {
   Component,
   h,
@@ -38,7 +37,7 @@ export class CfAppHeaderActionMenu {
         visible={this.isOpen}
         onClose={this.handleCloseActionMenu.bind(this)}
       >
-        <div slot={SlotNames['cfSideDrawer-drawer-content']}>
+        <div slot="drawer-content">
           <slot />
         </div>
       </cf-side-drawer>

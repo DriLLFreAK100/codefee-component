@@ -1,6 +1,5 @@
 import { Event, EventEmitter, HTMLStencilElement } from '@stencil/core/internal';
 import { INavMenu } from './cf-app-header-menu/cf-app-header-menu';
-import { SlotNames } from '../../common/slot-names';
 import {
   Component,
   Element,
@@ -73,7 +72,7 @@ export class CfAppHeader {
         >
           <nav
             class="cfAppHeader__nav"
-            slot={SlotNames['cfSideDrawer-drawer-content']}
+            slot="drawer-content"
           >
             <ul>
               <slot name="nav-menu" />

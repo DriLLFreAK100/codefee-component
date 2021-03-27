@@ -1,5 +1,11 @@
-import { Component, Host, h, Prop } from '@stencil/core';
+import { flatten } from '../../utils';
 import { TypographyType } from '../cf-typography/cf-typography';
+import {
+  Component,
+  h,
+  Host,
+  Prop,
+} from '@stencil/core';
 
 @Component({
   tag: 'cf-link',
@@ -14,11 +20,16 @@ export class CfLink {
   @Prop() typographyType: TypographyType = 'subtitle1';
 
   render() {
+    const className = flatten(`
+      cfLink 
+      ${this.underline ? 'underline' : ''}
+    `);
+
     return (
       <Host>
         <cf-typography type={this.typographyType}>
           <a
-            class={`cfLink ${this.underline ? 'underline' : ''}`}
+            class={className}
             href={this.href}
             style={this.styles}
             target={this.newTab ? '_blank' : ''}

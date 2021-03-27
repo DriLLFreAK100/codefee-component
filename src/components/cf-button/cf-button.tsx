@@ -1,4 +1,5 @@
 import { ButtonType } from '../../common/types';
+import { flatten } from '../../utils';
 import {
   Component,
   h,
@@ -20,10 +21,15 @@ export class CfButton {
       ? this.text
       : <slot></slot>;
 
+    const className = flatten(
+      `cfButton 
+      ${this.type}
+    `);
+
     return (
       <Host>
         <button
-          class={`cfButton ${this.type}`}
+          class={className}
           disabled={this.disabled}
         >
           <cf-typography type="button">

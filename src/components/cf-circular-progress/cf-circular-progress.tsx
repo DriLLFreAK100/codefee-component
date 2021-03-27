@@ -1,5 +1,13 @@
-import { Component, Host, h, Prop, State, Watch } from '@stencil/core';
 import { cvar } from '../../utils/style-helper';
+import { flatten } from '../../utils';
+import {
+  Component,
+  h,
+  Host,
+  Prop,
+  State,
+  Watch,
+} from '@stencil/core';
 
 export type CircularProgressType = 'determinate' | 'indeterminate';
 export type CircularProgressColor = 'primary' | 'secondary';
@@ -45,16 +53,26 @@ export class CfCircularProgress {
   }
 
   render() {
+    const svgClassName = flatten(`
+      cfCircularProgress__svg 
+      ${this.type}
+    `);
+
+    const circleClassName = flatten(`
+      cfCircularProgress__svg__circle 
+      ${this.type}
+    `);
+
     return (
       <Host>
         <div class="cfCircularProgress">
           <svg
-            class={`cfCircularProgress__svg ${this.type}`}
+            class={svgClassName}
             type={this.type}
             viewBox="22 22 44 44"
           >
             <circle
-              class={`cfCircularProgress__svg__circle ${this.type}`}
+              class={circleClassName}
               stroke={getColor(this.color)}
               style={this.determinateStyle}
               cx="44"

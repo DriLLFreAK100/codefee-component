@@ -1,4 +1,4 @@
-import { SlotNames } from '../../common/slot-names';
+import { flatten } from '../../utils';
 import {
   Component,
   Event,
@@ -26,9 +26,15 @@ export class CfSideDrawer {
   }
 
   render() {
+    const className = flatten(`
+      cfSideDrawer 
+      ${this.visible ? 'visible' : ''} 
+      ${this.position}
+    `);
+
     return (
       <Host>
-        <div class={`cfSideDrawer ${this.visible ? 'visible' : ''} ${this.position}`}>
+        <div class={className}>
           <div class="cfSideDrawer__title">
             <cf-typography type="h5">{this.drawerTitle}</cf-typography>
             <div>
@@ -41,7 +47,7 @@ export class CfSideDrawer {
           </div>
           <cf-divider />
           <div class="cfSideDrawer__drawerContent">
-            <slot name={SlotNames['cfSideDrawer-drawer-content']} />
+            <slot name="drawer-content" />
           </div>
         </div>
         <div class={`overlay ${this.visible ? 'visible' : ''}`} onClick={this.handleOnClickClose.bind(this)} />

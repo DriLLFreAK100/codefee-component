@@ -1,4 +1,5 @@
 import { ButtonType } from '../../common/types';
+import { flatten } from '../../utils';
 import {
   Component,
   h,
@@ -16,9 +17,14 @@ export class CfIconButton {
   @Prop() icon: string;
 
   render() {
+    const className = flatten(`
+      cfIconButton 
+      ${this.type}
+    `);
+
     return (
       <Host>
-        <button class={`cfIconButton ${this.type}`}>
+        <button class={className}>
           {
             this.icon
               ? <i class={this.icon}></i>
