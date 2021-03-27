@@ -1,4 +1,4 @@
-import { ColorType } from '../../../common/types';
+import { flatten } from '../../../utils';
 import {
   Component,
   Event,
@@ -16,7 +16,6 @@ import {
 export class CfTab {
   @Event() clickTab: EventEmitter<any>;
   @Prop() active: boolean = false;
-  @Prop() color: ColorType = 'primary';
   @Prop() tabId: any;
 
   handleOnClick() {
@@ -24,14 +23,17 @@ export class CfTab {
   }
 
   render() {
+    const className = flatten(`cf-tab ${this.active ? 'active' : ''}`);
+
     return (
       <Host
-        class={`${this.active ? 'active' : ''} ${this.color}`}
         onClick={this.handleOnClick.bind(this)}
       >
-        <cf-typography type="subtitle1">
-          <slot />
-        </cf-typography>
+        <div class={className}>
+          <cf-typography type="subtitle1">
+            <slot />
+          </cf-typography>
+        </div>
       </Host>
     );
   }

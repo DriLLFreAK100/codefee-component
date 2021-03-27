@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { INavMenu } from "./components/cf-app-header/cf-app-header-menu/cf-app-header-menu";
-import { ButtonType, ColorType, CssUnits, GutterSize } from "./common/types";
+import { ButtonType, CssUnits, GutterSize } from "./common/types";
 import { CircularProgressColor, CircularProgressType } from "./components/cf-circular-progress/cf-circular-progress";
 import { TypographyType } from "./components/cf-typography/cf-typography";
 import { SideDrawerPosition } from "./components/cf-side-drawer/cf-side-drawer";
@@ -58,7 +58,6 @@ export namespace Components {
     }
     interface CfTab {
         "active": boolean;
-        "color": ColorType;
         "tabId": any;
     }
     interface CfTabs {
@@ -220,7 +219,6 @@ declare namespace LocalJSX {
     }
     interface CfTab {
         "active"?: boolean;
-        "color"?: ColorType;
         "onClickTab"?: (event: CustomEvent<any>) => void;
         "tabId"?: any;
     }

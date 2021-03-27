@@ -1,70 +1,49 @@
 @import '../../../styles/functions.scss';
 
 :host {
+  box-sizing: border-box;
+  display: flex;
+  height: rem(48);
+  flex-grow: 1;
+  flex-basis: 0;
+}
+
+.cf-tab {
+  align-items: center;
   border-radius: rem(4) rem(4) 0 0;
+  box-sizing: border-box;
   cursor: pointer;
-  display: block;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
   text-transform: uppercase;
-}
+  transition: background-color var(--transition-hover) ease-in-out;
 
-:host(.active) {
-  display: block;
-  pointer-events: none;
-  transition: background-color var(--transition-toggle) ease-in-out, border-bottom var(--transition-hover) ease-in-out;
-}
+  &:hover {
+    background: var(--color-primary);
 
-:host(.active.default) {
-  background-color: var(--color-default-light);
-
-  & cf-typography {
-    color: var(--color-default-on);
+    & cf-typography {
+      color: var(--color-primary-on);
+    }
   }
-}
 
-:host(.active.primary) {
-  background-color: var(--color-primary-light);
+  &:active {
+    background: var(--color-primary-dark);
 
-  & cf-typography {
-    color: var(--color-primary-on);
+    & cf-typography {
+      color: var(--color-primary-on);
+    }
   }
-}
 
-:host(.active.secondary) {
-  background-color: var(--color-secondary-light);
+  &.active {
+    background-color: var(--color-primary-light);
+    border-bottom: rem(4) solid var(--color-secondary);
+    pointer-events: none;
+    transition: background-color var(--transition-toggle) ease-in-out, border-bottom var(--transition-hover) ease-in-out;
 
-  & cf-typography {
-    color: var(--color-secondary-on);
-  }
-}
-
-:host(.active.info) {
-  background-color: var(--color-info-light);
-
-  & cf-typography {
-    color: var(--color-info-on);
-  }
-}
-
-:host(.active.success) {
-  background-color: var(--color-success-light);
-
-  & cf-typography {
-    color: var(--color-success-on);
-  }
-}
-
-:host(.active.error) {
-  background-color: var(--color-error-light);
-
-  & cf-typography {
-    color: var(--color-error-on);
-  }
-}
-
-:host(.active.warning) {
-  background-color: var(--color-warning-light);
-
-  & cf-typography {
-    color: var(--color-warning-on);
+    & cf-typography {
+      color: var(--color-primary-on);
+    }
   }
 }
