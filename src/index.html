@@ -123,6 +123,98 @@
     </cf-virtual-scroller>
     <br /><br />
 
+    <!-- Tabs -->
+    <cf-typography type="h5">Tabs</cf-typography>
+    <cf-divider></cf-divider>
+    <cf-tabs id="tabs">
+      <cf-tab tab-id="1" color="primary" active>Tab 1</cf-tab>
+      <cf-tab tab-id="2" color="primary">Tab 2</cf-tab>
+      <cf-tab tab-id="3" color="primary">Tab 3</cf-tab>
+      <div slot="content" style="text-align: center">
+        <cf-typography type="h3">Heading</cf-typography>
+        <cf-typography>Contents</cf-typography>
+        <cf-button>Action</cf-button>
+      </div>
+    </cf-tabs>
+    <br /><br />
+
+    <!-- Button -->
+    <cf-typography type="h5" gutter-bottom="g4">Button</cf-typography>
+    <cf-divider></cf-divider>
+    <cf-button>Click Me!</cf-button>
+    <cf-button type="secondary">Click Me!</cf-button>
+    <cf-button type="default">Click Me!</cf-button>
+    <cf-button type="subtle">Click Me!</cf-button>
+    <cf-button type="info">Click Me!</cf-button>
+    <cf-button type="success">Click Me!</cf-button>
+    <cf-button type="warning">Click Me!</cf-button>
+    <cf-button type="error">Click Me!</cf-button>
+    <br /><br />
+
+    <!-- Icon Button -->
+    <cf-typography type="h5" gutter-bottom="g4">Icon Button</cf-typography>
+    <cf-divider></cf-divider>
+    <cf-icon-button icon="fas fa-camera"></cf-icon-button>
+    <cf-icon-button icon="fas fa-camera" type="secondary"></cf-icon-button>
+    <cf-icon-button icon="fas fa-camera" type="default"></cf-icon-button>
+    <cf-icon-button icon="fas fa-camera" type="subtle"></cf-icon-button>
+    <cf-icon-button icon="fas fa-camera" type="info"></cf-icon-button>
+    <cf-icon-button icon="fas fa-camera" type="success"></cf-icon-button>
+    <cf-icon-button icon="fas fa-camera" type="warning"></cf-icon-button>
+    <cf-icon-button icon="fas fa-camera" type="error"></cf-icon-button>
+    <br /><br />
+
+    <!-- Circular Progress -->
+    <cf-typography type="h5" gutter-bottom="g4">Circular Progress</cf-typography>
+    <cf-divider></cf-divider>
+    <cf-circular-progress></cf-circular-progress>
+    <cf-circular-progress color="secondary"></cf-circular-progress>
+    <cf-circular-progress id="determinate-circular-progress" type="determinate"></cf-circular-progress>
+    <br /><br />
+
+    <!-- Link -->
+    <cf-typography type="h5">Link</cf-typography>
+    <cf-divider></cf-divider>
+    <cf-link href="http://google.com">To Google</cf-link>
+    <br /><br />
+
+    <!-- App Header -->
+    <cf-typography type="h5" gutter-bottom="g4">App Header</cf-typography>
+    <cf-divider></cf-divider>
+    <cf-app-header id="app-header" app-name="My App Name" drawer-title="Menu Title">
+      <cf-app-header-menu slot="nav-menu" menu-title="Page 1" active link=""></cf-app-header-menu>
+      <cf-app-header-menu slot="nav-menu" menu-title="Page 2" link=""></cf-app-header-menu>
+      <cf-app-header-menu slot="nav-menu" menu-title="Page 3" link=""></cf-app-header-menu>
+      <cf-app-header-menu slot="nav-menu">
+        <div>Custom Node</div>
+      </cf-app-header-menu>
+      <cf-app-header-action-menu slot="action-menu" icon="fas fa-user-circle" title="Account">
+        <cf-button type="error">Logout</cf-button>
+      </cf-app-header-action-menu>
+      <cf-app-header-action-menu slot="action-menu" icon="fas fa-cog" title="Settings">
+        <cf-button>Update</cf-button>
+      </cf-app-header-action-menu>
+    </cf-app-header>
+    <br /><br />
+
+    <!-- Typography -->
+    <cf-typography type="h5" gutter-bottom="g4">Typographys</cf-typography>
+    <cf-divider></cf-divider>
+    <cf-typography type="h1">H1</cf-typography>
+    <cf-typography type="h2">H2</cf-typography>
+    <cf-typography type="h3">H3</cf-typography>
+    <cf-typography type="h4">H4</cf-typography>
+    <cf-typography type="h5">H5</cf-typography>
+    <cf-typography type="h6">H6</cf-typography>
+    <cf-typography type="subtitle1">subtitle1</cf-typography>
+    <cf-typography type="subtitle2">subtitle2</cf-typography>
+    <cf-typography type="body1">body1</cf-typography>
+    <cf-typography type="body2">body2</cf-typography>
+    <cf-typography type="p">p</cf-typography>
+    <cf-typography type="caption">caption</cf-typography>
+    <cf-typography type="button">button</cf-typography>
+    <br /><br />
+
     <!-- Scripts -->
     <script type="module">
       // Theme Init
