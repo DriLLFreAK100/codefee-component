@@ -1,151 +1,127 @@
 @import '../../styles/functions.scss';
 @import '../../styles/gutterBottom.scss';
 
-:host(.g0) {
-  margin-bottom: rem(0);
+:host {
+  display: block;
 }
 
-:host(.g4) {
-  margin-bottom: rem(4);
+.reset {
+  margin: 0;
+  padding: 0;
+  border: 0;
 }
 
-:host(.g8) {
-  margin-bottom: rem(8);
+.h1 {
+  @extend .reset;
+  font-family: var(--font-family-primary);
+  font-size: rem(96);
+  line-height: rem(112);
+  font-weight: lighter;
+  letter-spacing: rem(-1.5);
 }
 
-:host(.g12) {
-  margin-bottom: rem(12);
+.h2 {
+  @extend .reset;
+  font-family: var(--font-family-primary);
+  font-size: rem(60);
+  line-height: rem(72);
+  font-weight: lighter;
+  letter-spacing: rem(-0.5);
 }
 
-:host(.g16) {
-  margin-bottom: rem(16);
+.h3 {
+  @extend .reset;
+  font-family: var(--font-family-primary);
+  font-size: rem(48);
+  line-height: rem(60);
+  font-weight: normal;
+  letter-spacing: rem(0);
 }
 
-:host(.g20) {
+.h4 {
+  @extend .reset;
+  font-family: var(--font-family-primary);
+  font-size: rem(36);
+  line-height: rem(48);
+  font-weight: normal;
+  letter-spacing: rem(0.25);
+}
+
+.h5 {
+  @extend .reset;
+  font-family: var(--font-family-primary);
+  font-size: rem(24);
+  line-height: rem(36);
+  font-weight: normal;
+  letter-spacing: rem(0);
+}
+
+.h6 {
+  @extend .reset;
+  font-family: var(--font-family-primary);
+  font-size: rem(20);
+  line-height: rem(32);
+  font-weight: 500;
+  letter-spacing: rem(0.15);
+}
+
+.subtitle1 {
+  @extend .reset;
+  font-family: var(--font-family-primary);
+  font-size: rem(16);
+  line-height: rem(16);
+  font-weight: normal;
+  letter-spacing: rem(0.15);
+}
+
+.subtitle2 {
+  @extend .reset;
+  font-family: var(--font-family-primary);
+  font-size: rem(14);
+  line-height: rem(16);
+  font-weight: 500;
+  letter-spacing: rem(0.1);
+}
+
+.body1 {
+  @extend .reset;
+  font-family: var(--font-family-secondary);
+  font-size: rem(16);
+  font-weight: normal;
+  letter-spacing: rem(0.5);
+}
+
+.body2 {
+  @extend .reset;
+  font-family: var(--font-family-secondary);
+  font-size: rem(14);
+  font-weight: normal;
+  letter-spacing: rem(0.25);
+}
+
+.p {
+  @extend .reset;
+  font-family: var(--font-family-secondary);
+  font-size: rem(16);
+  line-height: rem(24);
   margin-bottom: rem(20);
 }
 
-:host {
+.caption {
+  @extend .reset;
   display: block;
+  font-family: var(--font-family-secondary);
+  font-size: rem(12);
+  font-weight: normal;
+  letter-spacing: rem(0.4);
+}
 
-  .reset {
-    margin: 0;
-    padding: 0;
-    border: 0;
-  }
-
-  .h1 {
-    @extend .reset;
-    font-family: var(--font-family-primary);
-    font-size: rem(96);
-    line-height: rem(112);
-    font-weight: lighter;
-    letter-spacing: rem(-1.5);
-  }
-
-  .h2 {
-    @extend .reset;
-    font-family: var(--font-family-primary);
-    font-size: rem(60);
-    line-height: rem(72);
-    font-weight: lighter;
-    letter-spacing: rem(-0.5);
-  }
-
-  .h3 {
-    @extend .reset;
-    font-family: var(--font-family-primary);
-    font-size: rem(48);
-    line-height: rem(60);
-    font-weight: normal;
-    letter-spacing: rem(0);
-  }
-
-  .h4 {
-    @extend .reset;
-    font-family: var(--font-family-primary);
-    font-size: rem(36);
-    line-height: rem(48);
-    font-weight: normal;
-    letter-spacing: rem(0.25);
-  }
-
-  .h5 {
-    @extend .reset;
-    font-family: var(--font-family-primary);
-    font-size: rem(24);
-    line-height: rem(36);
-    font-weight: normal;
-    letter-spacing: rem(0);
-  }
-
-  .h6 {
-    @extend .reset;
-    font-family: var(--font-family-primary);
-    font-size: rem(20);
-    line-height: rem(32);
-    font-weight: 500;
-    letter-spacing: rem(0.15);
-  }
-
-  .subtitle1 {
-    @extend .reset;
-    font-family: var(--font-family-primary);
-    font-size: rem(16);
-    line-height: rem(16);
-    font-weight: normal;
-    letter-spacing: rem(0.15);
-  }
-
-  .subtitle2 {
-    @extend .reset;
-    font-family: var(--font-family-primary);
-    font-size: rem(14);
-    line-height: rem(16);
-    font-weight: 500;
-    letter-spacing: rem(0.1);
-  }
-
-  .body1 {
-    @extend .reset;
-    font-family: var(--font-family-secondary);
-    font-size: rem(16);
-    font-weight: normal;
-    letter-spacing: rem(0.5);
-  }
-
-  .body2 {
-    @extend .reset;
-    font-family: var(--font-family-secondary);
-    font-size: rem(14);
-    font-weight: normal;
-    letter-spacing: rem(0.25);
-  }
-
-  .p {
-    @extend .reset;
-    font-family: var(--font-family-secondary);
-    font-size: rem(16);
-    line-height: rem(24);
-    margin-bottom: rem(20);
-  }
-
-  .caption {
-    @extend .reset;
-    display: block;
-    font-family: var(--font-family-secondary);
-    font-size: rem(12);
-    font-weight: normal;
-    letter-spacing: rem(0.4);
-  }
-
-  .button {
-    @extend .reset;
-    display: block;
-    font-family: var(--font-family-secondary);
-    font-weight: 500;
-    font-size: rem(14);
-    letter-spacing: rem(1.25);
-    text-transform: uppercase;
-  }
+.button {
+  @extend .reset;
+  display: block;
+  font-family: var(--font-family-secondary);
+  font-weight: 500;
+  font-size: rem(14);
+  letter-spacing: rem(1.25);
+  text-transform: uppercase;
 }

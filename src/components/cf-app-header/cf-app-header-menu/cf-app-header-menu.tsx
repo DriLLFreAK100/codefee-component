@@ -1,4 +1,5 @@
 import { cvar } from '../../../utils/style-helper';
+import { flatten } from '../../../utils';
 import {
   Component,
   h,
@@ -24,6 +25,8 @@ export class CfAppHeaderMenu {
   @Prop() menuTitle: string;
 
   render() {
+    const className = flatten(`${this.active ? 'active' : ''}`);
+
     const styles: { [key: string]: string } = {};
     if (this.active) {
       styles.color = cvar('--color-primary-on');
@@ -32,7 +35,7 @@ export class CfAppHeaderMenu {
     }
 
     return (
-      <Host class={`${this.active ? 'active' : ''}`}>
+      <Host class={className}>
         <li class="cfAppHeaderMenu">
           <slot>
             <cf-link
