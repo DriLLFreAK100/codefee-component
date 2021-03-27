@@ -6,12 +6,11 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { INavMenu } from "./components/cf-app-header/cf-app-header-menu/cf-app-header-menu";
-import { ButtonType, ColorType, GutterSize } from "./common/types";
+import { ButtonType, ColorType, CssUnits, GutterSize } from "./common/types";
 import { CircularProgressColor, CircularProgressType } from "./components/cf-circular-progress/cf-circular-progress";
 import { TypographyType } from "./components/cf-typography/cf-typography";
 import { SideDrawerPosition } from "./components/cf-side-drawer/cf-side-drawer";
 import { TypographyType as TypographyType1 } from "./components/cf-typography/cf-typography";
-import { VirtualScrollContainerType } from "./components/cf-virtual-scroller/cf-virtual-scroller";
 export namespace Components {
     interface CfAppHeader {
         "appName": string;
@@ -72,7 +71,9 @@ export namespace Components {
         "childHeight": number;
         "containerClassName": string;
         "containerHeight": number;
-        "containerType": VirtualScrollContainerType;
+        "cssUnit": CssUnits;
+        "innerContainerClassName": string;
+        "windowLimit": number;
     }
 }
 declare global {
@@ -234,7 +235,9 @@ declare namespace LocalJSX {
         "childHeight"?: number;
         "containerClassName"?: string;
         "containerHeight"?: number;
-        "containerType"?: VirtualScrollContainerType;
+        "cssUnit"?: CssUnits;
+        "innerContainerClassName"?: string;
+        "windowLimit"?: number;
     }
     interface IntrinsicElements {
         "cf-app-header": CfAppHeader;

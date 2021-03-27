@@ -1,3 +1,6 @@
+import debounce from 'lodash-es/debounce';
+import { CssUnits } from '../../common/types';
+import { flatten } from '../../utils';
 import {
   Component,
   Element,
@@ -6,8 +9,6 @@ import {
   State,
 } from '@stencil/core';
 
-export type VirtualScrollContainerType = 'div' | 'span' | 'tbody';
-
 @Component({
   tag: 'cf-virtual-scroller',
   styleUrl: 'cf-virtual-scroller.scss',
@@ -15,47 +16,140 @@ export type VirtualScrollContainerType = 'div' | 'span' | 'tbody';
 })
 export class CfVirtualScroller {
   @Element() el: HTMLElement;
-  @Prop() containerHeight: number = 100;
-  @Prop() containerType: VirtualScrollContainerType = 'div';
-  @Prop() containerClassName: string;
   @Prop() childHeight: number = 20;
+  @Prop() containerHeight: number = 100;
+  @Prop() containerClassName: string;
+  @Prop() innerContainerClassName: string;
+  @Prop() cssUnit: CssUnits = 'px';
+  @Prop() windowLimit: number = 5;
   @State() containerEl: HTMLElement;
+  @State() windowHeight: number = 100;
+  @State() children: HTMLElement[] = [];
+  @State() prevEndIndex: number = 0;
+  @State() prevStartIndex: number = 0;
 
   connectedCallback() {
-    let children = this.el.childNodes;
-    let itemPosition = 0;
+    // Init states
+    this.windowHeight = this.windowLimit * this.childHeight;
 
-    children.forEach((child: HTMLElement) => {
+    // Manipulate translation
+    this.el.childNodes.forEach((child: HTMLElement) => {
       if (child.tagName) {
-        child.style.color = 'red';
-        child.style.top = `${itemPosition * this.childHeight}px`;
-        itemPosition++;
+        const id = this.children.length;
+        child.id = id.toString();
+
+        child.style.height = `${this.childHeight}${this.cssUnit}`;
+        child.style.transform = `translateY(${id * this.childHeight}${this.cssUnit})`;
+        this.children.push(child);
       }
     });
+
+    // Initial render
+    const renderCounts = (this.containerHeight + (this.windowHeight * 2)) / this.childHeight;
+
+    if (this.children.length > renderCounts) {
+      this.prevEndIndex = renderCounts - 1;
+      this.removeChildren(renderCounts, this.children.length - 1);
+    }
   }
 
-  handleOnScroll() {
-    //scrollTop - How much has been scrolled
-    //scrollHeight - total scroll area
-    console.dir(this.containerEl.scrollTop);
+  removeChildren(startIndex: number, endIndex: number) {
+    for (let i = endIndex; i >= startIndex; i--) {
+      this.el.children.item(i).remove();
+    }
   }
 
-  render() {
-    const styles: { [key: string]: string; } = {
-      height: `${this.containerHeight}px`,
+  setChildren(startIndex: number, endIndex: number) {
+    // Clean start
+    for (let i = 0; i < startIndex; i++) {
+      this.el.children[0].children[0].children.namedItem(i.toString())?.remove();
     }
 
-    const Component = this.containerType;
+    // Clean end
+    for (let i = endIndex + 1; i <= this.prevEndIndex; i++) {
+      this.el.children[0].children[0].children.namedItem(i.toString())?.remove();
+    }
+
+    // Insert 
+    for (let i = endIndex; i >= startIndex; i--) {
+      const root = this.el.children[0].children[0];
+      const node = root.children.namedItem(i.toString());
+
+      if (!node) {
+        const postNode = root.children.namedItem((i + 1).toString());
+
+        if (postNode) {
+          root.insertBefore(this.children[i], postNode);
+
+        } else {
+          if (this.prevStartIndex > startIndex) {
+            root.prepend(this.children[i]);
+          } else if (this.prevStartIndex < startIndex) {
+            root.append(this.children[i]);
+          } else {
+            root.append(this.children[i]);
+          }
+        }
+      }
+    }
+
+    // Track current indices
+    this.prevStartIndex = startIndex;
+    this.prevEndIndex = endIndex;
+  }
+
+  handleOnScroll = debounce(() => {
+    let startIndex = 0;
+    let endIndex = 0;
+
+    // Upper window
+    const outOfBound = this.containerEl.scrollTop - this.windowHeight;
+    if (outOfBound > 0) {
+      startIndex = Math.round((outOfBound / this.childHeight));
+    }
+    const upperWindowItemCount = outOfBound >= 0 ? startIndex + this.windowLimit : startIndex;
+
+    // Lower window
+    const inScopeCount = Math.round(this.containerHeight / this.childHeight);
+    const maxEndIndex = upperWindowItemCount + inScopeCount + (this.windowLimit);
+    endIndex = (maxEndIndex > this.children.length) ? this.children.length - 1 : maxEndIndex - 1;
+
+    this.setChildren(startIndex, endIndex);
+  }, 16);
+
+  render() {
+    const className = flatten(`
+      cfVirtualScroller 
+      ${this.containerClassName ?? ''}
+    `);
+
+    const innerClassName = flatten(`
+      cfVirtualScroller__inner 
+      ${this.innerContainerClassName ?? ''}
+    `);
+
+    const styles: { [key: string]: string; } = {
+      height: `${this.containerHeight}${this.cssUnit}`,
+    };
+
+    const innerStyles: { [key: string]: string; } = {
+      height: `${this.children.length * this.childHeight}${this.cssUnit}`,
+    };
 
     return (
-      <Component
-        class={`cfVirtualScroller ${this.containerClassName}`}
+      <div
+        class={className}
         ref={el => this.containerEl = el}
         style={styles}
         onScroll={this.handleOnScroll.bind(this)}
       >
-        <slot></slot>
-      </Component>
+        <div
+          class={innerClassName}
+          style={innerStyles}
+        >
+          <slot></slot>
+        </div>
+      </div>
     );
   }
 
