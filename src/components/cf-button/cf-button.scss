@@ -15,6 +15,7 @@
     @extend .reset;
     border: none;
     border-radius: rem(4);
+    box-shadow: 0 rem(2) rem(4) 0 var(--color-shadow);
     box-sizing: border-box;
     cursor: pointer;
     height: rem(48);
