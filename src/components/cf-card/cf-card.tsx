@@ -22,7 +22,7 @@ export class CfCard {
     if (this.width) styles.width = this.width;
 
     return (
-      <Host class={this.padding}>
+      <Host class={this.padding} style={styles}>
         <slot></slot>
       </Host>
     );
