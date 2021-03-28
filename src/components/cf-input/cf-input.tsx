@@ -35,7 +35,7 @@ export class CfInput {
         </label>
         <input
           class={inputClassName}
-          onChange={this.handleInputChange}
+          onInput={this.handleInputChange.bind(this)}
           placeholder={this.placeholder}
           type={this.type}
           value={this.value}
