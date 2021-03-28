@@ -1,0 +1,10 @@
+@import '../../styles/functions.scss';
+@import '../../styles/padding.scss';
+
+:host {
+  background-color: white;
+  border-radius: rem(4);
+  box-shadow: 0 rem(2) rem(4) 0 var(--color-shadow);
+  display: block;
+  padding: rem(16);
+}

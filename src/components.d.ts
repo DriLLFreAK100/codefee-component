@@ -32,6 +32,9 @@ export namespace Components {
         "text": string;
         "type": ButtonType;
     }
+    interface CfCard {
+        "padding": GutterSize;
+    }
     interface CfCircularProgress {
         "color": CircularProgressColor;
         "progress": number;
@@ -100,6 +103,12 @@ declare global {
         prototype: HTMLCfButtonElement;
         new (): HTMLCfButtonElement;
     };
+    interface HTMLCfCardElement extends Components.CfCard, HTMLStencilElement {
+    }
+    var HTMLCfCardElement: {
+        prototype: HTMLCfCardElement;
+        new (): HTMLCfCardElement;
+    };
     interface HTMLCfCircularProgressElement extends Components.CfCircularProgress, HTMLStencilElement {
     }
     var HTMLCfCircularProgressElement: {
@@ -159,6 +168,7 @@ declare global {
         "cf-app-header-action-menu": HTMLCfAppHeaderActionMenuElement;
         "cf-app-header-menu": HTMLCfAppHeaderMenuElement;
         "cf-button": HTMLCfButtonElement;
+        "cf-card": HTMLCfCardElement;
         "cf-circular-progress": HTMLCfCircularProgressElement;
         "cf-divider": HTMLCfDividerElement;
         "cf-icon-button": HTMLCfIconButtonElement;
@@ -191,6 +201,9 @@ declare namespace LocalJSX {
         "disabled"?: boolean;
         "text"?: string;
         "type"?: ButtonType;
+    }
+    interface CfCard {
+        "padding"?: GutterSize;
     }
     interface CfCircularProgress {
         "color"?: CircularProgressColor;
@@ -242,6 +255,7 @@ declare namespace LocalJSX {
         "cf-app-header-action-menu": CfAppHeaderActionMenu;
         "cf-app-header-menu": CfAppHeaderMenu;
         "cf-button": CfButton;
+        "cf-card": CfCard;
         "cf-circular-progress": CfCircularProgress;
         "cf-divider": CfDivider;
         "cf-icon-button": CfIconButton;
@@ -261,6 +275,7 @@ declare module "@stencil/core" {
             "cf-app-header-action-menu": LocalJSX.CfAppHeaderActionMenu & JSXBase.HTMLAttributes<HTMLCfAppHeaderActionMenuElement>;
             "cf-app-header-menu": LocalJSX.CfAppHeaderMenu & JSXBase.HTMLAttributes<HTMLCfAppHeaderMenuElement>;
             "cf-button": LocalJSX.CfButton & JSXBase.HTMLAttributes<HTMLCfButtonElement>;
+            "cf-card": LocalJSX.CfCard & JSXBase.HTMLAttributes<HTMLCfCardElement>;
             "cf-circular-progress": LocalJSX.CfCircularProgress & JSXBase.HTMLAttributes<HTMLCfCircularProgressElement>;
             "cf-divider": LocalJSX.CfDivider & JSXBase.HTMLAttributes<HTMLCfDividerElement>;
             "cf-icon-button": LocalJSX.CfIconButton & JSXBase.HTMLAttributes<HTMLCfIconButtonElement>;

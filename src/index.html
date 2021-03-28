@@ -16,166 +16,188 @@
   </head>
 
   <body>
-    <!-- Tabs -->
+    <!-- Card -->
+    <cf-typography type="h5">Card</cf-typography>
+    <cf-divider></cf-divider>
+    <cf-card>
+      <div>
+        <cf-typography type="h4">Card Content</cf-typography>
+      </div>
+    </cf-card>
+    <br /><br />
+
+    <!-- Virtual Scroller -->
     <cf-typography type="h5">Virtual Scroller</cf-typography>
     <cf-divider></cf-divider>
-    <cf-virtual-scroller id="virtual-scroller" container-height="100" child-height="20">
-      <div style="height: 20px">1</div>
-      <div style="height: 20px">2</div>
-      <div style="height: 20px">3</div>
-      <div style="height: 20px">4</div>
-      <div style="height: 20px">5</div>
-      <div style="height: 20px">6</div>
-      <div style="height: 20px">7</div>
-      <div style="height: 20px">8</div>
-      <div style="height: 20px">9</div>
-      <div style="height: 20px">10</div>
-      <div style="height: 20px">11</div>
-      <div style="height: 20px">12</div>
-      <div style="height: 20px">13</div>
-      <div style="height: 20px">14</div>
-      <div style="height: 20px">15</div>
-      <div style="height: 20px">16</div>
-      <div style="height: 20px">17</div>
-      <div style="height: 20px">18</div>
-      <div style="height: 20px">19</div>
-      <div style="height: 20px">20</div>
-      <div style="height: 20px">21</div>
-      <div style="height: 20px">22</div>
-      <div style="height: 20px">23</div>
-      <div style="height: 20px">24</div>
-      <div style="height: 20px">25</div>
-      <div style="height: 20px">26</div>
-      <div style="height: 20px">27</div>
-      <div style="height: 20px">28</div>
-      <div style="height: 20px">29</div>
-      <div style="height: 20px">30</div>
-      <div style="height: 20px">31</div>
-      <div style="height: 20px">32</div>
-      <div style="height: 20px">33</div>
-      <div style="height: 20px">34</div>
-      <div style="height: 20px">35</div>
-      <div style="height: 20px">36</div>
-      <div style="height: 20px">37</div>
-      <div style="height: 20px">38</div>
-      <div style="height: 20px">39</div>
-      <div style="height: 20px">40</div>
-      <div style="height: 20px">41</div>
-      <div style="height: 20px">42</div>
-      <div style="height: 20px">43</div>
-      <div style="height: 20px">44</div>
-      <div style="height: 20px">45</div>
-      <div style="height: 20px">46</div>
-      <div style="height: 20px">47</div>
-      <div style="height: 20px">48</div>
-      <div style="height: 20px">49</div>
-      <div style="height: 20px">50</div>
-      <div style="height: 20px">51</div>
-      <div style="height: 20px">52</div>
-      <div style="height: 20px">53</div>
-      <div style="height: 20px">54</div>
-      <div style="height: 20px">55</div>
-      <div style="height: 20px">56</div>
-      <div style="height: 20px">57</div>
-      <div style="height: 20px">58</div>
-      <div style="height: 20px">59</div>
-      <div style="height: 20px">60</div>
-      <div style="height: 20px">61</div>
-      <div style="height: 20px">62</div>
-      <div style="height: 20px">63</div>
-      <div style="height: 20px">64</div>
-      <div style="height: 20px">65</div>
-      <div style="height: 20px">66</div>
-      <div style="height: 20px">67</div>
-      <div style="height: 20px">68</div>
-      <div style="height: 20px">69</div>
-      <div style="height: 20px">70</div>
-      <div style="height: 20px">71</div>
-      <div style="height: 20px">72</div>
-      <div style="height: 20px">73</div>
-      <div style="height: 20px">74</div>
-      <div style="height: 20px">75</div>
-      <div style="height: 20px">76</div>
-      <div style="height: 20px">77</div>
-      <div style="height: 20px">78</div>
-      <div style="height: 20px">79</div>
-      <div style="height: 20px">80</div>
-      <div style="height: 20px">81</div>
-      <div style="height: 20px">82</div>
-      <div style="height: 20px">83</div>
-      <div style="height: 20px">84</div>
-      <div style="height: 20px">85</div>
-      <div style="height: 20px">86</div>
-      <div style="height: 20px">87</div>
-      <div style="height: 20px">88</div>
-      <div style="height: 20px">89</div>
-      <div style="height: 20px">90</div>
-      <div style="height: 20px">91</div>
-      <div style="height: 20px">92</div>
-      <div style="height: 20px">93</div>
-      <div style="height: 20px">94</div>
-      <div style="height: 20px">95</div>
-      <div style="height: 20px">96</div>
-      <div style="height: 20px">97</div>
-      <div style="height: 20px">98</div>
-      <div style="height: 20px">99</div>
-      <div style="height: 20px">100</div>
-    </cf-virtual-scroller>
+    <cf-card>
+      <cf-virtual-scroller id="virtual-scroller" container-height="100" child-height="20">
+        <div style="height: 20px">1</div>
+        <div style="height: 20px">2</div>
+        <div style="height: 20px">3</div>
+        <div style="height: 20px">4</div>
+        <div style="height: 20px">5</div>
+        <div style="height: 20px">6</div>
+        <div style="height: 20px">7</div>
+        <div style="height: 20px">8</div>
+        <div style="height: 20px">9</div>
+        <div style="height: 20px">10</div>
+        <div style="height: 20px">11</div>
+        <div style="height: 20px">12</div>
+        <div style="height: 20px">13</div>
+        <div style="height: 20px">14</div>
+        <div style="height: 20px">15</div>
+        <div style="height: 20px">16</div>
+        <div style="height: 20px">17</div>
+        <div style="height: 20px">18</div>
+        <div style="height: 20px">19</div>
+        <div style="height: 20px">20</div>
+        <div style="height: 20px">21</div>
+        <div style="height: 20px">22</div>
+        <div style="height: 20px">23</div>
+        <div style="height: 20px">24</div>
+        <div style="height: 20px">25</div>
+        <div style="height: 20px">26</div>
+        <div style="height: 20px">27</div>
+        <div style="height: 20px">28</div>
+        <div style="height: 20px">29</div>
+        <div style="height: 20px">30</div>
+        <div style="height: 20px">31</div>
+        <div style="height: 20px">32</div>
+        <div style="height: 20px">33</div>
+        <div style="height: 20px">34</div>
+        <div style="height: 20px">35</div>
+        <div style="height: 20px">36</div>
+        <div style="height: 20px">37</div>
+        <div style="height: 20px">38</div>
+        <div style="height: 20px">39</div>
+        <div style="height: 20px">40</div>
+        <div style="height: 20px">41</div>
+        <div style="height: 20px">42</div>
+        <div style="height: 20px">43</div>
+        <div style="height: 20px">44</div>
+        <div style="height: 20px">45</div>
+        <div style="height: 20px">46</div>
+        <div style="height: 20px">47</div>
+        <div style="height: 20px">48</div>
+        <div style="height: 20px">49</div>
+        <div style="height: 20px">50</div>
+        <div style="height: 20px">51</div>
+        <div style="height: 20px">52</div>
+        <div style="height: 20px">53</div>
+        <div style="height: 20px">54</div>
+        <div style="height: 20px">55</div>
+        <div style="height: 20px">56</div>
+        <div style="height: 20px">57</div>
+        <div style="height: 20px">58</div>
+        <div style="height: 20px">59</div>
+        <div style="height: 20px">60</div>
+        <div style="height: 20px">61</div>
+        <div style="height: 20px">62</div>
+        <div style="height: 20px">63</div>
+        <div style="height: 20px">64</div>
+        <div style="height: 20px">65</div>
+        <div style="height: 20px">66</div>
+        <div style="height: 20px">67</div>
+        <div style="height: 20px">68</div>
+        <div style="height: 20px">69</div>
+        <div style="height: 20px">70</div>
+        <div style="height: 20px">71</div>
+        <div style="height: 20px">72</div>
+        <div style="height: 20px">73</div>
+        <div style="height: 20px">74</div>
+        <div style="height: 20px">75</div>
+        <div style="height: 20px">76</div>
+        <div style="height: 20px">77</div>
+        <div style="height: 20px">78</div>
+        <div style="height: 20px">79</div>
+        <div style="height: 20px">80</div>
+        <div style="height: 20px">81</div>
+        <div style="height: 20px">82</div>
+        <div style="height: 20px">83</div>
+        <div style="height: 20px">84</div>
+        <div style="height: 20px">85</div>
+        <div style="height: 20px">86</div>
+        <div style="height: 20px">87</div>
+        <div style="height: 20px">88</div>
+        <div style="height: 20px">89</div>
+        <div style="height: 20px">90</div>
+        <div style="height: 20px">91</div>
+        <div style="height: 20px">92</div>
+        <div style="height: 20px">93</div>
+        <div style="height: 20px">94</div>
+        <div style="height: 20px">95</div>
+        <div style="height: 20px">96</div>
+        <div style="height: 20px">97</div>
+        <div style="height: 20px">98</div>
+        <div style="height: 20px">99</div>
+        <div style="height: 20px">100</div>
+      </cf-virtual-scroller>
+    </cf-card>
     <br /><br />
 
     <!-- Tabs -->
     <cf-typography type="h5">Tabs</cf-typography>
     <cf-divider></cf-divider>
-    <cf-tabs id="tabs">
-      <cf-tab tab-id="1" color="primary" active>Tab 1</cf-tab>
-      <cf-tab tab-id="2" color="primary">Tab 2</cf-tab>
-      <cf-tab tab-id="3" color="primary">Tab 3</cf-tab>
-      <div slot="content" style="text-align: center">
-        <cf-typography type="h3">Heading</cf-typography>
-        <cf-typography>Contents</cf-typography>
-        <cf-button>Action</cf-button>
-      </div>
-    </cf-tabs>
+    <cf-card>
+      <cf-tabs id="tabs">
+        <cf-tab tab-id="1" color="primary" active>Tab 1</cf-tab>
+        <cf-tab tab-id="2" color="primary">Tab 2</cf-tab>
+        <cf-tab tab-id="3" color="primary">Tab 3</cf-tab>
+        <div slot="content" style="text-align: center">
+          <cf-typography type="h3">Heading</cf-typography>
+          <cf-typography>Contents</cf-typography>
+          <cf-button>Action</cf-button>
+        </div>
+      </cf-tabs>
+    </cf-card>
     <br /><br />
 
     <!-- Button -->
     <cf-typography type="h5" gutter-bottom="g4">Button</cf-typography>
     <cf-divider></cf-divider>
-    <cf-button>Click Me!</cf-button>
-    <cf-button type="secondary">Click Me!</cf-button>
-    <cf-button type="default">Click Me!</cf-button>
-    <cf-button type="subtle">Click Me!</cf-button>
-    <cf-button type="info">Click Me!</cf-button>
-    <cf-button type="success">Click Me!</cf-button>
-    <cf-button type="warning">Click Me!</cf-button>
-    <cf-button type="error">Click Me!</cf-button>
+    <cf-card>
+      <cf-button>Click Me!</cf-button>
+      <cf-button type="secondary">Click Me!</cf-button>
+      <cf-button type="default">Click Me!</cf-button>
+      <cf-button type="subtle">Click Me!</cf-button>
+      <cf-button type="info">Click Me!</cf-button>
+      <cf-button type="success">Click Me!</cf-button>
+      <cf-button type="warning">Click Me!</cf-button>
+      <cf-button type="error">Click Me!</cf-button>
+    </cf-card>
     <br /><br />
 
     <!-- Icon Button -->
     <cf-typography type="h5" gutter-bottom="g4">Icon Button</cf-typography>
     <cf-divider></cf-divider>
-    <cf-icon-button icon="fas fa-camera"></cf-icon-button>
-    <cf-icon-button icon="fas fa-camera" type="secondary"></cf-icon-button>
-    <cf-icon-button icon="fas fa-camera" type="default"></cf-icon-button>
-    <cf-icon-button icon="fas fa-camera" type="subtle"></cf-icon-button>
-    <cf-icon-button icon="fas fa-camera" type="info"></cf-icon-button>
-    <cf-icon-button icon="fas fa-camera" type="success"></cf-icon-button>
-    <cf-icon-button icon="fas fa-camera" type="warning"></cf-icon-button>
-    <cf-icon-button icon="fas fa-camera" type="error"></cf-icon-button>
+    <cf-card>
+      <cf-icon-button icon="fas fa-camera"></cf-icon-button>
+      <cf-icon-button icon="fas fa-camera" type="secondary"></cf-icon-button>
+      <cf-icon-button icon="fas fa-camera" type="default"></cf-icon-button>
+      <cf-icon-button icon="fas fa-camera" type="subtle"></cf-icon-button>
+      <cf-icon-button icon="fas fa-camera" type="info"></cf-icon-button>
+      <cf-icon-button icon="fas fa-camera" type="success"></cf-icon-button>
+      <cf-icon-button icon="fas fa-camera" type="warning"></cf-icon-button>
+      <cf-icon-button icon="fas fa-camera" type="error"></cf-icon-button>
+    </cf-card>
     <br /><br />
 
     <!-- Circular Progress -->
     <cf-typography type="h5" gutter-bottom="g4">Circular Progress</cf-typography>
     <cf-divider></cf-divider>
-    <cf-circular-progress></cf-circular-progress>
-    <cf-circular-progress color="secondary"></cf-circular-progress>
-    <cf-circular-progress id="determinate-circular-progress" type="determinate"></cf-circular-progress>
+    <cf-card>
+      <cf-circular-progress></cf-circular-progress>
+      <cf-circular-progress color="secondary"></cf-circular-progress>
+      <cf-circular-progress id="determinate-circular-progress" type="determinate"></cf-circular-progress>
+    </cf-card>
     <br /><br />
 
     <!-- Link -->
     <cf-typography type="h5">Link</cf-typography>
     <cf-divider></cf-divider>
-    <cf-link href="http://google.com">To Google</cf-link>
+    <cf-card>
+      <cf-link href="http://google.com">To Google</cf-link>
+    </cf-card>
     <br /><br />
 
     <!-- App Header -->
@@ -200,19 +222,21 @@
     <!-- Typography -->
     <cf-typography type="h5" gutter-bottom="g4">Typographys</cf-typography>
     <cf-divider></cf-divider>
-    <cf-typography type="h1">H1</cf-typography>
-    <cf-typography type="h2">H2</cf-typography>
-    <cf-typography type="h3">H3</cf-typography>
-    <cf-typography type="h4">H4</cf-typography>
-    <cf-typography type="h5">H5</cf-typography>
-    <cf-typography type="h6">H6</cf-typography>
-    <cf-typography type="subtitle1">subtitle1</cf-typography>
-    <cf-typography type="subtitle2">subtitle2</cf-typography>
-    <cf-typography type="body1">body1</cf-typography>
-    <cf-typography type="body2">body2</cf-typography>
-    <cf-typography type="p">p</cf-typography>
-    <cf-typography type="caption">caption</cf-typography>
-    <cf-typography type="button">button</cf-typography>
+    <cf-card>
+      <cf-typography type="h1">H1</cf-typography>
+      <cf-typography type="h2">H2</cf-typography>
+      <cf-typography type="h3">H3</cf-typography>
+      <cf-typography type="h4">H4</cf-typography>
+      <cf-typography type="h5">H5</cf-typography>
+      <cf-typography type="h6">H6</cf-typography>
+      <cf-typography type="subtitle1">subtitle1</cf-typography>
+      <cf-typography type="subtitle2">subtitle2</cf-typography>
+      <cf-typography type="body1">body1</cf-typography>
+      <cf-typography type="body2">body2</cf-typography>
+      <cf-typography type="p">p</cf-typography>
+      <cf-typography type="caption">caption</cf-typography>
+      <cf-typography type="button">button</cf-typography>
+    </cf-card>
     <br /><br />
 
     <!-- Scripts -->
