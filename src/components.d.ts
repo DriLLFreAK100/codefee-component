@@ -8,6 +8,7 @@ import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { INavMenu } from "./components/cf-app-header/cf-app-header-menu/cf-app-header-menu";
 import { ButtonType, CssUnits, GutterSize } from "./common/types";
 import { CircularProgressColor, CircularProgressType } from "./components/cf-circular-progress/cf-circular-progress";
+import { InputStatusType } from "./components/cf-input/cf-input";
 import { TypographyType } from "./components/cf-typography/cf-typography";
 import { SideDrawerPosition } from "./components/cf-side-drawer/cf-side-drawer";
 import { TypographyType as TypographyType1 } from "./components/cf-typography/cf-typography";
@@ -48,6 +49,13 @@ export namespace Components {
     interface CfIconButton {
         "icon": string;
         "type": ButtonType;
+    }
+    interface CfInput {
+        "label": string;
+        "placeholder": string;
+        "status": InputStatusType;
+        "type": 'number' | 'string';
+        "value": any;
     }
     interface CfLink {
         "href": string;
@@ -129,6 +137,12 @@ declare global {
         prototype: HTMLCfIconButtonElement;
         new (): HTMLCfIconButtonElement;
     };
+    interface HTMLCfInputElement extends Components.CfInput, HTMLStencilElement {
+    }
+    var HTMLCfInputElement: {
+        prototype: HTMLCfInputElement;
+        new (): HTMLCfInputElement;
+    };
     interface HTMLCfLinkElement extends Components.CfLink, HTMLStencilElement {
     }
     var HTMLCfLinkElement: {
@@ -174,6 +188,7 @@ declare global {
         "cf-circular-progress": HTMLCfCircularProgressElement;
         "cf-divider": HTMLCfDividerElement;
         "cf-icon-button": HTMLCfIconButtonElement;
+        "cf-input": HTMLCfInputElement;
         "cf-link": HTMLCfLinkElement;
         "cf-side-drawer": HTMLCfSideDrawerElement;
         "cf-tab": HTMLCfTabElement;
@@ -221,6 +236,14 @@ declare namespace LocalJSX {
         "icon"?: string;
         "type"?: ButtonType;
     }
+    interface CfInput {
+        "label"?: string;
+        "onValueChange"?: (event: CustomEvent<string>) => void;
+        "placeholder"?: string;
+        "status"?: InputStatusType;
+        "type"?: 'number' | 'string';
+        "value"?: any;
+    }
     interface CfLink {
         "href"?: string;
         "newTab"?: boolean;
@@ -263,6 +286,7 @@ declare namespace LocalJSX {
         "cf-circular-progress": CfCircularProgress;
         "cf-divider": CfDivider;
         "cf-icon-button": CfIconButton;
+        "cf-input": CfInput;
         "cf-link": CfLink;
         "cf-side-drawer": CfSideDrawer;
         "cf-tab": CfTab;
@@ -283,6 +307,7 @@ declare module "@stencil/core" {
             "cf-circular-progress": LocalJSX.CfCircularProgress & JSXBase.HTMLAttributes<HTMLCfCircularProgressElement>;
             "cf-divider": LocalJSX.CfDivider & JSXBase.HTMLAttributes<HTMLCfDividerElement>;
             "cf-icon-button": LocalJSX.CfIconButton & JSXBase.HTMLAttributes<HTMLCfIconButtonElement>;
+            "cf-input": LocalJSX.CfInput & JSXBase.HTMLAttributes<HTMLCfInputElement>;
             "cf-link": LocalJSX.CfLink & JSXBase.HTMLAttributes<HTMLCfLinkElement>;
             "cf-side-drawer": LocalJSX.CfSideDrawer & JSXBase.HTMLAttributes<HTMLCfSideDrawerElement>;
             "cf-tab": LocalJSX.CfTab & JSXBase.HTMLAttributes<HTMLCfTabElement>;

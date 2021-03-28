@@ -19,6 +19,7 @@
 
  - [cf-app-header](../cf-app-header)
  - [cf-button](../cf-button)
+ - [cf-input](../cf-input)
  - [cf-link](../cf-link)
  - [cf-side-drawer](../cf-side-drawer)
  - [cf-tab](../cf-tabs/cf-tab)
@@ -28,6 +29,7 @@
 graph TD;
   cf-app-header --> cf-typography
   cf-button --> cf-typography
+  cf-input --> cf-typography
   cf-link --> cf-typography
   cf-side-drawer --> cf-typography
   cf-tab --> cf-typography
