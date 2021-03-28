@@ -33,7 +33,9 @@ export namespace Components {
         "type": ButtonType;
     }
     interface CfCard {
+        "height": string;
         "padding": GutterSize;
+        "width": string;
     }
     interface CfCircularProgress {
         "color": CircularProgressColor;
@@ -203,7 +205,9 @@ declare namespace LocalJSX {
         "type"?: ButtonType;
     }
     interface CfCard {
+        "height"?: string;
         "padding"?: GutterSize;
+        "width"?: string;
     }
     interface CfCircularProgress {
         "color"?: CircularProgressColor;
