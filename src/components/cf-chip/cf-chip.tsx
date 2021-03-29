@@ -11,22 +11,14 @@ export class CfChip {
   @Prop() addable: boolean = false;
   @Prop() removable: boolean = false;
   @Prop() type: ButtonType = 'primary';
-  @Event() click: EventEmitter;
   @Event() clickAdd: EventEmitter;
   @Event() clickRemove: EventEmitter;
 
-  handleOnClick() {
-    console.log('handleOnClick');
-    this.click.emit();
-  }
-
   handleOnClickAdd() {
-    console.log('handleOnClickAdd');
     this.clickAdd.emit();
   }
 
   handleOnClickRemove() {
-    console.log('handleOnClickRemove');
     this.clickRemove.emit();
   }
 

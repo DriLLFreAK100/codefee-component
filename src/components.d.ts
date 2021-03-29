@@ -238,7 +238,6 @@ declare namespace LocalJSX {
     }
     interface CfChip {
         "addable"?: boolean;
-        "onClick"?: (event: CustomEvent<any>) => void;
         "onClickAdd"?: (event: CustomEvent<any>) => void;
         "onClickRemove"?: (event: CustomEvent<any>) => void;
         "removable"?: boolean;

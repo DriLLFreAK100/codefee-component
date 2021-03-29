@@ -18,7 +18,6 @@
 
 | Event         | Description | Type               |
 | ------------- | ----------- | ------------------ |
-| `click`       |             | `CustomEvent<any>` |
 | `clickAdd`    |             | `CustomEvent<any>` |
 | `clickRemove` |             | `CustomEvent<any>` |
 
