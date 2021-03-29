@@ -9,6 +9,7 @@
 
 .tabs {
   &__container {
+    border-bottom: rem(1) solid var(--color-secondary);
     display: flex;
     flex-direction: row;
   }
