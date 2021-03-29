@@ -38,6 +38,11 @@ export namespace Components {
         "padding": GutterSize;
         "width": string;
     }
+    interface CfChip {
+        "addable": boolean;
+        "removable": boolean;
+        "type": ButtonType;
+    }
     interface CfCircularProgress {
         "color": CircularProgressColor;
         "progress": number;
@@ -119,6 +124,12 @@ declare global {
         prototype: HTMLCfCardElement;
         new (): HTMLCfCardElement;
     };
+    interface HTMLCfChipElement extends Components.CfChip, HTMLStencilElement {
+    }
+    var HTMLCfChipElement: {
+        prototype: HTMLCfChipElement;
+        new (): HTMLCfChipElement;
+    };
     interface HTMLCfCircularProgressElement extends Components.CfCircularProgress, HTMLStencilElement {
     }
     var HTMLCfCircularProgressElement: {
@@ -185,6 +196,7 @@ declare global {
         "cf-app-header-menu": HTMLCfAppHeaderMenuElement;
         "cf-button": HTMLCfButtonElement;
         "cf-card": HTMLCfCardElement;
+        "cf-chip": HTMLCfChipElement;
         "cf-circular-progress": HTMLCfCircularProgressElement;
         "cf-divider": HTMLCfDividerElement;
         "cf-icon-button": HTMLCfIconButtonElement;
@@ -223,6 +235,14 @@ declare namespace LocalJSX {
         "height"?: string;
         "padding"?: GutterSize;
         "width"?: string;
+    }
+    interface CfChip {
+        "addable"?: boolean;
+        "onClick"?: (event: CustomEvent<any>) => void;
+        "onClickAdd"?: (event: CustomEvent<any>) => void;
+        "onClickRemove"?: (event: CustomEvent<any>) => void;
+        "removable"?: boolean;
+        "type"?: ButtonType;
     }
     interface CfCircularProgress {
         "color"?: CircularProgressColor;
@@ -283,6 +303,7 @@ declare namespace LocalJSX {
         "cf-app-header-menu": CfAppHeaderMenu;
         "cf-button": CfButton;
         "cf-card": CfCard;
+        "cf-chip": CfChip;
         "cf-circular-progress": CfCircularProgress;
         "cf-divider": CfDivider;
         "cf-icon-button": CfIconButton;
@@ -304,6 +325,7 @@ declare module "@stencil/core" {
             "cf-app-header-menu": LocalJSX.CfAppHeaderMenu & JSXBase.HTMLAttributes<HTMLCfAppHeaderMenuElement>;
             "cf-button": LocalJSX.CfButton & JSXBase.HTMLAttributes<HTMLCfButtonElement>;
             "cf-card": LocalJSX.CfCard & JSXBase.HTMLAttributes<HTMLCfCardElement>;
+            "cf-chip": LocalJSX.CfChip & JSXBase.HTMLAttributes<HTMLCfChipElement>;
             "cf-circular-progress": LocalJSX.CfCircularProgress & JSXBase.HTMLAttributes<HTMLCfCircularProgressElement>;
             "cf-divider": LocalJSX.CfDivider & JSXBase.HTMLAttributes<HTMLCfDividerElement>;
             "cf-icon-button": LocalJSX.CfIconButton & JSXBase.HTMLAttributes<HTMLCfIconButtonElement>;
