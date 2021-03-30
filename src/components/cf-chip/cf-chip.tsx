@@ -29,11 +29,13 @@ export class CfChip {
 
     return (
       <Host class={className}>
-        {this.addable && <i class="addIcon fas fa-plus" onClick={this.handleOnClickAdd.bind(this)} />}
-        <cf-typography type="subtitle2">
-          <slot></slot>
-        </cf-typography>
-        {this.removable && <i class="removeIcon fas fa-times" onClick={this.handleOnClickRemove.bind(this)} />}
+        <div class="cfChip">
+          {this.addable && <i class="addIcon fas fa-plus" onClick={this.handleOnClickAdd.bind(this)} />}
+          <cf-typography type="subtitle2">
+            <slot></slot>
+          </cf-typography>
+          {this.removable && <i class="removeIcon fas fa-times" onClick={this.handleOnClickRemove.bind(this)} />}
+        </div>
       </Host>
     );
   }

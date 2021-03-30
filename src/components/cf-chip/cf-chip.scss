@@ -12,25 +12,27 @@
   padding: rem(8) rem(16);
   text-align: center;
   transition: background-color var(--transition-hover) ease-in-out, color var(--transition-hover) ease-in-out;
+}
 
-  & > * {
-    display: flex;
-    width: 100%;
-  }
+.cfChip {
+  display: flex;
+  width: 100%;
 
   & > .addIcon {
     cursor: pointer;
-    margin-right: rem(4);
+    margin-right: rem(8);
   }
 
   & > .removeIcon {
     cursor: pointer;
-    margin-left: rem(4);
+    margin-left: rem(8);
     justify-content: flex-end;
   }
 
   & cf-typography {
+    display: flex;
     justify-content: center;
+    width: 100%;
   }
 }
 
