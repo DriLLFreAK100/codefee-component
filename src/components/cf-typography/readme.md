@@ -22,6 +22,7 @@
  - [cf-chip](../cf-chip)
  - [cf-input](../cf-input)
  - [cf-link](../cf-link)
+ - [cf-notification-message](../cf-notification/cf-notification-message)
  - [cf-side-drawer](../cf-side-drawer)
  - [cf-tab](../cf-tabs/cf-tab)
 
@@ -33,6 +34,7 @@ graph TD;
   cf-chip --> cf-typography
   cf-input --> cf-typography
   cf-link --> cf-typography
+  cf-notification-message --> cf-typography
   cf-side-drawer --> cf-typography
   cf-tab --> cf-typography
   style cf-typography fill:#f9f,stroke:#333,stroke-width:4px

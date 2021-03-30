@@ -16,6 +16,20 @@
   </head>
 
   <body>
+    <!-- Notification -->
+    <cf-typography type="h5">Notification</cf-typography>
+    <cf-divider></cf-divider>
+    <cf-notification></cf-notification>
+    <cf-card>
+      <cf-button id="notify-btn-default">Default</cf-button>
+      <cf-button id="notify-btn-info" type="info">Info</cf-button>
+      <cf-button id="notify-btn-success" type="success">Success</cf-button>
+      <cf-button id="notify-btn-warning" type="warning">Warning</cf-button>
+      <cf-button id="notify-btn-error" type="error">Error</cf-button>
+      <cf-button id="notify-btn-long">Long Message</cf-button>
+    </cf-card>
+    <br /><br />
+
     <!-- Chip -->
     <cf-typography type="h5">Chip</cf-typography>
     <cf-divider></cf-divider>
@@ -272,6 +286,27 @@
       // Theme Init
       import { loadTheme } from '/build/index.esm.js';
       loadTheme();
+
+      // Notification
+      import { notify } from '/build/index.esm.js';
+      document.querySelector('#notify-btn-default').addEventListener('click', () => {
+        notify('This is just a message');
+      });
+      document.querySelector('#notify-btn-info').addEventListener('click', () => {
+        notify('This is just a message', { type: 'info' });
+      });
+      document.querySelector('#notify-btn-success').addEventListener('click', () => {
+        notify('Submitted Successfully', { type: 'success' });
+      });
+      document.querySelector('#notify-btn-warning').addEventListener('click', () => {
+        notify('Overdue tasks. Please look into it ASAP', { type: 'warning' });
+      });
+      document.querySelector('#notify-btn-error').addEventListener('click', () => {
+        notify('Something went wrong with the transaction.', { type: 'error' });
+      });
+      document.querySelector('#notify-btn-long').addEventListener('click', () => {
+        notify('This is a really long message. Why? To test text-overflow.. Duh~~~ This is a really long message. Why? To test text-overflow.. Duh~~~');
+      });
 
       // Tabs
       const tabs = document.querySelector('#tabs');

@@ -1,0 +1,62 @@
+@import '../../../styles/functions.scss';
+
+.cfNotificationMessage {
+  background: white;
+  border-radius: rem(4);
+  bottom: 0;
+  box-shadow: 0 rem(2) rem(4) 0 var(--color-shadow);
+  box-sizing: border-box;
+  height: rem(132);
+  margin-bottom: rem(16);
+  padding: rem(16) rem(16);
+  position: absolute;
+  right: 0;
+  width: rem(264);
+  transition: transform ease-out 0.3s;
+
+  &.info {
+    background: var(--color-info);
+    color: var(--color-info-on);
+  }
+
+  &.success {
+    background: var(--color-success);
+    color: var(--color-success-on);
+  }
+
+  &.warning {
+    background: var(--color-warning);
+    color: var(--color-warning-on);
+  }
+
+  &.error {
+    background: var(--color-error);
+    color: var(--color-error-on);
+  }
+
+  &__header {
+    display: flex;
+
+    & cf-typography {
+      align-items: center;
+      width: 90%;
+      display: flex;
+    }
+
+    & i {
+      align-items: center;
+      cursor: pointer;
+      display: flex;
+      justify-content: flex-end;
+      width: 10%;
+    }
+  }
+
+  & cf-typography {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+}

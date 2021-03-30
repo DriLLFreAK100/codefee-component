@@ -16,11 +16,13 @@
 
 ### Used by
 
+ - [cf-notification-message](../cf-notification/cf-notification-message)
  - [cf-side-drawer](../cf-side-drawer)
 
 ### Graph
 ```mermaid
 graph TD;
+  cf-notification-message --> cf-divider
   cf-side-drawer --> cf-divider
   style cf-divider fill:#f9f,stroke:#333,stroke-width:4px
 ```

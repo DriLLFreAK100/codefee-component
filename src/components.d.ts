@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { INavMenu } from "./components/cf-app-header/cf-app-header-menu/cf-app-header-menu";
-import { ButtonType, CssUnits, GutterSize } from "./common/types";
+import { ButtonType, CssUnits, FeedbackType, GutterSize } from "./common/types";
 import { CircularProgressColor, CircularProgressType } from "./components/cf-circular-progress/cf-circular-progress";
 import { InputStatusType } from "./components/cf-input/cf-input";
 import { TypographyType } from "./components/cf-typography/cf-typography";
@@ -68,6 +68,12 @@ export namespace Components {
         "styles": { [key: string]: string };
         "typographyType": TypographyType;
         "underline": boolean;
+    }
+    interface CfNotification {
+    }
+    interface CfNotificationMessage {
+        "messageTitle": string;
+        "type"?: FeedbackType;
     }
     interface CfSideDrawer {
         "drawerTitle": string;
@@ -160,6 +166,18 @@ declare global {
         prototype: HTMLCfLinkElement;
         new (): HTMLCfLinkElement;
     };
+    interface HTMLCfNotificationElement extends Components.CfNotification, HTMLStencilElement {
+    }
+    var HTMLCfNotificationElement: {
+        prototype: HTMLCfNotificationElement;
+        new (): HTMLCfNotificationElement;
+    };
+    interface HTMLCfNotificationMessageElement extends Components.CfNotificationMessage, HTMLStencilElement {
+    }
+    var HTMLCfNotificationMessageElement: {
+        prototype: HTMLCfNotificationMessageElement;
+        new (): HTMLCfNotificationMessageElement;
+    };
     interface HTMLCfSideDrawerElement extends Components.CfSideDrawer, HTMLStencilElement {
     }
     var HTMLCfSideDrawerElement: {
@@ -202,6 +220,8 @@ declare global {
         "cf-icon-button": HTMLCfIconButtonElement;
         "cf-input": HTMLCfInputElement;
         "cf-link": HTMLCfLinkElement;
+        "cf-notification": HTMLCfNotificationElement;
+        "cf-notification-message": HTMLCfNotificationMessageElement;
         "cf-side-drawer": HTMLCfSideDrawerElement;
         "cf-tab": HTMLCfTabElement;
         "cf-tabs": HTMLCfTabsElement;
@@ -270,6 +290,12 @@ declare namespace LocalJSX {
         "typographyType"?: TypographyType;
         "underline"?: boolean;
     }
+    interface CfNotification {
+    }
+    interface CfNotificationMessage {
+        "messageTitle"?: string;
+        "type"?: FeedbackType;
+    }
     interface CfSideDrawer {
         "drawerTitle"?: string;
         "onClose"?: (event: CustomEvent<MouseEvent>) => void;
@@ -308,6 +334,8 @@ declare namespace LocalJSX {
         "cf-icon-button": CfIconButton;
         "cf-input": CfInput;
         "cf-link": CfLink;
+        "cf-notification": CfNotification;
+        "cf-notification-message": CfNotificationMessage;
         "cf-side-drawer": CfSideDrawer;
         "cf-tab": CfTab;
         "cf-tabs": CfTabs;
@@ -330,6 +358,8 @@ declare module "@stencil/core" {
             "cf-icon-button": LocalJSX.CfIconButton & JSXBase.HTMLAttributes<HTMLCfIconButtonElement>;
             "cf-input": LocalJSX.CfInput & JSXBase.HTMLAttributes<HTMLCfInputElement>;
             "cf-link": LocalJSX.CfLink & JSXBase.HTMLAttributes<HTMLCfLinkElement>;
+            "cf-notification": LocalJSX.CfNotification & JSXBase.HTMLAttributes<HTMLCfNotificationElement>;
+            "cf-notification-message": LocalJSX.CfNotificationMessage & JSXBase.HTMLAttributes<HTMLCfNotificationMessageElement>;
             "cf-side-drawer": LocalJSX.CfSideDrawer & JSXBase.HTMLAttributes<HTMLCfSideDrawerElement>;
             "cf-tab": LocalJSX.CfTab & JSXBase.HTMLAttributes<HTMLCfTabElement>;
             "cf-tabs": LocalJSX.CfTabs & JSXBase.HTMLAttributes<HTMLCfTabsElement>;
