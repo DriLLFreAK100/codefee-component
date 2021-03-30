@@ -1,3 +1,4 @@
+import { clearNotification, flatten } from '../../../utils';
 import { FeedbackType } from '../../../common/types';
 import {
   Component,
@@ -6,7 +7,6 @@ import {
   Host,
   Prop,
 } from '@stencil/core';
-import { flatten } from '../../../utils';
 
 @Component({
   tag: 'cf-notification-message',
@@ -19,7 +19,7 @@ export class CfNotificationMessage {
   @Prop() type?: FeedbackType = undefined;
 
   handleOnClickCloseMessage() {
-    this.el.remove();
+    clearNotification(this.el.parentElement, this.el);
   }
 
   render() {

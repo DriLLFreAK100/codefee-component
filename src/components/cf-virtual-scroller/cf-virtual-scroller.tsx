@@ -15,6 +15,7 @@ import {
   shadow: false,
 })
 export class CfVirtualScroller {
+  containerEl!: HTMLElement;
   @Element() el: HTMLElement;
   @Prop() childHeight: number = 20;
   @Prop() containerHeight: number = 100;
@@ -22,7 +23,6 @@ export class CfVirtualScroller {
   @Prop() innerContainerClassName: string;
   @Prop() cssUnit: CssUnits = 'px';
   @Prop() windowLimit: number = 5;
-  @State() containerEl: HTMLElement;
   @State() windowHeight: number = 100;
   @State() children: HTMLElement[] = [];
   @State() prevEndIndex: number = 0;
@@ -139,7 +139,7 @@ export class CfVirtualScroller {
     return (
       <div
         class={className}
-        ref={el => this.containerEl = el}
+        ref={(el) => this.containerEl = el}
         style={styles}
         onScroll={this.handleOnScroll.bind(this)}
       >
