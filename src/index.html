@@ -16,6 +16,15 @@
   </head>
 
   <body>
+    <!-- Loading -->
+    <cf-typography type="h5">Loading</cf-typography>
+    <cf-divider></cf-divider>
+    <cf-loading id="loading"></cf-loading>
+    <cf-card>
+      <cf-button id="load-btn">Load</cf-button>
+    </cf-card>
+    <br /><br />
+
     <!-- Notification -->
     <cf-typography type="h5">Notification</cf-typography>
     <cf-divider></cf-divider>
@@ -286,6 +295,16 @@
       // Theme Init
       import { loadTheme } from '/build/index.esm.js';
       loadTheme();
+
+      // Loading
+      import { showLoad, hideLoad } from '/build/index.esm.js';
+      document.querySelector('#load-btn').addEventListener('click', () => {
+        showLoad('Something is Brewing...');
+
+        setTimeout(() => {
+          hideLoad('Codefee Done!');
+        }, 3000);
+      });
 
       // Notification
       import { notify } from '/build/index.esm.js';

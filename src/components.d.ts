@@ -69,6 +69,10 @@ export namespace Components {
         "typographyType": TypographyType;
         "underline": boolean;
     }
+    interface CfLoading {
+        "message": string;
+        "show": boolean;
+    }
     interface CfNotification {
     }
     interface CfNotificationMessage {
@@ -166,6 +170,12 @@ declare global {
         prototype: HTMLCfLinkElement;
         new (): HTMLCfLinkElement;
     };
+    interface HTMLCfLoadingElement extends Components.CfLoading, HTMLStencilElement {
+    }
+    var HTMLCfLoadingElement: {
+        prototype: HTMLCfLoadingElement;
+        new (): HTMLCfLoadingElement;
+    };
     interface HTMLCfNotificationElement extends Components.CfNotification, HTMLStencilElement {
     }
     var HTMLCfNotificationElement: {
@@ -220,6 +230,7 @@ declare global {
         "cf-icon-button": HTMLCfIconButtonElement;
         "cf-input": HTMLCfInputElement;
         "cf-link": HTMLCfLinkElement;
+        "cf-loading": HTMLCfLoadingElement;
         "cf-notification": HTMLCfNotificationElement;
         "cf-notification-message": HTMLCfNotificationMessageElement;
         "cf-side-drawer": HTMLCfSideDrawerElement;
@@ -290,6 +301,10 @@ declare namespace LocalJSX {
         "typographyType"?: TypographyType;
         "underline"?: boolean;
     }
+    interface CfLoading {
+        "message"?: string;
+        "show"?: boolean;
+    }
     interface CfNotification {
     }
     interface CfNotificationMessage {
@@ -334,6 +349,7 @@ declare namespace LocalJSX {
         "cf-icon-button": CfIconButton;
         "cf-input": CfInput;
         "cf-link": CfLink;
+        "cf-loading": CfLoading;
         "cf-notification": CfNotification;
         "cf-notification-message": CfNotificationMessage;
         "cf-side-drawer": CfSideDrawer;
@@ -358,6 +374,7 @@ declare module "@stencil/core" {
             "cf-icon-button": LocalJSX.CfIconButton & JSXBase.HTMLAttributes<HTMLCfIconButtonElement>;
             "cf-input": LocalJSX.CfInput & JSXBase.HTMLAttributes<HTMLCfInputElement>;
             "cf-link": LocalJSX.CfLink & JSXBase.HTMLAttributes<HTMLCfLinkElement>;
+            "cf-loading": LocalJSX.CfLoading & JSXBase.HTMLAttributes<HTMLCfLoadingElement>;
             "cf-notification": LocalJSX.CfNotification & JSXBase.HTMLAttributes<HTMLCfNotificationElement>;
             "cf-notification-message": LocalJSX.CfNotificationMessage & JSXBase.HTMLAttributes<HTMLCfNotificationMessageElement>;
             "cf-side-drawer": LocalJSX.CfSideDrawer & JSXBase.HTMLAttributes<HTMLCfSideDrawerElement>;
