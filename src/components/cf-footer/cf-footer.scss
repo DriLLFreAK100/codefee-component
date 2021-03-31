@@ -1,0 +1,27 @@
+@import '../../styles/functions.scss';
+
+:host {
+  background: var(--color-secondary);
+  color: var(--color-secondary-on);
+  display: flex;
+  padding: rem(8) rem(16);
+}
+
+.cfFooter {
+  &__start {
+    display: flex;
+    flex-basis: 33%;
+  }
+
+  &__center {
+    display: flex;
+    flex-basis: 33%;
+    justify-content: center;
+  }
+
+  &__end {
+    display: flex;
+    flex-basis: 33%;
+    justify-content: flex-end;
+  }
+}

@@ -51,6 +51,8 @@ export namespace Components {
     interface CfDivider {
         "gutterBottom": GutterSize;
     }
+    interface CfFooter {
+    }
     interface CfIconButton {
         "icon": string;
         "type": ButtonType;
@@ -152,6 +154,12 @@ declare global {
         prototype: HTMLCfDividerElement;
         new (): HTMLCfDividerElement;
     };
+    interface HTMLCfFooterElement extends Components.CfFooter, HTMLStencilElement {
+    }
+    var HTMLCfFooterElement: {
+        prototype: HTMLCfFooterElement;
+        new (): HTMLCfFooterElement;
+    };
     interface HTMLCfIconButtonElement extends Components.CfIconButton, HTMLStencilElement {
     }
     var HTMLCfIconButtonElement: {
@@ -227,6 +235,7 @@ declare global {
         "cf-chip": HTMLCfChipElement;
         "cf-circular-progress": HTMLCfCircularProgressElement;
         "cf-divider": HTMLCfDividerElement;
+        "cf-footer": HTMLCfFooterElement;
         "cf-icon-button": HTMLCfIconButtonElement;
         "cf-input": HTMLCfInputElement;
         "cf-link": HTMLCfLinkElement;
@@ -281,6 +290,8 @@ declare namespace LocalJSX {
     }
     interface CfDivider {
         "gutterBottom"?: GutterSize;
+    }
+    interface CfFooter {
     }
     interface CfIconButton {
         "icon"?: string;
@@ -346,6 +357,7 @@ declare namespace LocalJSX {
         "cf-chip": CfChip;
         "cf-circular-progress": CfCircularProgress;
         "cf-divider": CfDivider;
+        "cf-footer": CfFooter;
         "cf-icon-button": CfIconButton;
         "cf-input": CfInput;
         "cf-link": CfLink;
@@ -371,6 +383,7 @@ declare module "@stencil/core" {
             "cf-chip": LocalJSX.CfChip & JSXBase.HTMLAttributes<HTMLCfChipElement>;
             "cf-circular-progress": LocalJSX.CfCircularProgress & JSXBase.HTMLAttributes<HTMLCfCircularProgressElement>;
             "cf-divider": LocalJSX.CfDivider & JSXBase.HTMLAttributes<HTMLCfDividerElement>;
+            "cf-footer": LocalJSX.CfFooter & JSXBase.HTMLAttributes<HTMLCfFooterElement>;
             "cf-icon-button": LocalJSX.CfIconButton & JSXBase.HTMLAttributes<HTMLCfIconButtonElement>;
             "cf-input": LocalJSX.CfInput & JSXBase.HTMLAttributes<HTMLCfInputElement>;
             "cf-link": LocalJSX.CfLink & JSXBase.HTMLAttributes<HTMLCfLinkElement>;
