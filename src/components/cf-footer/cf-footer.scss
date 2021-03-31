@@ -2,6 +2,7 @@
 
 :host {
   background: var(--color-secondary);
+  box-shadow: 0 rem(-2) rem(4) 0 var(--color-shadow);
   color: var(--color-secondary-on);
   display: block;
   padding: rem(8) rem(16);
