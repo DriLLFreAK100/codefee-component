@@ -1,0 +1,12 @@
+:host {
+  align-items: center;
+  display: flex;
+}
+
+:host(.center) {
+  justify-content: center;
+}
+
+:host(.right) {
+  justify-content: flex-end;
+}

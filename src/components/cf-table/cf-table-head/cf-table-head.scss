@@ -1,0 +1,7 @@
+@import '../../../styles/functions.scss';
+
+:host {
+  border-bottom: rem(1) solid var(--color-bg);
+  display: block;
+  width: 100%;
+}

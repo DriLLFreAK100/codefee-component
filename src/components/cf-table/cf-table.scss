@@ -1,0 +1,7 @@
+@import '../../styles/functions.scss';
+
+:host {
+  border-radius: rem(4);
+  display: block;
+  width: 100%;
+}

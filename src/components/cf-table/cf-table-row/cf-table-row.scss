@@ -1,0 +1,22 @@
+@import '../../../styles/functions.scss';
+
+:host {
+  display: flex;
+  width: 100%;
+}
+
+:host(.head) {
+  height: rem(60);
+}
+
+:host(.body) {
+  height: rem(48);
+}
+
+:host(.body:hover) {
+  background-color: var(--color-bg);
+}
+
+:host(.foot) {
+  height: rem(60);
+}
