@@ -52,6 +52,7 @@ export namespace Components {
         "gutterBottom": GutterSize;
     }
     interface CfFooter {
+        "fixed": boolean;
     }
     interface CfIconButton {
         "icon": string;
@@ -292,6 +293,7 @@ declare namespace LocalJSX {
         "gutterBottom"?: GutterSize;
     }
     interface CfFooter {
+        "fixed"?: boolean;
     }
     interface CfIconButton {
         "icon"?: string;

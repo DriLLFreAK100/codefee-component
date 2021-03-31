@@ -1,10 +1,10 @@
 import {
   Component,
-  Element,
   h,
   Host,
-  State,
+  Prop,
 } from '@stencil/core';
+import { flatten } from '../../utils';
 
 @Component({
   tag: 'cf-footer',
@@ -12,42 +12,16 @@ import {
   shadow: true,
 })
 export class CfFooter {
-  @Element() el: HTMLElement;
-  @State() hasStartSlot: boolean = false;
-  @State() hasCenterSlot: boolean = false;
-  @State() hasEndSlot: boolean = false;
-
-  componentWillLoad() {
-    this.hasStartSlot = !!this.el.querySelector('[slot=start]');
-    this.hasCenterSlot = !!this.el.querySelector('[slot=center]');
-    this.hasEndSlot = !!this.el.querySelector('[slot=end]');
-  }
+  @Prop() fixed: boolean = false;
 
   render() {
-    return (
-      <Host>
-        {
-          this.hasStartSlot && (
-            <div class="cfFooter__start">
-              <slot name="start"></slot>
-            </div>
-          )
-        }
-        {
-          this.hasCenterSlot && (
-            <div class="cfFooter__center">
-              <slot name="center"></slot>
-            </div>
-          )
-        }
-        {
-          this.hasEndSlot && (
-            <div class="cfFooter__end">
-              <slot name="end"></slot>
-            </div>
-          )
-        }
+    const className = flatten(`
+      ${this.fixed ? 'fixed' : ''}
+    `);
 
+    return (
+      <Host class={className}>
+        <slot></slot>
       </Host>
     );
   }
