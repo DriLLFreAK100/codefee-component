@@ -77,10 +77,6 @@
 
     /* Style the cfCheckbox__checkmark/indicator */
     &::after {
-      left: rem(6.5);
-      top: rem(1);
-      width: rem(4);
-      height: rem(12);
       border: solid white;
       border-width: 0 rem(2) rem(2) 0;
       animation: tick var(--transition-toggle) forwards;
@@ -89,7 +85,18 @@
 }
 
 @keyframes tick {
+  0% {
+    left: rem(10);
+    top: rem(10);
+    width: rem(0);
+    height: rem(0);
+  }
+
   100% {
     transform: rotate(405deg);
+    left: rem(6.5);
+    top: rem(1);
+    width: rem(4);
+    height: rem(12);
   }
 }
