@@ -39,6 +39,8 @@ export namespace Components {
         "padding": GutterSize;
         "width": string;
     }
+    interface CfCheckbox {
+    }
     interface CfChip {
         "addable": boolean;
         "removable": boolean;
@@ -154,6 +156,12 @@ declare global {
     var HTMLCfCardElement: {
         prototype: HTMLCfCardElement;
         new (): HTMLCfCardElement;
+    };
+    interface HTMLCfCheckboxElement extends Components.CfCheckbox, HTMLStencilElement {
+    }
+    var HTMLCfCheckboxElement: {
+        prototype: HTMLCfCheckboxElement;
+        new (): HTMLCfCheckboxElement;
     };
     interface HTMLCfChipElement extends Components.CfChip, HTMLStencilElement {
     }
@@ -287,6 +295,7 @@ declare global {
         "cf-app-header-menu": HTMLCfAppHeaderMenuElement;
         "cf-button": HTMLCfButtonElement;
         "cf-card": HTMLCfCardElement;
+        "cf-checkbox": HTMLCfCheckboxElement;
         "cf-chip": HTMLCfChipElement;
         "cf-circular-progress": HTMLCfCircularProgressElement;
         "cf-divider": HTMLCfDividerElement;
@@ -336,6 +345,8 @@ declare namespace LocalJSX {
         "height"?: string;
         "padding"?: GutterSize;
         "width"?: string;
+    }
+    interface CfCheckbox {
     }
     interface CfChip {
         "addable"?: boolean;
@@ -433,6 +444,7 @@ declare namespace LocalJSX {
         "cf-app-header-menu": CfAppHeaderMenu;
         "cf-button": CfButton;
         "cf-card": CfCard;
+        "cf-checkbox": CfCheckbox;
         "cf-chip": CfChip;
         "cf-circular-progress": CfCircularProgress;
         "cf-divider": CfDivider;
@@ -465,6 +477,7 @@ declare module "@stencil/core" {
             "cf-app-header-menu": LocalJSX.CfAppHeaderMenu & JSXBase.HTMLAttributes<HTMLCfAppHeaderMenuElement>;
             "cf-button": LocalJSX.CfButton & JSXBase.HTMLAttributes<HTMLCfButtonElement>;
             "cf-card": LocalJSX.CfCard & JSXBase.HTMLAttributes<HTMLCfCardElement>;
+            "cf-checkbox": LocalJSX.CfCheckbox & JSXBase.HTMLAttributes<HTMLCfCheckboxElement>;
             "cf-chip": LocalJSX.CfChip & JSXBase.HTMLAttributes<HTMLCfChipElement>;
             "cf-circular-progress": LocalJSX.CfCircularProgress & JSXBase.HTMLAttributes<HTMLCfCircularProgressElement>;
             "cf-divider": LocalJSX.CfDivider & JSXBase.HTMLAttributes<HTMLCfDividerElement>;
