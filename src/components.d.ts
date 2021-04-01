@@ -349,6 +349,7 @@ declare namespace LocalJSX {
     }
     interface CfCheckbox {
         "checked"?: boolean;
+        "onCheckChange"?: (event: CustomEvent<HTMLInputElement>) => void;
     }
     interface CfChip {
         "addable"?: boolean;

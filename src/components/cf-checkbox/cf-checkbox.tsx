@@ -1,4 +1,11 @@
-import { Component, Host, h, Prop } from '@stencil/core';
+import {
+  Component,
+  Event,
+  EventEmitter,
+  h,
+  Host,
+  Prop,
+} from '@stencil/core';
 
 @Component({
   tag: 'cf-checkbox',
@@ -6,7 +13,13 @@ import { Component, Host, h, Prop } from '@stencil/core';
   shadow: true,
 })
 export class CfCheckbox {
-  @Prop() checked: boolean = false;
+  @Prop({ mutable: true, reflect: true }) checked: boolean = false;
+  @Event() checkChange: EventEmitter<HTMLInputElement>;
+
+  handleOnCheckChange(event: HTMLInputElement) {
+    this.checked = (event as any).target.checked;
+    this.checkChange.emit(event);
+  }
 
   render() {
     return (
@@ -15,7 +28,7 @@ export class CfCheckbox {
           <cf-typography type="subtitle1">
             <slot />
           </cf-typography>
-          <input type="checkbox" checked={this.checked} />
+          <input type="checkbox" checked={this.checked} onChange={this.handleOnCheckChange.bind(this)} />
           <span class="cfCheckbox__checkmark"></span>
         </label>
       </Host>

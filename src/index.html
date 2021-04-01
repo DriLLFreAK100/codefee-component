@@ -20,8 +20,8 @@
     <cf-typography type="h5">Checkbox</cf-typography>
     <cf-divider></cf-divider>
     <cf-card>
-      <cf-checkbox>Uncheck</cf-checkbox>
-      <cf-checkbox checked>Checked</cf-checkbox>
+      <cf-checkbox id="checkbox1">Uncheck</cf-checkbox>
+      <cf-checkbox id="checkbox2" checked>Checked</cf-checkbox>
     </cf-card>
     <br /><br />
 
@@ -362,6 +362,14 @@
       // Theme Init
       import { loadTheme } from '/build/index.esm.js';
       loadTheme();
+
+      // Checkbox
+      document.querySelector('#checkbox1').addEventListener('checkChange', event => {
+        console.dir(`id: ${event.target.id}: ${event.target.checked}`);
+      });
+      document.querySelector('#checkbox2').addEventListener('checkChange', event => {
+        console.dir(`id: ${event.target.id}: ${event.target.checked}`);
+      });
 
       // Loading
       import { showLoad, hideLoad } from '/build/index.esm.js';
