@@ -7,7 +7,6 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { INavMenu } from "./components/cf-app-header/cf-app-header-menu/cf-app-header-menu";
 import { ButtonType, CssUnits, FeedbackType, GutterSize, TableSegment } from "./common/types";
-import { ICheckboxListSelection } from "./components/cf-checkbox-list/cf-checkbox-list";
 import { CircularProgressColor, CircularProgressType } from "./components/cf-circular-progress/cf-circular-progress";
 import { InputStatusType } from "./components/cf-input/cf-input";
 import { TypographyType } from "./components/cf-typography/cf-typography";
@@ -360,9 +359,10 @@ declare namespace LocalJSX {
     interface CfCheckbox {
         "checked"?: boolean;
         "onCheckChange"?: (event: CustomEvent<HTMLCfCheckboxElement>) => void;
+        "onCheckboxInit"?: (event: CustomEvent<HTMLCfCheckboxElement>) => void;
     }
     interface CfCheckboxList {
-        "onCheckListChange"?: (event: CustomEvent<ICheckboxListSelection[]>) => void;
+        "onCheckListChange"?: (event: CustomEvent<any[]>) => void;
     }
     interface CfChip {
         "addable"?: boolean;

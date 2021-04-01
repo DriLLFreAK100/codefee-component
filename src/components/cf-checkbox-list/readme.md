@@ -7,9 +7,9 @@
 
 ## Events
 
-| Event             | Description | Type                                    |
-| ----------------- | ----------- | --------------------------------------- |
-| `checkListChange` |             | `CustomEvent<ICheckboxListSelection[]>` |
+| Event             | Description | Type                 |
+| ----------------- | ----------- | -------------------- |
+| `checkListChange` |             | `CustomEvent<any[]>` |
 
 
 ----------------------------------------------

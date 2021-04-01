@@ -1,9 +1,13 @@
-import { Component, Host, h, Listen, State, Event, EventEmitter, Element } from '@stencil/core';
-
-export interface ICheckboxListSelection {
-  id: any;
-  checked: boolean;
-}
+import remove from 'lodash-es/remove';
+import {
+  Component,
+  Event,
+  EventEmitter,
+  h,
+  Host,
+  Listen,
+  State,
+} from '@stencil/core';
 
 @Component({
   tag: 'cf-checkbox-list',
@@ -11,27 +15,27 @@ export interface ICheckboxListSelection {
   shadow: true,
 })
 export class CfCheckboxList {
-  @Element() el: HTMLCfCheckboxListElement;
-  @Event() checkListChange: EventEmitter<ICheckboxListSelection[]>;
-  @State() selections: ICheckboxListSelection[] = [];
+  @Event() checkListChange: EventEmitter<any[]>;
+  @State() selections: any[] = [];
 
-  componentDidRender() {
-    let slotted = this.el.shadowRoot.querySelector('slot') as HTMLSlotElement;
-    const checkboxes = slotted.assignedNodes().filter((node) => { return node.nodeName !== '#text'; });
+  @Listen('checkboxInit')
+  handleCheckboxInit(event: CustomEvent<HTMLCfCheckboxElement>) {
+    event.stopPropagation();
 
-    this.selections = checkboxes.map((checkbox: HTMLCfCheckboxElement) => {
-      return {
-        id: checkbox.id,
-        checked: checkbox.checked,
-      }
-    })
+    if (event.detail.checked) {
+      this.selections.push(event.detail.id);
+    }
   }
 
   @Listen('checkChange')
-  handleCheckBoxesChange(event: CustomEvent<HTMLCfCheckboxElement>) {
+  handleCheckboxesChange(event: CustomEvent<HTMLCfCheckboxElement>) {
     event.stopPropagation();
-    const selection = this.selections.find(s => s.id === event.detail.id);
-    selection.checked = event.detail.checked;
+
+    if (event.detail.checked) {
+      this.selections.push(event.detail.id);
+    } else {
+      remove(this.selections, s => s === event.detail.id);
+    }
 
     this.checkListChange.emit(this.selections);
   }

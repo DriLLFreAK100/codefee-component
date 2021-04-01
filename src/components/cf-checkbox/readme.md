@@ -14,9 +14,10 @@
 
 ## Events
 
-| Event         | Description | Type                                 |
-| ------------- | ----------- | ------------------------------------ |
-| `checkChange` |             | `CustomEvent<HTMLCfCheckboxElement>` |
+| Event          | Description | Type                                 |
+| -------------- | ----------- | ------------------------------------ |
+| `checkboxInit` |             | `CustomEvent<HTMLCfCheckboxElement>` |
+| `checkChange`  |             | `CustomEvent<HTMLCfCheckboxElement>` |
 
 
 ## Dependencies

@@ -22,7 +22,9 @@
     <cf-card>
       <cf-checkbox-list id="checkbox-list">
         <cf-checkbox id="checkbox-item-1">Item 1</cf-checkbox>
-        <cf-checkbox id="checkbox-item-2">Item 2</cf-checkbox>
+        <cf-checkbox id="checkbox-item-2" checked>Item 2</cf-checkbox>
+        <cf-checkbox id="checkbox-item-3">Item 3</cf-checkbox>
+        <cf-checkbox id="checkbox-item-4" checked>Item 4</cf-checkbox>
       </cf-checkbox-list>
     </cf-card>
     <br /><br />
@@ -31,8 +33,7 @@
     <cf-typography type="h5">Checkbox</cf-typography>
     <cf-divider></cf-divider>
     <cf-card>
-      <cf-checkbox id="checkbox1">Uncheck</cf-checkbox>
-      <cf-checkbox id="checkbox2" checked>Checked</cf-checkbox>
+      <cf-checkbox id="checkbox1" checked>Uncheck</cf-checkbox>
     </cf-card>
     <br /><br />
 
@@ -381,9 +382,6 @@
 
       // Checkbox
       document.querySelector('#checkbox1').addEventListener('checkChange', event => {
-        console.dir(`id: ${event.target.id}: ${event.target.checked}`);
-      });
-      document.querySelector('#checkbox2').addEventListener('checkChange', event => {
         console.dir(`id: ${event.target.id}: ${event.target.checked}`);
       });
 
