@@ -1,3 +1,4 @@
+import { angularOutputTarget, ValueAccessorConfig } from '@stencil/angular-output-target';
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 
@@ -8,6 +9,10 @@ export const config: Config = {
   },
   namespace: 'codefee-component',
   outputTargets: [
+    angularOutputTarget({
+      componentCorePackage: '@codefee-component/core',
+      directivesProxyFile: '../codefee-component-angular/projects/codefee-component-angular/src/lib/directives/proxies.ts',
+    }),
     {
       type: 'dist',
       esmLoaderPath: '../loader',
