@@ -40,6 +40,7 @@ export namespace Components {
         "width": string;
     }
     interface CfCheckbox {
+        "checked": boolean;
     }
     interface CfChip {
         "addable": boolean;
@@ -347,6 +348,7 @@ declare namespace LocalJSX {
         "width"?: string;
     }
     interface CfCheckbox {
+        "checked"?: boolean;
     }
     interface CfChip {
         "addable"?: boolean;

@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, h, Prop } from '@stencil/core';
 
 @Component({
   tag: 'cf-checkbox',
@@ -6,11 +6,18 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class CfCheckbox {
+  @Prop() checked: boolean = false;
 
   render() {
     return (
       <Host>
-        <slot></slot>
+        <label class="cfCheckbox">
+          <cf-typography type="subtitle1">
+            <slot />
+          </cf-typography>
+          <input type="checkbox" checked={this.checked} />
+          <span class="cfCheckbox__checkmark"></span>
+        </label>
       </Host>
     );
   }
