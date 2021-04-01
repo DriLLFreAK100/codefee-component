@@ -32,6 +32,8 @@ export interface ITheme {
   '--color-bg-dark': string;
   '--color-bg-dark-on': string;
   '--color-shadow': string;
+  '--color-shadow-light': string;
+  '--color-shadow-dark': string;
   '--font-family-primary': string;
   '--font-family-secondary': string;
   '--transition-hover': string;

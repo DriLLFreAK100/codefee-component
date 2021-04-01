@@ -106,6 +106,7 @@ export namespace Components {
     interface CfTableHead {
     }
     interface CfTableRow {
+        "hoverHighlight": boolean;
         "type": TableSegment;
     }
     interface CfTabs {
@@ -408,6 +409,7 @@ declare namespace LocalJSX {
     interface CfTableHead {
     }
     interface CfTableRow {
+        "hoverHighlight"?: boolean;
         "type"?: TableSegment;
     }
     interface CfTabs {

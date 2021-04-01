@@ -6,17 +6,17 @@
 }
 
 :host(.head) {
-  height: rem(60);
+  height: rem(52);
 }
 
 :host(.body) {
-  height: rem(48);
+  height: rem(52);
 }
 
-:host(.body:hover) {
+:host(.body.hoverHighlight:hover) {
   background-color: var(--color-bg);
 }
 
 :host(.foot) {
-  height: rem(60);
+  height: rem(52);
 }

@@ -1,6 +1,7 @@
 @import '../../styles/functions.scss';
 
 :host {
+  border: rem(1) solid var(--color-bg-dark);
   border-radius: rem(4);
   display: block;
   width: 100%;

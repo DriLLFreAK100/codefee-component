@@ -9,12 +9,10 @@ export class CfTable {
 
   render() {
     return (
-      <Host>
-        <cf-card>
-          <slot name="head" />
-          <slot name="body" />
-          <slot name="foot" />
-        </cf-card>
+      <Host role="table">
+        <slot name="head" />
+        <slot name="body" />
+        <slot name="foot" />
       </Host>
     );
   }

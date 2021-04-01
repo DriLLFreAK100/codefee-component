@@ -26,6 +26,7 @@
  - [cf-notification-message](../cf-notification/cf-notification-message)
  - [cf-side-drawer](../cf-side-drawer)
  - [cf-tab](../cf-tabs/cf-tab)
+ - [cf-table-cell](../cf-table/cf-table-cell)
 
 ### Graph
 ```mermaid
@@ -39,6 +40,7 @@ graph TD;
   cf-notification-message --> cf-typography
   cf-side-drawer --> cf-typography
   cf-tab --> cf-typography
+  cf-table-cell --> cf-typography
   style cf-typography fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

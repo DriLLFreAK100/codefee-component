@@ -17,6 +17,7 @@ import { flatten } from '../../../utils';
 export class CfTableRow {
   @Element() el: HTMLElement;
   @Prop() type: TableSegment = 'body';
+  @Prop() hoverHighlight: boolean = false;
 
   componentDidRender() {
     let slotted = this.el.shadowRoot.querySelector('slot') as HTMLSlotElement;
@@ -31,6 +32,7 @@ export class CfTableRow {
   render() {
     const className = flatten(`
       ${this.type}
+      ${this.hoverHighlight ? 'hoverHighlight' : ''}
     `);
 
     return (

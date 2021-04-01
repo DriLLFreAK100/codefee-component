@@ -2,6 +2,7 @@
 
 :host {
   border-bottom: rem(1) solid var(--color-bg);
+  box-shadow: 0 rem(2) rem(4) 0 var(--color-shadow-light);
   display: block;
   width: 100%;
 }
