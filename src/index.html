@@ -16,6 +16,17 @@
   </head>
 
   <body>
+    <!-- Checkbox List -->
+    <cf-typography type="h5">Checkbox List</cf-typography>
+    <cf-divider></cf-divider>
+    <cf-card>
+      <cf-checkbox-list id="checkbox-list">
+        <cf-checkbox id="checkbox-item-1">Item 1</cf-checkbox>
+        <cf-checkbox id="checkbox-item-2">Item 2</cf-checkbox>
+      </cf-checkbox-list>
+    </cf-card>
+    <br /><br />
+
     <!-- Checkbox -->
     <cf-typography type="h5">Checkbox</cf-typography>
     <cf-divider></cf-divider>
@@ -362,6 +373,11 @@
       // Theme Init
       import { loadTheme } from '/build/index.esm.js';
       loadTheme();
+
+      // Checkbox List
+      document.querySelector('#checkbox-list').addEventListener('checkListChange', event => {
+        console.dir(event);
+      });
 
       // Checkbox
       document.querySelector('#checkbox1').addEventListener('checkChange', event => {

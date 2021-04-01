@@ -12,6 +12,13 @@
 | `checked` | `checked` |             | `boolean` | `false` |
 
 
+## Events
+
+| Event         | Description | Type                                 |
+| ------------- | ----------- | ------------------------------------ |
+| `checkChange` |             | `CustomEvent<HTMLCfCheckboxElement>` |
+
+
 ## Dependencies
 
 ### Depends on

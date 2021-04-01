@@ -1,5 +1,6 @@
 import {
   Component,
+  Element,
   Event,
   EventEmitter,
   h,
@@ -13,12 +14,13 @@ import {
   shadow: true,
 })
 export class CfCheckbox {
+  @Element() el: HTMLCfCheckboxElement;
+  @Event() checkChange: EventEmitter<HTMLCfCheckboxElement>;
   @Prop({ mutable: true, reflect: true }) checked: boolean = false;
-  @Event() checkChange: EventEmitter<HTMLInputElement>;
 
-  handleOnCheckChange(event: HTMLInputElement) {
-    this.checked = (event as any).target.checked;
-    this.checkChange.emit(event);
+  handleOnCheckChange(event: Event) {
+    this.checked = (event.target as any).checked;
+    this.checkChange.emit(this.el);
   }
 
   render() {

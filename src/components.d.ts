@@ -7,6 +7,7 @@
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { INavMenu } from "./components/cf-app-header/cf-app-header-menu/cf-app-header-menu";
 import { ButtonType, CssUnits, FeedbackType, GutterSize, TableSegment } from "./common/types";
+import { ICheckboxListSelection } from "./components/cf-checkbox-list/cf-checkbox-list";
 import { CircularProgressColor, CircularProgressType } from "./components/cf-circular-progress/cf-circular-progress";
 import { InputStatusType } from "./components/cf-input/cf-input";
 import { TypographyType } from "./components/cf-typography/cf-typography";
@@ -41,6 +42,8 @@ export namespace Components {
     }
     interface CfCheckbox {
         "checked": boolean;
+    }
+    interface CfCheckboxList {
     }
     interface CfChip {
         "addable": boolean;
@@ -163,6 +166,12 @@ declare global {
     var HTMLCfCheckboxElement: {
         prototype: HTMLCfCheckboxElement;
         new (): HTMLCfCheckboxElement;
+    };
+    interface HTMLCfCheckboxListElement extends Components.CfCheckboxList, HTMLStencilElement {
+    }
+    var HTMLCfCheckboxListElement: {
+        prototype: HTMLCfCheckboxListElement;
+        new (): HTMLCfCheckboxListElement;
     };
     interface HTMLCfChipElement extends Components.CfChip, HTMLStencilElement {
     }
@@ -297,6 +306,7 @@ declare global {
         "cf-button": HTMLCfButtonElement;
         "cf-card": HTMLCfCardElement;
         "cf-checkbox": HTMLCfCheckboxElement;
+        "cf-checkbox-list": HTMLCfCheckboxListElement;
         "cf-chip": HTMLCfChipElement;
         "cf-circular-progress": HTMLCfCircularProgressElement;
         "cf-divider": HTMLCfDividerElement;
@@ -349,7 +359,10 @@ declare namespace LocalJSX {
     }
     interface CfCheckbox {
         "checked"?: boolean;
-        "onCheckChange"?: (event: CustomEvent<HTMLInputElement>) => void;
+        "onCheckChange"?: (event: CustomEvent<HTMLCfCheckboxElement>) => void;
+    }
+    interface CfCheckboxList {
+        "onCheckListChange"?: (event: CustomEvent<ICheckboxListSelection[]>) => void;
     }
     interface CfChip {
         "addable"?: boolean;
@@ -448,6 +461,7 @@ declare namespace LocalJSX {
         "cf-button": CfButton;
         "cf-card": CfCard;
         "cf-checkbox": CfCheckbox;
+        "cf-checkbox-list": CfCheckboxList;
         "cf-chip": CfChip;
         "cf-circular-progress": CfCircularProgress;
         "cf-divider": CfDivider;
@@ -481,6 +495,7 @@ declare module "@stencil/core" {
             "cf-button": LocalJSX.CfButton & JSXBase.HTMLAttributes<HTMLCfButtonElement>;
             "cf-card": LocalJSX.CfCard & JSXBase.HTMLAttributes<HTMLCfCardElement>;
             "cf-checkbox": LocalJSX.CfCheckbox & JSXBase.HTMLAttributes<HTMLCfCheckboxElement>;
+            "cf-checkbox-list": LocalJSX.CfCheckboxList & JSXBase.HTMLAttributes<HTMLCfCheckboxListElement>;
             "cf-chip": LocalJSX.CfChip & JSXBase.HTMLAttributes<HTMLCfChipElement>;
             "cf-circular-progress": LocalJSX.CfCircularProgress & JSXBase.HTMLAttributes<HTMLCfCircularProgressElement>;
             "cf-divider": LocalJSX.CfDivider & JSXBase.HTMLAttributes<HTMLCfDividerElement>;
