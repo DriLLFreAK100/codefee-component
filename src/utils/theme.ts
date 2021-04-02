@@ -50,9 +50,11 @@ export const CodefeeTheme: ITheme = {
  * @param overrides Theme properties to overrides
  * @returns 
  */
-export const loadTheme = <T extends ITheme>(theme: ITheme = CodefeeTheme, overrides: T) => {
+export const loadTheme = <T extends ITheme>(theme?: ITheme, overrides?: T) => {
+  const themeInUse = theme ? theme : CodefeeTheme;
+
   const resultTheme = {
-    ...theme,
+    ...themeInUse,
     ...overrides,
   };
 

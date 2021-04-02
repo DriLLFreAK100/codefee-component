@@ -1,7 +1,7 @@
 {
   "name": "@codefee-component/core",
-  "version": "0.0.36",
-  "description": "A Core UI Web Components for Codefee Works. This project is using Stencil.",
+  "version": "0.0.40",
+  "description": "A Core UI Web Components for Codefee Works. This project is built using Stencil.",
   "publishConfig": {
     "access": "public"
   },
@@ -18,15 +18,18 @@
     "loader/"
   ],
   "scripts": {
-    "build": "npm run build:stencil && npm run build:fix-angular-proxy",
-    "build:stencil": "stencil build --docs",
-    "build:fix-angular-proxy": "node ./scripts/fix-angular-proxy.js",
+    "build": "npm run build:core && npm run build:angular",
+    "build:core": "stencil build --docs",
+    "build:angular": "cd angular && npm run build && cd..",
     "build:local": "npm run build && npm pack",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
-    "g": "npm run generate"
+    "g": "npm run generate",
+    "v:patch": "npm run v:patch:core && npm run v:patch:angular",
+    "v:patch:core": "npm version patch",
+    "v:patch:angular": "cd angular/projects/main && npm version patch && cd.."
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.3",
@@ -36,7 +39,6 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@stencil/angular-output-target": "0.0.5",
     "@stencil/sass": "^1.4.1",
     "@types/jest": "^26.0.20",
     "@types/lodash-es": "^4.17.4",

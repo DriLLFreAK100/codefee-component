@@ -335,7 +335,7 @@ declare namespace LocalJSX {
         "drawerOpen"?: boolean;
         "drawerTitle"?: string;
         "navMenus"?: INavMenu[];
-        "onDrawerOpenChange"?: (event: CustomEvent<boolean>) => void;
+        "onDrawerOpenChange"?: (event: CustomEvent<any>) => void;
     }
     interface CfAppHeaderActionMenu {
         "icon"?: string;

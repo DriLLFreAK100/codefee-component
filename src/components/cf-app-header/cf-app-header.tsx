@@ -16,7 +16,7 @@ import {
 })
 export class CfAppHeader {
   @Element() el: HTMLStencilElement;
-  @Event() drawerOpenChange: EventEmitter<boolean>;
+  @Event() drawerOpenChange: EventEmitter<any>;
   @Prop() appName: string;
   @Prop() drawerTitle: string;
   @Prop({ mutable: true, reflect: true }) drawerOpen: boolean = false;

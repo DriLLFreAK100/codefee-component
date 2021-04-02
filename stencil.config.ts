@@ -1,4 +1,3 @@
-import { angularOutputTarget, ValueAccessorConfig } from '@stencil/angular-output-target';
 import { Config } from '@stencil/core';
 import { sass } from '@stencil/sass';
 
@@ -9,10 +8,6 @@ export const config: Config = {
   },
   namespace: 'codefee-component',
   outputTargets: [
-    angularOutputTarget({
-      componentCorePackage: '@codefee-component/core',
-      directivesProxyFile: '../codefee-component-angular/projects/codefee-component-angular/src/lib/directives/proxies.ts',
-    }),
     {
       type: 'dist',
       esmLoaderPath: '../loader',
@@ -30,6 +25,14 @@ export const config: Config = {
       type: 'www',
       serviceWorker: null, // disable service workers
     },
+    {
+      type: 'angular',
+      componentCorePackage: '@codefee-component/core',
+      directivesProxyFile: './angular/projects/codefee-component-angular/src/lib/directives/proxies.ts',
+      directivesUtilsFile: './angular/projects/codefee-component-angular/src/lib/directives/proxies-utils.ts',
+      directivesArrayFile: './angular/projects/codefee-component-angular/src/lib/directives/proxies-list.txt',
+      excludeComponents: [],
+    }
   ],
   plugins: [
     sass(),

@@ -17,9 +17,9 @@
 
 ## Events
 
-| Event              | Description | Type                   |
-| ------------------ | ----------- | ---------------------- |
-| `drawerOpenChange` |             | `CustomEvent<boolean>` |
+| Event              | Description | Type               |
+| ------------------ | ----------- | ------------------ |
+| `drawerOpenChange` |             | `CustomEvent<any>` |
 
 
 ## Dependencies
