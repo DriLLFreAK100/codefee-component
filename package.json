@@ -20,7 +20,7 @@
   "scripts": {
     "build": "npm run build:core && npm run build:angular",
     "build:core": "stencil build --docs",
-    "build:angular": "cd angular && npm run build && cd..",
+    "build:angular": "cd exports/angular && npm run build && cd../..",
     "build:local": "npm run build && npm pack",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
@@ -29,10 +29,10 @@
     "g": "npm run generate",
     "v:patch": "npm run v:patch:core && npm run v:patch:angular",
     "v:patch:core": "npm version --no-commit-hooks patch",
-    "v:patch:angular": "cd angular/projects/main && npm version patch && cd..",
+    "v:patch:angular": "cd exports/angular/projects/main && npm version patch && cd../../../..",
     "pub": "npm run pub:core && npm run pub:angular",
     "pub:core": "npm publish",
-    "pub:angular": "cd angular/dist && npm publish && cd../.."
+    "pub:angular": "cd exports/angular/dist && npm publish && cd../../.."
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.3",
@@ -42,6 +42,7 @@
   },
   "license": "MIT",
   "devDependencies": {
+    "@stencil/react-output-target": "0.0.9",
     "@stencil/sass": "^1.4.1",
     "@types/jest": "^26.0.20",
     "@types/lodash-es": "^4.17.4",

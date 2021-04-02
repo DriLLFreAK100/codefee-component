@@ -1,4 +1,5 @@
 import { Config } from '@stencil/core';
+import { reactOutputTarget } from '@stencil/react-output-target';
 import { sass } from '@stencil/sass';
 
 export const config: Config = {
@@ -28,11 +29,16 @@ export const config: Config = {
     {
       type: 'angular',
       componentCorePackage: '@codefee-component/core',
-      directivesProxyFile: './angular/projects/main/src/lib/directives/proxies.ts',
-      directivesUtilsFile: './angular/projects/main/src/lib/directives/proxies-utils.ts',
-      directivesArrayFile: './angular/projects/main/src/lib/directives/proxies-list.txt',
+      directivesProxyFile: './exports/angular/projects/main/src/lib/directives/proxies.ts',
+      directivesUtilsFile: './exports/angular/projects/main/src/lib/directives/proxies-utils.ts',
+      directivesArrayFile: './exports/angular/projects/main/src/lib/directives/proxies-list.txt',
       excludeComponents: [],
-    }
+    },
+    reactOutputTarget({
+      componentCorePackage: '@codefee-component/core',
+      proxiesFile: './exports/react/src/components.ts',
+      includeDefineCustomElements: true,
+    }),
   ],
   plugins: [
     sass(),
