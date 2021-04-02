@@ -29,7 +29,7 @@
     "generate": "stencil generate",
     "g": "npm run generate",
     "v:patch": "npm run v:patch:core && npm run v:patch:angular && npm run v:patch:react",
-    "v:patch:core": "npm version --no-commit-hooks patch",
+    "v:patch:core": "npm version patch",
     "v:patch:angular": "cd exports/angular/projects/main && npm version patch && cd../../../..",
     "v:patch:react": "cd exports/react && npm version patch && cd../../",
     "pub": "npm run pub:core && npm run pub:angular && npm run pub:react",
