@@ -28,7 +28,7 @@
     "generate": "stencil generate",
     "g": "npm run generate",
     "v:patch": "npm run v:patch:core && npm run v:patch:angular",
-    "v:patch:core": "npm version patch",
+    "v:patch:core": "npm version --no-commit-hooks patch",
     "v:patch:angular": "cd angular/projects/main && npm version patch && cd.."
   },
   "dependencies": {

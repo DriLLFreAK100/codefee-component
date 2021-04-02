@@ -28,9 +28,9 @@ export const config: Config = {
     {
       type: 'angular',
       componentCorePackage: '@codefee-component/core',
-      directivesProxyFile: './angular/projects/codefee-component-angular/src/lib/directives/proxies.ts',
-      directivesUtilsFile: './angular/projects/codefee-component-angular/src/lib/directives/proxies-utils.ts',
-      directivesArrayFile: './angular/projects/codefee-component-angular/src/lib/directives/proxies-list.txt',
+      directivesProxyFile: './angular/projects/main/src/lib/directives/proxies.ts',
+      directivesUtilsFile: './angular/projects/main/src/lib/directives/proxies-utils.ts',
+      directivesArrayFile: './angular/projects/main/src/lib/directives/proxies-list.txt',
       excludeComponents: [],
     }
   ],
