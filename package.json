@@ -29,7 +29,10 @@
     "g": "npm run generate",
     "v:patch": "npm run v:patch:core && npm run v:patch:angular",
     "v:patch:core": "npm version --no-commit-hooks patch",
-    "v:patch:angular": "cd angular/projects/main && npm version patch && cd.."
+    "v:patch:angular": "cd angular/projects/main && npm version patch && cd..",
+    "pub": "npm run pub:core && npm run pub:angular",
+    "pub:core": "npm publish",
+    "pub:angular": "cd angular/dist && npm publish && cd../.."
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.3",
