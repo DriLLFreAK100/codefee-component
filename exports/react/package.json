@@ -16,7 +16,6 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "@codefee-component/core": "^0.0.45",
     "@rollup/plugin-commonjs": "^17.1.0",
     "@rollup/plugin-node-resolve": "^11.2.0",
     "@rollup/plugin-typescript": "^8.2.0",
@@ -43,6 +42,6 @@
   "peerDependencies": {
     "react": ">=16.13.1",
     "react-dom": ">=16.13.1",
-    "@codefee-component/core": ">=0.0.45"
+    "@codefee-component/core": "0.0.45"
   }
 }

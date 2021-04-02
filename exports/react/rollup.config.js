@@ -28,10 +28,10 @@ export default {
       declarationDir: 'dist',
     }),
     terser(),
-    visualizer({
-      filename: 'bundle-analysis.html',
-      open: true,
-    }),
+    // visualizer({
+    //   filename: 'bundle-analysis.html',
+    //   open: true,
+    // }),
   ],
   external: ['react', 'react-dom'],
 };

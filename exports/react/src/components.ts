@@ -5,9 +5,8 @@ import { createReactComponent } from './react-component-lib';
 
 import type { JSX } from '@codefee-component/core';
 
-import { defineCustomElements } from '@codefee-component/core/loader';
 
-defineCustomElements();
+
 export const CfAppHeader = /*@__PURE__*/createReactComponent<JSX.CfAppHeader, HTMLCfAppHeaderElement>('cf-app-header');
 export const CfAppHeaderActionMenu = /*@__PURE__*/createReactComponent<JSX.CfAppHeaderActionMenu, HTMLCfAppHeaderActionMenuElement>('cf-app-header-action-menu');
 export const CfAppHeaderMenu = /*@__PURE__*/createReactComponent<JSX.CfAppHeaderMenu, HTMLCfAppHeaderMenuElement>('cf-app-header-menu');

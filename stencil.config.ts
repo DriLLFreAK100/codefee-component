@@ -37,7 +37,6 @@ export const config: Config = {
     reactOutputTarget({
       componentCorePackage: '@codefee-component/core',
       proxiesFile: './exports/react/src/components.ts',
-      includeDefineCustomElements: true,
     }),
   ],
   plugins: [
