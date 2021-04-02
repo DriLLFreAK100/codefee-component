@@ -1,6 +1,6 @@
 {
   "name": "@codefee-component/react",
-  "version": "0.0.44",
+  "version": "0.0.45",
   "description": "React wrapper for Codefee-Component",
   "main": "dist/index.js",
   "files": [
