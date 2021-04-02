@@ -18,7 +18,9 @@
     "loader/"
   ],
   "scripts": {
-    "build": "stencil build --docs",
+    "build": "npm run build:stencil && npm run build:fix-angular-proxy",
+    "build:stencil": "stencil build --docs",
+    "build:fix-angular-proxy": "node ./scripts/fix-angular-proxy.js",
     "build:local": "npm run build && npm pack",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
