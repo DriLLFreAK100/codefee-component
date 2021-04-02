@@ -16,9 +16,12 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
+    "@codefee-component/core": "^0.0.45",
     "@rollup/plugin-commonjs": "^17.1.0",
     "@rollup/plugin-node-resolve": "^11.2.0",
     "@rollup/plugin-typescript": "^8.2.0",
+    "@types/react": "^17.0.3",
+    "@types/react-dom": "^17.0.3",
     "awesome-typescript-loader": "^5.2.1",
     "css-loader": "^4.3.0",
     "mini-css-extract-plugin": "^0.11.3",
@@ -40,6 +43,6 @@
   "peerDependencies": {
     "react": ">=16.13.1",
     "react-dom": ">=16.13.1",
-    "@codefee-component/core": ">=0.0.42"
+    "@codefee-component/core": ">=0.0.45"
   }
 }

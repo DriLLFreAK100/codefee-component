@@ -20,9 +20,11 @@
   "scripts": {
     "build": "npm run build:core && npm run build:angular && npm run build:react",
     "build:core": "stencil build --docs",
+    "build:core:local": "npm run build:stencil && npm pack",
     "build:angular": "cd exports/angular && npm run build && cd../..",
+    "build:angular:local": "npm run build:angular && cd exports/angular/dist && npm pack && cd../../..",
     "build:react": "cd exports/react && npm run build && cd../..",
-    "build:local": "npm run build && npm pack",
+    "build:react:local": "npm run build:react && cd exports/react && npm pack && cd../..",
     "start": "stencil build --dev --watch --serve",
     "test": "stencil test --spec --e2e",
     "test.watch": "stencil test --spec --e2e --watchAll",

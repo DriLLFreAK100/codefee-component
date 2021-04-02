@@ -1,5 +1,5 @@
 import { defineCustomElements } from '@codefee-component/core/loader';
-import { NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import {
   CfAppHeader,
   CfAppHeaderActionMenu,
@@ -30,6 +30,7 @@ import {
   CfTypography,
   CfVirtualScroller,
 } from './directives/proxies';
+import { initializer } from './initializer';
 
 defineCustomElements(window);
 
@@ -69,6 +70,10 @@ const DECLARATIONS = [
   declarations: DECLARATIONS,
   exports: DECLARATIONS,
   imports: [],
-  providers: []
+  providers: [{
+    provide: APP_INITIALIZER,
+    useFactory: initializer,
+    multi: true
+  }],
 })
 export class CodefeeComponentModule { }

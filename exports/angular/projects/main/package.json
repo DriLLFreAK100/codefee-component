@@ -10,5 +10,8 @@
   },
   "dependencies": {
     "tslib": "^2.0.0"
+  },
+  "allowedNonPeerDependencies": {
+    "@codefee-component/core": "0.0.45"
   }
 }
