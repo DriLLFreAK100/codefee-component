@@ -12,18 +12,6 @@ import {
 
 export type CellContentPosition = 'left' | 'right' | 'center';
 
-const renderSlot = (type: TableSegment) => {
-  switch (type) {
-    case 'head':
-    default:
-      return <cf-typography type="h6"><slot /></cf-typography>;
-    case 'body':
-      return <cf-typography type="body1"><slot /></cf-typography>;
-    case 'foot':
-      return <cf-typography type="h6"><slot /></cf-typography>;
-  }
-}
-
 @Component({
   tag: 'cf-table-cell',
   styleUrl: 'cf-table-cell.scss',
@@ -33,11 +21,23 @@ export class CfTableCell {
   @Element() el: HTMLCfTableCellElement;
   @Event() tblCellInit: EventEmitter<HTMLCfTableCellElement>;
   @Prop() size: number = 1;
-  @Prop() position: CellContentPosition = 'center';
+  @Prop() position: CellContentPosition = 'left';
   @Prop() type: TableSegment = 'body';
 
   connectedCallback() {
     this.tblCellInit.emit(this.el);
+  }
+
+  renderSlot(type: TableSegment) {
+    switch (type) {
+      case 'head':
+      default:
+        return <cf-typography type="h6" ellipsis title="test"><slot /></cf-typography>;
+      case 'body':
+        return <cf-typography type="body1" ellipsis><slot /></cf-typography>;
+      case 'foot':
+        return <cf-typography type="h6" ellipsis><slot /></cf-typography>;
+    }
   }
 
   render() {
@@ -47,7 +47,7 @@ export class CfTableCell {
 
     return (
       <Host class={className} size={this.size}>
-        {renderSlot(this.type)}
+        {this.renderSlot(this.type)}
       </Host>
     );
   }

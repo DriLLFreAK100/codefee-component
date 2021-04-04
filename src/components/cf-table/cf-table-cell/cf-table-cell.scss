@@ -1,6 +1,15 @@
+@import '../../../styles/functions.scss';
+
 :host {
   align-items: center;
+  box-sizing: border-box;
   display: flex;
+  padding: rem(4);
+  overflow: hidden;
+
+  & cf-typography {
+    overflow: hidden;
+  }
 }
 
 :host(.center) {

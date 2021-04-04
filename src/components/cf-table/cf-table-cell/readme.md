@@ -7,11 +7,18 @@
 
 ## Properties
 
-| Property   | Attribute  | Description | Type                            | Default    |
-| ---------- | ---------- | ----------- | ------------------------------- | ---------- |
-| `position` | `position` |             | `"center" \| "left" \| "right"` | `'center'` |
-| `size`     | `size`     |             | `number`                        | `1`        |
-| `type`     | `type`     |             | `"body" \| "foot" \| "head"`    | `'body'`   |
+| Property   | Attribute  | Description | Type                            | Default  |
+| ---------- | ---------- | ----------- | ------------------------------- | -------- |
+| `position` | `position` |             | `"center" \| "left" \| "right"` | `'left'` |
+| `size`     | `size`     |             | `number`                        | `1`      |
+| `type`     | `type`     |             | `"body" \| "foot" \| "head"`    | `'body'` |
+
+
+## Events
+
+| Event         | Description | Type                                  |
+| ------------- | ----------- | ------------------------------------- |
+| `tblCellInit` |             | `CustomEvent<HTMLCfTableCellElement>` |
 
 
 ## Dependencies

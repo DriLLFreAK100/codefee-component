@@ -11,6 +11,12 @@
   border: 0;
 }
 
+.ellipsis {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
 .h1 {
   @extend .reset;
   font-family: var(--font-family-primary);

@@ -7,10 +7,16 @@
 
 ## Properties
 
-| Property         | Attribute         | Description | Type                         | Default  |
-| ---------------- | ----------------- | ----------- | ---------------------------- | -------- |
-| `hoverHighlight` | `hover-highlight` |             | `boolean`                    | `false`  |
-| `type`           | `type`            |             | `"body" \| "foot" \| "head"` | `'body'` |
+| Property | Attribute | Description | Type                         | Default  |
+| -------- | --------- | ----------- | ---------------------------- | -------- |
+| `type`   | `type`    |             | `"body" \| "foot" \| "head"` | `'body'` |
+
+
+## Events
+
+| Event        | Description | Type                                 |
+| ------------ | ----------- | ------------------------------------ |
+| `tblRowInit` |             | `CustomEvent<HTMLCfTableRowElement>` |
 
 
 ----------------------------------------------

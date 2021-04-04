@@ -22,7 +22,6 @@ export class CfTableRow {
   @Element() el: HTMLCfTableRowElement;
   @Event() tblRowInit: EventEmitter<HTMLCfTableRowElement>;
   @Prop() type: TableSegment = 'body';
-  @Prop() hoverHighlight: boolean = false;
   @State() cells: HTMLCfTableCellElement[] = [];
 
   @Listen('tblCellInit')
@@ -46,7 +45,6 @@ export class CfTableRow {
   render() {
     const className = flatten(`
       ${this.type}
-      ${this.hoverHighlight ? 'hoverHighlight' : ''}
     `);
 
     return (

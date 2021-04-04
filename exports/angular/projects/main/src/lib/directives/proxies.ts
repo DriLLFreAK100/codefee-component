@@ -252,10 +252,12 @@ export declare interface CfTableCell extends Components.CfTableCell {
 @ProxyCmp({ inputs: ["position", "size", "type"] })
 @Component({ selector: "cf-table-cell", changeDetection: ChangeDetectionStrategy.OnPush, template: "<ng-content></ng-content>", inputs: ["position", "size", "type"] })
 export class CfTableCell {
+  tblCellInit!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ["tblCellInit"]);
   }
 }
 export declare interface CfTableFoot extends Components.CfTableFoot {
@@ -280,13 +282,15 @@ export class CfTableHead {
 }
 export declare interface CfTableRow extends Components.CfTableRow {
 }
-@ProxyCmp({ inputs: ["hoverHighlight", "type"] })
-@Component({ selector: "cf-table-row", changeDetection: ChangeDetectionStrategy.OnPush, template: "<ng-content></ng-content>", inputs: ["hoverHighlight", "type"] })
+@ProxyCmp({ inputs: ["type"] })
+@Component({ selector: "cf-table-row", changeDetection: ChangeDetectionStrategy.OnPush, template: "<ng-content></ng-content>", inputs: ["type"] })
 export class CfTableRow {
+  tblRowInit!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
     c.detach();
     this.el = r.nativeElement;
+    proxyOutputs(this, this.el, ["tblRowInit"]);
   }
 }
 export declare interface CfTabs extends Components.CfTabs {
@@ -303,8 +307,8 @@ export class CfTabs {
 }
 export declare interface CfTypography extends Components.CfTypography {
 }
-@ProxyCmp({ inputs: ["gutterBottom", "type"] })
-@Component({ selector: "cf-typography", changeDetection: ChangeDetectionStrategy.OnPush, template: "<ng-content></ng-content>", inputs: ["gutterBottom", "type"] })
+@ProxyCmp({ inputs: ["ellipsis", "gutterBottom", "type"] })
+@Component({ selector: "cf-typography", changeDetection: ChangeDetectionStrategy.OnPush, template: "<ng-content></ng-content>", inputs: ["ellipsis", "gutterBottom", "type"] })
 export class CfTypography {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {

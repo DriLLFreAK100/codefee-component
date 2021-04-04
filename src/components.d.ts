@@ -111,12 +111,12 @@ export namespace Components {
     interface CfTableHead {
     }
     interface CfTableRow {
-        "hoverHighlight": boolean;
         "type": TableSegment;
     }
     interface CfTabs {
     }
     interface CfTypography {
+        "ellipsis": boolean;
         "gutterBottom": GutterSize;
         "type": TypographyType;
     }
@@ -437,7 +437,6 @@ declare namespace LocalJSX {
     interface CfTableHead {
     }
     interface CfTableRow {
-        "hoverHighlight"?: boolean;
         "onTblRowInit"?: (event: CustomEvent<HTMLCfTableRowElement>) => void;
         "type"?: TableSegment;
     }
@@ -445,6 +444,7 @@ declare namespace LocalJSX {
         "onTabSelect"?: (event: CustomEvent<any>) => void;
     }
     interface CfTypography {
+        "ellipsis"?: boolean;
         "gutterBottom"?: GutterSize;
         "type"?: TypographyType;
     }

@@ -1,5 +1,6 @@
 import { Component, Host, h, Prop } from '@stencil/core';
 import { GutterSize } from '../../common/types';
+import { flatten } from '../../utils';
 
 export type TypographyType =
   'h1' |
@@ -50,15 +51,21 @@ const getElement = (type: TypographyType) => {
   shadow: true,
 })
 export class CfTypography {
-  @Prop() type: TypographyType = 'p';
+  @Prop() ellipsis: boolean = false;
   @Prop() gutterBottom: GutterSize = 'g0';
+  @Prop() type: TypographyType = 'p';
 
   render() {
+    const elClassName = flatten(`
+      ${this.type} 
+      ${this.ellipsis ? 'ellipsis' : ''}
+    `);
+
     const Element = getElement(this.type as TypographyType);
 
     return (
       <Host class={`${this.gutterBottom}`}>
-        <Element class={`${this.type}`}>
+        <Element class={elClassName}>
           <slot></slot>
         </Element>
       </Host>
