@@ -6,8 +6,12 @@ import {
   h,
   Host,
   Listen,
+  Prop,
   State,
 } from '@stencil/core';
+import { flatten } from '../../utils';
+
+export type CheckboxDirection = 'vertical' | 'horizontal';
 
 @Component({
   tag: 'cf-checkbox-list',
@@ -16,6 +20,7 @@ import {
 })
 export class CfCheckboxList {
   @Event() checkListChange: EventEmitter<any[]>;
+  @Prop() direction: CheckboxDirection = 'vertical';
   @State() selections: any[] = [];
 
   @Listen('checkboxInit')
@@ -41,8 +46,12 @@ export class CfCheckboxList {
   }
 
   render() {
+    const className = flatten(`
+      ${this.direction}
+    `);
+
     return (
-      <Host>
+      <Host class={`${className}`}>
         <slot></slot>
       </Host>
     );

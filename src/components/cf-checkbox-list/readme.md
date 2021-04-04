@@ -5,6 +5,13 @@
 <!-- Auto Generated Below -->
 
 
+## Properties
+
+| Property    | Attribute   | Description | Type                         | Default      |
+| ----------- | ----------- | ----------- | ---------------------------- | ------------ |
+| `direction` | `direction` |             | `"horizontal" \| "vertical"` | `'vertical'` |
+
+
 ## Events
 
 | Event             | Description | Type                 |

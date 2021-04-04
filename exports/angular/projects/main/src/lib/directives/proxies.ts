@@ -77,7 +77,8 @@ export class CfCheckbox {
 }
 export declare interface CfCheckboxList extends Components.CfCheckboxList {
 }
-@Component({ selector: "cf-checkbox-list", changeDetection: ChangeDetectionStrategy.OnPush, template: "<ng-content></ng-content>" })
+@ProxyCmp({ inputs: ["direction"] })
+@Component({ selector: "cf-checkbox-list", changeDetection: ChangeDetectionStrategy.OnPush, template: "<ng-content></ng-content>", inputs: ["direction"] })
 export class CfCheckboxList {
   checkListChange!: EventEmitter<CustomEvent>;
   protected el: HTMLElement;

@@ -1,3 +1,21 @@
+@import '../../styles/functions.scss';
+
 :host {
-  display: block;
+  display: flex;
+}
+
+:host(.horizontal) {
+  flex-direction: row;
+}
+
+:host(.horizontal) ::slotted(cf-checkbox) {
+  margin-right: rem(8);
+}
+
+:host(.vertical) {
+  flex-direction: column;
+}
+
+:host(.vertical) ::slotted(cf-checkbox) {
+  margin-bottom: rem(8);
 }
