@@ -28,8 +28,6 @@
     "build:react": "cd exports/react && npm run build && cd../..",
     "build:react:local": "npm run build:react && cd exports/react && npm pack && cd../..",
     "start": "stencil build --dev --watch --serve",
-    "test": "stencil test --spec --e2e",
-    "test.watch": "stencil test --spec --e2e --watchAll",
     "generate": "stencil generate",
     "g": "npm run generate",
     "v:patch:core": "npm version patch",
