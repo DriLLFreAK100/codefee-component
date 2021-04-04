@@ -10,7 +10,7 @@ defaults: &defaults
     - image: cimg/node:14.16.0-browsers
 
 jobs:
-  test:
+  build-core:
     <<: *defaults
     steps:
       - checkout
@@ -21,19 +21,21 @@ jobs:
             - v1-dependencies-
 
       - run: npm install
-      - run:
-          name: Run tests
-          command: npm test
 
       - save_cache:
           paths:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
+      - run:
+          name: Build Core
+          command: npm build:core
+
       - persist_to_workspace:
           root: ~/repo
           paths: .
-  deploy:
+
+  deploy-core:
     <<: *defaults
     steps:
       - attach_workspace:
@@ -43,19 +45,16 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
       - run:
           name: Publish package
-          command: npm run pub:core && npm run pub:angular && npm run pub:react
+          command: npm run pub:core
 
 workflows:
   version: 2
-  test-deploy:
+  deploy:
     jobs:
-      - test:
-          filters:
-            tags:
-              only: /^v.*/
-      - deploy:
+      - build-core
+      - deploy-core:
           requires:
-            - test
+            - build-core
           filters:
             tags:
               only: /^v.*/
