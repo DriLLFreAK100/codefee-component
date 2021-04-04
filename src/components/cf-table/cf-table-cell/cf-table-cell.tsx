@@ -32,7 +32,7 @@ export class CfTableCell {
     switch (type) {
       case 'head':
       default:
-        return <cf-typography type="h6" ellipsis title="test"><slot /></cf-typography>;
+        return <cf-typography type="h6" ellipsis><slot /></cf-typography>;
       case 'body':
         return <cf-typography type="body1" ellipsis><slot /></cf-typography>;
       case 'foot':
