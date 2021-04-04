@@ -10,25 +10,30 @@ const main = (type) => {
   }
 }
 
-const syncAngular = () => {
+const syncAngular = async () => {
   console.log('Start syncAngular');
+  const corePkgJsonPath = './package.json';
+  const angularPkgJsonPath = './exports/angular/package.json';
+
+  const core = JSON.parse(await fs.readFileSync(corePkgJsonPath));
+  const angular = JSON.parse(await fs.readFileSync(angularPkgJsonPath));
+  angular.dependencies['@codefee-component/core'] = core.version;
+
+  fs.writeFileSync(angularPkgJsonPath, JSON.stringify(angular, undefined, 2));
+
   console.log('End syncAngular');
 }
 
-const syncReact = () => {
+const syncReact = async () => {
   console.log('Start syncReact');
-  const pkgJsonPath = './exports/react/package.json';
+  const corePkgJsonPath = './package.json';
+  const reactPkgJsonPath = './exports/react/package.json';
 
-  fs.readFile(pkgJsonPath, 'utf8', function (err, data) {
-    if (err) throw err;
+  const core = JSON.parse(await fs.readFileSync(corePkgJsonPath));
+  const react = JSON.parse(await fs.readFileSync(reactPkgJsonPath));
+  react.peerDependencies['@codefee-component/core'] = `>=${core.version}`;
 
-    data.
-
-      fs.writeFile(pkgJsonPath, data, function (err) {
-        if (err) throw err;
-        console.log('complete');
-      });
-  });
+  fs.writeFileSync(reactPkgJsonPath, JSON.stringify(react, undefined, 2));
 
   console.log('End syncReact');
 }
