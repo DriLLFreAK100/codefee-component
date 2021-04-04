@@ -1,4 +1,4 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, h, Host } from '@stencil/core';
 
 @Component({
   tag: 'cf-table',
@@ -6,7 +6,6 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class CfTable {
-
   render() {
     return (
       <Host role="table">

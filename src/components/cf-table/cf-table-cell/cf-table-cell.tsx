@@ -2,6 +2,9 @@ import { flatten } from '../../../utils';
 import { TableSegment } from '../../../common/types';
 import {
   Component,
+  Element,
+  Event,
+  EventEmitter,
   h,
   Host,
   Prop,
@@ -20,15 +23,22 @@ const renderSlot = (type: TableSegment) => {
       return <cf-typography type="h6"><slot /></cf-typography>;
   }
 }
+
 @Component({
   tag: 'cf-table-cell',
   styleUrl: 'cf-table-cell.scss',
   shadow: true,
 })
 export class CfTableCell {
+  @Element() el: HTMLCfTableCellElement;
+  @Event() tblCellInit: EventEmitter<HTMLCfTableCellElement>;
   @Prop() size: number = 1;
   @Prop() position: CellContentPosition = 'center';
   @Prop() type: TableSegment = 'body';
+
+  connectedCallback() {
+    this.tblCellInit.emit(this.el);
+  }
 
   render() {
     const className = flatten(`

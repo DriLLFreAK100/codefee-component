@@ -1,13 +1,17 @@
 import sumBy from 'lodash-es/sumBy';
+import { flatten } from '../../../utils';
 import { TableSegment } from '../../../common/types';
 import {
   Component,
   Element,
+  Event,
+  EventEmitter,
   h,
   Host,
+  Listen,
   Prop,
+  State,
 } from '@stencil/core';
-import { flatten } from '../../../utils';
 
 @Component({
   tag: 'cf-table-row',
@@ -15,16 +19,26 @@ import { flatten } from '../../../utils';
   shadow: true,
 })
 export class CfTableRow {
-  @Element() el: HTMLElement;
+  @Element() el: HTMLCfTableRowElement;
+  @Event() tblRowInit: EventEmitter<HTMLCfTableRowElement>;
   @Prop() type: TableSegment = 'body';
   @Prop() hoverHighlight: boolean = false;
+  @State() cells: HTMLCfTableCellElement[] = [];
 
-  componentDidRender() {
-    let slotted = this.el.shadowRoot.querySelector('slot') as HTMLSlotElement;
-    const cells = slotted.assignedNodes().filter((node) => { return node.nodeName !== '#text'; });
-    const totalSize = sumBy(cells, 'size');
+  @Listen('tblCellInit')
+  handleCellInit(event: CustomEvent<HTMLCfTableCellElement>) {
+    this.cells = [...this.cells, event.detail];
+  }
 
-    cells.forEach((cell: HTMLCfTableCellElement) => {
+  connectedCallback() {
+    this.tblRowInit.emit(this.el);
+  }
+
+  componentWillLoad() {
+    const totalSize = sumBy(this.cells, 'size');
+
+    this.cells.forEach((cell: HTMLCfTableCellElement) => {
+      cell.type = this.type;
       cell.style.flexBasis = `${cell.size / totalSize * 100}%`;
     });
   }

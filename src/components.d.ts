@@ -427,6 +427,7 @@ declare namespace LocalJSX {
     interface CfTableBody {
     }
     interface CfTableCell {
+        "onTblCellInit"?: (event: CustomEvent<HTMLCfTableCellElement>) => void;
         "position"?: CellContentPosition;
         "size"?: number;
         "type"?: TableSegment;
@@ -437,6 +438,7 @@ declare namespace LocalJSX {
     }
     interface CfTableRow {
         "hoverHighlight"?: boolean;
+        "onTblRowInit"?: (event: CustomEvent<HTMLCfTableRowElement>) => void;
         "type"?: TableSegment;
     }
     interface CfTabs {
