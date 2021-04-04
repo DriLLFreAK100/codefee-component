@@ -18,6 +18,7 @@
     "loader/"
   ],
   "scripts": {
+    "build": "npm run build:core",
     "build:core": "stencil build --docs",
     "build:core:local": "npm run build:stencil && npm pack",
     "prebuild:angular": "npm run sync:angular && npm run v:patch:angular && cd exports/angular && npm i && cd../..",
@@ -34,13 +35,12 @@
     "v:patch:core": "npm version patch",
     "v:patch:angular": "cd exports/angular/projects/main && npm version patch && cd../../../..",
     "v:patch:react": "cd exports/react && npm version patch && cd../../",
-    "pub": "npm run pub:core && npm run pub:angular && npm run pub:react",
     "pub:core": "npm publish",
     "pub:angular": "cd exports/angular/dist && npm publish && cd../../..",
     "pub:react": "cd exports/react && npm publish && cd../..",
-    "sync:exports": "npm run sync:angular && npm run sync:react",
     "sync:angular": "node scripts/syncExportCoreDeps.js angular",
-    "sync:react": "node scripts/syncExportCoreDeps.js react"
+    "sync:react": "node scripts/syncExportCoreDeps.js react",
+    "sync:all": "npm run build:angular && npm run pub:angular && npm run build:react && npm run pub:react"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.3",
