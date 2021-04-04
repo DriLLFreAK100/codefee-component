@@ -40,8 +40,9 @@
     "pub:react": "cd exports/react && npm publish && cd../..",
     "sync:angular": "node scripts/syncExportCoreDeps.js angular",
     "sync:react": "node scripts/syncExportCoreDeps.js react",
-    "sync:all": "npm run build:angular && npm run pub:angular && npm run build:react && npm run pub:react",
-    "postsync:all": "git add . && git commit -m \"exports version sync\""
+    "sync:all": "npm run build:angular && npm run build:react",
+    "postsync:all": "git add . && git commit -m \"exports version sync\"",
+    "sync:pub:all": "npm run build:angular && npm run pub:angular && npm run build:react && npm run pub:react"
   },
   "dependencies": {
     "@fortawesome/fontawesome-free": "5.15.3",
