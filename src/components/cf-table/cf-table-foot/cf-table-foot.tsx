@@ -16,6 +16,7 @@ export class CfTableFoot {
 
   @Listen('tblRowInit')
   handleRowInit(event: CustomEvent<HTMLCfTableRowElement>) {
+    event.stopPropagation();
     event.detail.type = 'foot';
   }
 

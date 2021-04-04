@@ -26,6 +26,7 @@ export class CfTableRow {
 
   @Listen('tblCellInit')
   handleCellInit(event: CustomEvent<HTMLCfTableCellElement>) {
+    event.stopPropagation();
     this.cells = [...this.cells, event.detail];
   }
 
