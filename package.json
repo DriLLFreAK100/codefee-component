@@ -1,6 +1,6 @@
 {
   "name": "@codefee-component/core",
-  "version": "0.0.51",
+  "version": "0.0.52",
   "description": "A Core UI Web Components for Codefee Works. This project is built using Stencil.",
   "publishConfig": {
     "access": "public"
