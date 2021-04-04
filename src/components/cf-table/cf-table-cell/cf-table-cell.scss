@@ -12,6 +12,15 @@
   }
 }
 
+:host(.head),
+:host(.foot) {
+  height: rem(40);
+}
+
+:host(.body) {
+  height: rem(36);
+}
+
 :host(.center) {
   justify-content: center;
 }

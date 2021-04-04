@@ -4,5 +4,7 @@
   border-top: rem(1) solid var(--color-bg);
   box-shadow: 0 rem(-2) rem(4) 0 var(--color-shadow-light);
   display: block;
+  min-height: rem(40);
+  max-height: rem(40);
   width: 100%;
 }

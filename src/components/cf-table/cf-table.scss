@@ -3,6 +3,13 @@
 :host {
   border: rem(1) solid var(--color-bg-dark);
   border-radius: rem(4);
-  display: block;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   width: 100%;
+}
+
+::slotted(*) {
+  overflow-y: scroll;
+  overflow-x: hidden;
 }

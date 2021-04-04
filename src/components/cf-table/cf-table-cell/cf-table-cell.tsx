@@ -43,6 +43,7 @@ export class CfTableCell {
   render() {
     const className = flatten(`
       ${this.position}
+      ${this.type}
     `);
 
     return (

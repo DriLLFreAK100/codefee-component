@@ -23,7 +23,9 @@ export class CfTableHead {
   render() {
     return (
       <Host>
-        <slot></slot>
+        <div>
+          <slot></slot>
+        </div>
       </Host>
     );
   }
