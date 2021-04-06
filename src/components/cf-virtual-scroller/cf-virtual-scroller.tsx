@@ -65,8 +65,15 @@ export class CfVirtualScroller {
   }
 
   removeChildren(startIndex: number, endIndex: number) {
-    for (let i = endIndex; i >= startIndex; i--) {
-      this.el.children.item(i).remove();
+    if (this.el.children[0]?.tagName.toUpperCase() === 'SLOT') {
+      const slotElements = (this.el.children[0] as HTMLSlotElement).assignedElements();
+      for (let i = endIndex; i >= startIndex; i--) {
+        slotElements[i].remove();
+      }
+    } else {
+      for (let i = endIndex; i >= startIndex; i--) {
+        this.el.children.item(i).remove();
+      }
     }
   }
 
