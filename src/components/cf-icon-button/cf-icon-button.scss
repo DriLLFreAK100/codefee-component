@@ -6,9 +6,9 @@
 }
 
 .cfIconButton {
-  background: var(--color-bg-light);
   border: none;
   border-radius: 50%;
+  box-shadow: 0 rem(2) rem(4) 0 var(--color-shadow);
   box-sizing: border-box;
   cursor: pointer;
   font-size: rem(24);
@@ -17,47 +17,42 @@
   transition: background-color var(--transition-hover) ease-in-out, color var(--transition-hover) ease-in-out;
   width: rem(48);
 
-  &:hover {
-    background: var(--color-bg);
-  }
-
   &.default {
-    color: var(--color-default);
+    background: var(--color-default);
+    color: var(--color-default-on);
 
     &:hover {
-      color: var(--color-default-light);
+      background: var(--color-default-light);
     }
 
     &:active {
-      color: var(--color-default-dark);
+      background: var(--color-default-dark);
     }
-  }
-
-  &:active {
-    background: var(--color-bg-dark);
   }
 
   &.primary {
-    color: var(--color-primary);
+    background: var(--color-primary);
+    color: var(--color-primary-on);
 
     &:hover {
-      color: var(--color-primary-light);
+      background: var(--color-primary-light);
     }
 
     &:active {
-      color: var(--color-primary-dark);
+      background: var(--color-primary-dark);
     }
   }
 
   &.secondary {
-    color: var(--color-secondary);
+    background: var(--color-secondary);
+    color: var(--color-secondary-on);
 
     &:hover {
-      color: var(--color-secondary-light);
+      background: var(--color-secondary-light);
     }
 
     &:active {
-      color: var(--color-secondary-dark);
+      background: var(--color-secondary-dark);
     }
   }
 
@@ -86,50 +81,54 @@
   }
 
   &.info {
-    color: var(--color-info);
+    background: var(--color-info);
+    color: var(--color-info-on);
 
     &:hover {
-      color: var(--color-info-light);
+      background: var(--color-info-light);
     }
 
     &:active {
-      color: var(--color-info-dark);
+      background: var(--color-info-dark);
     }
   }
 
   &.success {
-    color: var(--color-success);
+    background: var(--color-success);
+    color: var(--color-success-on);
 
     &:hover {
-      color: var(--color-success-light);
+      background: var(--color-success-light);
     }
 
     &:active {
-      color: var(--color-success-dark);
+      background: var(--color-success-dark);
     }
   }
 
   &.warning {
-    color: var(--color-warning);
+    background: var(--color-warning);
+    color: var(--color-warning-on);
 
     &:hover {
-      color: var(--color-warning-light);
+      background: var(--color-warning-light);
     }
 
     &:active {
-      color: var(--color-warning-dark);
+      background: var(--color-warning-dark);
     }
   }
 
   &.error {
-    color: var(--color-error);
+    background: var(--color-error);
+    color: var(--color-error-on);
 
     &:hover {
-      color: var(--color-error-light);
+      background: var(--color-error-light);
     }
 
     &:active {
-      color: var(--color-error-dark);
+      background: var(--color-error-dark);
     }
   }
 }
