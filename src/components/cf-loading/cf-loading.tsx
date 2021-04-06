@@ -29,9 +29,9 @@ export class CfLoading {
               <cf-circular-progress></cf-circular-progress>
               <cf-typography type="h5">
                 {
-                  this.message
-                    ? this.message
-                    : 'Loading...'
+                  this.message === undefined
+                    ? 'Loading...'
+                    : this.message
                 }
               </cf-typography>
             </div>

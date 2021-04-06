@@ -9,7 +9,7 @@ interface ILoadingOptions {
   delay?: number;
 }
 
-export const showLoad = (message, options?: ILoadingOptions) => {
+export const showLoad = (message?: string, options?: ILoadingOptions) => {
   const defaultOptions: ILoadingOptions = {
     id: undefined,
     delay: 0,
@@ -18,14 +18,18 @@ export const showLoad = (message, options?: ILoadingOptions) => {
   const { id, delay } = { ...defaultOptions, ...options };
   const el = getLoadingHost(id);
 
-  message && el.setAttribute('message', message);
+  if (message === undefined) {
+    message = '';
+  }
+
+  el.setAttribute('message', message);
 
   setTimeout(() => {
     el.setAttribute('show', '');
   }, delay);
 }
 
-export const hideLoad = (message, options?: ILoadingOptions) => {
+export const hideLoad = (message?: string, options?: ILoadingOptions) => {
   const defaultOptions: ILoadingOptions = {
     id: undefined,
     delay: 500,
@@ -34,7 +38,11 @@ export const hideLoad = (message, options?: ILoadingOptions) => {
   const { id, delay } = { ...defaultOptions, ...options };
   const el = getLoadingHost(id);
 
-  message && el.setAttribute('message', message);
+  if (message === undefined) {
+    message = '';
+  }
+
+  el.setAttribute('message', message);
 
   setTimeout(() => {
     el.removeAttribute('show');
