@@ -31,14 +31,12 @@
 ### Depends on
 
 - [cf-typography](../cf-typography)
-- [cf-icon-button](../cf-icon-button)
 - [cf-divider](../cf-divider)
 
 ### Graph
 ```mermaid
 graph TD;
   cf-side-drawer --> cf-typography
-  cf-side-drawer --> cf-icon-button
   cf-side-drawer --> cf-divider
   cf-app-header --> cf-side-drawer
   cf-app-header-action-menu --> cf-side-drawer

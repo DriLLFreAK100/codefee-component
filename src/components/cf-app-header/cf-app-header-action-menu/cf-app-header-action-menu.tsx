@@ -25,12 +25,7 @@ export class CfAppHeaderActionMenu {
 
   render() {
     return [
-      <div class="cfAppHeader__end__menuItem">
-        <cf-icon-button
-          icon={this.icon}
-          onClick={this.handleOnClickActionMenu.bind(this)}
-        />
-      </div>,
+      <i class={`cfAppHeaderActionMenu__icon ${this.icon}`} onClick={this.handleOnClickActionMenu.bind(this)} />,
       <cf-side-drawer
         position="right"
         drawerTitle={this.menuTitle}

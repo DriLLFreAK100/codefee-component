@@ -1,4 +1,5 @@
 @import '../../styles/functions.scss';
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
 
 :host {
   display: block;
@@ -6,12 +7,13 @@
 
 .cfAppHeader {
   align-items: center;
-  background: white;
+  background: var(--color-primary);
   box-sizing: border-box;
   box-shadow: 0 rem(2) rem(5) 0 var(--color-shadow);
+  color: var(--color-primary-on);
   display: flex;
   height: rem(64);
-  padding: 0 rem(16);
+  padding: 0 rem(20);
   position: relative;
   width: 100%;
 
@@ -24,14 +26,24 @@
       align-items: center;
       display: flex;
       justify-content: center;
+
+      & > i {
+        cursor: pointer;
+        font-size: rem(24);
+        transition: color var(--transition-hover) ease-in-out;
+
+        &:hover {
+          color: var(--color-secondary-light);
+        }
+
+        &:active {
+          color: var(--color-secondary);
+        }
+      }
     }
 
     & > * {
-      &:first-child {
-        margin-right: rem(4);
-      }
-
-      margin-right: rem(8);
+      margin-right: rem(12);
     }
   }
 
@@ -46,10 +58,6 @@
       display: flex;
       font-size: rem(24);
       height: rem(48);
-    }
-
-    & > * {
-      margin-left: rem(4);
     }
   }
 

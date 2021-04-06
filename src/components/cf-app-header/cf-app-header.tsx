@@ -40,11 +40,8 @@ export class CfAppHeader {
   renderMenuIcon() {
     return (
       this.hasNavSlot && (
-        <div
-          class="cfAppHeader__start__drawerIcon"
-          onClick={this.handleClickMenuDrawerIcon.bind(this)}
-        >
-          <cf-icon-button icon="fas fa-bars" />
+        <div class="cfAppHeader__start__drawerIcon">
+          <i class="fas fa-bars" onClick={this.handleClickMenuDrawerIcon.bind(this)} />
         </div>
       )
     )

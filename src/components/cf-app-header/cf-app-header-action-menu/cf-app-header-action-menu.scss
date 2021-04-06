@@ -1,3 +1,19 @@
-:host {
-  display: block;
+@import '../../../styles/functions.scss';
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+.cfAppHeaderActionMenu {
+  &__icon {
+    cursor: pointer;
+    font-size: rem(28);
+    margin-left: rem(12);
+    transition: color var(--transition-hover) ease-in-out;
+
+    &:hover {
+      color: var(--color-secondary-light);
+    }
+
+    &:active {
+      color: var(--color-secondary);
+    }
+  }
 }

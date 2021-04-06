@@ -1,4 +1,5 @@
 @import '../../styles/functions.scss';
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
 
 :host {
   display: block;
@@ -72,6 +73,20 @@
         display: flex;
         justify-content: flex-end;
         width: 50%;
+
+        & > i {
+          cursor: pointer;
+          font-size: rem(24);
+          color: var(--color-error);
+
+          &:hover {
+            color: var(--color-error-light);
+          }
+
+          &:active {
+            color: var(--color-error-dark);
+          }
+        }
       }
     }
   }
