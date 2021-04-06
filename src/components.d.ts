@@ -102,6 +102,9 @@ export namespace Components {
     interface CfTable {
     }
     interface CfTableBody {
+        "bodyHeight": number;
+        "rowHeight": number;
+        "virtualize": boolean;
     }
     interface CfTableCell {
         "position": CellContentPosition;
@@ -428,6 +431,9 @@ declare namespace LocalJSX {
     interface CfTable {
     }
     interface CfTableBody {
+        "bodyHeight"?: number;
+        "rowHeight"?: number;
+        "virtualize"?: boolean;
     }
     interface CfTableCell {
         "onTblCellInit"?: (event: CustomEvent<HTMLCfTableCellElement>) => void;

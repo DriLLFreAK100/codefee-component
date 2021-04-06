@@ -17,6 +17,19 @@
 | `windowLimit`             | `window-limit`               |             | `number`                                                                                                                                  | `5`         |
 
 
+## Dependencies
+
+### Used by
+
+ - [cf-table-body](../cf-table/cf-table-body)
+
+### Graph
+```mermaid
+graph TD;
+  cf-table-body --> cf-virtual-scroller
+  style cf-virtual-scroller fill:#f9f,stroke:#333,stroke-width:4px
+```
+
 ----------------------------------------------
 
 *Built with [StencilJS](https://stenciljs.com/)*

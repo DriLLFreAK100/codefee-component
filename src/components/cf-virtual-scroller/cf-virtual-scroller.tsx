@@ -35,12 +35,13 @@ export class CfVirtualScroller {
     // Manipulate translation
     this.el.childNodes.forEach((child: HTMLElement) => {
       if (child.tagName) {
-        const id = this.children.length;
-        child.id = id.toString();
-
-        child.style.height = `${this.childHeight}${this.cssUnit}`;
-        child.style.transform = `translateY(${id * this.childHeight}${this.cssUnit})`;
-        this.children.push(child);
+        if (child.tagName.toUpperCase() === 'SLOT') {
+          (child as HTMLSlotElement).assignedElements().forEach(slot => {
+            this.initChildNodeStyle(slot as HTMLElement);
+          })
+        } else {
+          this.initChildNodeStyle(child);
+        }
       }
     });
 
@@ -51,6 +52,16 @@ export class CfVirtualScroller {
       this.prevEndIndex = renderCounts - 1;
       this.removeChildren(renderCounts, this.children.length - 1);
     }
+  }
+
+  initChildNodeStyle(child: HTMLElement): void {
+    const id = this.children.length;
+    child.id = id.toString();
+
+    child.style.height = `${this.childHeight}${this.cssUnit}`;
+    child.style.position = 'absolute';
+    child.style.transform = `translateY(${id * this.childHeight}${this.cssUnit})`;
+    this.children.push(child);
   }
 
   removeChildren(startIndex: number, endIndex: number) {

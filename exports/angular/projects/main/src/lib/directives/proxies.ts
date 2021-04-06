@@ -240,7 +240,8 @@ export class CfTable {
 }
 export declare interface CfTableBody extends Components.CfTableBody {
 }
-@Component({ selector: "cf-table-body", changeDetection: ChangeDetectionStrategy.OnPush, template: "<ng-content></ng-content>" })
+@ProxyCmp({ inputs: ["bodyHeight", "rowHeight", "virtualize"] })
+@Component({ selector: "cf-table-body", changeDetection: ChangeDetectionStrategy.OnPush, template: "<ng-content></ng-content>", inputs: ["bodyHeight", "rowHeight", "virtualize"] })
 export class CfTableBody {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {

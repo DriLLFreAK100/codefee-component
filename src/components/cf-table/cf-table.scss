@@ -8,8 +8,3 @@
   height: 100%;
   width: 100%;
 }
-
-::slotted(*) {
-  overflow-y: scroll;
-  overflow-x: hidden;
-}
