@@ -20,7 +20,7 @@
   "scripts": {
     "build": "npm run build:core",
     "build:core": "stencil build --docs",
-    "build:core:local": "npm run build:stencil && npm pack",
+    "build:core:local": "npm run build:core && npm pack",
     "prebuild:angular": "npm run sync:angular && npm run v:patch:angular && cd exports/angular && npm i && cd../..",
     "build:angular": "cd exports/angular && npm run build && cd../..",
     "build:angular:local": "npm run build:angular && cd exports/angular/dist && npm pack && cd../../..",
