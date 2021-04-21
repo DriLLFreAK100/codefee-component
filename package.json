@@ -21,7 +21,7 @@
     "build": "npm run build:core",
     "build:core": "stencil build --docs",
     "build:core:local": "npm run build:core && npm pack",
-    "build:angular": "cd exports/angular && npm run build && cd../..",
+    "build:angular": "cd exports/angular && npm install && npm run build && cd../..",
     "build:angular:local": "npm run build:angular && cd exports/angular/dist && npm pack && cd../../..",
     "build:react": "cd exports/react && npm run build && cd../..",
     "build:react:local": "npm run build:react && cd exports/react && npm pack && cd../..",
@@ -46,7 +46,6 @@
     "sync:angular": "node scripts/syncExportCoreDeps.js angular",
     "sync:react": "node scripts/syncExportCoreDeps.js react",
     "sync:all": "npm run sync:angular && npm run sync:react",
-    "postsync:all": "git add . && git commit -m \"exports version sync\"",
     "sync:pub:all": "npm run build:angular && npm run pub:angular && npm run build:react && npm run pub:react",
     "postsync:pub:all": "git add . && git commit -m \"exports version sync\""
   },

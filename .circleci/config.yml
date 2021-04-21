@@ -46,6 +46,59 @@ jobs:
       - run:
           name: Publish package
           command: npm run pub:core
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
+
+  build-angular:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run: npm run build:angular
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
+
+  deploy-angular:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
+      - run:
+          name: Publish package
+          command: npm run pub:core
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
+
+  build-react:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run: npm run build:react
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
+
+  deploy-react:
+    <<: *defaults
+    steps:
+      - attach_workspace:
+          at: ~/repo
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
+      - run:
+          name: Publish package
+          command: npm run pub:react
+      - persist_to_workspace:
+          root: ~/repo
+          paths: .
 
 workflows:
   version: 2
@@ -58,6 +111,30 @@ workflows:
       - deploy-core:
           requires:
             - build-core
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
+      - build-angular:
+          filters:
+            tags:
+              only: /^v.*/
+      - deploy-angular:
+          requires:
+            - build-angular
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
+      - build-react:
+          filters:
+            tags:
+              only: /^v.*/
+      - deploy-react:
+          requires:
+            - build-react
           filters:
             tags:
               only: /^v.*/
