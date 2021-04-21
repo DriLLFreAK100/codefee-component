@@ -55,7 +55,9 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-      - run: npm run build:angular
+      - run:
+          name: Build Angular
+          command: npm run build:angular
       - persist_to_workspace:
           root: ~/repo
           paths: .
@@ -80,7 +82,9 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-      - run: npm run build:react
+      - run:
+          name: Build React
+          command: npm run build:react
       - persist_to_workspace:
           root: ~/repo
           paths: .
@@ -117,6 +121,8 @@ workflows:
             branches:
               ignore: /.*/
       - build-angular:
+          requires:
+            - deploy-core
           filters:
             tags:
               only: /^v.*/
@@ -129,6 +135,8 @@ workflows:
             branches:
               ignore: /.*/
       - build-react:
+          requires:
+            - deploy-core
           filters:
             tags:
               only: /^v.*/
