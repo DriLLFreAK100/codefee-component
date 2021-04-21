@@ -21,7 +21,7 @@ const bumpCore = async (semverType) => {
 }
 
 const bumpAngular = async (semverType) => {
-  const angularPkgJsonPath = './exports/angular/package.json';
+  const angularPkgJsonPath = './exports/angular/projects/main/package.json';
   const angular = JSON.parse(await fs.readFileSync(angularPkgJsonPath));
   angular.version = getSemver(angular.version, semverType);
 
