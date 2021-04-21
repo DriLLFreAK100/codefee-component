@@ -38,11 +38,7 @@ export class CfSideDrawer {
           <div class="cfSideDrawer__title">
             <cf-typography type="h5">{this.drawerTitle}</cf-typography>
             <div>
-              <cf-icon-button
-                icon="fas fa-times"
-                type="error"
-                onClick={this.handleOnClickClose.bind(this)}
-              />
+              <i class="fas fa-times" onClick={this.handleOnClickClose.bind(this)} />
             </div>
           </div>
           <cf-divider />
