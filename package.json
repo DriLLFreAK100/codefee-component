@@ -1,6 +1,6 @@
 {
   "name": "@codefee-component/core",
-  "version": "0.0.59",
+  "version": "0.0.60",
   "description": "A Core UI Web Components for Codefee Works. This project is built using Stencil.",
   "publishConfig": {
     "access": "public"
@@ -21,9 +21,9 @@
     "build": "npm run build:core",
     "build:core": "stencil build --docs",
     "build:core:local": "npm run build:core && npm pack",
-    "build:angular": "cd exports/angular && npm install && npm run build && cd../..",
+    "build:angular": "cd exports/angular && npm install && npm run build",
     "build:angular:local": "npm run build:angular && cd exports/angular/dist && npm pack && cd../../..",
-    "build:react": "cd exports/react && npm run build && cd../..",
+    "build:react": "cd exports/react && npm install && npm run build",
     "build:react:local": "npm run build:react && cd exports/react && npm pack && cd../..",
     "start": "stencil build --dev --watch --serve",
     "generate": "stencil generate",
