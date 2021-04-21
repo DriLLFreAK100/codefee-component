@@ -72,7 +72,7 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
       - run:
           name: Publish package
-          command: npm run pub:core
+          command: npm run pub:angular
       - persist_to_workspace:
           root: ~/repo
           paths: .
