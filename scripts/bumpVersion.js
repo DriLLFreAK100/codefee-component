@@ -12,7 +12,7 @@ const main = (type, semverType) => {
   }
 }
 
-const bumpCore = (semverType) => {
+const bumpCore = async (semverType) => {
   const corePkgJsonPath = './package.json';
   const core = JSON.parse(await fs.readFileSync(corePkgJsonPath));
   core.version = getSemver(core.version, semverType);
@@ -20,7 +20,7 @@ const bumpCore = (semverType) => {
   fs.writeFileSync(corePkgJsonPath, JSON.stringify(core, undefined, 2));
 }
 
-const bumpAngular = (semverType) => {
+const bumpAngular = async (semverType) => {
   const angularPkgJsonPath = './exports/angular/package.json';
   const angular = JSON.parse(await fs.readFileSync(angularPkgJsonPath));
   angular.version = getSemver(angular.version, semverType);
@@ -28,7 +28,7 @@ const bumpAngular = (semverType) => {
   fs.writeFileSync(angularPkgJsonPath, JSON.stringify(angular, undefined, 2));
 }
 
-const bumpReact = (semverType) => {
+const bumpReact = async (semverType) => {
   const reactPkgJsonPath = './exports/react/package.json';
   const react = JSON.parse(await fs.readFileSync(reactPkgJsonPath));
   react.version = getSemver(react.version, semverType);
@@ -43,9 +43,11 @@ const getSemver = (currentVersion, semverType) => {
   switch (semverType) {
     case 'major':
       major = (parseInt(major, 10) + 1).toString();
+      minor = patch = '0';
       break;
     case 'minor':
       minor = (parseInt(minor, 10) + 1).toString();
+      patch = '0';
       break;
     case 'patch':
       patch = (parseInt(patch, 10) + 1).toString();
