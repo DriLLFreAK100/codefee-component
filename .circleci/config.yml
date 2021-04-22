@@ -55,19 +55,6 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-
-      - restore_cache:
-          keys:
-            - v1-dependencies-{{ checksum "package.json" }}
-            - v1-dependencies-
-
-      - run: npm install
-
-      - save_cache:
-          paths:
-            - node_modules
-          key: v1-dependencies-{{ checksum "package.json" }}
-
       - run:
           name: Build Angular
           command: npm run build:angular
@@ -82,7 +69,7 @@ jobs:
           at: ~/repo
       - run:
           name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/exports/angular/dist/.npmrc
       - run:
           name: Publish package
           command: npm run pub:angular
@@ -95,7 +82,6 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
-
       - run:
           name: Build React
           command: npm run build:react
@@ -110,7 +96,7 @@ jobs:
           at: ~/repo
       - run:
           name: Authenticate with registry
-          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/exports/react/.npmrc
       - run:
           name: Publish package
           command: npm run pub:react
