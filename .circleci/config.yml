@@ -31,10 +31,6 @@ jobs:
           name: Build Core
           command: npm run build:core
 
-      - run:
-          name: Build Angular
-          command: npm run build:angular
-
       - persist_to_workspace:
           root: ~/repo
           paths: .
@@ -59,6 +55,19 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
+
+      - restore_cache:
+          keys:
+            - v1-dependencies-{{ checksum "package.json" }}
+            - v1-dependencies-
+
+      - run: npm install
+
+      - save_cache:
+          paths:
+            - node_modules
+          key: v1-dependencies-{{ checksum "package.json" }}
+
       - run:
           name: Build Angular
           command: npm run build:angular
@@ -72,6 +81,9 @@ jobs:
       - attach_workspace:
           at: ~/repo
       - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
+      - run:
           name: Publish package
           command: npm run pub:angular
       - persist_to_workspace:
@@ -83,6 +95,7 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
+
       - run:
           name: Build React
           command: npm run build:react
@@ -95,6 +108,9 @@ jobs:
     steps:
       - attach_workspace:
           at: ~/repo
+      - run:
+          name: Authenticate with registry
+          command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
       - run:
           name: Publish package
           command: npm run pub:react
@@ -113,6 +129,34 @@ workflows:
       - deploy-core:
           requires:
             - build-core
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
+      - build-angular:
+          requires:
+            - deploy-core
+          filters:
+            tags:
+              only: /^v.*/
+      - deploy-angular:
+          requires:
+            - build-angular
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
+      - build-react:
+          requires:
+            - deploy-core
+          filters:
+            tags:
+              only: /^v.*/
+      - deploy-react:
+          requires:
+            - build-react
           filters:
             tags:
               only: /^v.*/
