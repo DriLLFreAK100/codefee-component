@@ -31,10 +31,6 @@ jobs:
           name: Build Core
           command: npm run build:core
 
-      - run:
-          name: Build Angular
-          command: npm run build:angular
-
       - persist_to_workspace:
           root: ~/repo
           paths: .
@@ -49,7 +45,7 @@ jobs:
           command: echo "//registry.npmjs.org/:_authToken=$npm_TOKEN" > ~/repo/.npmrc
       - run:
           name: Publish package
-          command: npm run pub:angular
+          command: npm run pub:core
       - persist_to_workspace:
           root: ~/repo
           paths: .
@@ -113,6 +109,34 @@ workflows:
       - deploy-core:
           requires:
             - build-core
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
+      - build-angular:
+          requires:
+            - deploy-core
+          filters:
+            tags:
+              only: /^v.*/
+      - deploy-angular:
+          requires:
+            - build-angular
+          filters:
+            tags:
+              only: /^v.*/
+            branches:
+              ignore: /.*/
+      - build-react:
+          requires:
+            - deploy-core
+          filters:
+            tags:
+              only: /^v.*/
+      - deploy-react:
+          requires:
+            - build-react
           filters:
             tags:
               only: /^v.*/
