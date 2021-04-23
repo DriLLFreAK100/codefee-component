@@ -16,6 +16,15 @@
   </head>
 
   <body>
+    <!-- Dialog -->
+    <cf-typography type="h5">Dialog</cf-typography>
+    <cf-divider></cf-divider>
+    <cf-dialog></cf-dialog>
+    <cf-card>
+      <cf-button id="dialog-btn">Show</cf-button>
+    </cf-card>
+    <br /><br />
+
     <!-- Checkbox List -->
     <cf-typography type="h5">Checkbox List</cf-typography>
     <cf-divider></cf-divider>
@@ -455,6 +464,12 @@
       // Theme Init
       import { loadTheme } from '/build/index.esm.js';
       loadTheme();
+
+      // Dialog
+      import { showDialog } from '/build/index.esm.js';
+      document.querySelector('#dialog-btn').addEventListener('click', event => {
+        showDialog();
+      });
 
       // Checkbox List
       document.querySelector('#checkbox-list').addEventListener('checkListChange', event => {

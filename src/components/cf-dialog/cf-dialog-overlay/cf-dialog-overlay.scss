@@ -1,0 +1,11 @@
+:host {
+  display: block;
+  background: var(--color-default-dark);
+  height: 100vh;
+  left: 0;
+  opacity: 0.3;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  z-index: 1000;
+}

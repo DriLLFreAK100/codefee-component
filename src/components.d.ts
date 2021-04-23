@@ -56,6 +56,11 @@ export namespace Components {
         "progress": number;
         "type": CircularProgressType;
     }
+    interface CfDialog {
+        "dialogTitle": string;
+    }
+    interface CfDialogOverlay {
+    }
     interface CfDivider {
         "gutterBottom": GutterSize;
     }
@@ -188,6 +193,18 @@ declare global {
         prototype: HTMLCfCircularProgressElement;
         new (): HTMLCfCircularProgressElement;
     };
+    interface HTMLCfDialogElement extends Components.CfDialog, HTMLStencilElement {
+    }
+    var HTMLCfDialogElement: {
+        prototype: HTMLCfDialogElement;
+        new (): HTMLCfDialogElement;
+    };
+    interface HTMLCfDialogOverlayElement extends Components.CfDialogOverlay, HTMLStencilElement {
+    }
+    var HTMLCfDialogOverlayElement: {
+        prototype: HTMLCfDialogOverlayElement;
+        new (): HTMLCfDialogOverlayElement;
+    };
     interface HTMLCfDividerElement extends Components.CfDivider, HTMLStencilElement {
     }
     var HTMLCfDividerElement: {
@@ -312,6 +329,8 @@ declare global {
         "cf-checkbox-list": HTMLCfCheckboxListElement;
         "cf-chip": HTMLCfChipElement;
         "cf-circular-progress": HTMLCfCircularProgressElement;
+        "cf-dialog": HTMLCfDialogElement;
+        "cf-dialog-overlay": HTMLCfDialogOverlayElement;
         "cf-divider": HTMLCfDividerElement;
         "cf-footer": HTMLCfFooterElement;
         "cf-icon-button": HTMLCfIconButtonElement;
@@ -380,6 +399,11 @@ declare namespace LocalJSX {
         "color"?: CircularProgressColor;
         "progress"?: number;
         "type"?: CircularProgressType;
+    }
+    interface CfDialog {
+        "dialogTitle"?: string;
+    }
+    interface CfDialogOverlay {
     }
     interface CfDivider {
         "gutterBottom"?: GutterSize;
@@ -473,6 +497,8 @@ declare namespace LocalJSX {
         "cf-checkbox-list": CfCheckboxList;
         "cf-chip": CfChip;
         "cf-circular-progress": CfCircularProgress;
+        "cf-dialog": CfDialog;
+        "cf-dialog-overlay": CfDialogOverlay;
         "cf-divider": CfDivider;
         "cf-footer": CfFooter;
         "cf-icon-button": CfIconButton;
@@ -507,6 +533,8 @@ declare module "@stencil/core" {
             "cf-checkbox-list": LocalJSX.CfCheckboxList & JSXBase.HTMLAttributes<HTMLCfCheckboxListElement>;
             "cf-chip": LocalJSX.CfChip & JSXBase.HTMLAttributes<HTMLCfChipElement>;
             "cf-circular-progress": LocalJSX.CfCircularProgress & JSXBase.HTMLAttributes<HTMLCfCircularProgressElement>;
+            "cf-dialog": LocalJSX.CfDialog & JSXBase.HTMLAttributes<HTMLCfDialogElement>;
+            "cf-dialog-overlay": LocalJSX.CfDialogOverlay & JSXBase.HTMLAttributes<HTMLCfDialogOverlayElement>;
             "cf-divider": LocalJSX.CfDivider & JSXBase.HTMLAttributes<HTMLCfDividerElement>;
             "cf-footer": LocalJSX.CfFooter & JSXBase.HTMLAttributes<HTMLCfFooterElement>;
             "cf-icon-button": LocalJSX.CfIconButton & JSXBase.HTMLAttributes<HTMLCfIconButtonElement>;
