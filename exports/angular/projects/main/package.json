@@ -1,5 +1,6 @@
 {
   "name": "@codefee-component/angular",
+  "license": "MIT",
   "version": "0.0.72",
   "peerDependencies": {
     "@angular/common": "^11.2.7",
