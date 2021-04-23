@@ -1,8 +1,21 @@
+@import '../../styles/functions.scss';
+
 :host {
   display: block;
+  position: relative;
 }
 
 .dialog {
+  background: white;
+  border-radius: rem(4);
+  box-sizing: border-box;
+  box-shadow: 0 rem(2) rem(4) 0 var(--color-shadow);
+  position: absolute;
+
   &__title {
+    border-bottom: rem(1) solid var(--color-bg-dark);
+  }
+
+  &__content {
   }
 }

@@ -1,8 +1,20 @@
 interface IDialogOptions {
   /**
+   * content
+   */
+  content?: HTMLElement;
+  /**
    * id of element to render dialogs
    */
-  hostId: string;
+  hostId?: string;
+  /**
+   * dialog title
+   */
+  title?: string;
+  /**
+   * css
+   */
+  style: CSSStyleDeclaration;
 }
 
 export const showDialog = (dialogOptions?: IDialogOptions) => {
@@ -11,11 +23,14 @@ export const showDialog = (dialogOptions?: IDialogOptions) => {
     ...dialogOptions,
   }
 
-  // Get dialog host
-  let el = options.hostId ? document.body.querySelector(`#${options.hostId}`) : document.body.querySelector('cf-dialog-overlay');
-  (el as any).show = true;
+  // Get dialog host (overlay)
+  let hostEl = options.hostId ? document.body.querySelector(`#${options.hostId}`) : document.body.querySelector('cf-dialog-overlay');
+  (hostEl as HTMLCfDialogOverlayElement).show = true;
 
-  setTimeout(() => {
-    (el as any).show = false;
-  }, 3000)
+  // Create dialog
+  const dialogEl = document.createElement('cf-dialog');
+  (dialogEl as HTMLCfDialogElement).dialogTitle = options.title;
+  (dialogEl as HTMLCfDialogElement).dialogStyle = options.style;
+
+  hostEl.childNodes[0].appendChild(dialogEl);
 }

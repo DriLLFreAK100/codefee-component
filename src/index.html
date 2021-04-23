@@ -468,7 +468,9 @@
       // Dialog
       import { showDialog } from '/build/index.esm.js';
       document.querySelector('#dialog-btn').addEventListener('click', event => {
-        showDialog();
+        showDialog({
+          title: 'Test Title',
+        });
       });
 
       // Checkbox List

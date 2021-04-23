@@ -1,4 +1,4 @@
-:host {
+.dialogOverlay {
   display: block;
   background: rgba(black, 0.3);
   height: 100vh;
@@ -7,18 +7,12 @@
   position: fixed;
   top: 0;
   transition: opacity var(--transition-hover) ease-in-out, visibility var(--transition-hover) ease-in-out;
-  visibility: hidden !important;
+  visibility: hidden;
   width: 100vw;
   z-index: 1000;
-}
 
-:host(.show) {
-  opacity: 1;
-  visibility: visible !important;
-}
-
-.dialogOverlay {
-  height: 100vh;
-  position: relative;
-  width: 100vw;
+  &.show {
+    opacity: 1;
+    visibility: visible;
+  }
 }
