@@ -63,7 +63,6 @@ export namespace Components {
         "fixed": boolean;
     }
     interface CfIconButton {
-        "icon": string;
         "type": ButtonType;
     }
     interface CfInput {
@@ -389,7 +388,6 @@ declare namespace LocalJSX {
         "fixed"?: boolean;
     }
     interface CfIconButton {
-        "icon"?: string;
         "type"?: ButtonType;
     }
     interface CfInput {
