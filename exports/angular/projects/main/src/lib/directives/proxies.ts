@@ -137,8 +137,8 @@ export class CfFooter {
 }
 export declare interface CfIconButton extends Components.CfIconButton {
 }
-@ProxyCmp({ inputs: ["icon", "type"] })
-@Component({ selector: "cf-icon-button", changeDetection: ChangeDetectionStrategy.OnPush, template: "<ng-content></ng-content>", inputs: ["icon", "type"] })
+@ProxyCmp({ inputs: ["type"] })
+@Component({ selector: "cf-icon-button", changeDetection: ChangeDetectionStrategy.OnPush, template: "<ng-content></ng-content>", inputs: ["type"] })
 export class CfIconButton {
   protected el: HTMLElement;
   constructor(c: ChangeDetectorRef, r: ElementRef, protected z: NgZone) {
