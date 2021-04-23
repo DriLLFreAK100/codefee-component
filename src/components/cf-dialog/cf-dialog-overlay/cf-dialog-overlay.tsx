@@ -1,4 +1,5 @@
-import { Component, Host, h } from '@stencil/core';
+import { Component, Host, h, Prop } from '@stencil/core';
+import { flatten } from '../../../utils';
 
 @Component({
   tag: 'cf-dialog-overlay',
@@ -6,11 +7,22 @@ import { Component, Host, h } from '@stencil/core';
   shadow: true,
 })
 export class CfDialogOverlay {
+  @Prop({ mutable: true, reflect: true }) show: boolean;
+
+  public handleClickOverlayArea() {
+    this.show = false;
+  }
 
   render() {
+    const className = flatten(`
+      ${this.show ? 'show' : ''}
+    `);
+
     return (
-      <Host>
-        <slot></slot>
+      <Host class={className}>
+        <div class="dialogOverlay" onClick={this.handleClickOverlayArea.bind(this)}>
+          <slot></slot>
+        </div>
       </Host>
     );
   }

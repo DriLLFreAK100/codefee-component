@@ -1,5 +1,3 @@
-const defaultHostElementId = 'cf-dialog-host';
-
 interface IDialogOptions {
   /**
    * id of element to render dialogs
@@ -10,19 +8,14 @@ interface IDialogOptions {
 export const showDialog = (dialogOptions?: IDialogOptions) => {
   // Merge options
   let options: IDialogOptions = {
-    hostId: defaultHostElementId,
-    ...dialogOptions
+    ...dialogOptions,
   }
 
-  // Render dialog host
-  let el = document.body.querySelector(`#${options.hostId}`);
+  // Get dialog host
+  let el = options.hostId ? document.body.querySelector(`#${options.hostId}`) : document.body.querySelector('cf-dialog-overlay');
+  (el as any).show = true;
 
-  if (!el) {
-    el = document.createElement('cf-dialog-overlay');
-    el.id = options.hostId;
-
-    document.body.appendChild(el);
-  }
-
-
+  setTimeout(() => {
+    (el as any).show = false;
+  }, 3000)
 }

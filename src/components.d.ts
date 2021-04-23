@@ -60,6 +60,7 @@ export namespace Components {
         "dialogTitle": string;
     }
     interface CfDialogOverlay {
+        "show": boolean;
     }
     interface CfDivider {
         "gutterBottom": GutterSize;
@@ -404,6 +405,7 @@ declare namespace LocalJSX {
         "dialogTitle"?: string;
     }
     interface CfDialogOverlay {
+        "show"?: boolean;
     }
     interface CfDivider {
         "gutterBottom"?: GutterSize;
