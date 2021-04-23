@@ -86,6 +86,7 @@
       background-color: white;
       border: rem(1) solid var(--color-primary);
       color: var(--color-default);
+      padding: rem(14);
 
       &:hover {
         border: rem(1) solid var(--color-primary-light);
