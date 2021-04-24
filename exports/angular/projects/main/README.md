@@ -1,24 +1,10 @@
-# CodefeeComponentAngular
+# Codefee-Component (Angular)
 
-This library was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.7.
+This is an Angular component library wrapper for [@codefee-component/core](https://www.npmjs.com/package/@codefee-component/core).
 
-## Code scaffolding
+It utilizes Stencil's default output target type - 'angular'. Refer to the Core's [stencil.config.ts](https://github.com/DriLLFreAK100/codefee-component/blob/main/stencil.config.ts)
 
-Run `ng generate component component-name --project codefee-component-angular` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module --project codefee-component-angular`.
-> Note: Don't forget to add `--project codefee-component-angular` or else it will be added to the default project in your `angular.json` file. 
+The build output is then moved to this Angular Component Library and re-exported subsequently.
 
-## Build
 
-Run `ng build codefee-component-angular` to build the project. The build artifacts will be stored in the `dist/` directory.
-
-## Publishing
-
-After building your library with `ng build codefee-component-angular`, go to the dist folder `cd dist/codefee-component-angular` and run `npm publish`.
-
-## Running unit tests
-
-Run `ng test codefee-component-angular` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+### Available on NPM - https://www.npmjs.com/package/@codefee-component/angular
