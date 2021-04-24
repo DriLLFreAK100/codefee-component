@@ -11,11 +11,11 @@
   box-shadow: 0 rem(2) rem(4) 0 var(--color-shadow);
   box-sizing: border-box;
   cursor: pointer;
-  font-size: rem(24);
-  height: rem(48);
+  font-size: rem(20);
+  height: rem(44);
   outline: none;
   transition: background-color var(--transition-hover) ease-in-out, color var(--transition-hover) ease-in-out;
-  width: rem(48);
+  width: rem(44);
 
   &.default {
     background: var(--color-default);
