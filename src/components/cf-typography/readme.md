@@ -22,6 +22,7 @@
  - [cf-button](../cf-button)
  - [cf-checkbox](../cf-checkbox)
  - [cf-chip](../cf-chip)
+ - [cf-dialog](../cf-dialog)
  - [cf-input](../cf-input)
  - [cf-link](../cf-link)
  - [cf-loading](../cf-loading)
@@ -37,6 +38,7 @@ graph TD;
   cf-button --> cf-typography
   cf-checkbox --> cf-typography
   cf-chip --> cf-typography
+  cf-dialog --> cf-typography
   cf-input --> cf-typography
   cf-link --> cf-typography
   cf-loading --> cf-typography

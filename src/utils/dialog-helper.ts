@@ -1,4 +1,4 @@
-interface IDialogOptions {
+interface IShowDialogOptions {
   /**
    * Content
    */
@@ -26,23 +26,35 @@ interface IDialogOptions {
   strictClose?: boolean;
 }
 
-export const showDialog = (dialogOptions?: IDialogOptions) => {
-  // Merge options
-  let options: IDialogOptions = {
-    ...dialogOptions,
-  }
+export const showDialog = (options?: IShowDialogOptions) => {
+  const { hostId, content, footer, strictClose, style, title } = options || {};
 
   // Get dialog host (overlay)
-  let hostEl = options.hostId ? document.body.querySelector(`#${options.hostId}`) : document.body.querySelector('cf-dialog-overlay');
+  let hostEl = hostId ? document.body.querySelector(`#${hostId}`) : document.body.querySelector('cf-dialog-overlay');
   (hostEl as HTMLCfDialogOverlayElement).show = true;
 
   // Create dialog
   const dialogEl = document.createElement('cf-dialog');
-  (dialogEl as HTMLCfDialogElement).content = options.content;
-  (dialogEl as HTMLCfDialogElement).footer = options.footer;
-  (dialogEl as HTMLCfDialogElement).dialogTitle = options.title;
-  (dialogEl as HTMLCfDialogElement).dialogStyle = options.style;
-  (dialogEl as HTMLCfDialogElement).strictClose = options.strictClose;
+  (dialogEl as HTMLCfDialogElement).content = content;
+  (dialogEl as HTMLCfDialogElement).footer = footer;
+  (dialogEl as HTMLCfDialogElement).dialogTitle = title;
+  (dialogEl as HTMLCfDialogElement).dialogStyle = style;
+  (dialogEl as HTMLCfDialogElement).strictClose = strictClose;
 
   hostEl.childNodes[0].appendChild(dialogEl);
+};
+
+interface IHideDialogOptions {
+  /**
+   * id of element to render dialogs
+   */
+  hostId?: string;
 }
+
+export const hideDialog = (options?: IHideDialogOptions) => {
+  const { hostId } = options || {};
+
+  // Get dialog host (overlay)
+  let hostEl = hostId ? document.body.querySelector(`#${hostId}`) : document.body.querySelector('cf-dialog-overlay');
+  (hostEl as HTMLCfDialogOverlayElement).show = false;
+};
