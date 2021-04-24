@@ -34,7 +34,7 @@ export const CodefeeTheme: ITheme = {
   '--color-bg': '#f5f5f5',
   '--color-bg-light': '#ffffff',
   '--color-bg-dark': '#c2c2c2',
-  '--color-bg-dark-on': '#000000',
+  '--color-bg-on': '#000000',
   '--color-shadow': 'rgba(109, 109, 109, 0.3)',
   '--color-shadow-light': 'rgba(109, 109, 109, 0.1)',
   '--color-shadow-dark': 'rgba(109, 109, 109, 0.5)',
@@ -48,7 +48,7 @@ export const CodefeeTheme: ITheme = {
  * Function to load theme
  * @param theme Main Theme
  * @param overrides Theme properties to overrides
- * @returns 
+ * @returns
  */
 export const loadTheme = <T extends ITheme>(theme?: ITheme, overrides?: T) => {
   const themeInUse = theme ? theme : CodefeeTheme;

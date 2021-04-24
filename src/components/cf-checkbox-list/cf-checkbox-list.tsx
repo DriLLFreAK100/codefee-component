@@ -1,4 +1,5 @@
 import remove from 'lodash-es/remove';
+import { flatten } from '../../utils';
 import {
   Component,
   Event,
@@ -9,7 +10,6 @@ import {
   Prop,
   State,
 } from '@stencil/core';
-import { flatten } from '../../utils';
 
 export type CheckboxDirection = 'vertical' | 'horizontal';
 
