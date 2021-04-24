@@ -2,7 +2,10 @@
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
     <title>Codefee Component</title>
 
     <script type="module" src="/build/codefee-component.esm.js"></script>
@@ -20,6 +23,13 @@
     <cf-typography type="h5">Dialog</cf-typography>
     <cf-divider></cf-divider>
     <cf-dialog-overlay></cf-dialog-overlay>
+    <div id="dialogContent" style="display: none">
+      <cf-typography>This is the content</cf-typography>
+    </div>
+    <div id="dialogFooterContent" style="display: none; flex-direction: row-reverse">
+      <cf-button type="subtle">Cancel</cf-button>
+      <cf-button style="margin-right: 8px">OK</cf-button>
+    </div>
     <cf-card>
       <cf-button id="dialog-btn">Show</cf-button>
     </cf-card>
@@ -229,10 +239,25 @@
     <cf-typography type="h5">Input</cf-typography>
     <cf-divider></cf-divider>
     <cf-card>
-      <cf-input label="Number" placeholder="Write something..." type="number" value="Test"></cf-input>
+      <cf-input
+        label="Number"
+        placeholder="Write something..."
+        type="number"
+        value="Test"
+      ></cf-input>
       <cf-input label="Text" placeholder="Write something..." value="Test"></cf-input>
-      <cf-input label="Warning" placeholder="Write something..." value="Test" status="warning"></cf-input>
-      <cf-input label="Error" placeholder="Write something..." value="Test" status="error"></cf-input>
+      <cf-input
+        label="Warning"
+        placeholder="Write something..."
+        value="Test"
+        status="warning"
+      ></cf-input>
+      <cf-input
+        label="Error"
+        placeholder="Write something..."
+        value="Test"
+        status="error"
+      ></cf-input>
     </cf-card>
     <br /><br />
 
@@ -408,7 +433,10 @@
     <cf-card>
       <cf-circular-progress></cf-circular-progress>
       <cf-circular-progress color="secondary"></cf-circular-progress>
-      <cf-circular-progress id="determinate-circular-progress" type="determinate"></cf-circular-progress>
+      <cf-circular-progress
+        id="determinate-circular-progress"
+        type="determinate"
+      ></cf-circular-progress>
     </cf-card>
     <br /><br />
 
@@ -467,19 +495,28 @@
 
       // Dialog
       import { showDialog } from '/build/index.esm.js';
-      document.querySelector('#dialog-btn').addEventListener('click', event => {
+
+      document.querySelector('#dialog-btn').addEventListener('click', (event) => {
+        const dialogContent = document.querySelector('#dialogContent').cloneNode(true);
+        dialogContent.style.display = 'block';
+
+        const dialogFooterContent = document.querySelector('#dialogFooterContent').cloneNode(true);
+        dialogFooterContent.style.display = 'flex';
+
         showDialog({
+          content: dialogContent,
+          footer: dialogFooterContent,
           title: 'Test Title',
         });
       });
 
       // Checkbox List
-      document.querySelector('#checkbox-list').addEventListener('checkListChange', event => {
+      document.querySelector('#checkbox-list').addEventListener('checkListChange', (event) => {
         console.dir(event);
       });
 
       // Checkbox
-      document.querySelector('#checkbox1').addEventListener('checkChange', event => {
+      document.querySelector('#checkbox1').addEventListener('checkChange', (event) => {
         console.dir(`id: ${event.target.id}: ${event.target.checked}`);
       });
 
@@ -511,12 +548,14 @@
         notify('Something went wrong with the transaction.', { type: 'error' });
       });
       document.querySelector('#notify-btn-long').addEventListener('click', () => {
-        notify('This is a really long message. Why? To test text-overflow.. Duh~~~ This is a really long message. Why? To test text-overflow.. Duh~~~');
+        notify(
+          'This is a really long message. Why? To test text-overflow.. Duh~~~ This is a really long message. Why? To test text-overflow.. Duh~~~'
+        );
       });
 
       // Tabs
       const tabs = document.querySelector('#tabs');
-      tabs.addEventListener('tabSelect', evt => {
+      tabs.addEventListener('tabSelect', (evt) => {
         const activeTabItem = document.querySelector('cf-tab[active]');
         activeTabItem.removeAttribute('active');
 

@@ -16,8 +16,10 @@
 
   &__header {
     border-bottom: rem(1) solid var(--color-bg-dark);
+    box-sizing: border-box;
     display: flex;
-    padding: 0 rem(8) rem(8) rem(8);
+    height: rem(48);
+    padding-bottom: rem(8);
 
     & > cf-typography {
       align-items: center;
@@ -48,5 +50,16 @@
   }
 
   &__content {
+    box-sizing: border-box;
+    height: calc(100% - #{rem(48)} - #{rem(52)});
+    overflow: auto;
+    padding: rem(8);
+  }
+
+  &__footer {
+    border-top: rem(1) solid var(--color-bg-dark);
+    box-sizing: border-box;
+    height: rem(52);
+    padding-top: rem(8);
   }
 }

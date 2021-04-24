@@ -57,8 +57,10 @@ export namespace Components {
         "type": CircularProgressType;
     }
     interface CfDialog {
+        "content": HTMLElement;
         "dialogStyle": CSSStyleDeclaration;
         "dialogTitle": string;
+        "footer": HTMLElement;
         "strictClose": boolean;
     }
     interface CfDialogOverlay {
@@ -404,8 +406,10 @@ declare namespace LocalJSX {
         "type"?: CircularProgressType;
     }
     interface CfDialog {
+        "content"?: HTMLElement;
         "dialogStyle"?: CSSStyleDeclaration;
         "dialogTitle"?: string;
+        "footer"?: HTMLElement;
         "onClose"?: (event: CustomEvent<any>) => void;
         "strictClose"?: boolean;
     }

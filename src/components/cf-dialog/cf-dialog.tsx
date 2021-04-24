@@ -1,13 +1,4 @@
-import {
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Listen,
-  Prop,
-} from '@stencil/core';
+import { Component, Element, Event, EventEmitter, h, Host, Listen, Prop } from '@stencil/core';
 
 @Component({
   tag: 'cf-dialog',
@@ -16,8 +7,13 @@ import {
 })
 export class CfDialog {
   @Element() el: HTMLCfDialogElement;
+  @Prop() content: HTMLElement;
   @Prop() dialogTitle: string;
-  @Prop() dialogStyle: CSSStyleDeclaration = { height: '400px', width: '600px' } as CSSStyleDeclaration;
+  @Prop() dialogStyle: CSSStyleDeclaration = {
+    height: '400px',
+    width: '600px',
+  } as CSSStyleDeclaration;
+  @Prop() footer: HTMLElement;
   @Prop() strictClose: boolean = false;
   @Event() close: EventEmitter<any>;
 
@@ -37,12 +33,17 @@ export class CfDialog {
     }
   }
 
+  public componentDidLoad() {
+    this.el.shadowRoot.childNodes[0].childNodes[1].appendChild(this.content);
+    this.el.shadowRoot.childNodes[0].childNodes[2].appendChild(this.footer);
+  }
+
   render() {
     const style: CSSStyleDeclaration = {
       ...this.dialogStyle,
       left: `calc(50vw - ${this.dialogStyle.width} / 2)`,
       top: `calc(50vh - ${this.dialogStyle.height} / 2)`,
-    }
+    };
 
     return (
       <Host>
@@ -53,12 +54,10 @@ export class CfDialog {
               <i class="fas fa-times" onClick={this.handleOnClickClose.bind(this)} />
             </div>
           </div>
-          <div class="dialog__content">
-
-          </div>
+          <div class="dialog__content"></div>
+          {this.footer && <div class="dialog__footer"></div>}
         </div>
       </Host>
     );
   }
-
 }
