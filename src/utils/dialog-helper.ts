@@ -1,6 +1,6 @@
 interface IDialogOptions {
   /**
-   * content
+   * Content
    */
   content?: HTMLElement;
   /**
@@ -8,13 +8,18 @@ interface IDialogOptions {
    */
   hostId?: string;
   /**
-   * dialog title
+   * Dialog title
    */
   title?: string;
   /**
-   * css
+   * CSS
    */
-  style: CSSStyleDeclaration;
+  style?: CSSStyleDeclaration;
+  /**
+   * Determine whether clicking outside can trigger close dialog.
+   * Default is false, i.e. clicking on backdrop/overlay will trigger close dialog
+   */
+  strictClose?: boolean
 }
 
 export const showDialog = (dialogOptions?: IDialogOptions) => {
@@ -31,6 +36,7 @@ export const showDialog = (dialogOptions?: IDialogOptions) => {
   const dialogEl = document.createElement('cf-dialog');
   (dialogEl as HTMLCfDialogElement).dialogTitle = options.title;
   (dialogEl as HTMLCfDialogElement).dialogStyle = options.style;
+  (dialogEl as HTMLCfDialogElement).strictClose = options.strictClose;
 
   hostEl.childNodes[0].appendChild(dialogEl);
 }

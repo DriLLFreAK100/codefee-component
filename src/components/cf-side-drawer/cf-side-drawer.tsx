@@ -27,8 +27,8 @@ export class CfSideDrawer {
 
   render() {
     const className = flatten(`
-      cfSideDrawer 
-      ${this.visible ? 'visible' : ''} 
+      cfSideDrawer
+      ${this.visible ? 'visible' : ''}
       ${this.position}
     `);
 

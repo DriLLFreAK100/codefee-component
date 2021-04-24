@@ -59,6 +59,7 @@ export namespace Components {
     interface CfDialog {
         "dialogStyle": CSSStyleDeclaration;
         "dialogTitle": string;
+        "strictClose": boolean;
     }
     interface CfDialogOverlay {
         "show": boolean;
@@ -405,6 +406,8 @@ declare namespace LocalJSX {
     interface CfDialog {
         "dialogStyle"?: CSSStyleDeclaration;
         "dialogTitle"?: string;
+        "onClose"?: (event: CustomEvent<any>) => void;
+        "strictClose"?: boolean;
     }
     interface CfDialogOverlay {
         "show"?: boolean;

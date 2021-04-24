@@ -1,4 +1,4 @@
-import { Component, Element, h, Prop } from '@stencil/core';
+import { Component, Element, h, Listen, Prop } from '@stencil/core';
 import { flatten } from '../../../utils';
 @Component({
   tag: 'cf-dialog-overlay',
@@ -9,7 +9,10 @@ export class CfDialogOverlay {
   @Element() el: HTMLCfDialogOverlayElement;
   @Prop({ mutable: true, reflect: true }) show: boolean;
 
-  public handleClickOverlayArea() {
+  @Listen('close')
+  public handleClose(e: CustomEvent<any>) {
+    e.stopPropagation();
+
     this.show = false;
     this.cleanupAfterClose();
   }
@@ -25,7 +28,7 @@ export class CfDialogOverlay {
     `);
 
     return (
-      <div class={className} onClick={this.handleClickOverlayArea.bind(this)}>
+      <div class={className}>
       </div>
     );
   }
