@@ -14,22 +14,17 @@ import {
 })
 export class CfIconButton {
   @Prop() type: ButtonType = 'primary';
-  @Prop() icon: string;
 
   render() {
     const className = flatten(`
-      cfIconButton 
+      cfIconButton
       ${this.type}
     `);
 
     return (
       <Host>
         <button class={className}>
-          {
-            this.icon
-              ? <i class={this.icon}></i>
-              : <slot />
-          }
+          <slot />
         </button>
       </Host>
     );

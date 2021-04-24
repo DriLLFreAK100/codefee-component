@@ -16,6 +16,22 @@
   </head>
 
   <body>
+    <!-- Dialog -->
+    <cf-typography type="h5">Dialog</cf-typography>
+    <cf-divider></cf-divider>
+    <cf-dialog-overlay></cf-dialog-overlay>
+    <div id="dialogContent" style="display: none">
+      <cf-typography>This is the content</cf-typography>
+    </div>
+    <div id="dialogFooterContent" style="display: none; flex-direction: row-reverse">
+      <cf-button id="dialog-ok-btn" type="subtle">Cancel</cf-button>
+      <cf-button id="dialog-cancel-btn" style="margin-right: 8px">OK</cf-button>
+    </div>
+    <cf-card>
+      <cf-button id="dialog-btn">Show</cf-button>
+    </cf-card>
+    <br /><br />
+
     <!-- Checkbox List -->
     <cf-typography type="h5">Checkbox List</cf-typography>
     <cf-divider></cf-divider>
@@ -382,14 +398,14 @@
     <cf-typography type="h5" gutter-bottom="g4">Icon Button</cf-typography>
     <cf-divider></cf-divider>
     <cf-card>
-      <cf-icon-button icon="fas fa-camera"></cf-icon-button>
-      <cf-icon-button icon="fas fa-camera" type="secondary"></cf-icon-button>
-      <cf-icon-button icon="fas fa-camera" type="default"></cf-icon-button>
-      <cf-icon-button icon="fas fa-camera" type="subtle"></cf-icon-button>
-      <cf-icon-button icon="fas fa-camera" type="info"></cf-icon-button>
-      <cf-icon-button icon="fas fa-camera" type="success"></cf-icon-button>
-      <cf-icon-button icon="fas fa-camera" type="warning"></cf-icon-button>
-      <cf-icon-button icon="fas fa-camera" type="error"></cf-icon-button>
+      <cf-icon-button><i class="fas fa-camera"></i></cf-icon-button>
+      <cf-icon-button type="secondary"><i class="fas fa-camera"></i></cf-icon-button>
+      <cf-icon-button type="default"><i class="fas fa-camera"></i></cf-icon-button>
+      <cf-icon-button type="subtle"><i class="fas fa-camera"></i></cf-icon-button>
+      <cf-icon-button type="info"><i class="fas fa-camera"></i></cf-icon-button>
+      <cf-icon-button type="success"><i class="fas fa-camera"></i></cf-icon-button>
+      <cf-icon-button type="warning"><i class="fas fa-camera"></i></cf-icon-button>
+      <cf-icon-button type="error"><i class="fas fa-camera"></i></cf-icon-button>
     </cf-card>
     <br /><br />
 
@@ -455,6 +471,33 @@
       // Theme Init
       import { loadTheme } from '/build/index.esm.js';
       loadTheme();
+
+      // Dialog
+      import { showDialog, hideDialog } from '/build/index.esm.js';
+
+      document.querySelector('#dialog-btn').addEventListener('click', event => {
+        event.stopPropagation();
+        const dialogContent = document.querySelector('#dialogContent').cloneNode(true);
+        dialogContent.style.display = 'block';
+
+        const dialogFooterContent = document.querySelector('#dialogFooterContent').cloneNode(true);
+        dialogFooterContent.style.display = 'flex';
+        dialogFooterContent.querySelector('#dialog-ok-btn').addEventListener('click', event => {
+          event.stopPropagation();
+          hideDialog();
+        });
+
+        dialogFooterContent.querySelector('#dialog-cancel-btn').addEventListener('click', event => {
+          event.stopPropagation();
+          hideDialog();
+        });
+
+        showDialog({
+          content: dialogContent,
+          footer: dialogFooterContent,
+          title: 'Test Title',
+        });
+      });
 
       // Checkbox List
       document.querySelector('#checkbox-list').addEventListener('checkListChange', event => {

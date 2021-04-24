@@ -1,6 +1,6 @@
 {
   "name": "@codefee-component/core",
-  "version": "0.0.72",
+  "version": "0.0.73",
   "description": "A Core UI Web Components for Codefee Works. This project is built using Stencil.",
   "publishConfig": {
     "access": "public"
@@ -65,6 +65,7 @@
     "@types/uuid": "^8.3.0",
     "jest": "^26.6.3",
     "jest-cli": "^26.6.3",
+    "prettier": "2.2.1",
     "puppeteer": "5.5.0"
   }
 }

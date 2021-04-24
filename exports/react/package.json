@@ -1,6 +1,6 @@
 {
   "name": "@codefee-component/react",
-  "version": "0.0.72",
+  "version": "0.0.73",
   "description": "React wrapper for Codefee-Component",
   "main": "dist/index.js",
   "files": [
@@ -42,6 +42,6 @@
   "peerDependencies": {
     "react": ">=16.13.1",
     "react-dom": ">=16.13.1",
-    "@codefee-component/core": ">=0.0.72"
+    "@codefee-component/core": ">=0.0.73"
   }
 }

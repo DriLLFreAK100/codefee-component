@@ -79,17 +79,18 @@
   background-color: white;
   border: rem(1) solid var(--color-primary);
   color: var(--color-default);
+  padding: rem(7) rem(15);
 }
 
 :host(.subtle:hover) {
-  border: none;
   background: var(--color-primary-light);
+  border: rem(1) solid var(--color-primary-light);
   color: var(--color-primary-on);
 }
 
 :host(.subtle:active) {
   background: var(--color-primary-dark);
-  border: none;
+  border: rem(1) solid var(--color-primary-dark);
   color: var(--color-primary-on);
 }
 

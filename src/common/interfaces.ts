@@ -30,7 +30,7 @@ export interface ITheme {
   '--color-bg': string;
   '--color-bg-light': string;
   '--color-bg-dark': string;
-  '--color-bg-dark-on': string;
+  '--color-bg-on': string;
   '--color-shadow': string;
   '--color-shadow-light': string;
   '--color-shadow-dark': string;

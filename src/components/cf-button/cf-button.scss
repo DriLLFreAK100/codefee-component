@@ -18,11 +18,11 @@
     box-shadow: 0 rem(2) rem(4) 0 var(--color-shadow);
     box-sizing: border-box;
     cursor: pointer;
-    height: rem(48);
+    height: rem(44);
     line-height: rem(16);
     min-width: rem(120);
     outline: none;
-    padding: rem(16);
+    padding: rem(14);
     transition: background-color var(--transition-hover) ease-in-out;
 
     &:disabled {
@@ -86,6 +86,7 @@
       background-color: white;
       border: rem(1) solid var(--color-primary);
       color: var(--color-default);
+      padding: rem(13);
 
       &:hover {
         border: rem(1) solid var(--color-primary-light);

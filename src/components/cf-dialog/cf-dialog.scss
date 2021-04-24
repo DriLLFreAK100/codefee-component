@@ -1,0 +1,66 @@
+@import '../../styles/functions.scss';
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+:host {
+  display: block;
+  position: relative;
+}
+
+.dialog {
+  background: white;
+  border-radius: rem(4);
+  box-sizing: border-box;
+  box-shadow: 0 rem(2) rem(4) 0 var(--color-shadow);
+  padding: rem(20) rem(16);
+  position: absolute;
+
+  &__header {
+    border-bottom: rem(1) solid var(--color-bg-dark);
+    box-sizing: border-box;
+    display: flex;
+    height: rem(48);
+    padding-bottom: rem(8);
+
+    & > cf-typography {
+      align-items: center;
+      color: var(--color-primary-dark);
+      display: flex;
+      width: 50%;
+    }
+
+    & > div {
+      align-items: center;
+      display: flex;
+      justify-content: flex-end;
+      width: 50%;
+
+      & > i {
+        cursor: pointer;
+        font-size: rem(24);
+        color: var(--color-error);
+
+        &:hover {
+          color: var(--color-error-light);
+        }
+
+        &:active {
+          color: var(--color-error-dark);
+        }
+      }
+    }
+  }
+
+  &__content {
+    box-sizing: border-box;
+    height: calc(100% - #{rem(48)} - #{rem(52)});
+    overflow: auto;
+    padding: rem(8);
+  }
+
+  &__footer {
+    border-top: rem(1) solid var(--color-bg-dark);
+    box-sizing: border-box;
+    height: rem(52);
+    padding-top: rem(8);
+  }
+}
