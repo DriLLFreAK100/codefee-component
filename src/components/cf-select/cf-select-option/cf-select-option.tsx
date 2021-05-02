@@ -9,7 +9,9 @@ export class CfSelectOption {
   render() {
     return (
       <Host>
-        <slot></slot>
+        <cf-typography type="body1">
+          <slot></slot>
+        </cf-typography>
       </Host>
     );
   }

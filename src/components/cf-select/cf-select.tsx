@@ -1,4 +1,4 @@
-import { Component, Host, h, Prop, State, Element } from '@stencil/core';
+import { Component, Host, h, Prop, State } from '@stencil/core';
 import { flatten } from '../../utils';
 import { ISelectOption } from './cf-select.interface';
 
@@ -8,7 +8,6 @@ import { ISelectOption } from './cf-select.interface';
   shadow: true,
 })
 export class CfSelect {
-  @Element() el: HTMLCfSelectElement;
   @Prop() placeholder: string = '';
   @Prop() selected: ISelectOption = undefined;
   @State() isOptionsOpen: boolean = false;
@@ -16,10 +15,6 @@ export class CfSelect {
 
   handleClickSelect() {
     this.isOptionsOpen = !this.isOptionsOpen;
-  }
-
-  componentWillRender() {
-    this.optionCount = this.el.children.length;
   }
 
   render() {
