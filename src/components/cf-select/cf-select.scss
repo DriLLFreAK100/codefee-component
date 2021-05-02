@@ -1,0 +1,52 @@
+@import '../../styles/functions.scss';
+
+$select-height: rem(44);
+
+:host {
+  background-color: white;
+  border: rem(1) solid var(--color-bg-dark);
+  border-radius: rem(4);
+  border-radius: rem(4);
+  box-sizing: border-box;
+  display: inline-block;
+  height: $select-height;
+  min-width: rem(160);
+  transition: border-color var(--transition-hover) ease-in-out;
+}
+
+:host(:hover) {
+  border: rem(1) solid var(--color-primary-light);
+}
+
+:host(:active) {
+  border: rem(1) solid var(--color-primary-dark);
+}
+
+.select {
+  cursor: pointer;
+  height: 100%;
+  position: relative;
+  width: 100%;
+
+  &__value {
+  }
+
+  &__optContainer {
+    background-color: red;
+    border: rem(1) solid var(--color-bg-dark);
+    border-radius: rem(4);
+    box-sizing: border-box;
+    height: rem(0);
+    width: inherit;
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    top: $select-height;
+    visibility: hidden;
+
+    &.open {
+      height: auto;
+      visibility: visible;
+    }
+  }
+}
