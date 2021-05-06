@@ -1,6 +1,12 @@
-import { Component, Host, h, Prop, State } from '@stencil/core';
-import { flatten } from '../../utils';
-import { ISelectOption } from './cf-select.interface';
+import { Component, Element, Event, EventEmitter, h, Listen, Prop, State } from '@stencil/core';
+import { flatten, filterHtmlCollection } from '../../utils';
+
+const getSelectedOption = (els: HTMLCollection): HTMLCfSelectOptionElement => {
+  return filterHtmlCollection<HTMLCfSelectOptionElement>(
+    els,
+    (el: HTMLCfSelectOptionElement) => el.selected,
+  )[0];
+};
 
 @Component({
   tag: 'cf-select',
@@ -8,13 +14,49 @@ import { ISelectOption } from './cf-select.interface';
   shadow: true,
 })
 export class CfSelect {
+  @Element() el: HTMLCfSelectElement;
   @Prop() placeholder: string = '';
-  @Prop() selected: ISelectOption = undefined;
   @State() isOptionsOpen: boolean = false;
   @State() optionCount: number = 0;
+  @State() selected: HTMLCfSelectOptionElement = undefined;
+  @Event() selectedChange: EventEmitter<HTMLCfSelectOptionElement>;
 
-  handleClickSelect() {
+  componentWillRender() {
+    this.selected = getSelectedOption(this.el.children);
+  }
+
+  handleClickSelect(e: MouseEvent) {
+    e.stopPropagation();
     this.isOptionsOpen = !this.isOptionsOpen;
+  }
+
+  @Listen('click', { target: 'document', capture: true })
+  public handleClickOutside(e: any): void {
+    e.preventDefault();
+    const isClickInside = this.el.contains(e.target);
+
+    if (!isClickInside) {
+      this.isOptionsOpen = false;
+    }
+  }
+
+  @Listen('selectOptionClick')
+  handleSelectOptionClick(e: CustomEvent<HTMLCfSelectOptionElement>) {
+    e.stopPropagation();
+
+    for (let a = 0; a < this.el.children.length; a++) {
+      const target = this.el.children.item(a) as HTMLCfSelectOptionElement;
+
+      if (target.id === e.detail.id) {
+        target.selected = true;
+        this.selectedChange.emit(e.detail);
+        continue;
+      }
+
+      target.selected = false;
+    }
+
+    this.isOptionsOpen = false;
   }
 
   render() {
@@ -23,15 +65,25 @@ export class CfSelect {
       ${this.isOptionsOpen ? 'open' : ''}
     `);
 
-    return (
-      <Host>
-        <div class="select" onClick={this.handleClickSelect.bind(this)}>
-          <div class="select__value">{this.selected?.name}</div>
-          <div class={optContainerClassName}>
-            <slot></slot>
-          </div>
-        </div>
-      </Host>
-    );
+    const caretClassName = flatten(`
+      select__caret
+      fas
+      fa-caret-down
+      ${this.isOptionsOpen ? 'open' : ''}
+    `);
+
+    return [
+      <div class="select" onClick={this.handleClickSelect.bind(this)}>
+        <cf-typography class="select__selectedValue" type="body1">
+          {this.selected.innerHTML || this.selected?.name}
+        </cf-typography>
+        <span>
+          <i class={caretClassName} />
+        </span>
+      </div>,
+      <div class={optContainerClassName}>
+        <slot></slot>
+      </div>,
+    ];
   }
 }

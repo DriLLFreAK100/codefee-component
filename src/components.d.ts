@@ -11,7 +11,6 @@ import { CheckboxDirection } from "./components/cf-checkbox-list/cf-checkbox-lis
 import { CircularProgressColor, CircularProgressType } from "./components/cf-circular-progress/cf-circular-progress";
 import { InputStatusType } from "./components/cf-input/cf-input";
 import { TypographyType } from "./components/cf-typography/cf-typography";
-import { ISelectOption } from "./components/cf-select/cf-select.interface";
 import { SideDrawerPosition } from "./components/cf-side-drawer/cf-side-drawer";
 import { CellContentPosition } from "./components/cf-table/cf-table-cell/cf-table-cell";
 import { TypographyType as TypographyType1 } from "./components/cf-typography/cf-typography";
@@ -102,11 +101,13 @@ export namespace Components {
     }
     interface CfSelect {
         "placeholder": string;
-        "selected": ISelectOption;
     }
     interface CfSelectGroup {
     }
     interface CfSelectOption {
+        "name": string;
+        "selected": boolean;
+        "value": any;
     }
     interface CfSideDrawer {
         "drawerTitle": string;
@@ -481,12 +482,16 @@ declare namespace LocalJSX {
         "type"?: FeedbackType;
     }
     interface CfSelect {
+        "onSelectedChange"?: (event: CustomEvent<HTMLCfSelectOptionElement>) => void;
         "placeholder"?: string;
-        "selected"?: ISelectOption;
     }
     interface CfSelectGroup {
     }
     interface CfSelectOption {
+        "name"?: string;
+        "onSelectOptionClick"?: (event: CustomEvent<any>) => void;
+        "selected"?: boolean;
+        "value"?: any;
     }
     interface CfSideDrawer {
         "drawerTitle"?: string;

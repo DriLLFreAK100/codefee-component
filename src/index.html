@@ -20,10 +20,10 @@
     <cf-typography type="h5">Select</cf-typography>
     <cf-divider></cf-divider>
     <cf-card>
-      <cf-select>
-        <cf-select-option>Test 1</cf-select-option>
-        <cf-select-option>Test 2</cf-select-option>
-        <cf-select-option>Test 3</cf-select-option>
+      <cf-select id="select">
+        <cf-select-option value="1">Test 1</cf-select-option>
+        <cf-select-option value="2" selected>Test 2</cf-select-option>
+        <cf-select-option value="3">Test 3</cf-select-option>
       </cf-select>
     </cf-card>
     <br /><br />
@@ -483,6 +483,11 @@
       // Theme Init
       import { loadTheme } from '/build/index.esm.js';
       loadTheme();
+
+      // Select
+      document.querySelector('#select').addEventListener('selectedChange', event => {
+        console.log(event);
+      });
 
       // Dialog
       import { showDialog, hideDialog } from '/build/index.esm.js';

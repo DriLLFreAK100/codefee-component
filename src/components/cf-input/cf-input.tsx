@@ -28,11 +28,11 @@ export class CfInput {
 
     return (
       <Host>
-        <label>
-          <cf-typography type="h6">
-            {this.label}:
-          </cf-typography>
-        </label>
+        {this.label ? (
+          <label>
+            <cf-typography type="h6">{this.label}:</cf-typography>
+          </label>
+        ) : null}
         <input
           class={inputClassName}
           onInput={this.handleInputChange.bind(this)}
@@ -43,5 +43,4 @@ export class CfInput {
       </Host>
     );
   }
-
 }
