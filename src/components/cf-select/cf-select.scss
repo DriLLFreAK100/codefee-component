@@ -18,9 +18,13 @@ $select-height: rem(44);
   cursor: pointer;
   display: flex;
   height: 100%;
-  padding: rem(11) rem(8);
+  padding: rem(10) rem(11) rem(12) rem(11);
   width: 100%;
   transition: border-color var(--transition-hover) ease-in-out;
+
+  &.open {
+    border: rem(1) solid var(--color-primary);
+  }
 
   &:hover {
     border: rem(1) solid var(--color-primary-light);
@@ -46,6 +50,7 @@ $select-height: rem(44);
     color: var(--color-primary);
     transition: transform var(--transition-toggle) ease-in-out,
       color var(--transition-hover) ease-in-out;
+    vertical-align: bottom;
 
     &.open {
       transform: rotate(180deg);

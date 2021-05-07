@@ -60,6 +60,11 @@ export class CfSelect {
   }
 
   render() {
+    const selectClassName = flatten(`
+      select
+      ${this.isOptionsOpen ? 'open' : ''}
+    `);
+
     const optContainerClassName = flatten(`
       select__optContainer
       ${this.isOptionsOpen ? 'open' : ''}
@@ -73,7 +78,7 @@ export class CfSelect {
     `);
 
     return [
-      <div class="select" onClick={this.handleClickSelect.bind(this)}>
+      <div class={selectClassName} onClick={this.handleClickSelect.bind(this)}>
         <cf-typography class="select__selectedValue" type="body1">
           {this.selected.innerHTML || this.selected?.name}
         </cf-typography>
