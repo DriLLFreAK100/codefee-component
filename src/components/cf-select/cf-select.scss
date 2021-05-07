@@ -65,13 +65,15 @@ $select-height: rem(44);
     height: rem(0);
     width: inherit;
     left: 0;
-    overflow: hidden;
+    overflow: auto;
     position: absolute;
     visibility: hidden;
     width: 100%;
+    z-index: 10;
 
     &.open {
       height: auto;
+      max-height: 300px;
       visibility: visible;
     }
   }

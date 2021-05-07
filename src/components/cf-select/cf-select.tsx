@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Listen, Prop, State } from '@stencil/core';
-import { flatten, filterHtmlCollection } from '../../utils';
+import { flatten, filterHtmlCollection, forEachHtmlCollection } from '../../utils';
 
 const getSelectedOption = (els: HTMLCollection): HTMLCfSelectOptionElement => {
   return filterHtmlCollection<HTMLCfSelectOptionElement>(
@@ -44,17 +44,14 @@ export class CfSelect {
   handleSelectOptionClick(e: CustomEvent<HTMLCfSelectOptionElement>) {
     e.stopPropagation();
 
-    for (let a = 0; a < this.el.children.length; a++) {
-      const target = this.el.children.item(a) as HTMLCfSelectOptionElement;
-
-      if (target.id === e.detail.id) {
-        target.selected = true;
+    forEachHtmlCollection(this.el.children, (child: HTMLCfSelectOptionElement) => {
+      if (child.id === e.detail.id) {
+        child.selected = true;
         this.selectedChange.emit(e.detail);
-        continue;
+      } else {
+        child.selected = false;
       }
-
-      target.selected = false;
-    }
+    });
 
     this.isOptionsOpen = false;
   }
@@ -80,7 +77,7 @@ export class CfSelect {
     return [
       <div class={selectClassName} onClick={this.handleClickSelect.bind(this)}>
         <cf-typography class="select__selectedValue" type="body1">
-          {this.selected.innerHTML || this.selected?.name}
+          {this.selected?.innerHTML || this.selected?.name}
         </cf-typography>
         <span>
           <i class={caretClassName} />

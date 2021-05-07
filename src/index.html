@@ -2,7 +2,10 @@
 <html dir="ltr" lang="en">
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=5.0"
+    />
     <title>Codefee Component</title>
 
     <script type="module" src="/build/codefee-component.esm.js"></script>
@@ -22,8 +25,24 @@
     <cf-card>
       <cf-select id="select">
         <cf-select-option value="1">Test 1</cf-select-option>
-        <cf-select-option value="2" selected>Test 2</cf-select-option>
+        <cf-select-option value="2">Test 2</cf-select-option>
         <cf-select-option value="3">Test 3</cf-select-option>
+        <cf-select-option value="4" selected>Test 4</cf-select-option>
+        <cf-select-option value="5">Test 5</cf-select-option>
+        <cf-select-option value="6">Test 6</cf-select-option>
+        <cf-select-option value="7">Test 7</cf-select-option>
+        <cf-select-option value="8">Test 8</cf-select-option>
+        <cf-select-option value="9">Test 9</cf-select-option>
+        <cf-select-option value="11">Test 11</cf-select-option>
+        <cf-select-option value="12">Test 12</cf-select-option>
+        <cf-select-option value="13">Test 13</cf-select-option>
+        <cf-select-option value="14">Test 14</cf-select-option>
+        <cf-select-option value="15">Test 15</cf-select-option>
+        <cf-select-option value="16">Test 16</cf-select-option>
+        <cf-select-option value="17">Test 17</cf-select-option>
+        <cf-select-option value="18">Test 18</cf-select-option>
+        <cf-select-option value="19">Test 19</cf-select-option>
+        <cf-select-option value="20">Test 20</cf-select-option>
       </cf-select>
     </cf-card>
     <br /><br />
@@ -248,10 +267,25 @@
     <cf-typography type="h5">Input</cf-typography>
     <cf-divider></cf-divider>
     <cf-card>
-      <cf-input label="Number" placeholder="Write something..." type="number" value="Test"></cf-input>
+      <cf-input
+        label="Number"
+        placeholder="Write something..."
+        type="number"
+        value="Test"
+      ></cf-input>
       <cf-input label="Text" placeholder="Write something..." value="Test"></cf-input>
-      <cf-input label="Warning" placeholder="Write something..." value="Test" status="warning"></cf-input>
-      <cf-input label="Error" placeholder="Write something..." value="Test" status="error"></cf-input>
+      <cf-input
+        label="Warning"
+        placeholder="Write something..."
+        value="Test"
+        status="warning"
+      ></cf-input>
+      <cf-input
+        label="Error"
+        placeholder="Write something..."
+        value="Test"
+        status="error"
+      ></cf-input>
     </cf-card>
     <br /><br />
 
@@ -427,7 +461,10 @@
     <cf-card>
       <cf-circular-progress></cf-circular-progress>
       <cf-circular-progress color="secondary"></cf-circular-progress>
-      <cf-circular-progress id="determinate-circular-progress" type="determinate"></cf-circular-progress>
+      <cf-circular-progress
+        id="determinate-circular-progress"
+        type="determinate"
+      ></cf-circular-progress>
     </cf-card>
     <br /><br />
 
@@ -554,7 +591,9 @@
         notify('Something went wrong with the transaction.', { type: 'error' });
       });
       document.querySelector('#notify-btn-long').addEventListener('click', () => {
-        notify('This is a really long message. Why? To test text-overflow.. Duh~~~ This is a really long message. Why? To test text-overflow.. Duh~~~');
+        notify(
+          'This is a really long message. Why? To test text-overflow.. Duh~~~ This is a really long message. Why? To test text-overflow.. Duh~~~',
+        );
       });
 
       // Tabs

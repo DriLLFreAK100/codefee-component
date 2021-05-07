@@ -6,7 +6,7 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { INavMenu } from "./components/cf-app-header/cf-app-header-menu/cf-app-header-menu";
-import { ButtonType, CssUnits, FeedbackType, GutterSize, TableSegment } from "./common/types";
+import { ButtonType, FeedbackType, GutterSize, TableSegment } from "./common/types";
 import { CheckboxDirection } from "./components/cf-checkbox-list/cf-checkbox-list";
 import { CircularProgressColor, CircularProgressType } from "./components/cf-circular-progress/cf-circular-progress";
 import { InputStatusType } from "./components/cf-input/cf-input";
@@ -148,7 +148,6 @@ export namespace Components {
         "childHeight": number;
         "containerClassName": string;
         "containerHeight": number;
-        "cssUnit": CssUnits;
         "innerContainerClassName": string;
         "windowLimit": number;
     }
@@ -537,7 +536,6 @@ declare namespace LocalJSX {
         "childHeight"?: number;
         "containerClassName"?: string;
         "containerHeight"?: number;
-        "cssUnit"?: CssUnits;
         "innerContainerClassName"?: string;
         "windowLimit"?: number;
     }
