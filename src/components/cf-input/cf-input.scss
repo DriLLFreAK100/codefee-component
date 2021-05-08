@@ -21,35 +21,32 @@
 
   & > input {
     @extend .subtitle1;
-    border: rem(1) solid var(--color-default);
+    border: rem(1) solid var(--color-bg-dark);
     border-radius: rem(4);
     box-sizing: border-box;
     height: rem(44);
     margin-bottom: rem(8);
-    padding: rem(3) rem(15);
     outline: none;
+    padding: rem(13);
+    transition: border-color var(--transition-hover) ease-in-out;
 
     &:hover {
-      border: rem(2) solid var(--color-primary-light);
-      padding: rem(2) rem(14);
+      border: rem(1) solid var(--color-primary-light);
     }
 
     &:focus {
-      border: rem(2) solid var(--color-primary);
-      box-shadow: 0 rem(0) rem(2) 0 var(--color-primary-light);
-      padding: rem(2) rem(14);
+      border: rem(1) solid var(--color-primary);
+      box-shadow: 0 rem(0) rem(1) 0 var(--color-primary-light);
     }
 
     &.warning {
-      border: rem(2) solid var(--color-warning);
-      box-shadow: 0 rem(0) rem(2) 0 var(--color-warning-light);
-      padding: rem(2) rem(14);
+      border: rem(1) solid var(--color-warning);
+      box-shadow: 0 rem(0) rem(1) 0 var(--color-warning-light);
     }
 
     &.error {
-      border: rem(2) solid var(--color-error);
-      box-shadow: 0 rem(0) rem(2) 0 var(--color-error-light);
-      padding: rem(2) rem(14);
+      border: rem(1) solid var(--color-error);
+      box-shadow: 0 rem(0) rem(1) 0 var(--color-error-light);
     }
   }
 }
