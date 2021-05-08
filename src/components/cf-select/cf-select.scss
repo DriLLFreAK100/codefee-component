@@ -1,0 +1,79 @@
+@import '../../styles/functions.scss';
+@import '~@fortawesome/fontawesome-free/css/all.min.css';
+
+$select-height: rem(44);
+
+:host {
+  display: inline-block;
+  height: $select-height;
+  min-width: rem(200);
+  position: relative;
+}
+
+.select {
+  background-color: white;
+  border: rem(1) solid var(--color-bg-dark);
+  border-radius: rem(4);
+  box-sizing: border-box;
+  cursor: pointer;
+  display: flex;
+  height: 100%;
+  padding: rem(10) rem(11) rem(12) rem(11);
+  width: 100%;
+  transition: border-color var(--transition-hover) ease-in-out;
+
+  &.open {
+    border: rem(1) solid var(--color-primary);
+  }
+
+  &:hover {
+    border: rem(1) solid var(--color-primary-light);
+
+    .select__caret {
+      color: var(--color-primary-light);
+    }
+  }
+
+  &:active {
+    border: rem(1) solid var(--color-primary-dark);
+
+    .select__caret {
+      color: var(--color-primary-dark);
+    }
+  }
+
+  &__selectedValue {
+    flex: 1;
+  }
+
+  &__caret {
+    color: var(--color-primary);
+    transition: transform var(--transition-toggle) ease-in-out,
+      color var(--transition-hover) ease-in-out;
+    vertical-align: bottom;
+
+    &.open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__optContainer {
+    background-color: white;
+    border: rem(1) solid var(--color-bg-dark);
+    border-radius: rem(4);
+    box-sizing: border-box;
+    height: rem(0);
+    width: inherit;
+    left: 0;
+    overflow: auto;
+    position: absolute;
+    visibility: hidden;
+    width: 100%;
+    z-index: 10;
+
+    &.open {
+      height: auto;
+      visibility: visible;
+    }
+  }
+}

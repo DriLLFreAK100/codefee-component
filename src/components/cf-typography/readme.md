@@ -27,6 +27,8 @@
  - [cf-link](../cf-link)
  - [cf-loading](../cf-loading)
  - [cf-notification-message](../cf-notification/cf-notification-message)
+ - [cf-select](../cf-select)
+ - [cf-select-option](../cf-select/cf-select-option)
  - [cf-side-drawer](../cf-side-drawer)
  - [cf-tab](../cf-tabs/cf-tab)
  - [cf-table-cell](../cf-table/cf-table-cell)
@@ -43,6 +45,8 @@ graph TD;
   cf-link --> cf-typography
   cf-loading --> cf-typography
   cf-notification-message --> cf-typography
+  cf-select --> cf-typography
+  cf-select-option --> cf-typography
   cf-side-drawer --> cf-typography
   cf-tab --> cf-typography
   cf-table-cell --> cf-typography

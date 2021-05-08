@@ -1,0 +1,28 @@
+@import '../../../styles/functions.scss';
+
+:host {
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  height: rem(44);
+  padding: rem(12) rem(8);
+  transition: background-color var(--transition-hover) ease-in-out,
+    color var(--transition-hover) ease-in-out;
+  width: 100%;
+}
+
+:host(:hover) {
+  background-color: var(--color-primary-light);
+  color: var(--color-primary-on);
+}
+
+:host(:active) {
+  background-color: var(--color-primary-dark);
+  color: var(--color-primary-on);
+}
+
+:host(.selected) {
+  background-color: var(--color-primary);
+  color: var(--color-primary-on);
+  cursor: initial;
+}
