@@ -19,7 +19,7 @@
 
   & cf-typography {
     display: inline-block;
-    vertical-align: middle;
+    padding: rem(2) 0;
     transition: color var(--transition-hover) ease-in-out;
 
     &:hover {
