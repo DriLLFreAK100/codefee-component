@@ -6,7 +6,7 @@ $select-height: rem(44);
 :host {
   display: inline-block;
   height: $select-height;
-  min-width: rem(160);
+  min-width: rem(200);
   position: relative;
 }
 
@@ -73,7 +73,6 @@ $select-height: rem(44);
 
     &.open {
       height: auto;
-      max-height: 300px;
       visibility: visible;
     }
   }

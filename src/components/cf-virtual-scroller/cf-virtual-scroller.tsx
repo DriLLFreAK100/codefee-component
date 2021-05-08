@@ -1,6 +1,6 @@
 import debounce from 'lodash-es/debounce';
-import { filterHtmlCollection, flatten } from '../../utils';
 import { Component, Element, h, Prop, State } from '@stencil/core';
+import { filterHtmlCollection, flatten, forEachHtmlCollection } from '../../utils';
 
 export interface IVirtualHtmlElement extends HTMLElement {
   vid: number;
@@ -28,6 +28,7 @@ export class CfVirtualScroller {
   @Prop() windowLimit: number = 5;
   @State() windowHeight: number = 100;
   @State() children: IVirtualHtmlElement[] = [];
+  @State() firstRender: boolean = true;
   @State() isBySlot: boolean = false;
   @State() prevEndIndex: number = 0;
   @State() prevStartIndex: number = 0;
@@ -38,17 +39,14 @@ export class CfVirtualScroller {
     this.isBySlot = this.el.children[0]?.tagName.toUpperCase() === 'SLOT';
 
     // Manipulate translation
-    this.el.childNodes.forEach((child: HTMLElement) => {
-      if (child.tagName) {
-        if (child.tagName.toUpperCase() === 'SLOT') {
-          (child as HTMLSlotElement).assignedElements().forEach(slot => {
-            this.initChildNodeStyle(slot as IVirtualHtmlElement);
-          });
-        } else {
-          this.initChildNodeStyle(child as IVirtualHtmlElement);
-        }
-      }
-    });
+    if (this.isBySlot) {
+      const slotElements = (this.el.children[0] as HTMLSlotElement).assignedElements();
+      slotElements.forEach(s => this.initChildNodeStyle(s as IVirtualHtmlElement));
+    } else {
+      forEachHtmlCollection(this.el.children, (child: IVirtualHtmlElement) => {
+        this.initChildNodeStyle(child as IVirtualHtmlElement);
+      });
+    }
 
     // Initial render
     const renderCounts = (this.containerHeight + this.windowHeight * 2) / this.childHeight;
@@ -57,6 +55,17 @@ export class CfVirtualScroller {
       this.prevEndIndex = renderCounts - 1;
       this.removeChildren(renderCounts, this.children.length - 1);
     }
+  }
+
+  componentDidRender() {
+    // Move children to parent, remove slot
+    if (this.firstRender && this.isBySlot) {
+      const slot = this.el.children[0].children[0].children[0] as HTMLSlotElement;
+      this.children.forEach(s => this.el.children[0].children[0].appendChild(s));
+      slot.remove();
+    }
+
+    this.firstRender = false;
   }
 
   initChildNodeStyle(child: IVirtualHtmlElement): void {
@@ -96,9 +105,7 @@ export class CfVirtualScroller {
 
     // Insert
     for (let i = endIndex; i >= startIndex; i--) {
-      const root = this.isBySlot
-        ? this.el.children[0].children[0].children[0]
-        : this.el.children[0].children[0];
+      const root = this.el.children[0].children[0];
       const node = getElement(root.children, i);
 
       if (!node) {

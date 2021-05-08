@@ -8,6 +8,17 @@ const getSelectedOption = (els: HTMLCollection): HTMLCfSelectOptionElement => {
   )[0];
 };
 
+const getOptContainerHeight = (optionCount: number) => {
+  const height = optionCount * 44;
+  return height > 300 ? 300 : height;
+};
+
+const getOptions = (el: HTMLCfSelectElement) => {
+  return el.shadowRoot
+    .querySelector('cf-virtual-scroller')
+    .querySelector('.cfVirtualScroller__inner').children;
+};
+
 @Component({
   tag: 'cf-select',
   styleUrl: 'cf-select.scss',
@@ -17,17 +28,19 @@ export class CfSelect {
   @Element() el: HTMLCfSelectElement;
   @Prop() placeholder: string = '';
   @State() isOptionsOpen: boolean = false;
-  @State() optionCount: number = 0;
+  @State() optContainerHeight: number = 0;
   @State() selected: HTMLCfSelectOptionElement = undefined;
   @Event() selectedChange: EventEmitter<HTMLCfSelectOptionElement>;
 
-  componentWillRender() {
+  connectedCallback() {
     this.selected = getSelectedOption(this.el.children);
+    this.optContainerHeight = getOptContainerHeight(this.el.children.length);
   }
 
   handleClickSelect(e: MouseEvent) {
     e.stopPropagation();
     this.isOptionsOpen = !this.isOptionsOpen;
+    this.el.shadowRoot;
   }
 
   @Listen('click', { target: 'document', capture: true })
@@ -44,9 +57,12 @@ export class CfSelect {
   handleSelectOptionClick(e: CustomEvent<HTMLCfSelectOptionElement>) {
     e.stopPropagation();
 
-    forEachHtmlCollection(this.el.children, (child: HTMLCfSelectOptionElement) => {
+    forEachHtmlCollection(getOptions(this.el), (child: HTMLCfSelectOptionElement) => {
       if (child.id === e.detail.id) {
         child.selected = true;
+
+        // Set selected
+        this.selected = child;
         this.selectedChange.emit(e.detail);
       } else {
         child.selected = false;
@@ -83,9 +99,13 @@ export class CfSelect {
           <i class={caretClassName} />
         </span>
       </div>,
-      <div class={optContainerClassName}>
+      <cf-virtual-scroller
+        class={optContainerClassName}
+        containerHeight={this.optContainerHeight}
+        childHeight={44}
+      >
         <slot></slot>
-      </div>,
+      </cf-virtual-scroller>,
     ];
   }
 }
