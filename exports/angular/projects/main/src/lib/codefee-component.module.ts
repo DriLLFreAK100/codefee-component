@@ -1,5 +1,4 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
-import { initializer } from './initializer';
 import {
   CfAppHeader,
   CfAppHeaderActionMenu,
@@ -10,6 +9,8 @@ import {
   CfCheckboxList,
   CfChip,
   CfCircularProgress,
+  CfDialog,
+  CfDialogOverlay,
   CfDivider,
   CfFooter,
   CfIconButton,
@@ -18,6 +19,9 @@ import {
   CfLoading,
   CfNotification,
   CfNotificationMessage,
+  CfSelect,
+  CfSelectGroup,
+  CfSelectOption,
   CfSideDrawer,
   CfTab,
   CfTable,
@@ -28,8 +32,9 @@ import {
   CfTableRow,
   CfTabs,
   CfTypography,
-  CfVirtualScroller,
-} from './directives/proxies';
+  CfVirtualScroller
+  } from './directives/proxies';
+import { initializer } from './initializer';
 
 const DECLARATIONS = [
   // proxies
@@ -42,6 +47,8 @@ const DECLARATIONS = [
   CfCheckboxList,
   CfChip,
   CfCircularProgress,
+  CfDialog,
+  CfDialogOverlay,
   CfDivider,
   CfFooter,
   CfIconButton,
@@ -50,6 +57,9 @@ const DECLARATIONS = [
   CfLoading,
   CfNotification,
   CfNotificationMessage,
+  CfSelect,
+  CfSelectGroup,
+  CfSelectOption,
   CfSideDrawer,
   CfTab,
   CfTable,
@@ -60,7 +70,7 @@ const DECLARATIONS = [
   CfTableRow,
   CfTabs,
   CfTypography,
-  CfVirtualScroller,
+  CfVirtualScroller
 ];
 
 @NgModule({
