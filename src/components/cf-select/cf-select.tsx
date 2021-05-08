@@ -45,7 +45,6 @@ export class CfSelect {
 
   @Listen('click', { target: 'document', capture: true })
   public handleClickOutside(e: any): void {
-    e.preventDefault();
     const isClickInside = this.el.contains(e.target);
 
     if (!isClickInside) {
