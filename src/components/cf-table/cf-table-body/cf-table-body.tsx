@@ -1,12 +1,5 @@
-import {
-  Component,
-  Element,
-  h,
-  Host,
-  Listen,
-  Prop,
-} from '@stencil/core';
-import { flatten } from '../../../utils';
+import { Component, Element, h, Host, Prop } from '@stencil/core';
+import { flatten, forEachHtmlCollection } from '../../../utils';
 
 @Component({
   tag: 'cf-table-body',
@@ -19,10 +12,10 @@ export class CfTableBody {
   @Prop() rowHeight: number = 36;
   @Prop() virtualize: boolean = false;
 
-  @Listen('tblRowInit')
-  handleRowInit(event: CustomEvent<HTMLCfTableRowElement>) {
-    event.stopPropagation();
-    event.detail.type = 'body';
+  connectedCallback() {
+    forEachHtmlCollection(this.el.children, (row: HTMLCfTableRowElement) => {
+      row.type = 'body';
+    });
   }
 
   render() {
@@ -32,22 +25,14 @@ export class CfTableBody {
 
     return (
       <Host class={className}>
-        {
-          this.virtualize ?
-            (
-              <cf-virtual-scroller
-                containerHeight={this.bodyHeight}
-                childHeight={this.rowHeight}
-              >
-                <slot></slot>
-              </cf-virtual-scroller>
-            )
-            : (
-              <slot></slot>
-            )
-        }
+        {this.virtualize ? (
+          <cf-virtual-scroller containerHeight={this.bodyHeight} childHeight={this.rowHeight}>
+            <slot></slot>
+          </cf-virtual-scroller>
+        ) : (
+          <slot></slot>
+        )}
       </Host>
     );
   }
-
 }

@@ -1,17 +1,6 @@
-import sumBy from 'lodash-es/sumBy';
-import { flatten } from '../../../utils';
+import { Component, Element, Event, EventEmitter, h, Host, Prop } from '@stencil/core';
+import { flatten, forEachHtmlCollection } from '../../../utils';
 import { TableSegment } from '../../../common/types';
-import {
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Listen,
-  Prop,
-  State,
-} from '@stencil/core';
 
 @Component({
   tag: 'cf-table-row',
@@ -22,24 +11,17 @@ export class CfTableRow {
   @Element() el: HTMLCfTableRowElement;
   @Event() tblRowInit: EventEmitter<HTMLCfTableRowElement>;
   @Prop() type: TableSegment = 'body';
-  @State() cells: HTMLCfTableCellElement[] = [];
-
-  @Listen('tblCellInit')
-  handleCellInit(event: CustomEvent<HTMLCfTableCellElement>) {
-    event.stopPropagation();
-    this.cells = [...this.cells, event.detail];
-  }
 
   connectedCallback() {
     this.tblRowInit.emit(this.el);
   }
 
   componentWillLoad() {
-    const totalSize = sumBy(this.cells, 'size');
+    const totalSize = this.el.children.length;
 
-    this.cells.forEach((cell: HTMLCfTableCellElement) => {
+    forEachHtmlCollection(this.el.children, (cell: HTMLCfTableCellElement) => {
       cell.type = this.type;
-      cell.style.flexBasis = `${cell.size / totalSize * 100}%`;
+      cell.style.flexBasis = `${(cell.size / totalSize) * 100}%`;
     });
   }
 

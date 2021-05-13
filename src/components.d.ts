@@ -511,7 +511,6 @@ declare namespace LocalJSX {
         "virtualize"?: boolean;
     }
     interface CfTableCell {
-        "onTblCellInit"?: (event: CustomEvent<HTMLCfTableCellElement>) => void;
         "position"?: CellContentPosition;
         "size"?: number;
         "type"?: TableSegment;

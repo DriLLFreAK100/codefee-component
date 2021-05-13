@@ -20,6 +20,7 @@ const getElement = (collection: HTMLCollection, index: number) => {
 })
 export class CfVirtualScroller {
   containerEl!: HTMLElement;
+  firstRender: boolean = true;
   @Element() el: HTMLElement;
   @Prop() childHeight: number = 20;
   @Prop() containerHeight: number = 100;
@@ -28,7 +29,6 @@ export class CfVirtualScroller {
   @Prop() windowLimit: number = 5;
   @State() windowHeight: number = 100;
   @State() children: IVirtualHtmlElement[] = [];
-  @State() firstRender: boolean = true;
   @State() isBySlot: boolean = false;
   @State() prevEndIndex: number = 0;
   @State() prevStartIndex: number = 0;
@@ -38,7 +38,7 @@ export class CfVirtualScroller {
     this.windowHeight = this.windowLimit * this.childHeight;
     this.isBySlot = this.el.children[0]?.tagName.toUpperCase() === 'SLOT';
 
-    // Manipulate translation
+    // Manipulate transform:translation style
     if (this.isBySlot) {
       const slotElements = (this.el.children[0] as HTMLSlotElement).assignedElements();
       slotElements.forEach(s => this.initChildNodeStyle(s as IVirtualHtmlElement));
