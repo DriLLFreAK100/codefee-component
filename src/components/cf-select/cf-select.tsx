@@ -2,10 +2,7 @@ import { Component, Element, Event, EventEmitter, h, Listen, Prop, State } from 
 import { flatten, filterHtmlCollection, forEachHtmlCollection } from '../../utils';
 
 const getSelectedOption = (els: HTMLCollection): HTMLCfSelectOptionElement => {
-  return filterHtmlCollection<HTMLCfSelectOptionElement>(
-    els,
-    (el: HTMLCfSelectOptionElement) => el.selected,
-  )[0];
+  return filterHtmlCollection<HTMLCfSelectOptionElement>(els, (el: HTMLCfSelectOptionElement) => el.selected)[0];
 };
 
 const getOptContainerHeight = (optionCount: number) => {
@@ -14,9 +11,7 @@ const getOptContainerHeight = (optionCount: number) => {
 };
 
 const getOptions = (el: HTMLCfSelectElement) => {
-  return el.shadowRoot
-    .querySelector('cf-virtual-scroller')
-    .querySelector('.cfVirtualScroller__inner').children;
+  return el.shadowRoot.querySelector('cf-virtual-scroller').querySelector('.cfVirtualScroller__inner').children;
 };
 
 @Component({
@@ -25,22 +20,45 @@ const getOptions = (el: HTMLCfSelectElement) => {
   shadow: true,
 })
 export class CfSelect {
+  processingOptions: boolean = false;
   @Element() el: HTMLCfSelectElement;
   @Prop() placeholder: string = '';
   @State() isOptionsOpen: boolean = false;
   @State() optContainerHeight: number = 0;
   @State() selected: HTMLCfSelectOptionElement = undefined;
+  @State() virtualOptions: HTMLCfSelectOptionElement[] = [];
   @Event() selectedChange: EventEmitter<HTMLCfSelectOptionElement>;
 
   connectedCallback() {
     this.selected = getSelectedOption(this.el.children);
     this.optContainerHeight = getOptContainerHeight(this.el.children.length);
+
+    // Virtualize Options
+    this.virtualizeOptions();
+    const observer = new MutationObserver(this.handleOptionsChange.bind(this));
+    observer.observe(this.el, { childList: true });
+    this.processingOptions = false;
   }
 
   handleClickSelect(e: MouseEvent) {
     e.stopPropagation();
     this.isOptionsOpen = !this.isOptionsOpen;
     this.el.shadowRoot;
+  }
+
+  handleOptionsChange() {
+    if (!this.processingOptions) {
+      this.virtualizeOptions();
+      return;
+    }
+
+    this.processingOptions = false;
+  }
+
+  virtualizeOptions() {
+    this.virtualOptions = Array.from(this.el.children) as HTMLCfSelectOptionElement[];
+    forEachHtmlCollection(this.el.children, row => row.remove());
+    this.processingOptions = true;
   }
 
   @Listen('click', { target: 'document', capture: true })
@@ -102,9 +120,8 @@ export class CfSelect {
         class={optContainerClassName}
         containerHeight={this.optContainerHeight}
         childHeight={44}
-      >
-        <slot></slot>
-      </cf-virtual-scroller>,
+        items={this.virtualOptions}
+      />,
     ];
   }
 }

@@ -1,14 +1,6 @@
+import { Component, Element, h, Host, Prop } from '@stencil/core';
 import { flatten } from '../../../utils';
 import { TableSegment } from '../../../common/types';
-import {
-  Component,
-  Element,
-  Event,
-  EventEmitter,
-  h,
-  Host,
-  Prop,
-} from '@stencil/core';
 
 export type CellContentPosition = 'left' | 'right' | 'center';
 
@@ -19,24 +11,31 @@ export type CellContentPosition = 'left' | 'right' | 'center';
 })
 export class CfTableCell {
   @Element() el: HTMLCfTableCellElement;
-  @Event() tblCellInit: EventEmitter<HTMLCfTableCellElement>;
   @Prop() size: number = 1;
   @Prop() position: CellContentPosition = 'left';
   @Prop() type: TableSegment = 'body';
-
-  connectedCallback() {
-    this.tblCellInit.emit(this.el);
-  }
 
   renderSlot(type: TableSegment) {
     switch (type) {
       case 'head':
       default:
-        return <cf-typography type="h6" ellipsis><slot /></cf-typography>;
+        return (
+          <cf-typography type="h6" ellipsis>
+            <slot />
+          </cf-typography>
+        );
       case 'body':
-        return <cf-typography type="body1" ellipsis><slot /></cf-typography>;
+        return (
+          <cf-typography type="body1" ellipsis>
+            <slot />
+          </cf-typography>
+        );
       case 'foot':
-        return <cf-typography type="h6" ellipsis><slot /></cf-typography>;
+        return (
+          <cf-typography type="h6" ellipsis>
+            <slot />
+          </cf-typography>
+        );
     }
   }
 
@@ -52,5 +51,4 @@ export class CfTableCell {
       </Host>
     );
   }
-
 }

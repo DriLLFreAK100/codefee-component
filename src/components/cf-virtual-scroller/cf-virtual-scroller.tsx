@@ -1,17 +1,10 @@
 import debounce from 'lodash-es/debounce';
-import { Component, Element, h, Prop, State } from '@stencil/core';
-import { filterHtmlCollection, flatten, forEachHtmlCollection } from '../../utils';
+import { Component, Element, h, Prop, State, Watch } from '@stencil/core';
+import { flatten } from '../../utils';
 
 export interface IVirtualHtmlElement extends HTMLElement {
   vid: number;
 }
-
-const getElement = (collection: HTMLCollection, index: number) => {
-  return filterHtmlCollection<Element>(
-    collection,
-    (el: IVirtualHtmlElement) => el.vid === index,
-  )[0];
-};
 
 @Component({
   tag: 'cf-virtual-scroller',
@@ -26,108 +19,42 @@ export class CfVirtualScroller {
   @Prop() containerClassName: string;
   @Prop() innerContainerClassName: string;
   @Prop() windowLimit: number = 5;
+  @Prop() items: HTMLElement[] = [];
+  @State() activeItems: IVirtualHtmlElement[] = [];
   @State() windowHeight: number = 100;
-  @State() children: IVirtualHtmlElement[] = [];
-  @State() firstRender: boolean = true;
-  @State() isBySlot: boolean = false;
-  @State() prevEndIndex: number = 0;
-  @State() prevStartIndex: number = 0;
+
+  @Watch('items')
+  handleChildrenChange(newItems: IVirtualHtmlElement[]) {
+    this.initChildren(newItems);
+  }
 
   connectedCallback() {
-    // Init states
     this.windowHeight = this.windowLimit * this.childHeight;
-    this.isBySlot = this.el.children[0]?.tagName.toUpperCase() === 'SLOT';
+    this.initChildren(this.items);
+  }
 
-    // Manipulate translation
-    if (this.isBySlot) {
-      const slotElements = (this.el.children[0] as HTMLSlotElement).assignedElements();
-      slotElements.forEach(s => this.initChildNodeStyle(s as IVirtualHtmlElement));
-    } else {
-      forEachHtmlCollection(this.el.children, (child: IVirtualHtmlElement) => {
-        this.initChildNodeStyle(child as IVirtualHtmlElement);
-      });
-    }
+  initChildren(children: HTMLElement[]): void {
+    // Manipulate transform:translation style
+    children.forEach((child: IVirtualHtmlElement, index) => {
+      child.vid = index;
+      child.style.height = `${this.childHeight}px`;
+      child.style.position = 'absolute';
+      child.style.transform = `translateY(${index * this.childHeight}px)`;
+    });
 
     // Initial render
-    const renderCounts = (this.containerHeight + this.windowHeight * 2) / this.childHeight;
+    const renderBufferCount = (this.containerHeight + this.windowHeight * 2) / this.childHeight;
+    const renderCount = renderBufferCount > this.items.length ? this.items.length : renderBufferCount;
 
-    if (this.children.length > renderCounts) {
-      this.prevEndIndex = renderCounts - 1;
-      this.removeChildren(renderCounts, this.children.length - 1);
-    }
-  }
-
-  componentDidRender() {
-    // Move children to parent, remove slot
-    if (this.firstRender && this.isBySlot) {
-      const slot = this.el.children[0].children[0].children[0] as HTMLSlotElement;
-      this.children.forEach(s => this.el.children[0].children[0].appendChild(s));
-      slot.remove();
-    }
-
-    this.firstRender = false;
-  }
-
-  initChildNodeStyle(child: IVirtualHtmlElement): void {
-    const id = this.children.length;
-
-    child.vid = id;
-    child.style.height = `${this.childHeight}px`;
-    child.style.position = 'absolute';
-    child.style.transform = `translateY(${id * this.childHeight}px)`;
-
-    this.children.push(child);
-  }
-
-  removeChildren(startIndex: number, endIndex: number) {
-    if (this.isBySlot) {
-      const slotElements = (this.el.children[0] as HTMLSlotElement).assignedElements();
-      for (let i = endIndex; i >= startIndex; i--) {
-        slotElements[i].remove();
-      }
-    } else {
-      for (let i = endIndex; i >= startIndex; i--) {
-        this.el.children.item(i).remove();
-      }
-    }
+    this.setChildren(0, renderCount - 1);
   }
 
   setChildren(startIndex: number, endIndex: number) {
-    // Clean start
-    for (let i = 0; i < startIndex; i++) {
-      getElement(this.el.children[0].children[0].children, i)?.remove();
+    this.activeItems = [];
+
+    for (let i = startIndex; i <= endIndex; i++) {
+      this.activeItems.push(this.items[i] as IVirtualHtmlElement);
     }
-
-    // Clean end
-    for (let i = endIndex + 1; i <= this.prevEndIndex; i++) {
-      getElement(this.el.children[0].children[0].children, i)?.remove();
-    }
-
-    // Insert
-    for (let i = endIndex; i >= startIndex; i--) {
-      const root = this.el.children[0].children[0];
-      const node = getElement(root.children, i);
-
-      if (!node) {
-        const postNode = getElement(root.children, i + 1);
-
-        if (postNode) {
-          root.insertBefore(this.children[i], postNode);
-        } else {
-          if (this.prevStartIndex > startIndex) {
-            root.prepend(this.children[i]);
-          } else if (this.prevStartIndex < startIndex) {
-            root.append(this.children[i]);
-          } else {
-            root.append(this.children[i]);
-          }
-        }
-      }
-    }
-
-    // Track current indices
-    this.prevStartIndex = startIndex;
-    this.prevEndIndex = endIndex;
   }
 
   handleOnScroll = debounce(() => {
@@ -144,7 +71,7 @@ export class CfVirtualScroller {
     // Lower window
     const inScopeCount = Math.round(this.containerHeight / this.childHeight);
     const maxEndIndex = upperWindowItemCount + inScopeCount + this.windowLimit;
-    endIndex = maxEndIndex > this.children.length ? this.children.length - 1 : maxEndIndex - 1;
+    endIndex = maxEndIndex > this.items.length ? this.items.length - 1 : maxEndIndex - 1;
 
     this.setChildren(startIndex, endIndex);
   }, 16);
@@ -165,7 +92,7 @@ export class CfVirtualScroller {
     };
 
     const innerStyles: { [key: string]: string } = {
-      height: `${this.children.length * this.childHeight}px`,
+      height: `${this.items.length * this.childHeight}px`,
     };
 
     return (
@@ -175,9 +102,11 @@ export class CfVirtualScroller {
         style={styles}
         onScroll={this.handleOnScroll.bind(this)}
       >
-        <div class={innerClassName} style={innerStyles}>
-          <slot></slot>
-        </div>
+        <div
+          class={innerClassName}
+          style={innerStyles}
+          innerHTML={this.activeItems.map(a => a.outerHTML).join('')}
+        ></div>
       </div>
     );
   }
