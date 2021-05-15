@@ -1,4 +1,4 @@
-import { Component, Element, h, Host, Prop } from '@stencil/core';
+import { Component, Element, h, Host, Prop, State } from '@stencil/core';
 import { flatten, forEachHtmlCollection } from '../../../utils';
 
 @Component({
@@ -11,11 +11,39 @@ export class CfTableBody {
   @Prop() bodyHeight: number = 100;
   @Prop() rowHeight: number = 36;
   @Prop() virtualize: boolean = false;
+  @State() virtualRows: HTMLCfTableRowElement[] = [];
+  processingChildren: boolean = false;
 
   connectedCallback() {
+    this.init();
+
+    const observer = new MutationObserver(this.handleChildrenChange.bind(this));
+    observer.observe(this.el, { childList: true });
+
+    this.processingChildren = false;
+  }
+
+  handleChildrenChange() {
+    if (!this.processingChildren) {
+      this.init();
+      return;
+    }
+
+    this.processingChildren = false;
+  }
+
+  init() {
     forEachHtmlCollection(this.el.children, (row: HTMLCfTableRowElement) => {
       row.type = 'body';
     });
+
+    this.virtualRows = Array.from(this.el.children) as HTMLCfTableRowElement[];
+
+    forEachHtmlCollection(this.el.children, (row: HTMLCfTableRowElement) => {
+      row.remove();
+    });
+
+    this.processingChildren = true;
   }
 
   render() {
@@ -26,9 +54,11 @@ export class CfTableBody {
     return (
       <Host class={className}>
         {this.virtualize ? (
-          <cf-virtual-scroller containerHeight={this.bodyHeight} childHeight={this.rowHeight}>
-            <slot></slot>
-          </cf-virtual-scroller>
+          <cf-virtual-scroller
+            containerHeight={this.bodyHeight}
+            childHeight={this.rowHeight}
+            items={this.virtualRows}
+          />
         ) : (
           <slot></slot>
         )}

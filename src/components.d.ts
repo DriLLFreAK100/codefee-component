@@ -149,6 +149,7 @@ export namespace Components {
         "containerClassName": string;
         "containerHeight": number;
         "innerContainerClassName": string;
+        "items": HTMLElement[];
         "windowLimit": number;
     }
 }
@@ -536,6 +537,7 @@ declare namespace LocalJSX {
         "containerClassName"?: string;
         "containerHeight"?: number;
         "innerContainerClassName"?: string;
+        "items"?: HTMLElement[];
         "windowLimit"?: number;
     }
     interface IntrinsicElements {

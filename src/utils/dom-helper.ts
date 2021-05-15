@@ -7,10 +7,11 @@ export const forEachHtmlCollection = (
   htmlCollection: HTMLCollection,
   func: (el: Element, index: number) => void,
 ): void => {
-  for (let index = 0; index < htmlCollection.length; index++) {
-    const el = htmlCollection.item(index);
-    func && func(el, index);
-  }
+  const elements = Array.from(htmlCollection);
+
+  elements.forEach((element, index) => {
+    func && func(element, index);
+  });
 };
 
 /**
