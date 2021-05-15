@@ -14,13 +14,6 @@
 | `type`     | `type`     |             | `"body" \| "foot" \| "head"`    | `'body'` |
 
 
-## Events
-
-| Event         | Description | Type                                  |
-| ------------- | ----------- | ------------------------------------- |
-| `tblCellInit` |             | `CustomEvent<HTMLCfTableCellElement>` |
-
-
 ## Dependencies
 
 ### Depends on

@@ -1,10 +1,5 @@
-import {
-  Component,
-  Element,
-  h,
-  Host,
-  Listen,
-} from '@stencil/core';
+import { Component, Element, h, Host } from '@stencil/core';
+import { forEachHtmlCollection } from '../../../utils';
 
 @Component({
   tag: 'cf-table-foot',
@@ -14,10 +9,10 @@ import {
 export class CfTableFoot {
   @Element() el: HTMLElement;
 
-  @Listen('tblRowInit')
-  handleRowInit(event: CustomEvent<HTMLCfTableRowElement>) {
-    event.stopPropagation();
-    event.detail.type = 'foot';
+  connectedCallback() {
+    forEachHtmlCollection(this.el.children, (row: HTMLCfTableRowElement) => {
+      row.type = 'foot';
+    });
   }
 
   render() {
@@ -27,5 +22,4 @@ export class CfTableFoot {
       </Host>
     );
   }
-
 }
