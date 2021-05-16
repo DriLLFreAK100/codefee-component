@@ -1,6 +1,5 @@
 import { Component, Host, h, Event, EventEmitter, Prop, Element } from '@stencil/core';
 import { flatten } from '../../../utils';
-import { v4 as uuidv4 } from 'uuid';
 
 @Component({
   tag: 'cf-select-option',
@@ -14,14 +13,11 @@ export class CfSelectOption {
   @Prop() value: any;
   @Event() selectOptionClick: EventEmitter<any>;
 
-  connectedCallback() {
-    if (!this.el.id) {
-      this.el.id = uuidv4();
-    }
-  }
-
   handleClickOption() {
-    if (!this.selected) this.selectOptionClick.emit(this.el);
+    if (!this.selected) {
+      this.selected = true;
+      this.selectOptionClick.emit(this.el);
+    }
   }
 
   render() {
