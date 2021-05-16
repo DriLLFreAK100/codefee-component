@@ -15,24 +15,26 @@ export class CfTableBody {
   processingChildren: boolean = false;
 
   connectedCallback() {
-    this.init();
+    if (this.virtualize) {
+      this.initVirtualization();
 
-    const observer = new MutationObserver(this.handleChildrenChange.bind(this));
-    observer.observe(this.el, { childList: true });
+      const observer = new MutationObserver(this.handleChildrenChange.bind(this));
+      observer.observe(this.el, { childList: true });
 
-    this.processingChildren = false;
+      this.processingChildren = false;
+    }
   }
 
   handleChildrenChange() {
     if (!this.processingChildren) {
-      this.init();
+      this.initVirtualization();
       return;
     }
 
     this.processingChildren = false;
   }
 
-  init() {
+  initVirtualization() {
     forEachHtmlCollection(this.el.children, (row: HTMLCfTableRowElement) => {
       row.type = 'body';
     });
