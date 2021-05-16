@@ -101,6 +101,7 @@ export namespace Components {
     }
     interface CfSelect {
         "placeholder": string;
+        "virtualOptions": HTMLCfSelectOptionElement[];
     }
     interface CfSelectGroup {
     }
@@ -123,7 +124,7 @@ export namespace Components {
     interface CfTableBody {
         "bodyHeight": number;
         "rowHeight": number;
-        "virtualize": boolean;
+        "virtualRows": HTMLCfTableRowElement[];
     }
     interface CfTableCell {
         "position": CellContentPosition;
@@ -484,6 +485,7 @@ declare namespace LocalJSX {
     interface CfSelect {
         "onSelectedChange"?: (event: CustomEvent<HTMLCfSelectOptionElement>) => void;
         "placeholder"?: string;
+        "virtualOptions"?: HTMLCfSelectOptionElement[];
     }
     interface CfSelectGroup {
     }
@@ -509,7 +511,7 @@ declare namespace LocalJSX {
     interface CfTableBody {
         "bodyHeight"?: number;
         "rowHeight"?: number;
-        "virtualize"?: boolean;
+        "virtualRows"?: HTMLCfTableRowElement[];
     }
     interface CfTableCell {
         "position"?: CellContentPosition;

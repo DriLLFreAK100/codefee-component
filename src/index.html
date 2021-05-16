@@ -20,28 +20,29 @@
     <cf-typography type="h5">Select</cf-typography>
     <cf-divider></cf-divider>
     <cf-card>
-      <cf-select id="select">
-        <cf-select-option value="1">Test 1</cf-select-option>
-        <cf-select-option value="2">Test 2</cf-select-option>
-        <cf-select-option value="3">Test 3</cf-select-option>
-        <cf-select-option value="4" selected>Test 4</cf-select-option>
-        <cf-select-option value="5">Test 5</cf-select-option>
-        <cf-select-option value="6">Test 6</cf-select-option>
-        <cf-select-option value="7">Test 7</cf-select-option>
-        <cf-select-option value="8">Test 8</cf-select-option>
-        <cf-select-option value="9">Test 9</cf-select-option>
-        <cf-select-option value="11">Test 11</cf-select-option>
-        <cf-select-option value="12">Test 12</cf-select-option>
-        <cf-select-option value="13">Test 13</cf-select-option>
-        <cf-select-option value="14">Test 14</cf-select-option>
-        <cf-select-option value="15">Test 15</cf-select-option>
-        <cf-select-option value="16">Test 16</cf-select-option>
-        <cf-select-option value="17">Test 17</cf-select-option>
-        <cf-select-option value="18">Test 18</cf-select-option>
-        <cf-select-option value="19">Test 19</cf-select-option>
-        <cf-select-option value="20">Test 20</cf-select-option>
-      </cf-select>
+      <cf-select id="select"></cf-select>
     </cf-card>
+    <template id="virtualized-select-options">
+      <cf-select-option value="1">Test 1</cf-select-option>
+      <cf-select-option value="2">Test 2</cf-select-option>
+      <cf-select-option value="3">Test 3</cf-select-option>
+      <cf-select-option value="4" selected>Test 4</cf-select-option>
+      <cf-select-option value="5">Test 5</cf-select-option>
+      <cf-select-option value="6">Test 6</cf-select-option>
+      <cf-select-option value="7">Test 7</cf-select-option>
+      <cf-select-option value="8">Test 8</cf-select-option>
+      <cf-select-option value="9">Test 9</cf-select-option>
+      <cf-select-option value="11">Test 11</cf-select-option>
+      <cf-select-option value="12">Test 12</cf-select-option>
+      <cf-select-option value="13">Test 13</cf-select-option>
+      <cf-select-option value="14">Test 14</cf-select-option>
+      <cf-select-option value="15">Test 15</cf-select-option>
+      <cf-select-option value="16">Test 16</cf-select-option>
+      <cf-select-option value="17">Test 17</cf-select-option>
+      <cf-select-option value="18">Test 18</cf-select-option>
+      <cf-select-option value="19">Test 19</cf-select-option>
+      <cf-select-option value="20">Test 20</cf-select-option>
+    </template>
     <br /><br />
 
     <!-- Dialog -->
@@ -97,104 +98,7 @@
             <cf-table-cell size="1">Header 6</cf-table-cell>
           </cf-table-row>
         </cf-table-head>
-        <cf-table-body id="tbl-body" slot="body" virtualize body-height="100">
-          <cf-table-row>
-            <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-            <cf-table-cell size="2">Body 2</cf-table-cell>
-            <cf-table-cell size="1">Body 3</cf-table-cell>
-            <cf-table-cell size="1">Body 4</cf-table-cell>
-            <cf-table-cell size="2">Body 5</cf-table-cell>
-            <cf-table-cell size="1">Body 6</cf-table-cell>
-          </cf-table-row>
-          <cf-table-row>
-            <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-            <cf-table-cell size="2">Body 2</cf-table-cell>
-            <cf-table-cell size="1">Body 3</cf-table-cell>
-            <cf-table-cell size="1">Body 4</cf-table-cell>
-            <cf-table-cell size="2">Body 5</cf-table-cell>
-            <cf-table-cell size="1">Body 6</cf-table-cell>
-          </cf-table-row>
-          <cf-table-row>
-            <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-            <cf-table-cell size="2">Body 2</cf-table-cell>
-            <cf-table-cell size="1">Body 3</cf-table-cell>
-            <cf-table-cell size="1">Body 4</cf-table-cell>
-            <cf-table-cell size="2">Body 5</cf-table-cell>
-            <cf-table-cell size="1">Body 6</cf-table-cell>
-          </cf-table-row>
-          <cf-table-row>
-            <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-            <cf-table-cell size="2">Body 2</cf-table-cell>
-            <cf-table-cell size="1">Body 3</cf-table-cell>
-            <cf-table-cell size="1">Body 4</cf-table-cell>
-            <cf-table-cell size="2">Body 5</cf-table-cell>
-            <cf-table-cell size="1">Body 6</cf-table-cell>
-          </cf-table-row>
-          <cf-table-row>
-            <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-            <cf-table-cell size="2">Body 2</cf-table-cell>
-            <cf-table-cell size="1">Body 3</cf-table-cell>
-            <cf-table-cell size="1">Body 4</cf-table-cell>
-            <cf-table-cell size="2">Body 5</cf-table-cell>
-            <cf-table-cell size="1">Body 6</cf-table-cell>
-          </cf-table-row>
-          <cf-table-row>
-            <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-            <cf-table-cell size="2">Body 2</cf-table-cell>
-            <cf-table-cell size="1">Body 3</cf-table-cell>
-            <cf-table-cell size="1">Body 4</cf-table-cell>
-            <cf-table-cell size="2">Body 5</cf-table-cell>
-            <cf-table-cell size="1">Body 6</cf-table-cell>
-          </cf-table-row>
-          <cf-table-row>
-            <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-            <cf-table-cell size="2">Body 2</cf-table-cell>
-            <cf-table-cell size="1">Body 3</cf-table-cell>
-            <cf-table-cell size="1">Body 4</cf-table-cell>
-            <cf-table-cell size="2">Body 5</cf-table-cell>
-            <cf-table-cell size="1">Body 6</cf-table-cell>
-          </cf-table-row>
-          <cf-table-row>
-            <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-            <cf-table-cell size="2">Body 2</cf-table-cell>
-            <cf-table-cell size="1">Body 3</cf-table-cell>
-            <cf-table-cell size="1">Body 4</cf-table-cell>
-            <cf-table-cell size="2">Body 5</cf-table-cell>
-            <cf-table-cell size="1">Body 6</cf-table-cell>
-          </cf-table-row>
-          <cf-table-row>
-            <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-            <cf-table-cell size="2">Body 2</cf-table-cell>
-            <cf-table-cell size="1">Body 3</cf-table-cell>
-            <cf-table-cell size="1">Body 4</cf-table-cell>
-            <cf-table-cell size="2">Body 5</cf-table-cell>
-            <cf-table-cell size="1">Body 6</cf-table-cell>
-          </cf-table-row>
-          <cf-table-row>
-            <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-            <cf-table-cell size="2">Body 2</cf-table-cell>
-            <cf-table-cell size="1">Body 3</cf-table-cell>
-            <cf-table-cell size="1">Body 4</cf-table-cell>
-            <cf-table-cell size="2">Body 5</cf-table-cell>
-            <cf-table-cell size="1">Body 6</cf-table-cell>
-          </cf-table-row>
-          <cf-table-row>
-            <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-            <cf-table-cell size="2">Body 2</cf-table-cell>
-            <cf-table-cell size="1">Body 3</cf-table-cell>
-            <cf-table-cell size="1">Body 4</cf-table-cell>
-            <cf-table-cell size="2">Body 5</cf-table-cell>
-            <cf-table-cell size="1">Body 6</cf-table-cell>
-          </cf-table-row>
-          <cf-table-row>
-            <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-            <cf-table-cell size="2">Body 2</cf-table-cell>
-            <cf-table-cell size="1">Body 3</cf-table-cell>
-            <cf-table-cell size="1">Body 4</cf-table-cell>
-            <cf-table-cell size="2">Body 5</cf-table-cell>
-            <cf-table-cell size="1">Body 6</cf-table-cell>
-          </cf-table-row>
-        </cf-table-body>
+        <cf-table-body id="tbl-body" slot="body" body-height="100"></cf-table-body>
         <cf-table-foot slot="foot">
           <cf-table-row>
             <cf-table-cell size="1">Some Very Long Foot 1</cf-table-cell>
@@ -207,6 +111,105 @@
         </cf-table-foot>
       </cf-table>
     </cf-card>
+
+    <template id="virtualized-tbl-rows">
+      <cf-table-row>
+        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
+        <cf-table-cell size="2">Body 2</cf-table-cell>
+        <cf-table-cell size="1">Body 3</cf-table-cell>
+        <cf-table-cell size="1">Body 4</cf-table-cell>
+        <cf-table-cell size="2">Body 5</cf-table-cell>
+        <cf-table-cell size="1">Body 6</cf-table-cell>
+      </cf-table-row>
+      <cf-table-row>
+        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
+        <cf-table-cell size="2">Body 2</cf-table-cell>
+        <cf-table-cell size="1">Body 3</cf-table-cell>
+        <cf-table-cell size="1">Body 4</cf-table-cell>
+        <cf-table-cell size="2">Body 5</cf-table-cell>
+        <cf-table-cell size="1">Body 6</cf-table-cell>
+      </cf-table-row>
+      <cf-table-row>
+        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
+        <cf-table-cell size="2">Body 2</cf-table-cell>
+        <cf-table-cell size="1">Body 3</cf-table-cell>
+        <cf-table-cell size="1">Body 4</cf-table-cell>
+        <cf-table-cell size="2">Body 5</cf-table-cell>
+        <cf-table-cell size="1">Body 6</cf-table-cell>
+      </cf-table-row>
+      <cf-table-row>
+        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
+        <cf-table-cell size="2">Body 2</cf-table-cell>
+        <cf-table-cell size="1">Body 3</cf-table-cell>
+        <cf-table-cell size="1">Body 4</cf-table-cell>
+        <cf-table-cell size="2">Body 5</cf-table-cell>
+        <cf-table-cell size="1">Body 6</cf-table-cell>
+      </cf-table-row>
+      <cf-table-row>
+        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
+        <cf-table-cell size="2">Body 2</cf-table-cell>
+        <cf-table-cell size="1">Body 3</cf-table-cell>
+        <cf-table-cell size="1">Body 4</cf-table-cell>
+        <cf-table-cell size="2">Body 5</cf-table-cell>
+        <cf-table-cell size="1">Body 6</cf-table-cell>
+      </cf-table-row>
+      <cf-table-row>
+        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
+        <cf-table-cell size="2">Body 2</cf-table-cell>
+        <cf-table-cell size="1">Body 3</cf-table-cell>
+        <cf-table-cell size="1">Body 4</cf-table-cell>
+        <cf-table-cell size="2">Body 5</cf-table-cell>
+        <cf-table-cell size="1">Body 6</cf-table-cell>
+      </cf-table-row>
+      <cf-table-row>
+        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
+        <cf-table-cell size="2">Body 2</cf-table-cell>
+        <cf-table-cell size="1">Body 3</cf-table-cell>
+        <cf-table-cell size="1">Body 4</cf-table-cell>
+        <cf-table-cell size="2">Body 5</cf-table-cell>
+        <cf-table-cell size="1">Body 6</cf-table-cell>
+      </cf-table-row>
+      <cf-table-row>
+        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
+        <cf-table-cell size="2">Body 2</cf-table-cell>
+        <cf-table-cell size="1">Body 3</cf-table-cell>
+        <cf-table-cell size="1">Body 4</cf-table-cell>
+        <cf-table-cell size="2">Body 5</cf-table-cell>
+        <cf-table-cell size="1">Body 6</cf-table-cell>
+      </cf-table-row>
+      <cf-table-row>
+        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
+        <cf-table-cell size="2">Body 2</cf-table-cell>
+        <cf-table-cell size="1">Body 3</cf-table-cell>
+        <cf-table-cell size="1">Body 4</cf-table-cell>
+        <cf-table-cell size="2">Body 5</cf-table-cell>
+        <cf-table-cell size="1">Body 6</cf-table-cell>
+      </cf-table-row>
+      <cf-table-row>
+        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
+        <cf-table-cell size="2">Body 2</cf-table-cell>
+        <cf-table-cell size="1">Body 3</cf-table-cell>
+        <cf-table-cell size="1">Body 4</cf-table-cell>
+        <cf-table-cell size="2">Body 5</cf-table-cell>
+        <cf-table-cell size="1">Body 6</cf-table-cell>
+      </cf-table-row>
+      <cf-table-row>
+        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
+        <cf-table-cell size="2">Body 2</cf-table-cell>
+        <cf-table-cell size="1">Body 3</cf-table-cell>
+        <cf-table-cell size="1">Body 4</cf-table-cell>
+        <cf-table-cell size="2">Body 5</cf-table-cell>
+        <cf-table-cell size="1">Body 6</cf-table-cell>
+      </cf-table-row>
+      <cf-table-row>
+        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
+        <cf-table-cell size="2">Body 2</cf-table-cell>
+        <cf-table-cell size="1">Body 3</cf-table-cell>
+        <cf-table-cell size="1">Body 4</cf-table-cell>
+        <cf-table-cell size="2">Body 5</cf-table-cell>
+        <cf-table-cell size="1">Body 6</cf-table-cell>
+      </cf-table-row>
+    </template>
     <br /><br />
 
     <!-- Footer -->
@@ -502,10 +505,23 @@
       import { loadTheme } from '/build/index.esm.js';
       loadTheme();
 
+      // Table
+      const virtualizedTblRowsTemplate = document.querySelector('#virtualized-tbl-rows');
+      const virtualizedTblRows = virtualizedTblRowsTemplate.content.cloneNode(true);
+
+      const tblBody = document.querySelector('#tbl-body');
+      tblBody.virtualRows = Array.from(virtualizedTblRows.children);
+
       // Select
-      document.querySelector('#select').addEventListener('selectedChange', event => {
+      const selectEl = document.querySelector('#select');
+
+      selectEl.addEventListener('selectedChange', event => {
         console.log(event);
       });
+
+      const virtualizedSelectOptionsTemplate = document.querySelector('#virtualized-select-options');
+      const virtualizedSelectOptions = virtualizedSelectOptionsTemplate.content.cloneNode(true);
+      selectEl.virtualOptions = Array.from(virtualizedSelectOptions.children);
 
       // Dialog
       import { showDialog, hideDialog } from '/build/index.esm.js';

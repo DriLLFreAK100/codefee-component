@@ -26,6 +26,7 @@ export class CfVirtualScroller {
   @Watch('items')
   handleChildrenChange(newItems: IVirtualHtmlElement[]) {
     this.initChildren(newItems);
+    this.handleOnScroll();
   }
 
   connectedCallback() {
