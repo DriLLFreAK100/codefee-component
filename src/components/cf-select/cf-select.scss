@@ -48,8 +48,7 @@ $select-height: rem(44);
 
   &__caret {
     color: var(--color-primary);
-    transition: transform var(--transition-toggle) ease-in-out,
-      color var(--transition-hover) ease-in-out;
+    transition: transform var(--transition-toggle) ease-in-out, color var(--transition-hover) ease-in-out;
     vertical-align: bottom;
 
     &.open {
@@ -74,6 +73,10 @@ $select-height: rem(44);
     &.open {
       height: auto;
       visibility: visible;
+    }
+
+    &:not(.virtualize) {
+      max-height: 300px;
     }
   }
 }

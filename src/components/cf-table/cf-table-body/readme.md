@@ -7,11 +7,11 @@
 
 ## Properties
 
-| Property     | Attribute     | Description | Type      | Default |
-| ------------ | ------------- | ----------- | --------- | ------- |
-| `bodyHeight` | `body-height` |             | `number`  | `100`   |
-| `rowHeight`  | `row-height`  |             | `number`  | `36`    |
-| `virtualize` | `virtualize`  |             | `boolean` | `false` |
+| Property      | Attribute     | Description | Type                      | Default     |
+| ------------- | ------------- | ----------- | ------------------------- | ----------- |
+| `bodyHeight`  | `body-height` |             | `number`                  | `100`       |
+| `rowHeight`   | `row-height`  |             | `number`                  | `36`        |
+| `virtualRows` | --            |             | `HTMLCfTableRowElement[]` | `undefined` |
 
 
 ## Dependencies

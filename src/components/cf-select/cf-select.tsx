@@ -1,17 +1,13 @@
-import { Component, Element, Event, EventEmitter, h, Listen, Prop, State } from '@stencil/core';
-import { flatten, filterHtmlCollection, forEachHtmlCollection } from '../../utils';
+import { Component, Element, Event, EventEmitter, h, Listen, Prop, State, Watch } from '@stencil/core';
+import { flatten } from '../../utils';
 
-const getSelectedOption = (els: HTMLCollection): HTMLCfSelectOptionElement => {
-  return filterHtmlCollection<HTMLCfSelectOptionElement>(els, (el: HTMLCfSelectOptionElement) => el.selected)[0];
+const getSelectedOption = (els: HTMLCfSelectOptionElement[]): HTMLCfSelectOptionElement => {
+  return els.filter((el: HTMLCfSelectOptionElement) => el.hasAttribute('selected'))[0];
 };
 
 const getOptContainerHeight = (optionCount: number) => {
   const height = optionCount * 44;
   return height > 300 ? 300 : height;
-};
-
-const getOptions = (el: HTMLCfSelectElement) => {
-  return el.shadowRoot.querySelector('cf-virtual-scroller').querySelector('.cfVirtualScroller__inner').children;
 };
 
 @Component({
@@ -20,24 +16,16 @@ const getOptions = (el: HTMLCfSelectElement) => {
   shadow: true,
 })
 export class CfSelect {
-  processingOptions: boolean = false;
   @Element() el: HTMLCfSelectElement;
   @Prop() placeholder: string = '';
+  @Prop({ mutable: true }) virtualOptions: HTMLCfSelectOptionElement[];
   @State() isOptionsOpen: boolean = false;
   @State() optContainerHeight: number = 0;
   @State() selected: HTMLCfSelectOptionElement = undefined;
-  @State() virtualOptions: HTMLCfSelectOptionElement[] = [];
   @Event() selectedChange: EventEmitter<HTMLCfSelectOptionElement>;
 
   connectedCallback() {
-    this.selected = getSelectedOption(this.el.children);
-    this.optContainerHeight = getOptContainerHeight(this.el.children.length);
-
-    // Virtualize Options
-    this.virtualizeOptions();
-    const observer = new MutationObserver(this.handleOptionsChange.bind(this));
-    observer.observe(this.el, { childList: true });
-    this.processingOptions = false;
+    this.initVirtualization(this.virtualOptions);
   }
 
   handleClickSelect(e: MouseEvent) {
@@ -46,19 +34,9 @@ export class CfSelect {
     this.el.shadowRoot;
   }
 
-  handleOptionsChange() {
-    if (!this.processingOptions) {
-      this.virtualizeOptions();
-      return;
-    }
-
-    this.processingOptions = false;
-  }
-
-  virtualizeOptions() {
-    this.virtualOptions = Array.from(this.el.children) as HTMLCfSelectOptionElement[];
-    forEachHtmlCollection(this.el.children, row => row.remove());
-    this.processingOptions = true;
+  @Watch('virtualOptions')
+  handleVirtualOptionsChange(newItems: HTMLCfSelectOptionElement[]) {
+    this.initVirtualization(newItems);
   }
 
   @Listen('click', { target: 'document', capture: true })
@@ -74,29 +52,63 @@ export class CfSelect {
   handleSelectOptionClick(e: CustomEvent<HTMLCfSelectOptionElement>) {
     e.stopPropagation();
 
-    forEachHtmlCollection(getOptions(this.el), (child: HTMLCfSelectOptionElement) => {
-      if (child.id === e.detail.id) {
-        child.selected = true;
+    const els = this.virtualOptions
+      ? this.virtualOptions
+      : (Array.from(this.el.children) as HTMLCfSelectOptionElement[]);
+
+    const updatedEls = els.map((el: HTMLCfSelectOptionElement) => {
+      if (el.getAttribute('value') === e.detail.value) {
+        el.setAttribute('selected', '');
 
         // Set selected
-        this.selected = child;
+        this.selected = el;
         this.selectedChange.emit(e.detail);
       } else {
-        child.selected = false;
+        el.removeAttribute('selected');
       }
+
+      return el;
     });
 
+    if (this.virtualOptions) {
+      this.virtualOptions = updatedEls;
+    }
+
     this.isOptionsOpen = false;
+  }
+
+  initVirtualization(options: HTMLCfSelectOptionElement[]) {
+    this.selected = getSelectedOption(
+      options ? options : (Array.from(this.el.children) as HTMLCfSelectOptionElement[]),
+    );
+
+    this.optContainerHeight = getOptContainerHeight(options ? options.length : this.el.children.length);
+  }
+
+  renderOptionContainer() {
+    const optContainerClassName = flatten(`
+      select__optContainer
+      ${this.isOptionsOpen ? 'open' : ''}
+      ${this.virtualOptions ? 'virtualize' : ''}
+    `);
+
+    return this.virtualOptions ? (
+      <cf-virtual-scroller
+        class={optContainerClassName}
+        containerHeight={this.optContainerHeight}
+        childHeight={44}
+        items={this.virtualOptions}
+      />
+    ) : (
+      <div class={optContainerClassName}>
+        <slot></slot>
+      </div>
+    );
   }
 
   render() {
     const selectClassName = flatten(`
       select
-      ${this.isOptionsOpen ? 'open' : ''}
-    `);
-
-    const optContainerClassName = flatten(`
-      select__optContainer
       ${this.isOptionsOpen ? 'open' : ''}
     `);
 
@@ -116,12 +128,7 @@ export class CfSelect {
           <i class={caretClassName} />
         </span>
       </div>,
-      <cf-virtual-scroller
-        class={optContainerClassName}
-        containerHeight={this.optContainerHeight}
-        childHeight={44}
-        items={this.virtualOptions}
-      />,
+      this.renderOptionContainer(),
     ];
   }
 }
