@@ -12,9 +12,7 @@ export const config: Config = {
     {
       type: 'dist',
       esmLoaderPath: '../loader',
-      copy: [
-        { src: 'styles' }
-      ]
+      copy: [{ src: 'styles' }],
     },
     {
       type: 'dist-custom-elements-bundle',
@@ -39,7 +37,5 @@ export const config: Config = {
       proxiesFile: './exports/react/src/components.ts',
     }),
   ],
-  plugins: [
-    sass(),
-  ]
+  plugins: [sass()],
 };
