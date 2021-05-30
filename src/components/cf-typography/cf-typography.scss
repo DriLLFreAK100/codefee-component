@@ -20,10 +20,10 @@
 .h1 {
   @extend .reset;
   font-family: var(--font-family-primary);
-  font-size: rem(96);
-  line-height: rem(112);
+  font-size: rem(80);
+  line-height: rem(92);
   font-weight: lighter;
-  letter-spacing: rem(-1.5);
+  letter-spacing: rem(-1);
 }
 
 .h2 {
