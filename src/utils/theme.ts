@@ -1,5 +1,5 @@
-import { ITheme } from "../common/interfaces";
-import { injectStyle } from "./style-helper";
+import { ITheme } from '../common/interfaces';
+import { injectStyle } from './style-helper';
 
 /* eslint-disable import/prefer-default-export */
 export const CodefeeTheme: ITheme = {
@@ -39,7 +39,7 @@ export const CodefeeTheme: ITheme = {
   '--color-shadow-light': 'rgba(109, 109, 109, 0.1)',
   '--color-shadow-dark': 'rgba(109, 109, 109, 0.5)',
   '--font-family-primary': 'Roboto, sans-serif',
-  '--font-family-secondary': 'Segoe UI, sans-serif',
+  '--font-family-secondary': 'Open Sans, sans-serif',
   '--transition-hover': '0.1s',
   '--transition-toggle': '0.3s',
 };
@@ -60,14 +60,13 @@ export const loadTheme = <T extends ITheme>(theme?: ITheme, overrides?: T) => {
 
   const themeStyle = `
     :root {
-      ${Object
-      .keys(resultTheme)
-      .map((key: keyof ITheme) => {
-        return `${key}: ${resultTheme[key]};`;
-      })
-      .join('\n')};
+      ${Object.keys(resultTheme)
+        .map((key: keyof ITheme) => {
+          return `${key}: ${resultTheme[key]};`;
+        })
+        .join('\n')};
     }
   `;
 
   injectStyle(themeStyle);
-}
+};
