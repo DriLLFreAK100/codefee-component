@@ -12,7 +12,7 @@ import { CircularProgressColor, CircularProgressType } from "./components/cf-cir
 import { InputStatusType } from "./components/cf-input/cf-input";
 import { TypographyType } from "./components/cf-typography/cf-typography";
 import { SideDrawerPosition } from "./components/cf-side-drawer/cf-side-drawer";
-import { ITblColumn } from "./components/cf-table/cf-table.com";
+import { ITblColumn, ITblFooterColumn } from "./components/cf-table/cf-table.com";
 import { TypographyType as TypographyType1 } from "./components/cf-typography/cf-typography";
 export namespace Components {
     interface CfAppHeader {
@@ -122,6 +122,7 @@ export namespace Components {
     interface CfTable {
         "columns": ITblColumn[];
         "data": any[];
+        "footers": ITblFooterColumn[];
         "virtualize": boolean;
     }
     interface CfTabs {
@@ -460,6 +461,7 @@ declare namespace LocalJSX {
     interface CfTable {
         "columns"?: ITblColumn[];
         "data"?: any[];
+        "footers"?: ITblFooterColumn[];
         "virtualize"?: boolean;
     }
     interface CfTabs {

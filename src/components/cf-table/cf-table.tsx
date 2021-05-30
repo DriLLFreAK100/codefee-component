@@ -2,6 +2,7 @@ import Table from './components/table';
 import Tbody from './components/tbody';
 import Tfoot from './components/tfoot';
 import Thead from './components/thead';
+import { getTotalSize } from './cf-table.utils';
 import { ITblColumn, ITblFooterColumn } from './cf-table.com';
 import {
   Component,
@@ -22,17 +23,24 @@ export class CfTable {
   @Prop() virtualize: boolean = false;
 
   render() {
+    const totalColumnSize = getTotalSize(this.columns);
+
     return (
       <Host>
         <Table>
           <Thead
             columns={this.columns}
+            totalColumnSize={totalColumnSize}
           />
           <Tbody
             columns={this.columns}
             data={this.data}
+            totalColumnSize={totalColumnSize}
           />
-          <Tfoot columns={this.footers} />
+          <Tfoot
+            columns={this.footers}
+            totalColumnSize={totalColumnSize}
+          />
         </Table>
       </Host>
     );

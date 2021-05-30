@@ -86,130 +86,9 @@
     <cf-typography type="h5">Table</cf-typography>
     <cf-divider></cf-divider>
 
-    <cf-card height="170px">
-      <cf-table>
-        <cf-table-head slot="head">
-          <cf-table-row>
-            <cf-table-cell size="1">Some Very Long Header 1</cf-table-cell>
-            <cf-table-cell size="2">Header 2</cf-table-cell>
-            <cf-table-cell size="1">Header 3</cf-table-cell>
-            <cf-table-cell size="1">Header 4</cf-table-cell>
-            <cf-table-cell size="2">Header 5</cf-table-cell>
-            <cf-table-cell size="1">Header 6</cf-table-cell>
-          </cf-table-row>
-        </cf-table-head>
-        <cf-table-body id="tbl-body" slot="body" body-height="100"></cf-table-body>
-        <cf-table-foot slot="foot">
-          <cf-table-row>
-            <cf-table-cell size="1">Some Very Long Foot 1</cf-table-cell>
-            <cf-table-cell size="2">Foot 2</cf-table-cell>
-            <cf-table-cell size="1">Foot 3</cf-table-cell>
-            <cf-table-cell size="1">Foot 4</cf-table-cell>
-            <cf-table-cell size="2">Foot 5</cf-table-cell>
-            <cf-table-cell size="1">Foot 6</cf-table-cell>
-          </cf-table-row>
-        </cf-table-foot>
-      </cf-table>
+    <cf-card height="200px">
+      <cf-table id="table"> </cf-table>
     </cf-card>
-
-    <template id="virtualized-tbl-rows">
-      <cf-table-row>
-        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-        <cf-table-cell size="2">Body 2</cf-table-cell>
-        <cf-table-cell size="1">Body 3</cf-table-cell>
-        <cf-table-cell size="1">Body 4</cf-table-cell>
-        <cf-table-cell size="2">Body 5</cf-table-cell>
-        <cf-table-cell size="1">Body 6</cf-table-cell>
-      </cf-table-row>
-      <cf-table-row>
-        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-        <cf-table-cell size="2">Body 2</cf-table-cell>
-        <cf-table-cell size="1">Body 3</cf-table-cell>
-        <cf-table-cell size="1">Body 4</cf-table-cell>
-        <cf-table-cell size="2">Body 5</cf-table-cell>
-        <cf-table-cell size="1">Body 6</cf-table-cell>
-      </cf-table-row>
-      <cf-table-row>
-        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-        <cf-table-cell size="2">Body 2</cf-table-cell>
-        <cf-table-cell size="1">Body 3</cf-table-cell>
-        <cf-table-cell size="1">Body 4</cf-table-cell>
-        <cf-table-cell size="2">Body 5</cf-table-cell>
-        <cf-table-cell size="1">Body 6</cf-table-cell>
-      </cf-table-row>
-      <cf-table-row>
-        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-        <cf-table-cell size="2">Body 2</cf-table-cell>
-        <cf-table-cell size="1">Body 3</cf-table-cell>
-        <cf-table-cell size="1">Body 4</cf-table-cell>
-        <cf-table-cell size="2">Body 5</cf-table-cell>
-        <cf-table-cell size="1">Body 6</cf-table-cell>
-      </cf-table-row>
-      <cf-table-row>
-        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-        <cf-table-cell size="2">Body 2</cf-table-cell>
-        <cf-table-cell size="1">Body 3</cf-table-cell>
-        <cf-table-cell size="1">Body 4</cf-table-cell>
-        <cf-table-cell size="2">Body 5</cf-table-cell>
-        <cf-table-cell size="1">Body 6</cf-table-cell>
-      </cf-table-row>
-      <cf-table-row>
-        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-        <cf-table-cell size="2">Body 2</cf-table-cell>
-        <cf-table-cell size="1">Body 3</cf-table-cell>
-        <cf-table-cell size="1">Body 4</cf-table-cell>
-        <cf-table-cell size="2">Body 5</cf-table-cell>
-        <cf-table-cell size="1">Body 6</cf-table-cell>
-      </cf-table-row>
-      <cf-table-row>
-        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-        <cf-table-cell size="2">Body 2</cf-table-cell>
-        <cf-table-cell size="1">Body 3</cf-table-cell>
-        <cf-table-cell size="1">Body 4</cf-table-cell>
-        <cf-table-cell size="2">Body 5</cf-table-cell>
-        <cf-table-cell size="1">Body 6</cf-table-cell>
-      </cf-table-row>
-      <cf-table-row>
-        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-        <cf-table-cell size="2">Body 2</cf-table-cell>
-        <cf-table-cell size="1">Body 3</cf-table-cell>
-        <cf-table-cell size="1">Body 4</cf-table-cell>
-        <cf-table-cell size="2">Body 5</cf-table-cell>
-        <cf-table-cell size="1">Body 6</cf-table-cell>
-      </cf-table-row>
-      <cf-table-row>
-        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-        <cf-table-cell size="2">Body 2</cf-table-cell>
-        <cf-table-cell size="1">Body 3</cf-table-cell>
-        <cf-table-cell size="1">Body 4</cf-table-cell>
-        <cf-table-cell size="2">Body 5</cf-table-cell>
-        <cf-table-cell size="1">Body 6</cf-table-cell>
-      </cf-table-row>
-      <cf-table-row>
-        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-        <cf-table-cell size="2">Body 2</cf-table-cell>
-        <cf-table-cell size="1">Body 3</cf-table-cell>
-        <cf-table-cell size="1">Body 4</cf-table-cell>
-        <cf-table-cell size="2">Body 5</cf-table-cell>
-        <cf-table-cell size="1">Body 6</cf-table-cell>
-      </cf-table-row>
-      <cf-table-row>
-        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-        <cf-table-cell size="2">Body 2</cf-table-cell>
-        <cf-table-cell size="1">Body 3</cf-table-cell>
-        <cf-table-cell size="1">Body 4</cf-table-cell>
-        <cf-table-cell size="2">Body 5</cf-table-cell>
-        <cf-table-cell size="1">Body 6</cf-table-cell>
-      </cf-table-row>
-      <cf-table-row>
-        <cf-table-cell size="1">Some Very Very Long Body 1</cf-table-cell>
-        <cf-table-cell size="2">Body 2</cf-table-cell>
-        <cf-table-cell size="1">Body 3</cf-table-cell>
-        <cf-table-cell size="1">Body 4</cf-table-cell>
-        <cf-table-cell size="2">Body 5</cf-table-cell>
-        <cf-table-cell size="1">Body 6</cf-table-cell>
-      </cf-table-row>
-    </template>
     <br /><br />
 
     <!-- Footer -->
@@ -506,11 +385,27 @@
       loadTheme();
 
       // Table
-      const virtualizedTblRowsTemplate = document.querySelector('#virtualized-tbl-rows');
-      const virtualizedTblRows = virtualizedTblRowsTemplate.content.cloneNode(true);
+      const table = document.querySelector('#table');
+      const data = [
+        { id: 1, name: 'John', score: 50 },
+        { id: 2, name: 'Doe', score: 100 },
+        { id: 3, name: 'Sam', score: 75 },
+      ];
 
-      const tblBody = document.querySelector('#tbl-body');
-      tblBody.virtualRows = Array.from(virtualizedTblRows.children);
+      const tblColumns = [
+        { header: 'ID', field: 'id', size: 1 },
+        { header: 'Name', field: 'name', size: 2 },
+        { header: 'Score', field: 'score', size: 1 },
+      ];
+
+      const tblFooters = [
+        { content: 'Total Score', size: 1 },
+        { content: '225', size: 3 },
+      ];
+
+      table.columns = tblColumns;
+      table.data = data;
+      table.footers = tblFooters;
 
       // Select
       const selectEl = document.querySelector('#select');
