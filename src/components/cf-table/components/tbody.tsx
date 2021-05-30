@@ -1,6 +1,6 @@
-import Tr from '../tr/tr';
+import Tr from './tr';
 import { FunctionalComponent, h } from '@stencil/core';
-import { ITblColumn } from '../../cf-table.com';
+import { ITblColumn } from '../cf-table.com';
 
 interface Props {
   columns: ITblColumn[];

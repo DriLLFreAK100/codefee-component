@@ -1,6 +1,14 @@
-import { Component, Host, h, Prop } from '@stencil/core';
-import { Table, Tbody, Td, Tfoot, Th, Thead, Tr } from './base';
-import { ITblColumn } from './cf-table.com';
+import Table from './components/table';
+import Tbody from './components/tbody';
+import Tfoot from './components/tfoot';
+import Thead from './components/thead';
+import { ITblColumn, ITblFooterColumn } from './cf-table.com';
+import {
+  Component,
+  h,
+  Host,
+  Prop,
+} from '@stencil/core';
 
 @Component({
   tag: 'cf-table',
@@ -10,20 +18,21 @@ import { ITblColumn } from './cf-table.com';
 export class CfTable {
   @Prop() columns: ITblColumn[] = [];
   @Prop() data: any[] = [];
+  @Prop() footers: ITblFooterColumn[] = [];
   @Prop() virtualize: boolean = false;
 
   render() {
     return (
       <Host>
         <Table>
-          <Thead columns={this.columns} />
-          <Tbody columns={this.columns} data={this.data} />
-          <Tfoot>
-            <Tr>
-              <Td>Footer 1</Td>
-              <Td>Footer 2</Td>
-            </Tr>
-          </Tfoot>
+          <Thead
+            columns={this.columns}
+          />
+          <Tbody
+            columns={this.columns}
+            data={this.data}
+          />
+          <Tfoot columns={this.footers} />
         </Table>
       </Host>
     );

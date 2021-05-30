@@ -3,3 +3,8 @@ export interface ITblColumn {
   header?: any;
   size?: number;
 }
+
+export interface ITblFooterColumn {
+  content: any;
+  size?: number;
+}
