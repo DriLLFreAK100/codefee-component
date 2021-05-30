@@ -1,10 +1,19 @@
 @import '../../styles/functions.scss';
 
+$p-font: var(--font-family-primary);
+$s-font: var(--font-family-secondary);
+
 :host {
   border: rem(1) solid var(--color-bg-dark);
   border-radius: rem(4);
+  display: block;
+}
+
+table {
   display: flex;
   flex-direction: column;
-  height: 100%;
+}
+
+tr {
   width: 100%;
 }
