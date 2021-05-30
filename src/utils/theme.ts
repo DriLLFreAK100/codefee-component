@@ -32,7 +32,7 @@ export const CodefeeTheme: ITheme = {
   '--color-error-dark': '#790000',
   '--color-error-on': '#ffffff',
   '--color-bg': '#f5f5f5',
-  '--color-bg-light': '#c2c2c2',
+  '--color-bg-light': '#f9f9f9',
   '--color-bg-dark': '#9c9a9a',
   '--color-bg-on': '#000000',
   '--color-shadow': 'rgba(109, 109, 109, 0.3)',

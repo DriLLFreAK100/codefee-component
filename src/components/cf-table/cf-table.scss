@@ -71,6 +71,12 @@ tr {
 
     &:hover {
       background-color: var(--color-bg);
+      cursor: pointer;
+    }
+
+    &:active {
+      background-color: var(--color-bg-light);
+      cursor: pointer;
     }
   }
 }

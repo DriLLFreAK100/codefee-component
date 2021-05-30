@@ -462,6 +462,7 @@ declare namespace LocalJSX {
         "columns"?: ITblColumn[];
         "data"?: any[];
         "footers"?: ITblFooterColumn[];
+        "onRowClick"?: (event: CustomEvent<any>) => void;
         "virtualize"?: boolean;
     }
     interface CfTabs {

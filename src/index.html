@@ -407,6 +407,10 @@
       table.data = data;
       table.footers = tblFooters;
 
+      table.addEventListener('rowClick', event => {
+        console.log(event);
+      });
+
       // Select
       const selectEl = document.querySelector('#select');
 

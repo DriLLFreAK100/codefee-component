@@ -8,17 +8,23 @@ interface Props {
   columns: ITblColumn[];
   data: any[];
   totalColumnSize: number;
+  onRowClick: (datum: any) => void;
 }
 
 const Tbody: FunctionalComponent<Props> = ({
   columns,
   data,
   totalColumnSize,
+  onRowClick,
 }): VNode => {
   return (
     <tbody>
       {data.map(d => (
-        <Tr type="body">
+        <Tr
+          datum={d}
+          type="body"
+          onRowClick={onRowClick}
+        >
           {
             columns.map(c => (
               <TCell
