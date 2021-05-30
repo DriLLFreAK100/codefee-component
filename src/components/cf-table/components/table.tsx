@@ -1,8 +1,6 @@
-import { FunctionalComponent, h } from '@stencil/core';
+import { FunctionalComponent, h, VNode } from '@stencil/core';
 
-interface Props {}
-
-const Table: FunctionalComponent<Props> = (_, children) => {
+const Table: FunctionalComponent = (_, children): VNode => {
   return <table>{children}</table>;
 };
 

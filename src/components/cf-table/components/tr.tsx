@@ -1,14 +1,14 @@
 import { flatten } from '../../../utils';
-import { FunctionalComponent, h } from '@stencil/core';
+import { FunctionalComponent, h, VNode } from '@stencil/core';
 import { TblSectionType } from '../cf-table.com';
 
 interface Props {
-  type?: TblSectionType;
+  type: TblSectionType;
 }
 
 const Tr: FunctionalComponent<Props> = ({
   type = 'body',
-}, children) => {
+}, children): VNode => {
   const className = flatten(`
     ${type}
   `);

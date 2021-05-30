@@ -1,8 +1,8 @@
 import TCell from './tcell';
 import Tr from './tr';
 import { FunctionalComponent, h, VNode } from '@stencil/core';
+import { getFlexBasis, renderCellContent } from '../cf-table.utils';
 import { ITblFooterColumn } from '../cf-table.com';
-import { getFlexBasis } from '../cf-table.utils';
 
 interface Props {
   columns: ITblFooterColumn[];
@@ -14,14 +14,15 @@ const Tfoot: FunctionalComponent<Props> = ({
   totalColumnSize
 }): VNode => {
   return <tfoot>
-    <Tr>
+    <Tr type="foot">
       {
         columns.map(c => (
           <TCell
+            align={c.align}
             computedSize={getFlexBasis(c, totalColumnSize)}
             type="foot"
           >
-            {c.content}
+            {renderCellContent(c.content, 'foot')}
           </TCell>
         ))
       }

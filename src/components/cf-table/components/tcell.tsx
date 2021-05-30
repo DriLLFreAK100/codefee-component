@@ -1,7 +1,9 @@
-import { FunctionalComponent, h } from '@stencil/core';
-import { TblSectionType } from '../cf-table.com';
+import { FunctionalComponent, h, VNode } from '@stencil/core';
+import { flatten } from '../../../utils';
+import { TblAlignType, TblSectionType } from '../cf-table.com';
 
 interface Props {
+  align?: TblAlignType;
   computedSize: string;
   type: TblSectionType;
 }
@@ -18,14 +20,26 @@ const getComponent = (type: TblSectionType): 'th' | 'td' => {
 }
 
 const TCell: FunctionalComponent<Props> = ({
+  align = 'left',
   computedSize,
   type,
-}, children) => {
+}, children): VNode => {
   const Component = getComponent(type);
 
   const style = { flexBasis: computedSize };
 
-  return <Component style={style}>{children}</Component>;
+  const className = flatten(`
+    ${align}
+  `);
+
+  return (
+    <Component
+      class={className}
+      style={style}
+    >
+      {children}
+    </Component>
+  );
 };
 
 export default TCell;

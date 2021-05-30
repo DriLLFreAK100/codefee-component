@@ -1,7 +1,7 @@
 import TCell from './tcell';
 import Tr from './tr';
 import { FunctionalComponent, h, VNode } from '@stencil/core';
-import { getFlexBasis } from '../cf-table.utils';
+import { getFlexBasis, renderCellContent } from '../cf-table.utils';
 import { ITblColumn } from '../cf-table.com';
 
 interface Props {
@@ -15,13 +15,14 @@ const Thead: FunctionalComponent<Props> = ({
 }): VNode => {
   return (
     <thead>
-      <Tr>
+      <Tr type="head">
         {columns.map(c => (
           <TCell
+            align={c.align}
             computedSize={getFlexBasis(c, totalColumnSize)}
             type="head"
           >
-            {c.header}
+            {renderCellContent(c.header, 'head')}
           </TCell>
         ))}
       </Tr>

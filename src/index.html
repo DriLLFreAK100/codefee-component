@@ -86,7 +86,7 @@
     <cf-typography type="h5">Table</cf-typography>
     <cf-divider></cf-divider>
 
-    <cf-card height="200px">
+    <cf-card height="300px">
       <cf-table id="table"> </cf-table>
     </cf-card>
     <br /><br />
@@ -394,13 +394,13 @@
 
       const tblColumns = [
         { header: 'ID', field: 'id', size: 1 },
-        { header: 'Name', field: 'name', size: 2 },
-        { header: 'Score', field: 'score', size: 1 },
+        { header: 'Name', field: 'name', size: 2, align: 'center' },
+        { header: 'Score', field: 'score', size: 1, align: 'right' },
       ];
 
       const tblFooters = [
         { content: 'Total Score', size: 1 },
-        { content: '225', size: 3 },
+        { content: '225', size: 3, align: 'right' },
       ];
 
       table.columns = tblColumns;
