@@ -63,11 +63,16 @@ table {
   max-height: 100%;
 }
 
+tbody {
+  position: relative;
+}
+
 tr {
   width: 100%;
 
   &.body {
     min-height: rem(52);
+    position: absolute;
 
     &:hover {
       background-color: var(--color-bg);

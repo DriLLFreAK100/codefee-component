@@ -4,12 +4,14 @@ import { TblSectionType } from '../cf-table.com';
 
 interface Props {
   datum?: any;
+  style?: { [key: string]: string };
   type: TblSectionType;
   onRowClick?: (datum: any) => void;
 }
 
 const Tr: FunctionalComponent<Props> = ({
   datum,
+  style = {},
   type = 'body',
   onRowClick,
 }, children): VNode => {
@@ -22,7 +24,11 @@ const Tr: FunctionalComponent<Props> = ({
   }
 
   return (
-    <tr class={className} onClick={handleOnClick}>
+    <tr
+      class={className}
+      style={style}
+      onClick={handleOnClick}
+    >
       {children}
     </tr>
   );

@@ -7,12 +7,13 @@
 
 ## Properties
 
-| Property     | Attribute    | Description | Type                 | Default |
-| ------------ | ------------ | ----------- | -------------------- | ------- |
-| `columns`    | --           |             | `ITblColumn[]`       | `[]`    |
-| `data`       | --           |             | `any[]`              | `[]`    |
-| `footers`    | --           |             | `ITblFooterColumn[]` | `[]`    |
-| `virtualize` | `virtualize` |             | `boolean`            | `false` |
+| Property               | Attribute    | Description | Type                       | Default |
+| ---------------------- | ------------ | ----------- | -------------------------- | ------- |
+| `columns`              | --           |             | `ITblColumn[]`             | `[]`    |
+| `data`                 | --           |             | `ITblVirtualizedRow[]`     | `[]`    |
+| `footers`              | --           |             | `ITblFooterColumn[]`       | `[]`    |
+| `virtualizationOption` | --           |             | `ITblVirtualizationOption` | `{}`    |
+| `virtualize`           | `virtualize` |             | `boolean`                  | `false` |
 
 
 ## Events

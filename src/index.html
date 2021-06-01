@@ -394,6 +394,18 @@
         { id: 1, name: 'John', score: 50 },
         { id: 2, name: 'Doe', score: 100 },
         { id: 3, name: 'Sam', score: 75 },
+        { id: 4, name: 'John', score: 50 },
+        { id: 5, name: 'Doe', score: 100 },
+        { id: 6, name: 'Sam', score: 75 },
+        { id: 7, name: 'John', score: 50 },
+        { id: 8, name: 'Doe', score: 100 },
+        { id: 9, name: 'Sam', score: 75 },
+        { id: 10, name: 'John', score: 50 },
+        { id: 11, name: 'Doe', score: 100 },
+        { id: 12, name: 'Sam', score: 75 },
+        { id: 13, name: 'John', score: 50 },
+        { id: 14, name: 'Doe', score: 100 },
+        { id: 15, name: 'Sam', score: 75 },
       ];
 
       const tblColumns = [
@@ -410,6 +422,7 @@
       table.columns = tblColumns;
       table.data = data;
       table.footers = tblFooters;
+      table.virtualize = true;
 
       table.addEventListener('rowClick', event => {
         console.log(event);
