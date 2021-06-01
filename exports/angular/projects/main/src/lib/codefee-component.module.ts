@@ -1,4 +1,5 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { initializer } from './initializer';
 import {
   CfAppHeader,
   CfAppHeaderActionMenu,
@@ -25,16 +26,10 @@ import {
   CfSideDrawer,
   CfTab,
   CfTable,
-  CfTableBody,
-  CfTableCell,
-  CfTableFoot,
-  CfTableHead,
-  CfTableRow,
   CfTabs,
   CfTypography,
-  CfVirtualScroller
+  CfVirtualScroller,
   } from './directives/proxies';
-import { initializer } from './initializer';
 
 const DECLARATIONS = [
   // proxies
@@ -63,11 +58,6 @@ const DECLARATIONS = [
   CfSideDrawer,
   CfTab,
   CfTable,
-  CfTableBody,
-  CfTableCell,
-  CfTableFoot,
-  CfTableHead,
-  CfTableRow,
   CfTabs,
   CfTypography,
   CfVirtualScroller
