@@ -31,7 +31,7 @@
  - [cf-select-option](../cf-select/cf-select-option)
  - [cf-side-drawer](../cf-side-drawer)
  - [cf-tab](../cf-tabs/cf-tab)
- - [cf-table-cell](../cf-table/cf-table-cell)
+ - [cf-table](../cf-table)
 
 ### Graph
 ```mermaid
@@ -49,7 +49,7 @@ graph TD;
   cf-select-option --> cf-typography
   cf-side-drawer --> cf-typography
   cf-tab --> cf-typography
-  cf-table-cell --> cf-typography
+  cf-table --> cf-typography
   style cf-typography fill:#f9f,stroke:#333,stroke-width:4px
 ```
 

@@ -1,6 +1,6 @@
 {
   "name": "@codefee-component/core",
-  "version": "0.0.79",
+  "version": "0.0.80",
   "description": "A Core UI Web Components for Codefee Works. This project is built using Stencil.",
   "publishConfig": {
     "access": "public"
@@ -53,7 +53,7 @@
     "@fortawesome/fontawesome-free": "5.15.3",
     "@stencil/core": "2.5.2",
     "lodash-es": "4.17.21",
-    "uuid": "^8.3.2"
+    "uuid": "8.3.2"
   },
   "license": "MIT",
   "devDependencies": {

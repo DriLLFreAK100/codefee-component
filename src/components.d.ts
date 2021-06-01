@@ -6,13 +6,13 @@
  */
 import { HTMLStencilElement, JSXBase } from "@stencil/core/internal";
 import { INavMenu } from "./components/cf-app-header/cf-app-header-menu/cf-app-header-menu";
-import { ButtonType, FeedbackType, GutterSize, TableSegment } from "./common/types";
+import { ButtonType, FeedbackType, GutterSize } from "./common/types";
 import { CheckboxDirection } from "./components/cf-checkbox-list/cf-checkbox-list";
 import { CircularProgressColor, CircularProgressType } from "./components/cf-circular-progress/cf-circular-progress";
 import { InputStatusType } from "./components/cf-input/cf-input";
 import { TypographyType } from "./components/cf-typography/cf-typography";
 import { SideDrawerPosition } from "./components/cf-side-drawer/cf-side-drawer";
-import { CellContentPosition } from "./components/cf-table/cf-table-cell/cf-table-cell";
+import { ITblColumn, ITblFooterColumn, ITblVirtualizationOption, ITblVirtualizedRow } from "./components/cf-table/cf-table.com";
 import { TypographyType as TypographyType1 } from "./components/cf-typography/cf-typography";
 export namespace Components {
     interface CfAppHeader {
@@ -120,23 +120,11 @@ export namespace Components {
         "tabId": any;
     }
     interface CfTable {
-    }
-    interface CfTableBody {
-        "bodyHeight": number;
-        "rowHeight": number;
-        "virtualRows": HTMLCfTableRowElement[];
-    }
-    interface CfTableCell {
-        "position": CellContentPosition;
-        "size": number;
-        "type": TableSegment;
-    }
-    interface CfTableFoot {
-    }
-    interface CfTableHead {
-    }
-    interface CfTableRow {
-        "type": TableSegment;
+        "columns": ITblColumn[];
+        "data": ITblVirtualizedRow[];
+        "footers": ITblFooterColumn[];
+        "virtualizationOption": ITblVirtualizationOption;
+        "virtualize": boolean;
     }
     interface CfTabs {
     }
@@ -305,36 +293,6 @@ declare global {
         prototype: HTMLCfTableElement;
         new (): HTMLCfTableElement;
     };
-    interface HTMLCfTableBodyElement extends Components.CfTableBody, HTMLStencilElement {
-    }
-    var HTMLCfTableBodyElement: {
-        prototype: HTMLCfTableBodyElement;
-        new (): HTMLCfTableBodyElement;
-    };
-    interface HTMLCfTableCellElement extends Components.CfTableCell, HTMLStencilElement {
-    }
-    var HTMLCfTableCellElement: {
-        prototype: HTMLCfTableCellElement;
-        new (): HTMLCfTableCellElement;
-    };
-    interface HTMLCfTableFootElement extends Components.CfTableFoot, HTMLStencilElement {
-    }
-    var HTMLCfTableFootElement: {
-        prototype: HTMLCfTableFootElement;
-        new (): HTMLCfTableFootElement;
-    };
-    interface HTMLCfTableHeadElement extends Components.CfTableHead, HTMLStencilElement {
-    }
-    var HTMLCfTableHeadElement: {
-        prototype: HTMLCfTableHeadElement;
-        new (): HTMLCfTableHeadElement;
-    };
-    interface HTMLCfTableRowElement extends Components.CfTableRow, HTMLStencilElement {
-    }
-    var HTMLCfTableRowElement: {
-        prototype: HTMLCfTableRowElement;
-        new (): HTMLCfTableRowElement;
-    };
     interface HTMLCfTabsElement extends Components.CfTabs, HTMLStencilElement {
     }
     var HTMLCfTabsElement: {
@@ -379,11 +337,6 @@ declare global {
         "cf-side-drawer": HTMLCfSideDrawerElement;
         "cf-tab": HTMLCfTabElement;
         "cf-table": HTMLCfTableElement;
-        "cf-table-body": HTMLCfTableBodyElement;
-        "cf-table-cell": HTMLCfTableCellElement;
-        "cf-table-foot": HTMLCfTableFootElement;
-        "cf-table-head": HTMLCfTableHeadElement;
-        "cf-table-row": HTMLCfTableRowElement;
         "cf-tabs": HTMLCfTabsElement;
         "cf-typography": HTMLCfTypographyElement;
         "cf-virtual-scroller": HTMLCfVirtualScrollerElement;
@@ -507,24 +460,12 @@ declare namespace LocalJSX {
         "tabId"?: any;
     }
     interface CfTable {
-    }
-    interface CfTableBody {
-        "bodyHeight"?: number;
-        "rowHeight"?: number;
-        "virtualRows"?: HTMLCfTableRowElement[];
-    }
-    interface CfTableCell {
-        "position"?: CellContentPosition;
-        "size"?: number;
-        "type"?: TableSegment;
-    }
-    interface CfTableFoot {
-    }
-    interface CfTableHead {
-    }
-    interface CfTableRow {
-        "onTblRowInit"?: (event: CustomEvent<HTMLCfTableRowElement>) => void;
-        "type"?: TableSegment;
+        "columns"?: ITblColumn[];
+        "data"?: ITblVirtualizedRow[];
+        "footers"?: ITblFooterColumn[];
+        "onRowClick"?: (event: CustomEvent<any>) => void;
+        "virtualizationOption"?: ITblVirtualizationOption;
+        "virtualize"?: boolean;
     }
     interface CfTabs {
         "onTabSelect"?: (event: CustomEvent<any>) => void;
@@ -568,11 +509,6 @@ declare namespace LocalJSX {
         "cf-side-drawer": CfSideDrawer;
         "cf-tab": CfTab;
         "cf-table": CfTable;
-        "cf-table-body": CfTableBody;
-        "cf-table-cell": CfTableCell;
-        "cf-table-foot": CfTableFoot;
-        "cf-table-head": CfTableHead;
-        "cf-table-row": CfTableRow;
         "cf-tabs": CfTabs;
         "cf-typography": CfTypography;
         "cf-virtual-scroller": CfVirtualScroller;
@@ -607,11 +543,6 @@ declare module "@stencil/core" {
             "cf-side-drawer": LocalJSX.CfSideDrawer & JSXBase.HTMLAttributes<HTMLCfSideDrawerElement>;
             "cf-tab": LocalJSX.CfTab & JSXBase.HTMLAttributes<HTMLCfTabElement>;
             "cf-table": LocalJSX.CfTable & JSXBase.HTMLAttributes<HTMLCfTableElement>;
-            "cf-table-body": LocalJSX.CfTableBody & JSXBase.HTMLAttributes<HTMLCfTableBodyElement>;
-            "cf-table-cell": LocalJSX.CfTableCell & JSXBase.HTMLAttributes<HTMLCfTableCellElement>;
-            "cf-table-foot": LocalJSX.CfTableFoot & JSXBase.HTMLAttributes<HTMLCfTableFootElement>;
-            "cf-table-head": LocalJSX.CfTableHead & JSXBase.HTMLAttributes<HTMLCfTableHeadElement>;
-            "cf-table-row": LocalJSX.CfTableRow & JSXBase.HTMLAttributes<HTMLCfTableRowElement>;
             "cf-tabs": LocalJSX.CfTabs & JSXBase.HTMLAttributes<HTMLCfTabsElement>;
             "cf-typography": LocalJSX.CfTypography & JSXBase.HTMLAttributes<HTMLCfTypographyElement>;
             "cf-virtual-scroller": LocalJSX.CfVirtualScroller & JSXBase.HTMLAttributes<HTMLCfVirtualScrollerElement>;
