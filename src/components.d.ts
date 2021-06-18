@@ -11,6 +11,7 @@ import { CheckboxDirection } from "./components/cf-checkbox-list/cf-checkbox-lis
 import { CircularProgressColor, CircularProgressType } from "./components/cf-circular-progress/cf-circular-progress";
 import { InputStatusType } from "./components/cf-input/cf-input";
 import { TypographyType } from "./components/cf-typography/cf-typography";
+import { ISelectOption } from "./components/cf-select/cf-select.interface";
 import { SideDrawerPosition } from "./components/cf-side-drawer/cf-side-drawer";
 import { ITblColumn, ITblFooterColumn, ITblVirtualizationOption, ITblVirtualizedRow } from "./components/cf-table/cf-table.com";
 import { TypographyType as TypographyType1 } from "./components/cf-typography/cf-typography";
@@ -100,15 +101,7 @@ export namespace Components {
         "type"?: FeedbackType;
     }
     interface CfSelect {
-        "placeholder": string;
-        "virtualOptions": HTMLCfSelectOptionElement[];
-    }
-    interface CfSelectGroup {
-    }
-    interface CfSelectOption {
-        "name": string;
-        "selected": boolean;
-        "value": any;
+        "options": ISelectOption[];
     }
     interface CfSideDrawer {
         "drawerTitle": string;
@@ -263,18 +256,6 @@ declare global {
         prototype: HTMLCfSelectElement;
         new (): HTMLCfSelectElement;
     };
-    interface HTMLCfSelectGroupElement extends Components.CfSelectGroup, HTMLStencilElement {
-    }
-    var HTMLCfSelectGroupElement: {
-        prototype: HTMLCfSelectGroupElement;
-        new (): HTMLCfSelectGroupElement;
-    };
-    interface HTMLCfSelectOptionElement extends Components.CfSelectOption, HTMLStencilElement {
-    }
-    var HTMLCfSelectOptionElement: {
-        prototype: HTMLCfSelectOptionElement;
-        new (): HTMLCfSelectOptionElement;
-    };
     interface HTMLCfSideDrawerElement extends Components.CfSideDrawer, HTMLStencilElement {
     }
     var HTMLCfSideDrawerElement: {
@@ -332,8 +313,6 @@ declare global {
         "cf-notification": HTMLCfNotificationElement;
         "cf-notification-message": HTMLCfNotificationMessageElement;
         "cf-select": HTMLCfSelectElement;
-        "cf-select-group": HTMLCfSelectGroupElement;
-        "cf-select-option": HTMLCfSelectOptionElement;
         "cf-side-drawer": HTMLCfSideDrawerElement;
         "cf-tab": HTMLCfTabElement;
         "cf-table": HTMLCfTableElement;
@@ -436,17 +415,8 @@ declare namespace LocalJSX {
         "type"?: FeedbackType;
     }
     interface CfSelect {
-        "onSelectedChange"?: (event: CustomEvent<HTMLCfSelectOptionElement>) => void;
-        "placeholder"?: string;
-        "virtualOptions"?: HTMLCfSelectOptionElement[];
-    }
-    interface CfSelectGroup {
-    }
-    interface CfSelectOption {
-        "name"?: string;
-        "onSelectOptionClick"?: (event: CustomEvent<any>) => void;
-        "selected"?: boolean;
-        "value"?: any;
+        "onSelectedChange"?: (event: CustomEvent<ISelectOption>) => void;
+        "options"?: ISelectOption[];
     }
     interface CfSideDrawer {
         "drawerTitle"?: string;
@@ -504,8 +474,6 @@ declare namespace LocalJSX {
         "cf-notification": CfNotification;
         "cf-notification-message": CfNotificationMessage;
         "cf-select": CfSelect;
-        "cf-select-group": CfSelectGroup;
-        "cf-select-option": CfSelectOption;
         "cf-side-drawer": CfSideDrawer;
         "cf-tab": CfTab;
         "cf-table": CfTable;
@@ -538,8 +506,6 @@ declare module "@stencil/core" {
             "cf-notification": LocalJSX.CfNotification & JSXBase.HTMLAttributes<HTMLCfNotificationElement>;
             "cf-notification-message": LocalJSX.CfNotificationMessage & JSXBase.HTMLAttributes<HTMLCfNotificationMessageElement>;
             "cf-select": LocalJSX.CfSelect & JSXBase.HTMLAttributes<HTMLCfSelectElement>;
-            "cf-select-group": LocalJSX.CfSelectGroup & JSXBase.HTMLAttributes<HTMLCfSelectGroupElement>;
-            "cf-select-option": LocalJSX.CfSelectOption & JSXBase.HTMLAttributes<HTMLCfSelectOptionElement>;
             "cf-side-drawer": LocalJSX.CfSideDrawer & JSXBase.HTMLAttributes<HTMLCfSideDrawerElement>;
             "cf-tab": LocalJSX.CfTab & JSXBase.HTMLAttributes<HTMLCfTabElement>;
             "cf-table": LocalJSX.CfTable & JSXBase.HTMLAttributes<HTMLCfTableElement>;

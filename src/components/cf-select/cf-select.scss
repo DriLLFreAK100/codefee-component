@@ -1,4 +1,5 @@
 @import '../../styles/functions.scss';
+@import '../../styles/scroll.scss';
 @import '~@fortawesome/fontawesome-free/css/all.min.css';
 
 $select-height: rem(44);
@@ -55,28 +56,48 @@ $select-height: rem(44);
       transform: rotate(180deg);
     }
   }
+}
 
-  &__optContainer {
-    background-color: white;
-    border: rem(1) solid var(--color-bg-dark);
-    border-radius: rem(4);
-    box-sizing: border-box;
-    height: rem(0);
-    width: inherit;
-    left: 0;
-    overflow: auto;
-    position: absolute;
-    visibility: hidden;
-    width: 100%;
-    z-index: 10;
+.optionContainer {
+  background-color: white;
+  border: rem(1) solid var(--color-bg-dark);
+  border-radius: rem(4);
+  box-sizing: border-box;
+  height: rem(0);
+  width: inherit;
+  left: 0;
+  overflow: auto;
+  position: absolute;
+  width: 100%;
+  z-index: 10;
 
-    &.open {
-      height: auto;
-      visibility: visible;
-    }
+  &:not(.virtualize) {
+    height: 300px;
+  }
+}
 
-    &:not(.virtualize) {
-      max-height: 300px;
-    }
+.option {
+  box-sizing: border-box;
+  cursor: pointer;
+  display: block;
+  height: rem(44);
+  padding: rem(12) rem(8);
+  transition: background-color var(--transition-hover) ease-in-out, color var(--transition-hover) ease-in-out;
+  width: 100%;
+
+  &:hover {
+    background-color: var(--color-primary-light);
+    color: var(--color-primary-on);
+  }
+
+  &:active {
+    background-color: var(--color-primary-dark);
+    color: var(--color-primary-on);
+  }
+
+  &.selected {
+    background-color: var(--color-primary);
+    color: var(--color-primary-on);
+    cursor: initial;
   }
 }
