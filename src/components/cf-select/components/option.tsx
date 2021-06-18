@@ -4,20 +4,24 @@ import { ISelectOption } from "../cf-select.interface";
 
 interface Props {
   option: ISelectOption;
+  isSelected: boolean;
   onClickOption: (option: ISelectOption) => void;
 }
 
 const Option: FunctionalComponent<Props> = ({
+  isSelected,
   option,
   onClickOption,
 }) => {
   const handleClickOption = () => {
-    onClickOption(option);
+    if (!isSelected) {
+      onClickOption(option);
+    }
   }
 
   const className = flatten(`
     option
-    ${option.selected ? 'selected' : ''}
+    ${isSelected ? 'selected' : ''}
   `);
 
   return (

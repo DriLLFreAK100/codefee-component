@@ -7,30 +7,28 @@
 
 ## Properties
 
-| Property         | Attribute     | Description | Type                          | Default     |
-| ---------------- | ------------- | ----------- | ----------------------------- | ----------- |
-| `placeholder`    | `placeholder` |             | `string`                      | `''`        |
-| `virtualOptions` | --            |             | `HTMLCfSelectOptionElement[]` | `undefined` |
+| Property   | Attribute | Description | Type              | Default     |
+| ---------- | --------- | ----------- | ----------------- | ----------- |
+| `options`  | --        |             | `ISelectOption[]` | `undefined` |
+| `selected` | --        |             | `ISelectOption`   | `undefined` |
 
 
 ## Events
 
-| Event            | Description | Type                                     |
-| ---------------- | ----------- | ---------------------------------------- |
-| `selectedChange` |             | `CustomEvent<HTMLCfSelectOptionElement>` |
+| Event            | Description | Type                         |
+| ---------------- | ----------- | ---------------------------- |
+| `selectedChange` |             | `CustomEvent<ISelectOption>` |
 
 
 ## Dependencies
 
 ### Depends on
 
-- [cf-virtual-scroller](../cf-virtual-scroller)
 - [cf-typography](../cf-typography)
 
 ### Graph
 ```mermaid
 graph TD;
-  cf-select --> cf-virtual-scroller
   cf-select --> cf-typography
   style cf-select fill:#f9f,stroke:#333,stroke-width:4px
 ```

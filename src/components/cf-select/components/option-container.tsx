@@ -6,12 +6,14 @@ import Option from './option';
 interface Props {
   isOptionsOpen: boolean;
   options: ISelectOption[];
+  selected?: ISelectOption;
   onClickOption: (option: ISelectOption) => void;
 }
 
 const OptionContainer: FunctionalComponent<Props> = ({
   isOptionsOpen,
   options,
+  selected,
   onClickOption,
 }) => {
   if (!isOptionsOpen) {
@@ -28,6 +30,7 @@ const OptionContainer: FunctionalComponent<Props> = ({
         options.map(o => {
           return (
             <Option
+              isSelected={o.id === selected?.id}
               option={o}
               onClickOption={onClickOption}
             />

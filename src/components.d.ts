@@ -102,6 +102,7 @@ export namespace Components {
     }
     interface CfSelect {
         "options": ISelectOption[];
+        "selected": ISelectOption;
     }
     interface CfSideDrawer {
         "drawerTitle": string;
@@ -417,6 +418,7 @@ declare namespace LocalJSX {
     interface CfSelect {
         "onSelectedChange"?: (event: CustomEvent<ISelectOption>) => void;
         "options"?: ISelectOption[];
+        "selected"?: ISelectOption;
     }
     interface CfSideDrawer {
         "drawerTitle"?: string;

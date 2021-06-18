@@ -11,9 +11,9 @@ import OptionContainer from './components/option-container';
 export class CfSelect {
   @Element() el: HTMLCfSelectElement;
   @Prop({ mutable: true }) options: ISelectOption[];
+  @Prop({ mutable: true }) selected: ISelectOption = undefined;
   @State() isOptionsOpen: boolean = false;
   @State() optContainerHeight: number = 0;
-  @State() selected: ISelectOption = undefined;
   @Event() selectedChange: EventEmitter<ISelectOption>;
 
   constructor() {
@@ -33,7 +33,13 @@ export class CfSelect {
     }
   }
 
-  handleClickSelectOption(option: ISelectOption) {
+  handleClickSelectOption({ id }: ISelectOption) {
+    this.options.forEach(o => {
+      if (o.id === id) {
+        this.selected = o;
+      }
+    })
+
     this.isOptionsOpen = false;
   }
 
@@ -67,6 +73,7 @@ export class CfSelect {
       <OptionContainer
         isOptionsOpen={this.isOptionsOpen}
         options={this.options}
+        selected={this.selected}
         onClickOption={this.handleClickSelectOption}
       />
 
