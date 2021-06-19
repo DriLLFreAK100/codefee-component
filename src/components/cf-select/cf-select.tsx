@@ -1,5 +1,5 @@
 import { Component, Element, Event, EventEmitter, h, Listen, Prop, State } from '@stencil/core';
-import { flatten } from '../../utils';
+import { flatten, VirtualScroll } from '../../utils';
 import { ISelectOption } from './cf-select.interface';
 import OptionContainer from './components/option-container';
 
@@ -9,40 +9,25 @@ import OptionContainer from './components/option-container';
   shadow: true,
 })
 export class CfSelect {
-  @Element() el: HTMLCfSelectElement;
-  @Prop({ mutable: true }) options: ISelectOption[] = [];
+  @Element() el: HTMLElement;
+  @Prop() options: ISelectOption[] = [];
   @Prop({ mutable: true }) selected: ISelectOption = undefined;
-  @Prop() virtualize: boolean = true;
+  @Prop() isVirtualize: boolean = false;
   @State() isOptionsOpen: boolean = false;
   @State() isFirstOpen: boolean = true;
-  @State() lastItemIndex: number = 0;
-  @State() lastScrollPosition: number = 0;
-  @State() virtualizedOptions: ISelectOption[] = [...this.options];
+  @State() tick: number = 0;
+  @State() virtualScroll: VirtualScroll<ISelectOption> = undefined;
   @Event() selectedChange: EventEmitter<ISelectOption>;
 
   constructor() {
+    this.virtualScroll = new VirtualScroll(this.options, {
+      containerHeight: 300,
+      rowHeight: 44,
+    });
+
     this.handleClickSelect = this.handleClickSelect.bind(this);
     this.handleClickSelectOption = this.handleClickSelectOption.bind(this);
-    this.handleVirtualScrolled = this.handleVirtualScrolled.bind(this);
-  }
-
-  connectedCallback() {
-    if (this.virtualize) {
-      // 2 - Mark Y-Translate position
-      this.options = this.options.map((d, i) => {
-        d.transform = `translate(0, ${i * 44}px)`;
-        return d;
-      })
-
-
-      // 3 - Handle first render
-      const windowHeight = 44 * 5;
-      const renderBufferCount = (300 + windowHeight * 2) / 44;
-      const renderCount = renderBufferCount > this.options.length ? this.options.length : renderBufferCount;
-
-      this.lastItemIndex = Math.floor(renderCount - 1) - 1;
-      this.virtualizedOptions = [...this.options].splice(0, this.lastItemIndex + 1);
-    }
+    this.rerender = this.rerender.bind(this);
   }
 
   @Listen('click', { target: 'document', capture: true })
@@ -70,16 +55,14 @@ export class CfSelect {
     this.isOptionsOpen = !this.isOptionsOpen;
   }
 
-  private handleVirtualScrolled(startIndex: number, endIndex: number, scrollPosition: number): void {
-    this.lastItemIndex = endIndex;
-    this.lastScrollPosition = scrollPosition;
-    this.isFirstOpen = false;
-    this.virtualizedOptions = [...this.options].splice(startIndex, endIndex + 1);
-  }
-
   private handleCloseOptionsContainer(): void {
     this.isOptionsOpen = false;
     this.isFirstOpen = true;
+  }
+
+  private rerender(): void {
+    this.isFirstOpen = false;
+    this.tick += 1;
   }
 
   render() {
@@ -107,16 +90,13 @@ export class CfSelect {
       <OptionContainer
         isFirstOpen={this.isFirstOpen}
         isOptionsOpen={this.isOptionsOpen}
-        lastItemIndex={this.lastItemIndex}
-        lastScrollPosition={this.lastScrollPosition}
         options={this.options}
         selected={this.selected}
-        virtualize={this.virtualize}
-        virtualizedOptions={this.virtualizedOptions}
+        virtualize={this.isVirtualize}
+        virtualScroll={this.virtualScroll}
         onClickOption={this.handleClickSelectOption}
-        onVirtualScrolled={this.handleVirtualScrolled}
+        rerender={this.rerender}
       />
-
     ];
   }
 }

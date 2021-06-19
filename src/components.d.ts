@@ -101,9 +101,9 @@ export namespace Components {
         "type"?: FeedbackType;
     }
     interface CfSelect {
+        "isVirtualize": boolean;
         "options": ISelectOption[];
         "selected": ISelectOption;
-        "virtualize": boolean;
     }
     interface CfSideDrawer {
         "drawerTitle": string;
@@ -417,10 +417,10 @@ declare namespace LocalJSX {
         "type"?: FeedbackType;
     }
     interface CfSelect {
+        "isVirtualize"?: boolean;
         "onSelectedChange"?: (event: CustomEvent<ISelectOption>) => void;
         "options"?: ISelectOption[];
         "selected"?: ISelectOption;
-        "virtualize"?: boolean;
     }
     interface CfSideDrawer {
         "drawerTitle"?: string;

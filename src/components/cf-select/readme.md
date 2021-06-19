@@ -7,10 +7,11 @@
 
 ## Properties
 
-| Property   | Attribute | Description | Type              | Default     |
-| ---------- | --------- | ----------- | ----------------- | ----------- |
-| `options`  | --        |             | `ISelectOption[]` | `undefined` |
-| `selected` | --        |             | `ISelectOption`   | `undefined` |
+| Property       | Attribute       | Description | Type              | Default     |
+| -------------- | --------------- | ----------- | ----------------- | ----------- |
+| `isVirtualize` | `is-virtualize` |             | `boolean`         | `false`     |
+| `options`      | --              |             | `ISelectOption[]` | `[]`        |
+| `selected`     | --              |             | `ISelectOption`   | `undefined` |
 
 
 ## Events
