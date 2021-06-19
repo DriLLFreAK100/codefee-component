@@ -16,7 +16,7 @@ export const getDefaultVirtualizationOptions = (): ITblVirtualizationOption => {
     containerHeight: 178,
     rate: 16,
     rowHeight: 52,
-    window: 5,
+    tolerance: 5,
   };
 }
 

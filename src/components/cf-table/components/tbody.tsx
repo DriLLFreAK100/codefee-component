@@ -88,8 +88,8 @@ const VirtualizedBody: FunctionalComponent<Props> = ({
   onVirtualScrolled,
 }: Props): VNode => {
   let containerEl!: HTMLElement;
-  const { containerHeight, rate, rowHeight, window } = virtualizationOption;
-  const windowHeight = window * rowHeight;
+  const { containerHeight, rate, rowHeight, tolerance } = virtualizationOption;
+  const upperToleranceHeight = tolerance * rowHeight;
   const scrollHeight = data.length * rowHeight;
 
   const handleOnScroll = debounce(() => {
@@ -97,15 +97,15 @@ const VirtualizedBody: FunctionalComponent<Props> = ({
     let endIndex = 0;
 
     // Upper window
-    const outOfBound = containerEl.scrollTop - windowHeight;
+    const outOfBound = containerEl.scrollTop - upperToleranceHeight;
     if (outOfBound > 0) {
       startIndex = Math.round(outOfBound / rowHeight);
     }
-    const upperWindowItemCount = outOfBound >= 0 ? startIndex + window : startIndex;
+    const upperWindowItemCount = outOfBound >= 0 ? startIndex + tolerance : startIndex;
 
     // Lower window
     const inScopeCount = Math.round(containerHeight / rowHeight);
-    const maxEndIndex = upperWindowItemCount + inScopeCount + window;
+    const maxEndIndex = upperWindowItemCount + inScopeCount + tolerance;
     endIndex = maxEndIndex > data.length ? data.length - 1 : maxEndIndex - 1;
 
     onVirtualScrolled(startIndex, endIndex);

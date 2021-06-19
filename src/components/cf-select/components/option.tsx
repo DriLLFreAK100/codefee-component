@@ -5,12 +5,16 @@ import { ISelectOption } from "../cf-select.interface";
 interface Props {
   option: ISelectOption;
   isSelected: boolean;
+  style?: { [key: string]: string };
+  virtualize?: boolean;
   onClickOption: (option: ISelectOption) => void;
 }
 
 const Option: FunctionalComponent<Props> = ({
   isSelected,
   option,
+  style = {},
+  virtualize = false,
   onClickOption,
 }) => {
   const handleClickOption = () => {
@@ -22,10 +26,15 @@ const Option: FunctionalComponent<Props> = ({
   const className = flatten(`
     option
     ${isSelected ? 'selected' : ''}
+    ${virtualize ? 'virtualize' : ''}
   `);
 
   return (
-    <div class={className} onClick={handleClickOption}>
+    <div
+      class={className}
+      style={style}
+      onClick={handleClickOption}
+    >
       <cf-typography type="body1">
         {option.name}
       </cf-typography>

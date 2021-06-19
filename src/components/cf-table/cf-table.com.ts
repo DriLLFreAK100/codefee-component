@@ -19,7 +19,7 @@ export interface ITblVirtualizationOption {
   containerHeight?: number;
   rate?: number;
   rowHeight?: number;
-  window?: number;
+  tolerance?: number;
 }
 
 export interface ITblVirtualizedRow {

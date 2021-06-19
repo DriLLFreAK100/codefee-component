@@ -63,17 +63,13 @@ $select-height: rem(44);
   border: rem(1) solid var(--color-bg-dark);
   border-radius: rem(4);
   box-sizing: border-box;
-  height: rem(0);
+  max-height: rem(300);
   width: inherit;
   left: 0;
   overflow: auto;
   position: absolute;
   width: 100%;
   z-index: 10;
-
-  &:not(.virtualize) {
-    height: 300px;
-  }
 }
 
 .option {
@@ -99,5 +95,9 @@ $select-height: rem(44);
     background-color: var(--color-primary);
     color: var(--color-primary-on);
     cursor: initial;
+  }
+
+  &.virtualize {
+    position: absolute;
   }
 }

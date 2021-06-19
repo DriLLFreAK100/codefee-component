@@ -23,7 +23,7 @@ import {
 export class CfTable {
   _virtualizationOption: ITblVirtualizationOption;
   @Prop() columns: ITblColumn[] = [];
-  @Prop() data: ITblVirtualizedRow[] = [];
+  @Prop({ mutable: true }) data: ITblVirtualizedRow[] = [];
   @Prop() footers: ITblFooterColumn[] = [];
   @Prop() virtualize: boolean = false;
   @Prop() virtualizationOption: ITblVirtualizationOption = {};
@@ -36,7 +36,7 @@ export class CfTable {
       // 1 - Merge default options
       this.onVirtualizationOptionChange(this.virtualizationOption);
 
-      const { containerHeight, rowHeight, window } = this._virtualizationOption;
+      const { containerHeight, rowHeight, tolerance } = this._virtualizationOption;
 
       // 2 - Mark Y-Translate position
       this.data = this.data.map((d, i) => {
@@ -46,7 +46,7 @@ export class CfTable {
 
 
       // 3 - Handle first render
-      const windowHeight = rowHeight * window;
+      const windowHeight = rowHeight * tolerance;
       const renderBufferCount = (containerHeight + windowHeight * 2) / rowHeight;
       const renderCount = renderBufferCount > this.data.length ? this.data.length : renderBufferCount;
 
