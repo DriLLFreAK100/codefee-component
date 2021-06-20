@@ -26,27 +26,6 @@
     <cf-card>
       <cf-select id="select"></cf-select>
     </cf-card>
-    <template id="virtualized-select-options">
-      <cf-select-option value="1">Test 1</cf-select-option>
-      <cf-select-option value="2">Test 2</cf-select-option>
-      <cf-select-option value="3">Test 3</cf-select-option>
-      <cf-select-option value="4" selected>Test 4</cf-select-option>
-      <cf-select-option value="5">Test 5</cf-select-option>
-      <cf-select-option value="6">Test 6</cf-select-option>
-      <cf-select-option value="7">Test 7</cf-select-option>
-      <cf-select-option value="8">Test 8</cf-select-option>
-      <cf-select-option value="9">Test 9</cf-select-option>
-      <cf-select-option value="11">Test 11</cf-select-option>
-      <cf-select-option value="12">Test 12</cf-select-option>
-      <cf-select-option value="13">Test 13</cf-select-option>
-      <cf-select-option value="14">Test 14</cf-select-option>
-      <cf-select-option value="15">Test 15</cf-select-option>
-      <cf-select-option value="16">Test 16</cf-select-option>
-      <cf-select-option value="17">Test 17</cf-select-option>
-      <cf-select-option value="18">Test 18</cf-select-option>
-      <cf-select-option value="19">Test 19</cf-select-option>
-      <cf-select-option value="20">Test 20</cf-select-option>
-    </template>
     <br /><br />
 
     <!-- Dialog -->
@@ -430,14 +409,40 @@
 
       // Select
       const selectEl = document.querySelector('#select');
-
-      selectEl.addEventListener('selectedChange', event => {
-        console.log(event);
-      });
-
-      const virtualizedSelectOptionsTemplate = document.querySelector('#virtualized-select-options');
-      const virtualizedSelectOptions = virtualizedSelectOptionsTemplate.content.cloneNode(true);
-      selectEl.virtualOptions = Array.from(virtualizedSelectOptions.children);
+      const selectOptions = [
+        { id: 1, name: '1', value: 1 },
+        { id: 2, name: '2', value: 2 },
+        { id: 3, name: '3', value: 3 },
+        { id: 4, name: '4', value: 4 },
+        { id: 5, name: '5', value: 5 },
+        { id: 6, name: '6', value: 6 },
+        { id: 7, name: '7', value: 7 },
+        { id: 8, name: '8', value: 8 },
+        { id: 9, name: '9', value: 9 },
+        { id: 10, name: '10', value: 10 },
+        { id: 11, name: '11', value: 11 },
+        { id: 12, name: '12', value: 12 },
+        { id: 13, name: '13', value: 13 },
+        { id: 14, name: '14', value: 14 },
+        { id: 15, name: '15', value: 15 },
+        { id: 16, name: '16', value: 16 },
+        { id: 17, name: '17', value: 17 },
+        { id: 18, name: '18', value: 18 },
+        { id: 19, name: '19', value: 19 },
+        { id: 20, name: '20', value: 20 },
+        { id: 21, name: '21', value: 21 },
+        { id: 22, name: '22', value: 22 },
+        { id: 23, name: '23', value: 23 },
+        { id: 24, name: '24', value: 24 },
+        { id: 25, name: '25', value: 25 },
+        { id: 26, name: '26', value: 26 },
+        { id: 27, name: '27', value: 27 },
+        { id: 28, name: '28', value: 28 },
+        { id: 29, name: '29', value: 29 },
+        { id: 30, name: '30', value: 30 },
+      ];
+      selectEl.options = selectOptions;
+      selectEl.selected = selectOptions[0];
 
       // Dialog
       import { showDialog, hideDialog } from '/build/index.esm.js';

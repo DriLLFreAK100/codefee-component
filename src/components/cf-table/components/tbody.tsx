@@ -1,34 +1,27 @@
-import debounce from 'lodash-es/debounce';
 import TCell from './tcell';
 import Tr from './tr';
+import VirtualScroller from '../../shared/virtual-scroller';
 import { FunctionalComponent, h, VNode } from '@stencil/core';
 import { getFlexBasis, renderCellContent } from '../cf-table.utils';
-import { ITblColumn, ITblVirtualizationOption, ITblVirtualizedRow } from '../cf-table.com';
+import { ITblColumn } from '../cf-table.com';
+import { IVirtualItem, VirtualScroll } from '../../../utils';
 
 interface Props {
   columns: ITblColumn[];
-  data: ITblVirtualizedRow[];
-  lastItemIndex: number;
+  data: IVirtualItem[];
   totalColumnSize: number;
   virtualize?: boolean;
-  virtualizationOption: ITblVirtualizationOption;
-  virtualizedData?: ITblVirtualizedRow[];
+  virtualScroll: VirtualScroll<any>;
   onRowClick: (datum: any) => void;
-  onVirtualScrolled: (startIndex: number, endIndex: number) => void;
+  rerender: () => void;
 }
 
 interface RowProps {
   columns: ITblColumn[];
-  datum: ITblVirtualizedRow;
+  datum: IVirtualItem;
   style?: { [key: string]: string };
   totalColumnSize: number;
   onRowClick: (datum: any) => void;
-}
-
-interface VirtualizedRowPlaceholderProps {
-  lastItemIndex: number;
-  rowHeight: number;
-  scrollHeight: number;
 }
 
 const RowTemplate: FunctionalComponent<RowProps> = ({
@@ -60,86 +53,30 @@ const RowTemplate: FunctionalComponent<RowProps> = ({
   );
 }
 
-const VirtualizedRowPlaceholder: FunctionalComponent<VirtualizedRowPlaceholderProps> = ({
-  lastItemIndex,
-  rowHeight,
-  scrollHeight
-}): VNode => {
-  const renderingUntilHeight = (rowHeight * (lastItemIndex + 1));
+const VirtualizedBody: FunctionalComponent<Props> = (props): VNode => {
+  const {
+    virtualScroll,
+    rerender,
+  } = props;
 
-  const style = {
-    minHeight: `${scrollHeight - renderingUntilHeight}px`,
-    transform: `translate(0, ${renderingUntilHeight}px)`,
+  const renderRow = (datum: IVirtualItem) => {
+    return (
+      <RowTemplate
+        datum={datum}
+        style={datum.style}
+        {...props}
+      />
+    )
   }
 
   return (
-    <tr style={style} />
-  );
-}
-
-const VirtualizedBody: FunctionalComponent<Props> = ({
-  columns,
-  data,
-  lastItemIndex,
-  totalColumnSize,
-  virtualizationOption,
-  virtualizedData,
-  onRowClick,
-  onVirtualScrolled,
-}: Props): VNode => {
-  let containerEl!: HTMLElement;
-  const { containerHeight, rate, rowHeight, window } = virtualizationOption;
-  const windowHeight = window * rowHeight;
-  const scrollHeight = data.length * rowHeight;
-
-  const handleOnScroll = debounce(() => {
-    let startIndex = 0;
-    let endIndex = 0;
-
-    // Upper window
-    const outOfBound = containerEl.scrollTop - windowHeight;
-    if (outOfBound > 0) {
-      startIndex = Math.round(outOfBound / rowHeight);
-    }
-    const upperWindowItemCount = outOfBound >= 0 ? startIndex + window : startIndex;
-
-    // Lower window
-    const inScopeCount = Math.round(containerHeight / rowHeight);
-    const maxEndIndex = upperWindowItemCount + inScopeCount + window;
-    endIndex = maxEndIndex > data.length ? data.length - 1 : maxEndIndex - 1;
-
-    onVirtualScrolled(startIndex, endIndex);
-  }, rate);
-
-  return (
-    <tbody
-      onScroll={handleOnScroll}
-      ref={el => (containerEl = el)}
-      style={{ height: `${scrollHeight}px` }}
-    >
-      {
-        virtualizedData.map(d => {
-          return (
-            <RowTemplate
-              columns={columns}
-              datum={d}
-              style={{ transform: d.transform }}
-              totalColumnSize={totalColumnSize}
-              onRowClick={onRowClick}
-            />
-          )
-        })
-      }
-      {
-        (data.length - 1 !== lastItemIndex) && (
-          <VirtualizedRowPlaceholder
-            lastItemIndex={lastItemIndex}
-            rowHeight={rowHeight}
-            scrollHeight={scrollHeight}
-          />
-        )
-      }
-    </tbody>
+    <VirtualScroller
+      containerNodeType="tbody"
+      childNodeType="tr"
+      virtualScroll={virtualScroll}
+      render={renderRow}
+      rerender={rerender}
+    />
   );
 }
 

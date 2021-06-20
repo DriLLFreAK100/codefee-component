@@ -1,14 +1,7 @@
-import { Component, Element, Event, EventEmitter, h, Listen, Prop, State, Watch } from '@stencil/core';
-import { flatten } from '../../utils';
-
-const getSelectedOption = (els: HTMLCfSelectOptionElement[]): HTMLCfSelectOptionElement => {
-  return els.filter((el: HTMLCfSelectOptionElement) => el.hasAttribute('selected'))[0];
-};
-
-const getOptContainerHeight = (optionCount: number) => {
-  const height = optionCount * 44;
-  return height > 300 ? 300 : height;
-};
+import { Component, Element, Event, EventEmitter, h, Listen, Prop, State } from '@stencil/core';
+import { flatten, VirtualScroll } from '../../utils';
+import { ISelectOption } from './cf-select.interface';
+import OptionContainer from './components/option-container';
 
 @Component({
   tag: 'cf-select',
@@ -16,27 +9,25 @@ const getOptContainerHeight = (optionCount: number) => {
   shadow: true,
 })
 export class CfSelect {
-  @Element() el: HTMLCfSelectElement;
-  @Prop() placeholder: string = '';
-  @Prop({ mutable: true }) virtualOptions: HTMLCfSelectOptionElement[];
+  @Element() el: HTMLElement;
+  @Prop() options: ISelectOption[] = [];
+  @Prop({ mutable: true }) selected: ISelectOption = undefined;
+  @Prop() isVirtualize: boolean = true;
   @State() isOptionsOpen: boolean = false;
-  @State() optContainerHeight: number = 0;
-  @State() selected: HTMLCfSelectOptionElement = undefined;
-  @Event() selectedChange: EventEmitter<HTMLCfSelectOptionElement>;
+  @State() isFirstOpen: boolean = true;
+  @State() tick: number = 0;
+  @State() virtualScroll: VirtualScroll<ISelectOption> = undefined;
+  @Event() selectedChange: EventEmitter<ISelectOption>;
 
-  connectedCallback() {
-    this.initVirtualization(this.virtualOptions);
-  }
+  constructor() {
+    this.virtualScroll = new VirtualScroll(this.options, {
+      containerHeight: 300,
+      rowHeight: 44,
+    });
 
-  handleClickSelect(e: MouseEvent) {
-    e.stopPropagation();
-    this.isOptionsOpen = !this.isOptionsOpen;
-    this.el.shadowRoot;
-  }
-
-  @Watch('virtualOptions')
-  handleVirtualOptionsChange(newItems: HTMLCfSelectOptionElement[]) {
-    this.initVirtualization(newItems);
+    this.handleClickSelect = this.handleClickSelect.bind(this);
+    this.handleClickSelectOption = this.handleClickSelectOption.bind(this);
+    this.rerender = this.rerender.bind(this);
   }
 
   @Listen('click', { target: 'document', capture: true })
@@ -44,66 +35,34 @@ export class CfSelect {
     const isClickInside = this.el.contains(e.target);
 
     if (!isClickInside) {
-      this.isOptionsOpen = false;
+      this.handleCloseOptionsContainer();
     }
   }
 
-  @Listen('selectOptionClick')
-  handleSelectOptionClick(e: CustomEvent<HTMLCfSelectOptionElement>) {
-    e.stopPropagation();
-
-    const els = this.virtualOptions
-      ? this.virtualOptions
-      : (Array.from(this.el.children) as HTMLCfSelectOptionElement[]);
-
-    const updatedEls = els.map((el: HTMLCfSelectOptionElement) => {
-      if (el.getAttribute('value') === e.detail.value) {
-        el.setAttribute('selected', '');
-
-        // Set selected
-        this.selected = el;
-        this.selectedChange.emit(e.detail);
-      } else {
-        el.removeAttribute('selected');
+  private handleClickSelectOption({ id }: ISelectOption) {
+    this.options.forEach(o => {
+      if (o.id === id) {
+        this.selected = o;
       }
-
-      return el;
     });
 
-    if (this.virtualOptions) {
-      this.virtualOptions = updatedEls;
-    }
+    this.handleCloseOptionsContainer();
+    this.selectedChange.emit(this.selected);
+  }
 
+  private handleClickSelect(e: MouseEvent) {
+    e.stopPropagation();
+    this.isOptionsOpen = !this.isOptionsOpen;
+  }
+
+  private handleCloseOptionsContainer(): void {
     this.isOptionsOpen = false;
+    this.isFirstOpen = true;
   }
 
-  initVirtualization(options: HTMLCfSelectOptionElement[]) {
-    this.selected = getSelectedOption(
-      options ? options : (Array.from(this.el.children) as HTMLCfSelectOptionElement[]),
-    );
-
-    this.optContainerHeight = getOptContainerHeight(options ? options.length : this.el.children.length);
-  }
-
-  renderOptionContainer() {
-    const optContainerClassName = flatten(`
-      select__optContainer
-      ${this.isOptionsOpen ? 'open' : ''}
-      ${this.virtualOptions ? 'virtualize' : ''}
-    `);
-
-    return this.virtualOptions ? (
-      <cf-virtual-scroller
-        class={optContainerClassName}
-        containerHeight={this.optContainerHeight}
-        childHeight={44}
-        items={this.virtualOptions}
-      />
-    ) : (
-      <div class={optContainerClassName}>
-        <slot></slot>
-      </div>
-    );
+  private rerender(): void {
+    this.isFirstOpen = false;
+    this.tick += 1;
   }
 
   render() {
@@ -120,15 +79,24 @@ export class CfSelect {
     `);
 
     return [
-      <div class={selectClassName} onClick={this.handleClickSelect.bind(this)}>
+      <div class={selectClassName} onClick={this.handleClickSelect}>
         <cf-typography class="select__selectedValue" type="body1">
-          {this.selected?.innerHTML || this.selected?.name}
+          {this.selected?.name}
         </cf-typography>
         <span>
           <i class={caretClassName} />
         </span>
       </div>,
-      this.renderOptionContainer(),
+      <OptionContainer
+        isFirstOpen={this.isFirstOpen}
+        isOptionsOpen={this.isOptionsOpen}
+        options={this.options}
+        selected={this.selected}
+        virtualize={this.isVirtualize}
+        virtualScroll={this.virtualScroll}
+        onClickOption={this.handleClickSelectOption}
+        rerender={this.rerender}
+      />
     ];
   }
 }
