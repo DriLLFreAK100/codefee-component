@@ -12,7 +12,7 @@ export class CfSelect {
   @Element() el: HTMLElement;
   @Prop() options: ISelectOption[] = [];
   @Prop({ mutable: true }) selected: ISelectOption = undefined;
-  @Prop() isVirtualize: boolean = false;
+  @Prop() isVirtualize: boolean = true;
   @State() isOptionsOpen: boolean = false;
   @State() isFirstOpen: boolean = true;
   @State() tick: number = 0;

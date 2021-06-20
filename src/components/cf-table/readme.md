@@ -7,13 +7,13 @@
 
 ## Properties
 
-| Property               | Attribute    | Description | Type                       | Default |
-| ---------------------- | ------------ | ----------- | -------------------------- | ------- |
-| `columns`              | --           |             | `ITblColumn[]`             | `[]`    |
-| `data`                 | --           |             | `ITblVirtualizedRow[]`     | `[]`    |
-| `footers`              | --           |             | `ITblFooterColumn[]`       | `[]`    |
-| `virtualizationOption` | --           |             | `ITblVirtualizationOption` | `{}`    |
-| `virtualize`           | `virtualize` |             | `boolean`                  | `false` |
+| Property               | Attribute    | Description | Type                     | Default |
+| ---------------------- | ------------ | ----------- | ------------------------ | ------- |
+| `columns`              | --           |             | `ITblColumn[]`           | `[]`    |
+| `data`                 | --           |             | `IVirtualItem[]`         | `[]`    |
+| `footers`              | --           |             | `ITblFooterColumn[]`     | `[]`    |
+| `virtualizationOption` | --           |             | `IVirtualScrollSettings` | `{}`    |
+| `virtualize`           | `virtualize` |             | `boolean`                | `false` |
 
 
 ## Events

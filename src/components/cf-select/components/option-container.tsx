@@ -44,7 +44,9 @@ const VirtualizedOptions: FunctionalComponent<Props> = (props) => {
 
   return (
     <VirtualScroller
-      nodeType="div"
+      className="optionContainer"
+      containerNodeType="div"
+      childNodeType="div"
       requireScrollTo={isFirstOpen}
       virtualScroll={virtualScroll}
       render={(o) => renderOption(o, props)}

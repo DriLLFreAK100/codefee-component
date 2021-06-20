@@ -9,7 +9,7 @@
 
 | Property       | Attribute       | Description | Type              | Default     |
 | -------------- | --------------- | ----------- | ----------------- | ----------- |
-| `isVirtualize` | `is-virtualize` |             | `boolean`         | `false`     |
+| `isVirtualize` | `is-virtualize` |             | `boolean`         | `true`      |
 | `options`      | --              |             | `ISelectOption[]` | `[]`        |
 | `selected`     | --              |             | `ISelectOption`   | `undefined` |
 

@@ -1,5 +1,6 @@
-import { VNode, h } from "@stencil/core";
-import { ITblVirtualizationOption, TblSectionType } from "./cf-table.com";
+import { h, VNode } from '@stencil/core';
+import { IVirtualScrollSettings } from '../../utils';
+import { TblSectionType } from './cf-table.com';
 
 export const getFlexBasis = (item: { size?: number }, totalSize: number) => {
   return `${((item?.size || 1) / totalSize) * 100}%`;
@@ -11,10 +12,9 @@ export const getTotalSize = (data: { size?: number }[]): number => {
   }, 0);
 };
 
-export const getDefaultVirtualizationOptions = (): ITblVirtualizationOption => {
+export const getDefaultVirtualizationSettings = (): IVirtualScrollSettings => {
   return {
-    containerHeight: 178,
-    rate: 16,
+    containerHeight: 200,
     rowHeight: 52,
     tolerance: 5,
   };

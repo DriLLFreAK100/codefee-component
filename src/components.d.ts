@@ -13,7 +13,8 @@ import { InputStatusType } from "./components/cf-input/cf-input";
 import { TypographyType } from "./components/cf-typography/cf-typography";
 import { ISelectOption } from "./components/cf-select/cf-select.interface";
 import { SideDrawerPosition } from "./components/cf-side-drawer/cf-side-drawer";
-import { ITblColumn, ITblFooterColumn, ITblVirtualizationOption, ITblVirtualizedRow } from "./components/cf-table/cf-table.com";
+import { ITblColumn, ITblFooterColumn } from "./components/cf-table/cf-table.com";
+import { IVirtualItem, IVirtualScrollSettings } from "./utils";
 import { TypographyType as TypographyType1 } from "./components/cf-typography/cf-typography";
 export namespace Components {
     interface CfAppHeader {
@@ -116,9 +117,9 @@ export namespace Components {
     }
     interface CfTable {
         "columns": ITblColumn[];
-        "data": ITblVirtualizedRow[];
+        "data": IVirtualItem[];
         "footers": ITblFooterColumn[];
-        "virtualizationOption": ITblVirtualizationOption;
+        "virtualizationOption": IVirtualScrollSettings;
         "virtualize": boolean;
     }
     interface CfTabs {
@@ -127,14 +128,6 @@ export namespace Components {
         "ellipsis": boolean;
         "gutterBottom": GutterSize;
         "type": TypographyType;
-    }
-    interface CfVirtualScroller {
-        "childHeight": number;
-        "containerClassName": string;
-        "containerHeight": number;
-        "innerContainerClassName": string;
-        "items": HTMLElement[];
-        "windowLimit": number;
     }
 }
 declare global {
@@ -288,12 +281,6 @@ declare global {
         prototype: HTMLCfTypographyElement;
         new (): HTMLCfTypographyElement;
     };
-    interface HTMLCfVirtualScrollerElement extends Components.CfVirtualScroller, HTMLStencilElement {
-    }
-    var HTMLCfVirtualScrollerElement: {
-        prototype: HTMLCfVirtualScrollerElement;
-        new (): HTMLCfVirtualScrollerElement;
-    };
     interface HTMLElementTagNameMap {
         "cf-app-header": HTMLCfAppHeaderElement;
         "cf-app-header-action-menu": HTMLCfAppHeaderActionMenuElement;
@@ -320,7 +307,6 @@ declare global {
         "cf-table": HTMLCfTableElement;
         "cf-tabs": HTMLCfTabsElement;
         "cf-typography": HTMLCfTypographyElement;
-        "cf-virtual-scroller": HTMLCfVirtualScrollerElement;
     }
 }
 declare namespace LocalJSX {
@@ -435,10 +421,10 @@ declare namespace LocalJSX {
     }
     interface CfTable {
         "columns"?: ITblColumn[];
-        "data"?: ITblVirtualizedRow[];
+        "data"?: IVirtualItem[];
         "footers"?: ITblFooterColumn[];
         "onRowClick"?: (event: CustomEvent<any>) => void;
-        "virtualizationOption"?: ITblVirtualizationOption;
+        "virtualizationOption"?: IVirtualScrollSettings;
         "virtualize"?: boolean;
     }
     interface CfTabs {
@@ -448,14 +434,6 @@ declare namespace LocalJSX {
         "ellipsis"?: boolean;
         "gutterBottom"?: GutterSize;
         "type"?: TypographyType;
-    }
-    interface CfVirtualScroller {
-        "childHeight"?: number;
-        "containerClassName"?: string;
-        "containerHeight"?: number;
-        "innerContainerClassName"?: string;
-        "items"?: HTMLElement[];
-        "windowLimit"?: number;
     }
     interface IntrinsicElements {
         "cf-app-header": CfAppHeader;
@@ -483,7 +461,6 @@ declare namespace LocalJSX {
         "cf-table": CfTable;
         "cf-tabs": CfTabs;
         "cf-typography": CfTypography;
-        "cf-virtual-scroller": CfVirtualScroller;
     }
 }
 export { LocalJSX as JSX };
@@ -515,7 +492,6 @@ declare module "@stencil/core" {
             "cf-table": LocalJSX.CfTable & JSXBase.HTMLAttributes<HTMLCfTableElement>;
             "cf-tabs": LocalJSX.CfTabs & JSXBase.HTMLAttributes<HTMLCfTabsElement>;
             "cf-typography": LocalJSX.CfTypography & JSXBase.HTMLAttributes<HTMLCfTypographyElement>;
-            "cf-virtual-scroller": LocalJSX.CfVirtualScroller & JSXBase.HTMLAttributes<HTMLCfVirtualScrollerElement>;
         }
     }
 }

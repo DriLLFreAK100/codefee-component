@@ -4,16 +4,20 @@ import { FunctionalComponent, h, VNode } from '@stencil/core';
 import { IVirtualItem, VirtualScroll } from '../../utils';
 
 interface Props<T extends IVirtualItem> {
-  nodeType: string;
-  requireScrollTo: boolean;
+  className?: string;
+  containerNodeType: string;
+  childNodeType: string;
+  requireScrollTo?: boolean;
   virtualScroll: VirtualScroll<T>;
   render: (data: T) => VNode;
   rerender: () => void;
 }
 
 const VirtualScroller: FunctionalComponent<Props<any>> = ({
-  nodeType,
-  requireScrollTo,
+  className,
+  containerNodeType,
+  childNodeType,
+  requireScrollTo = false,
   virtualScroll,
   render,
   rerender,
@@ -27,7 +31,7 @@ const VirtualScroller: FunctionalComponent<Props<any>> = ({
     onVirtualScroll,
   } = virtualScroll;
 
-  const Component = nodeType;
+  const Component = containerNodeType;
   const totalHeight = data.length * rowHeight;
   let containerEl!: HTMLDivElement;
 
@@ -48,7 +52,7 @@ const VirtualScroller: FunctionalComponent<Props<any>> = ({
 
   return (
     <Component
-      class="optionContainer virtualize"
+      class={className}
       ref={handleRef}
       style={{ height: `${totalHeight}px` }}
       onScroll={handleOnScroll}>
@@ -62,7 +66,7 @@ const VirtualScroller: FunctionalComponent<Props<any>> = ({
         (data.length - 1 !== endIndex) && (
           <VirtualPlaceholder
             endIndex={endIndex}
-            nodeType={nodeType}
+            nodeType={childNodeType}
             rowHeight={rowHeight}
             totalHeight={totalHeight}
           />

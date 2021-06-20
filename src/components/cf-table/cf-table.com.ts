@@ -14,14 +14,3 @@ export interface ITblFooterColumn {
   content: any;
   size?: number;
 }
-
-export interface ITblVirtualizationOption {
-  containerHeight?: number;
-  rate?: number;
-  rowHeight?: number;
-  tolerance?: number;
-}
-
-export interface ITblVirtualizedRow {
-  transform: string;
-}
