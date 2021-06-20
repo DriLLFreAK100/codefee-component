@@ -21,15 +21,12 @@ import {
   CfNotification,
   CfNotificationMessage,
   CfSelect,
-  CfSelectGroup,
-  CfSelectOption,
   CfSideDrawer,
   CfTab,
   CfTable,
   CfTabs,
   CfTypography,
-  CfVirtualScroller,
-  } from './directives/proxies';
+} from './directives/proxies';
 
 const DECLARATIONS = [
   // proxies
@@ -53,14 +50,11 @@ const DECLARATIONS = [
   CfNotification,
   CfNotificationMessage,
   CfSelect,
-  CfSelectGroup,
-  CfSelectOption,
   CfSideDrawer,
   CfTab,
   CfTable,
   CfTabs,
   CfTypography,
-  CfVirtualScroller
 ];
 
 @NgModule({
